@@ -1,6 +1,39 @@
 {
   "appearances": [
     {
+      "gameContext": {
+        "awayFinal": 4,
+        "battingOrder": 6,
+        "homeFinal": 3,
+        "keyPlays": [
+          {
+            "description": "Brooks Lee singles on a ground ball to right fielder Nick Loftin. Ryan Jeffers scores. Alex Jackson scores. Royce Lewis to 2nd.",
+            "event": "Single",
+            "half": "top",
+            "inning": 8,
+            "pitcher": "Nate Pearson",
+            "rbi": 2,
+            "scoreAfter": {
+              "opponent": 3,
+              "team": 4
+            },
+            "scoreBefore": {
+              "opponent": 3,
+              "team": 2
+            },
+            "tags": [
+              "go-ahead"
+            ]
+          }
+        ],
+        "opponent": "Kansas City Royals",
+        "opponentFinal": 3,
+        "position": "3B",
+        "result": "win",
+        "side": "away",
+        "team": "Minnesota Twins",
+        "teamFinal": 4
+      },
       "gamePk": 824080,
       "highlights": [
         {
@@ -73,9 +106,9 @@
     }
   ],
   "date": "2026-08-06",
-  "generatedAt": "2026-08-07T19:32:29.623299+00:00",
+  "generatedAt": "2026-08-07T19:42:32.907791+00:00",
   "intro": "One former Mustang appeared in a professional game on 2026-08-06.",
-  "source": "MLB Stats API gameLog/byDateRange, MLB box scores and official MLB/MiLB game content",
+  "source": "MLB Stats API gameLog/byDateRange, official box scores, play-by-play and MLB/MiLB game content",
   "title": "Last Night's Mustangs",
   "warnings": []
 }
