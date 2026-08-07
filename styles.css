@@ -132,3 +132,54 @@
   .recent-section .section-head{align-items:flex-start;gap:10px}
   .recent-meta{text-align:left}
 }
+
+/* V5.12 last-seven formatting — match season stat board */
+.recent-section{
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+.recent-section .section-head{
+  margin-bottom:14px;
+}
+.recent-stats{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  padding:12px 10px;
+  gap:9px 4px;
+  background:var(--deep);
+  border:0;
+  border-radius:14px;
+  overflow:visible;
+}
+.recent-stats.pitcher{
+  grid-template-columns:repeat(4,1fr);
+}
+.recent-stats .stat{
+  text-align:center;
+  min-width:0;
+}
+.recent-stats .stat b{
+  display:block;
+  color:var(--bright);
+  font:700 13px 'Space Mono';
+  line-height:1.35;
+}
+.recent-stats .stat small{
+  display:block;
+  margin-top:4px;
+  color:rgba(255,255,255,.6);
+  font:8px 'Space Mono';
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.recent-note{
+  margin:12px 0 0;
+}
+@media(max-width:820px){
+  .recent-stats,.recent-stats.pitcher{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:520px){
+  .recent-stats,.recent-stats.pitcher{grid-template-columns:repeat(2,1fr)}
+}
