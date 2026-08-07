@@ -62,7 +62,7 @@
         "id": 695534,
         "link": "/api/v1/people/695534"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 113,
       "gameDate": "2026-08-07T22:45:00Z",
       "gamePk": 822699,
@@ -72,7 +72,7 @@
         "id": 676917,
         "link": "/api/v1/people/676917"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "liveLine": null,
       "opponent": "Cincinnati Reds",
@@ -89,7 +89,7 @@
         "id": 800048,
         "link": "/api/v1/people/800048"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 114,
       "gameDate": "2026-08-07T23:40:00Z",
       "gamePk": 824566,
@@ -99,16 +99,16 @@
         "id": 702273,
         "link": "/api/v1/people/702273"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 145,
       "liveLine": null,
       "opponent": "Cleveland Guardians",
       "player": "Drew Thorpe",
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Chicago White Sox",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "Rate Field"
     }
   ],
-  "generatedAt": "2026-08-07T19:42:24.309639+00:00"
+  "generatedAt": "2026-08-07T20:27:47.418858+00:00"
 }
