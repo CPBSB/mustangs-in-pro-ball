@@ -39,3 +39,8 @@
 .tracked-line span{font:700 9px 'Space Mono';text-transform:uppercase;color:var(--gold);margin-right:5px}
 .matchup-card .live-line{margin-top:12px;padding:9px 11px;background:var(--deep);color:var(--bright);border-radius:7px;font:700 11px 'Space Mono'}
 @media(max-width:820px){.award{grid-template-columns:88px 1fr}.award .portrait.award-photo{width:88px;height:88px}.games{grid-template-columns:1fr}.team-side{grid-template-columns:48px 1fr auto}.team-side img{width:46px;height:46px}.team-side b{font-size:18px}.starters-row{grid-template-columns:1fr}.matchup-venue{display:none}}
+
+/* V5.3 header cleanup */
+.hero-metrics > *:nth-child(4){display:none!important}
+.hero-metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:760px){.hero-metrics{grid-template-columns:1fr!important}}
