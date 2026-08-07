@@ -77,7 +77,7 @@
       "liveLine": null,
       "opponent": "Cincinnati Reds",
       "player": "Andrew Alvarez",
-      "status": "Warmup",
+      "status": "In Progress",
       "team": "Washington Nationals",
       "timeLabel": "2026-08-07T22:45:00Z",
       "venue": "Nationals Park"
@@ -104,11 +104,11 @@
       "liveLine": null,
       "opponent": "Cleveland Guardians",
       "player": "Drew Thorpe",
-      "status": "Warmup",
+      "status": "In Progress",
       "team": "Chicago White Sox",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "Rate Field"
     }
   ],
-  "generatedAt": "2026-08-07T23:39:39.373096+00:00"
+  "generatedAt": "2026-08-07T23:46:36.124387+00:00"
 }
