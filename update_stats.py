@@ -294,6 +294,166 @@ def fetch_mlb_boxscore_appearances(player, target_date):
     return matches
 
 
+
+def _score_pair(result):
+    try:
+        return int(result.get("awayScore", 0)), int(result.get("homeScore", 0))
+    except Exception:
+        return 0, 0
+
+
+def fetch_game_context(game_pk, player):
+    """Return verified box-score and play-by-play context for one appearance.
+
+    This is intentionally descriptive rather than speculative.  It recognizes
+    score-changing plays (go-ahead, tying and walk-off), final score/result,
+    lineup slot/position and pitching entry inning when those facts are present
+    in MLB/MiLB's official game feeds.
+    """
+    context = {"keyPlays": []}
+    if not game_pk:
+        return context
+    try:
+        box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
+        teams = box.get("teams") or {}
+        player_side = None
+        player_row = None
+        for side in ("away", "home"):
+            rows = ((teams.get(side) or {}).get("players") or {})
+            row = rows.get(f"ID{player['id']}")
+            if not row:
+                row = next((v for v in rows.values() if (v.get("person") or {}).get("id") == player["id"]), None)
+            if row:
+                player_side, player_row = side, row
+                break
+        if player_side:
+            other = "home" if player_side == "away" else "away"
+            own_team = ((teams.get(player_side) or {}).get("team") or {}).get("name")
+            opp_team = ((teams.get(other) or {}).get("team") or {}).get("name")
+            own_score = (teams.get(player_side) or {}).get("teamStats", {}).get("batting", {}).get("runs")
+            opp_score = (teams.get(other) or {}).get("teamStats", {}).get("batting", {}).get("runs")
+            # Some boxscore responses expose totals directly under teamStats; if
+            # they do not, game linescore below will supply the final score.
+            context.update({"side": player_side, "team": own_team, "opponent": opp_team})
+            if player_row:
+                order = player_row.get("battingOrder")
+                if order:
+                    try: context["battingOrder"] = max(1, int(order) // 100)
+                    except Exception: pass
+                pos = (player_row.get("position") or {}).get("abbreviation")
+                if pos: context["position"] = pos
+    except Exception:
+        box = None
+
+    try:
+        pbp = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/playByPlay", {})
+    except Exception:
+        return context
+
+    plays = pbp.get("allPlays") or []
+    prev_away = prev_home = 0
+    first_pitching_play = None
+    for play in plays:
+        about = play.get("about") or {}
+        result = play.get("result") or {}
+        matchup = play.get("matchup") or {}
+        inning = about.get("inning")
+        half = about.get("halfInning") or ""
+        away_after, home_after = _score_pair(result)
+        batter_id = ((matchup.get("batter") or {}).get("id"))
+        pitcher_id = ((matchup.get("pitcher") or {}).get("id"))
+
+        if player.get("type") == "hitter" and batter_id == player["id"]:
+            batting_side = "away" if str(half).lower() == "top" else "home"
+            before_us = prev_away if batting_side == "away" else prev_home
+            before_them = prev_home if batting_side == "away" else prev_away
+            after_us = away_after if batting_side == "away" else home_after
+            after_them = home_after if batting_side == "away" else away_after
+            event = result.get("event") or result.get("eventType") or "Plate appearance"
+            desc = result.get("description") or ""
+            rbi = int(num(result, "rbi"))
+            score_changed = after_us != before_us
+            tags = []
+            if score_changed:
+                if before_us <= before_them and after_us > after_them:
+                    tags.append("go-ahead")
+                elif before_us < before_them and after_us == after_them:
+                    tags.append("game-tying")
+                if str(half).lower() == "bottom" and int(inning or 0) >= 9 and after_us > after_them:
+                    tags.append("walk-off")
+            etype = str(result.get("eventType") or "").lower()
+            important = score_changed or rbi or etype in {"home_run", "triple", "double"} or tags
+            if important:
+                context["keyPlays"].append({
+                    "inning": inning, "half": half, "event": event,
+                    "description": desc, "rbi": rbi, "tags": tags,
+                    "scoreBefore": {"team": before_us, "opponent": before_them},
+                    "scoreAfter": {"team": after_us, "opponent": after_them},
+                    "pitcher": (matchup.get("pitcher") or {}).get("fullName"),
+                })
+        elif player.get("type") == "pitcher" and pitcher_id == player["id"] and first_pitching_play is None:
+            # Score at the moment the pitcher's first batter comes to the plate.
+            pitching_side = "home" if str(half).lower() == "top" else "away"
+            first_pitching_play = {
+                "inning": inning, "half": half,
+                "teamScore": prev_home if pitching_side == "home" else prev_away,
+                "opponentScore": prev_away if pitching_side == "home" else prev_home,
+            }
+        prev_away, prev_home = away_after, home_after
+
+    if plays:
+        final = plays[-1].get("result") or {}
+        away_final, home_final = _score_pair(final)
+        context["awayFinal"] = away_final
+        context["homeFinal"] = home_final
+        side = context.get("side")
+        if side:
+            team_final = away_final if side == "away" else home_final
+            opp_final = home_final if side == "away" else away_final
+            context["teamFinal"] = team_final
+            context["opponentFinal"] = opp_final
+            context["result"] = "win" if team_final > opp_final else "loss" if team_final < opp_final else "tie"
+    if first_pitching_play:
+        context["pitchingEntry"] = first_pitching_play
+    return context
+
+
+def key_play_sentence(appearance):
+    ctx = appearance.get("gameContext") or {}
+    plays = ctx.get("keyPlays") or []
+    if not plays:
+        return None
+    # Prioritize walk-off, then go-ahead, then tying, then other run-producing/XBH plays.
+    def rank(play):
+        tags = play.get("tags") or []
+        return (3 if "walk-off" in tags else 2 if "go-ahead" in tags else 1 if "game-tying" in tags else 0,
+                int(play.get("inning") or 0), int(play.get("rbi") or 0))
+    play = max(plays, key=rank)
+    name = appearance.get("name") or "The Mustang"
+    inning = int(play.get("inning") or 0)
+    ords = {1:"first",2:"second",3:"third",4:"fourth",5:"fifth",6:"sixth",7:"seventh",8:"eighth",9:"ninth",10:"10th",11:"11th",12:"12th"}
+    inning_word = ords.get(inning, f"{inning}th") if inning else "late"
+    tags = play.get("tags") or []
+    event = str(play.get("event") or "hit").lower()
+    rbi = int(play.get("rbi") or 0)
+    before = play.get("scoreBefore") or {}; after = play.get("scoreAfter") or {}
+    if "walk-off" in tags:
+        lead = f"{name} delivered the walk-off {event} in the {inning_word} inning"
+    elif "go-ahead" in tags:
+        lead = f"{name} delivered a {('two-run ' if rbi == 2 else str(rbi)+'-run ' if rbi > 2 else '')}go-ahead {event} in the {inning_word} inning"
+    elif "game-tying" in tags:
+        lead = f"{name} delivered a {('two-run ' if rbi == 2 else str(rbi)+'-run ' if rbi > 2 else '')}game-tying {event} in the {inning_word} inning"
+    elif rbi:
+        lead = f"{name}'s {event} in the {inning_word} inning drove in {rbi} run{'s' if rbi != 1 else ''}"
+    else:
+        lead = f"{name} produced a {event} in the {inning_word} inning"
+    if before and after and (before.get("team") != after.get("team") or before.get("opponent") != after.get("opponent")):
+        lead += f", moving his team from {before.get('team')}-{before.get('opponent')} to {after.get('team')}-{after.get('opponent')}"
+    pitcher = play.get("pitcher")
+    if pitcher:
+        lead += f" against {pitcher}"
+    return lead + "."
+
 def best_video_url(item):
     playbacks = item.get("playbacks") or []
     preferred = ("1280x720", "HTTP_CLOUD_WIRED_60", "mp4Avc")
@@ -374,10 +534,16 @@ def build_nightly_summary():
                     if cache_key not in game_highlight_cache:
                         game_highlight_cache[cache_key] = find_highlights(game_pk, player)
                     highlights = game_highlight_cache[cache_key]
+                game_context = fetch_game_context(game_pk, player) if game_pk else {}
+                if not team and game_context.get("team"):
+                    team = game_context.get("team")
+                if not opponent and game_context.get("opponent"):
+                    opponent = game_context.get("opponent")
                 appearances.append({
                     "playerId": player["id"], "name": player["name"], "type": player["type"],
                     "team": team, "level": level, "opponent": opponent, "gamePk": game_pk,
-                    "summary": recap, "stats": stat, "highlights": highlights
+                    "summary": recap, "stats": stat, "highlights": highlights,
+                    "gameContext": game_context
                 })
         except Exception as exc:
             warnings.append(f"{player['name']}: {exc}")
@@ -395,7 +561,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB Stats API gameLog/byDateRange, MLB box scores and official MLB/MiLB game content"
+        "source": "MLB Stats API gameLog/byDateRange, official box scores, play-by-play and MLB/MiLB game content"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
@@ -413,11 +579,10 @@ def build_nightly_summary():
 
 
 def build_daily_article(summary):
-    """Turn verified nightly game logs into a fuller newspaper-style recap.
+    """Turn verified game logs + play-by-play into a newspaper-style recap.
 
-    The prose deliberately stays inside facts present in the official game-log
-    payload. It does not infer scores, streaks, standings or milestones that the
-    updater did not retrieve.
+    The story can describe final score, lineup/position, inning, opponent pitcher
+    and score-changing context when the official game feed explicitly supports it.
     """
     apps = summary.get("appearances", [])
     date = summary.get("date")
@@ -492,8 +657,17 @@ def build_daily_article(summary):
         return a.get("summary", "")
 
     star = max(apps, key=score)
+    star_key = key_play_sentence(star)
+    star_ctx = star.get("gameContext") or {}
     headline = f"{star['name']} Sets the Pace for Mustangs in Pro Ball"
-    if num(star.get("stats", {}), "homeRuns"):
+    star_tags = [tag for play in (star_ctx.get("keyPlays") or []) for tag in (play.get("tags") or [])]
+    if "walk-off" in star_tags:
+        headline = f"{star['name']} Walks It Off to Headline Mustangs Daily"
+    elif "go-ahead" in star_tags:
+        headline = f"{star['name']} Delivers Go-Ahead Hit to Headline Mustangs Daily"
+    elif "game-tying" in star_tags:
+        headline = f"{star['name']} Delivers in the Clutch for Mustangs in Pro Ball"
+    elif num(star.get("stats", {}), "homeRuns"):
         headline = f"{star['name']} Powers the Mustangs' Pro Ball Roundup"
     elif star.get("type") == "pitcher" and num(star.get("stats", {}), "strikeOuts") >= 5:
         headline = f"{star['name']} Headlines the Night on the Mound"
@@ -510,12 +684,30 @@ def build_daily_article(summary):
         opening += f" across {level_count} levels"
     opening += f". {star['name']} supplied the headline performance."
 
-    paragraphs = [opening, detail_sentence(star)]
+    # Add verified game result and lineup context to the lead paragraph when available.
+    if star_ctx.get("result") in ("win", "loss") and star_ctx.get("teamFinal") is not None:
+        verb = "won" if star_ctx.get("result") == "win" else "fell"
+        opening += f" {star.get('team') or 'His club'} {verb} {star_ctx.get('teamFinal')}-{star_ctx.get('opponentFinal')} against {star.get('opponent') or 'the opponent'}."
+    lineup_bits = []
+    if star_ctx.get("battingOrder"):
+        lineup_bits.append(f"batted {star_ctx.get('battingOrder')} in the order")
+    if star_ctx.get("position"):
+        lineup_bits.append(f"started/appeared at {star_ctx.get('position')}")
+    star_detail = detail_sentence(star)
+    if lineup_bits:
+        star_detail += " He " + " and ".join(lineup_bits) + "."
+    paragraphs = [opening]
+    if star_key:
+        paragraphs.append(star_key)
+    paragraphs.append(star_detail)
 
     # Give the next most notable players their own paragraphs instead of one
     # compressed sentence. This makes the article read like a real roundup.
     others = sorted([a for a in apps if a is not star], key=score, reverse=True)
     for a in others[:5]:
+        key_text = key_play_sentence(a)
+        if key_text:
+            paragraphs.append(key_text)
         text = detail_sentence(a)
         if text:
             paragraphs.append(text)
