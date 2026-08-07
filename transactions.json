@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-08-07T17:19:22.471424+00:00",
+  "generatedAt": "2026-08-07T19:13:02.750994+00:00",
   "transactions": [
+    {
+      "date": "2026-08-07",
+      "description": "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive.",
+      "player": "Steven Brooks"
+    },
     {
       "date": "2026-08-04",
       "description": "Great Lakes Loons placed LHP Jakob Wright on the 7-day injured list.",

@@ -2,37 +2,113 @@
   "date": "2026-08-07",
   "games": [
     {
+      "away": "Minnesota Twins",
+      "awayProbablePitcher": {
+        "fullName": "Zebby Matthews",
+        "id": 805673,
+        "link": "/api/v1/people/805673"
+      },
+      "awayScore": null,
+      "awayTeamId": 142,
       "gameDate": "2026-08-07T23:40:00Z",
+      "gamePk": 823750,
+      "home": "Milwaukee Brewers",
+      "homeProbablePitcher": {
+        "fullName": "Shane Drohan",
+        "id": 675660,
+        "link": "/api/v1/people/675660"
+      },
+      "homeScore": null,
+      "homeTeamId": 158,
+      "liveLine": null,
       "opponent": "Milwaukee Brewers",
       "player": "Brooks Lee",
       "status": "Scheduled",
       "team": "Minnesota Twins",
-      "timeLabel": "2026-08-07T23:40:00Z"
+      "timeLabel": "2026-08-07T23:40:00Z",
+      "venue": "American Family Field"
     },
     {
+      "away": "Tampa Bay Rays",
+      "awayProbablePitcher": {
+        "fullName": "Drew Rasmussen",
+        "id": 656876,
+        "link": "/api/v1/people/656876"
+      },
+      "awayScore": null,
+      "awayTeamId": 139,
       "gameDate": "2026-08-08T01:45:00Z",
+      "gamePk": 823103,
+      "home": "Seattle Mariners",
+      "homeProbablePitcher": {
+        "fullName": "Logan Gilbert",
+        "id": 669302,
+        "link": "/api/v1/people/669302"
+      },
+      "homeScore": null,
+      "homeTeamId": 136,
+      "liveLine": null,
       "opponent": "Tampa Bay Rays",
       "player": "Bryan Woo",
       "status": "Scheduled",
       "team": "Seattle Mariners",
-      "timeLabel": "2026-08-08T01:45:00Z"
+      "timeLabel": "2026-08-08T01:45:00Z",
+      "venue": "T-Mobile Park"
     },
     {
+      "away": "Cincinnati Reds",
+      "awayProbablePitcher": {
+        "fullName": "Chase Petty",
+        "id": 695534,
+        "link": "/api/v1/people/695534"
+      },
+      "awayScore": null,
+      "awayTeamId": 113,
       "gameDate": "2026-08-07T22:45:00Z",
+      "gamePk": 822699,
+      "home": "Washington Nationals",
+      "homeProbablePitcher": {
+        "fullName": "Cade Cavalli",
+        "id": 676917,
+        "link": "/api/v1/people/676917"
+      },
+      "homeScore": null,
+      "homeTeamId": 120,
+      "liveLine": null,
       "opponent": "Cincinnati Reds",
       "player": "Andrew Alvarez",
       "status": "Scheduled",
       "team": "Washington Nationals",
-      "timeLabel": "2026-08-07T22:45:00Z"
+      "timeLabel": "2026-08-07T22:45:00Z",
+      "venue": "Nationals Park"
     },
     {
+      "away": "Cleveland Guardians",
+      "awayProbablePitcher": {
+        "fullName": "Parker Messick",
+        "id": 800048,
+        "link": "/api/v1/people/800048"
+      },
+      "awayScore": null,
+      "awayTeamId": 114,
       "gameDate": "2026-08-07T23:40:00Z",
+      "gamePk": 824566,
+      "home": "Chicago White Sox",
+      "homeProbablePitcher": {
+        "fullName": "Noah Schultz",
+        "id": 702273,
+        "link": "/api/v1/people/702273"
+      },
+      "homeScore": null,
+      "homeTeamId": 145,
+      "liveLine": null,
       "opponent": "Cleveland Guardians",
       "player": "Drew Thorpe",
       "status": "Scheduled",
       "team": "Chicago White Sox",
-      "timeLabel": "2026-08-07T23:40:00Z"
+      "timeLabel": "2026-08-07T23:40:00Z",
+      "venue": "Rate Field"
     }
   ],
-  "generatedAt": "2026-08-07T17:19:20.106664+00:00"
+  "generatedAt": "2026-08-07T19:12:56.636229+00:00"
 }

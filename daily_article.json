@@ -3,19 +3,25 @@
     {
       "label": "Player of the Night",
       "line": "Brooks Lee went 1-for-4, 2 RBI.",
-      "player": "Brooks Lee"
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
     },
     {
       "label": "Top Hitter",
       "line": "Brooks Lee went 1-for-4, 2 RBI.",
-      "player": "Brooks Lee"
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
     }
   ],
   "date": "2026-08-06",
   "dateLabel": "Thursday, August 6, 2026",
   "paragraphs": [
-    "Brooks Lee went 1-for-4, 2 RBI. It was the headline performance in a night that featured 1 tracked Mustang across professional baseball.",
-    "The Mustangs in Pro Ball tracker refreshes each morning with official season totals, current assignments, game recaps and any player-tagged video published by MLB or MiLB."
+    "Brooks Lee went 1-for-4, 2 RBI. The performance stood out for Minnesota Twins as Cal Poly alumni continued their seasons across professional baseball.",
+    "1 tracked Mustang appeared across MLB. The group represented 1 professional club. Mustangs Daily is built from official game logs and box scores, with player-tagged MLB/MiLB video added when available."
   ],
-  "title": "Brooks Lee Leads the Way for Mustangs in Pro Ball"
+  "title": "Brooks Lee Sets the Pace for Mustangs in Pro Ball"
 }

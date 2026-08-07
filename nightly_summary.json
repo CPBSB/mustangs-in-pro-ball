@@ -25,6 +25,7 @@
           "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/06/814855aa-1132a96c-53cae2ed-csvm-diamondgcp-asset.m3u8"
         }
       ],
+      "level": "MLB",
       "name": "Brooks Lee",
       "opponent": "Kansas City Royals",
       "playerId": 686797,
@@ -72,9 +73,9 @@
     }
   ],
   "date": "2026-08-06",
-  "generatedAt": "2026-08-07T17:19:20.029945+00:00",
+  "generatedAt": "2026-08-07T19:13:01.453690+00:00",
   "intro": "One former Mustang appeared in a professional game on 2026-08-06.",
-  "source": "MLB Stats API game logs and official MLB/MiLB game content",
+  "source": "MLB Stats API gameLog/byDateRange, MLB box scores and official MLB/MiLB game content",
   "title": "Last Night's Mustangs",
   "warnings": []
 }
