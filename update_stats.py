@@ -5,7 +5,7 @@ Designed for GitHub Actions. Existing stats are preserved for any player whose
 request fails, so a temporary provider outage cannot blank the website.
 """
 from __future__ import annotations
-import json, os, sys, time
+import argparse, json, os, sys, time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 
 SEASON = int(os.getenv("BASEBALL_SEASON", datetime.now().year))
 ROOT = Path(__file__).resolve().parent
+DATA_DIR = ROOT
 OUTPUT = ROOT / "stats.json"
 SUMMARY_OUTPUT = ROOT / "nightly_summary.json"
 DAILY_OUTPUT = ROOT / "daily_article.json"
@@ -37,6 +38,8 @@ def load_players():
             "type": p["type"],
             "teamId": p.get("teamId"),
             "status": p.get("status"),
+            "recentLevel": p.get("recentLevel"),
+            "team": p.get("team"),
         }
         for p in rows if p.get("mlbId")
     ]
@@ -194,6 +197,38 @@ def fetch_game_log(player, target_date):
     return matches
 
 
+def fetch_date_range(player, target_date):
+    """Direct one-day stats lookup across MLB and every tracked MiLB level.
+
+    The regular gameLog feed occasionally lags for minor-league players. A
+    byDateRange request is a second independent path and is especially useful
+    for same-day/next-morning recaps.
+    """
+    group = "hitting" if player["type"] == "hitter" else "pitching"
+    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
+    data = get_json(url, {
+        "stats": "byDateRange", "group": group,
+        "startDate": target_date, "endDate": target_date,
+        "sportIds": SPORT_IDS, "hydrate": "team(sport),league,game"
+    })
+    matches = []
+    for split in relevant_splits(data):
+        split_date = str(split.get("date") or split.get("game", {}).get("officialDate") or "")[:10]
+        if split_date and split_date != target_date:
+            continue
+        stat = split.get("stat") or {}
+        if player["type"] == "hitter":
+            appeared = any(num(stat, k) for k in (
+                "plateAppearances", "atBats", "runs", "hits", "baseOnBalls",
+                "hitByPitch", "stolenBases", "caughtStealing", "rbi"
+            ))
+        else:
+            appeared = outs(stat.get("inningsPitched")) > 0
+        if appeared:
+            matches.append(split)
+    return matches
+
+
 def fetch_mlb_boxscore_appearances(player, target_date):
     """Fallback for MLB players when the player gameLog endpoint misses a date.
 
@@ -315,6 +350,10 @@ def build_nightly_summary():
         try:
             splits = fetch_game_log(player, target)
             if not splits:
+                # A direct one-day lookup catches many MiLB appearances that have
+                # not yet propagated into the season gameLog feed.
+                splits = fetch_date_range(player, target)
+            if not splits:
                 # MLB game logs can lag or omit a date even when the official box
                 # score already shows the player. Fall back to schedule + box score.
                 splits = fetch_mlb_boxscore_appearances(player, target)
@@ -322,6 +361,7 @@ def build_nightly_summary():
                 stat = split.get("stat", {})
                 game = split.get("game", {}) or {}
                 team = (split.get("team") or {}).get("name")
+                level = assignment_from_split(split)[1] or ("MLB" if player.get("status") == "mlb" else player.get("recentLevel"))
                 opponent = (split.get("opponent") or {}).get("name")
                 game_pk = game.get("gamePk") or split.get("gamePk")
                 if split.get("appearanceOnly"):
@@ -336,7 +376,7 @@ def build_nightly_summary():
                     highlights = game_highlight_cache[cache_key]
                 appearances.append({
                     "playerId": player["id"], "name": player["name"], "type": player["type"],
-                    "team": team, "opponent": opponent, "gamePk": game_pk,
+                    "team": team, "level": level, "opponent": opponent, "gamePk": game_pk,
                     "summary": recap, "stats": stat, "highlights": highlights
                 })
         except Exception as exc:
@@ -355,7 +395,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB Stats API game logs and official MLB/MiLB game content"
+        "source": "MLB Stats API gameLog/byDateRange, MLB box scores and official MLB/MiLB game content"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
@@ -377,42 +417,155 @@ def build_daily_article(summary):
     date = summary.get("date")
     label = datetime.fromisoformat(date).strftime("%A, %B %-d, %Y") if date else "Latest report"
     if not apps:
-        return {"date": date, "dateLabel": label, "title": "A Quiet Night Across Pro Ball", "paragraphs": [summary.get("intro", "No tracked Mustangs appeared in official game logs."), "The professional roster and season leaderboards remain current, with the next nightly update set to capture new appearances, transactions and official highlights."], "awards": []}
-    hitters=[a for a in apps if a.get("type")=="hitter"]
-    pitchers=[a for a in apps if a.get("type")=="pitcher"]
+        return {
+            "date": date, "dateLabel": label,
+            "title": "A Quiet Night Across Pro Ball",
+            "paragraphs": [
+                summary.get("intro", "No tracked Mustangs appeared in official game logs."),
+                "The roster, assignments and season leaderboards remain current. The next morning edition will capture new appearances, transactions and official highlights as they are published."
+            ],
+            "awards": []
+        }
+
+    hitters = [a for a in apps if a.get("type") == "hitter"]
+    pitchers = [a for a in apps if a.get("type") == "pitcher"]
+
     def hscore(a):
-        s=a.get("stats",{}); return num(s,"hits")*3+num(s,"homeRuns")*5+num(s,"rbi")*2+num(s,"runs")+num(s,"stolenBases")
+        st = a.get("stats", {})
+        return num(st,"hits")*3 + num(st,"homeRuns")*6 + num(st,"rbi")*2 + num(st,"runs") + num(st,"stolenBases")*2 + num(st,"baseOnBalls")*.5
     def pscore(a):
-        s=a.get("stats",{}); return num(s,"strikeOuts")*2+outs(s.get("inningsPitched"))-num(s,"earnedRuns")*4-num(s,"baseOnBalls")
-    star=max(apps,key=lambda a:hscore(a) if a.get("type")=="hitter" else pscore(a))
-    headline=f"{star['name']} Leads the Way for Mustangs in Pro Ball"
-    paragraphs=[f"{star['summary']} It was the headline performance in a night that featured {len(apps)} tracked Mustang{'s' if len(apps)!=1 else ''} across professional baseball."]
-    others=[a for a in apps if a is not star]
-    if others: paragraphs.append("Elsewhere, "+" ".join(a["summary"] for a in others[:4]))
-    paragraphs.append("The Mustangs in Pro Ball tracker refreshes each morning with official season totals, current assignments, game recaps and any player-tagged video published by MLB or MiLB.")
-    awards=[{"label":"Player of the Night","player":star["name"],"line":star["summary"]}]
+        st = a.get("stats", {})
+        return num(st,"strikeOuts")*2 + outs(st.get("inningsPitched")) - num(st,"earnedRuns")*4 - num(st,"baseOnBalls")*2 - num(st,"hits")
+    def score(a):
+        return hscore(a) if a.get("type") == "hitter" else pscore(a)
+
+    star = max(apps, key=score)
+    headline = f"{star['name']} Sets the Pace for Mustangs in Pro Ball"
+    if num(star.get("stats", {}), "homeRuns"):
+        headline = f"{star['name']} Powers the Mustangs' Pro Ball Roundup"
+    elif star.get("type") == "pitcher" and num(star.get("stats", {}), "strikeOuts") >= 5:
+        headline = f"{star['name']} Headlines a Strong Night on the Mound"
+
+    team_phrase = f" for {star.get('team')}" if star.get("team") else ""
+    paragraphs = [
+        f"{star['summary']} The performance stood out{team_phrase} as Cal Poly alumni continued their seasons across professional baseball."
+    ]
+
+    others = sorted([a for a in apps if a is not star], key=score, reverse=True)
+    if others:
+        featured = others[:5]
+        body = " ".join(a["summary"] for a in featured)
+        paragraphs.append("Around the system, " + body)
+
+    levels = sorted({a.get("level") for a in apps if a.get("level")})
+    teams = sorted({a.get("team") for a in apps if a.get("team")})
+    scope = f"{len(apps)} tracked Mustang{'s' if len(apps) != 1 else ''} appeared"
+    if levels:
+        scope += " across " + ", ".join(levels)
+    scope += "."
+    if teams:
+        scope += f" The group represented {len(teams)} professional club{'s' if len(teams) != 1 else ''}."
+    paragraphs.append(scope + " Mustangs Daily is built from official game logs and box scores, with player-tagged MLB/MiLB video added when available.")
+
+    awards = [{
+        "label": "Player of the Night", "player": star["name"], "playerId": star.get("playerId"),
+        "type": star.get("type"), "team": star.get("team"), "line": star["summary"]
+    }]
     if hitters:
-        b=max(hitters,key=hscore); awards.append({"label":"Top Hitter","player":b["name"],"line":b["summary"]})
+        b = max(hitters, key=hscore)
+        awards.append({"label":"Top Hitter","player":b["name"],"playerId":b.get("playerId"),"type":"hitter","team":b.get("team"),"line":b["summary"]})
     if pitchers:
-        b=max(pitchers,key=pscore); awards.append({"label":"Top Pitcher","player":b["name"],"line":b["summary"]})
+        b = max(pitchers, key=pscore)
+        awards.append({"label":"Top Pitcher","player":b["name"],"playerId":b.get("playerId"),"type":"pitcher","team":b.get("team"),"line":b["summary"]})
     return {"date":date,"dateLabel":label,"title":headline,"paragraphs":paragraphs,"awards":awards}
 
 def build_today_schedule():
-    today=datetime.now(PACIFIC).date().isoformat(); games=[]
+    """Build today's MLB slate and, when available, current box-score lines.
+
+    This feed is refreshed every 30 minutes. The box score gives the homepage a
+    genuinely useful in-game snapshot instead of waiting for season totals to
+    settle after the final out.
+    """
+    today = datetime.now(PACIFIC).date().isoformat()
+    games = []
     try:
-        data=get_json("https://statsapi.mlb.com/api/v1/schedule",{"sportId":1,"date":today,"hydrate":"team"})
-        by_team={}
-        for d in data.get("dates",[]):
-            for g in d.get("games",[]):
-                away=g.get("teams",{}).get("away",{}).get("team",{}); home=g.get("teams",{}).get("home",{}).get("team",{})
-                by_team[away.get("id")]=(away.get("name"),home.get("name"),g.get("gameDate"),g.get("status",{}).get("detailedState"))
-                by_team[home.get("id")]=(home.get("name"),away.get("name"),g.get("gameDate"),g.get("status",{}).get("detailedState"))
-        catalog=json.loads(PLAYERS_FILE.read_text()).get("players",[])
+        data = get_json("https://statsapi.mlb.com/api/v1/schedule", {
+            "sportId": 1, "date": today, "hydrate": "team,probablePitcher"
+        })
+        by_team = {}
+        game_cache = {}
+        for d in data.get("dates", []):
+            for g in d.get("games", []):
+                away_block = g.get("teams", {}).get("away", {})
+                home_block = g.get("teams", {}).get("home", {})
+                away = away_block.get("team", {})
+                home = home_block.get("team", {})
+                item = {
+                    "gamePk": g.get("gamePk"),
+                    "gameDate": g.get("gameDate"),
+                    "status": g.get("status", {}).get("detailedState"),
+                    "away": away.get("name"), "home": home.get("name"),
+                    "awayTeamId": away.get("id"), "homeTeamId": home.get("id"),
+                    "awayScore": away_block.get("score"), "homeScore": home_block.get("score"),
+                    "awayProbablePitcher": away_block.get("probablePitcher"),
+                    "homeProbablePitcher": home_block.get("probablePitcher"),
+                    "venue": (g.get("venue") or {}).get("name"),
+                }
+                game_cache[g.get("gamePk")] = item
+                by_team[away.get("id")] = (away.get("name"), home.get("name"), item)
+                by_team[home.get("id")] = (home.get("name"), away.get("name"), item)
+
+        box_cache = {}
+        catalog = json.loads(PLAYERS_FILE.read_text()).get("players", [])
         for p in catalog:
-            if p.get("status")=="mlb" and p.get("teamId") in by_team:
-                t,o,dt,status=by_team[p["teamId"]]; games.append({"player":p["name"],"team":t,"opponent":o,"gameDate":dt,"status":status,"timeLabel":dt})
-    except Exception: pass
-    return {"date":today,"generatedAt":datetime.now(timezone.utc).isoformat(),"games":games}
+            team_id = p.get("teamId")
+            if p.get("status") != "mlb" or team_id not in by_team:
+                continue
+            team, opponent, game = by_team[team_id]
+            live_line = None
+            game_pk = game.get("gamePk")
+            if game_pk and game.get("status") not in ("Scheduled", "Pre-Game", "Warmup"):
+                try:
+                    if game_pk not in box_cache:
+                        box_cache[game_pk] = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
+                    box = box_cache[game_pk]
+                    person_key = f"ID{p.get('mlbId')}"
+                    for side in ("away", "home"):
+                        player_row = ((box.get("teams") or {}).get(side) or {}).get("players", {}).get(person_key)
+                        if not player_row:
+                            continue
+                        if p.get("type") == "hitter":
+                            st = (player_row.get("stats") or {}).get("batting") or {}
+                            ab = int(num(st, "atBats")); h = int(num(st, "hits")); hr = int(num(st, "homeRuns")); rbi = int(num(st, "rbi")); runs = int(num(st, "runs"))
+                            if ab or h or st.get("plateAppearances"):
+                                extras = []
+                                if hr: extras.append(f"{hr} HR")
+                                if rbi: extras.append(f"{rbi} RBI")
+                                if runs: extras.append(f"{runs} R")
+                                live_line = f"{h}-for-{ab}" + ((", " + ", ".join(extras)) if extras else "")
+                        else:
+                            st = (player_row.get("stats") or {}).get("pitching") or {}
+                            ip = st.get("inningsPitched")
+                            if ip and str(ip) != "0.0":
+                                live_line = f"{ip} IP, {int(num(st,'strikeOuts'))} K, {int(num(st,'earnedRuns'))} ER"
+                        break
+                except Exception:
+                    pass
+            games.append({
+                "player": p["name"], "team": team, "opponent": opponent,
+                "gamePk": game_pk, "gameDate": game.get("gameDate"),
+                "status": game.get("status"), "timeLabel": game.get("gameDate"),
+                "away": game.get("away"), "home": game.get("home"),
+                "awayTeamId": game.get("awayTeamId"), "homeTeamId": game.get("homeTeamId"),
+                "awayProbablePitcher": game.get("awayProbablePitcher"),
+                "homeProbablePitcher": game.get("homeProbablePitcher"),
+                "venue": game.get("venue"),
+                "awayScore": game.get("awayScore"), "homeScore": game.get("homeScore"),
+                "liveLine": live_line,
+            })
+    except Exception:
+        pass
+    return {"date": today, "generatedAt": datetime.now(timezone.utc).isoformat(), "games": games}
 
 def build_transactions():
     rows=[]; since=(datetime.now(PACIFIC).date()-timedelta(days=14)).isoformat(); until=datetime.now(PACIFIC).date().isoformat()
@@ -426,6 +579,10 @@ def build_transactions():
     return {"generatedAt":datetime.now(timezone.utc).isoformat(),"transactions":rows[:20]}
 
 def main():
+    parser = argparse.ArgumentParser(description="Refresh Mustangs in Pro Ball data feeds")
+    parser.add_argument("--mode", choices=["full", "live"], default="full", help="full = morning edition; live = current stats + today schedule")
+    args = parser.parse_args()
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     old={}
     if OUTPUT.exists():
         try: old=json.loads(OUTPUT.read_text())
@@ -443,11 +600,15 @@ def main():
     payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals and latest game-log assignment; multiple professional levels combined","players":players,"warnings":errors}
     OUTPUT.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
     print(f"Wrote {OUTPUT} with {len(players)} player records")
-    summary = build_nightly_summary()
-    DAILY_OUTPUT.write_text(json.dumps(build_daily_article(summary or {}), indent=2, sort_keys=True) + "\n")
+    # Today's schedule is refreshed in both modes so the live site stays useful during games.
     SCHEDULE_OUTPUT.write_text(json.dumps(build_today_schedule(), indent=2, sort_keys=True) + "\n")
-    TRANSACTIONS_OUTPUT.write_text(json.dumps(build_transactions(), indent=2, sort_keys=True) + "\n")
-    print(f"Wrote {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, and {TRANSACTIONS_OUTPUT}")
+    if args.mode == "full":
+        summary = build_nightly_summary()
+        DAILY_OUTPUT.write_text(json.dumps(build_daily_article(summary or {}), indent=2, sort_keys=True) + "\n")
+        TRANSACTIONS_OUTPUT.write_text(json.dumps(build_transactions(), indent=2, sort_keys=True) + "\n")
+        print(f"Wrote full morning edition: {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, {TRANSACTIONS_OUTPUT}")
+    else:
+        print(f"Wrote live refresh: {OUTPUT}, {SCHEDULE_OUTPUT}")
     for e in errors: print("WARNING",e,file=sys.stderr)
 
 if __name__=="__main__": main()
