@@ -49,3 +49,45 @@
 .leader-card .leader-portrait{width:72px;height:72px;min-width:72px;border-width:3px}
 .leader-card .leader-portrait img{object-fit:cover;object-position:50% 22%;transform:scale(1.08)}
 .leader-card .leader-portrait .portrait-fallback{font-size:15px}
+
+/* V5.8 season leader card spacing/proportions */
+.leaders{
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
+}
+.leader-card{
+  grid-template-columns:72px minmax(0,1fr) 38px;
+  gap:14px;
+  align-items:center;
+  min-height:126px;
+  padding:18px;
+}
+.leader-card .leader-copy{
+  min-width:0;
+  padding-left:2px;
+}
+.leader-card .leader-copy b{
+  font-size:20px;
+  line-height:1.08;
+  margin:4px 0 5px;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.leader-card .leader-copy strong{
+  line-height:1.2;
+}
+.leader-card .leader-copy .meta{
+  display:block;
+  margin-top:5px;
+  line-height:1.35;
+}
+.leader-card .team-logo{
+  justify-self:end;
+  width:34px;
+  height:34px;
+}
+@media(max-width:700px){
+  .leaders{grid-template-columns:1fr}
+  .leader-card{grid-template-columns:68px minmax(0,1fr) 34px}
+  .leader-card .leader-portrait{width:68px;height:68px;min-width:68px}
+}
