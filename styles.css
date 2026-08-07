@@ -91,3 +91,24 @@
   .leader-card{grid-template-columns:68px minmax(0,1fr) 34px}
   .leader-card .leader-portrait{width:68px;height:68px;min-width:68px}
 }
+
+/* V5.10 daily results strip */
+.daily-results-wrap{margin:18px 0 10px;padding:18px 20px;background:var(--deep);border-radius:var(--r);box-shadow:var(--shadow)}
+.daily-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:13px}
+.daily-results-head span{font:700 10px 'Space Mono';letter-spacing:.12em;color:var(--gold)}
+.daily-results-head h3{margin:2px 0 0;font:400 25px 'Anton';text-transform:uppercase;color:#fff}
+.daily-results-head small{font:11px 'Space Mono';color:rgba(255,255,255,.55)}
+.daily-results-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.daily-result{display:grid;grid-template-columns:48px minmax(155px,1fr) auto;gap:10px;align-items:center;min-width:310px;padding:11px 13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#fff;text-decoration:none;transition:.15s ease}
+.daily-result:hover{background:rgba(255,255,255,.13);transform:translateY(-1px)}
+.daily-result .result-portrait{width:48px;height:48px;min-width:48px;border-width:2px}
+.daily-result .result-portrait img{object-fit:cover;object-position:50% 20%}
+.daily-result-copy{min-width:0}
+.daily-result-copy b{display:block;font:400 18px 'Anton';text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.daily-result-copy span{display:block;margin-top:2px;font:11px 'Space Mono';color:rgba(255,255,255,.72)}
+.daily-result-copy small{display:block;margin-top:4px;font:700 10px 'Space Mono';color:var(--gold)}
+.daily-result-game{text-align:right;min-width:58px}
+.daily-result-game strong{display:block;font:700 14px 'Space Mono';color:var(--gold)}
+.daily-result-game span{display:block;margin-top:3px;max-width:92px;font:9px 'Space Mono';color:rgba(255,255,255,.55)}
+.daily-results-empty{padding:10px 0;color:rgba(255,255,255,.65);font:12px 'Space Mono'}
+@media(max-width:700px){.daily-results-wrap{padding:16px}.daily-results-head{align-items:flex-start;flex-direction:column}.daily-results-head small{display:none}.daily-result{min-width:285px}}
