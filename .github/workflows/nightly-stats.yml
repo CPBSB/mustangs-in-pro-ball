@@ -1,0 +1,38 @@
+name: Nightly baseball stats
+
+on:
+  schedule:
+    # 10:15 UTC = 3:15 a.m. PDT / 2:15 a.m. PST
+    - cron: "15 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh player totals
+        run: python update_stats.py
+
+      - name: Commit changed statistics
+        run: |
+          if git diff --quiet -- stats.json nightly_summary.json daily_article.json today_schedule.json transactions.json; then
+            echo "No stat changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add stats.json nightly_summary.json daily_article.json today_schedule.json transactions.json
+          git commit -m "Publish Mustangs Daily and refresh baseball data"
+          git push
