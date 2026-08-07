@@ -23,7 +23,7 @@
       "liveLine": null,
       "opponent": "Milwaukee Brewers",
       "player": "Brooks Lee",
-      "status": "Pre-Game",
+      "status": "In Progress",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "American Family Field"
@@ -35,7 +35,7 @@
         "id": 656876,
         "link": "/api/v1/people/656876"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 139,
       "gameDate": "2026-08-08T01:45:00Z",
       "gamePk": 823103,
@@ -45,12 +45,12 @@
         "id": 669302,
         "link": "/api/v1/people/669302"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 136,
       "liveLine": null,
       "opponent": "Tampa Bay Rays",
       "player": "Bryan Woo",
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Seattle Mariners",
       "timeLabel": "2026-08-08T01:45:00Z",
       "venue": "T-Mobile Park"
@@ -77,7 +77,7 @@
       "liveLine": null,
       "opponent": "Cincinnati Reds",
       "player": "Andrew Alvarez",
-      "status": "Pre-Game",
+      "status": "Warmup",
       "team": "Washington Nationals",
       "timeLabel": "2026-08-07T22:45:00Z",
       "venue": "Nationals Park"
@@ -104,11 +104,11 @@
       "liveLine": null,
       "opponent": "Cleveland Guardians",
       "player": "Drew Thorpe",
-      "status": "Pre-Game",
+      "status": "Warmup",
       "team": "Chicago White Sox",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "Rate Field"
     }
   ],
-  "generatedAt": "2026-08-07T21:03:11.011032+00:00"
+  "generatedAt": "2026-08-07T23:39:39.373096+00:00"
 }
