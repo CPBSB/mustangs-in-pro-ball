@@ -1,51 +1,84 @@
-# Mustangs in Pro Ball Hub — Version 4.0
+# Mustangs in Pro Ball — Version 5.0
 
-A deployable, data-driven professional alumni publication for Cal Poly Baseball.
+A data-driven Cal Poly professional baseball hub designed for GitHub + Cloudflare Pages.
 
-## Included
+## What Version 5.0 does
 
-- Mustangs Daily editorial-style nightly article
-- Player/Pitcher of the Night awards
-- Official MLB/MiLB highlights when available
-- Today's MLB games for tracked players
-- Recent roster transactions
-- Season leaderboards
-- Searchable and sortable roster grouped MLB through Rookie, with free agents last
-- Dedicated player profile pages
-- MLB-first, MiLB-second official headshots
-- Nightly GitHub Actions automation
-- Single editable player catalog in `players.json`
+- Displays the current professional roster from MLB through Rookie ball.
+- Loads current season statistics from `data/stats.json`.
+- Publishes a morning `Mustangs Daily` story from the previous day's official game logs.
+- Shows official player-tagged highlights when MLB/MiLB supplies them.
+- Shows today's MLB games and, during games, a current box-score line when available.
+- Shows recent player transactions.
+- Includes Cal Poly MLB career leaders and historical MLB alumni cards linked to Baseball Reference.
+- Uses MLB/MiLB headshots with image fallbacks.
+- Refreshes current stats and today's games every 30 minutes using GitHub Actions.
+- Runs a full morning refresh once per day.
+- Automatically redeploys on Cloudflare Pages whenever GitHub receives a data commit.
 
-## Run locally
+## Repository layout
 
-```bash
-python3 -m http.server 8000
+```text
+.github/workflows/
+  live-refresh.yml       # every 30 minutes
+  morning-edition.yml    # full morning edition
+  validate.yml           # checks code on pushes
+
+data/
+  players.json
+  stats.json
+  nightly_summary.json
+  daily_article.json
+  today_schedule.json
+  transactions.json
+  career_mlb.json
+scripts/
+  update_stats.py
+index.html
+player.html
+app.js
+styles.css
+_headers
+_redirects
 ```
 
-Open `http://localhost:8000`.
+## Important idea
 
-## Deploy
+GitHub is the filing cabinet and automation engine. Cloudflare Pages is the public website.
 
-Upload the folder to a GitHub repository and connect it to GitHub Pages, Cloudflare Pages, Netlify or Vercel. Enable GitHub Actions read/write permissions so the nightly workflow can commit generated JSON feeds.
+When GitHub Actions changes a file in `data/`, it commits that file to `main`. A Cloudflare Pages project connected to the GitHub repository sees that commit and automatically publishes the new version.
 
-## Data files
+## First-time setup
 
-- `players.json`: player catalog
-- `stats.json`: season totals and latest assignments
-- `nightly_summary.json`: previous-night appearances and highlights
-- `daily_article.json`: generated Mustangs Daily story and awards
-- `today_schedule.json`: today's tracked MLB schedule
-- `transactions.json`: recent tracked roster moves
+Read `SETUP_CLOUDFLARE.md`. It is intentionally written as a click-by-click guide.
 
-The article generator is deterministic and source-grounded: it writes only from official game-log results collected by the updater.
+## Manual test
 
-## Mustangs Daily appearance detection
+In GitHub, open **Actions** and run either:
 
-The nightly recap checks each player's official game log first. For MLB players it now also checks the previous day's official MLB schedule and box score when the player game-log feed returns no matching split. This prevents a completed MLB appearance from being reported as "no one played" simply because the per-player game log is delayed or incomplete.
+- **Publish morning edition** — refreshes all feeds and writes Mustangs Daily.
+- **Refresh live baseball data** — refreshes current stats and today's games.
 
-After installing this version, run **Actions -> Nightly baseball stats -> Run workflow** once so `nightly_summary.json` and `daily_article.json` are regenerated with the corrected detection logic.
+## Data safety
 
+The updater preserves previous player stats when a provider request fails. The nightly summary also preserves the prior successful recap when every game-log request fails, instead of falsely publishing that nobody played.
 
-## MLB alumni history
+## Notes about "live"
 
-`career_mlb.json` contains the historical Cal Poly MLB alumni roster and career regular-season totals used by the Career Leaders and MLB Alumni Career Stats sections. Each historical card links to the corresponding Baseball Reference player page. The historical roster is based on the Baseball Reference school page supplied for Cal Poly.
+The 30-minute job is near-live, not pitch-by-pitch. Current MLB box-score lines can appear during a game. Minor-league live availability depends on what MLB/MiLB exposes through the public data feeds.
+
+## V5.1 Daily-first update
+
+This build adds:
+
+- richer Mustangs Daily story generation from all detected previous-day appearances;
+- a second one-day `byDateRange` lookup for MiLB players when the normal game log lags;
+- MLB box-score fallback for missed major-league appearances;
+- Player of the Night / Top Hitter / Top Pitcher cards with headshots;
+- inline official MLB/MiLB video playback when a clip URL is available;
+- scoreboard-style hero counters;
+- cleaner player cards with separate Mustang and official-profile links;
+- transaction-wire styling;
+- morning edition publishing plus the existing 30-minute live refresh workflow.
+
+After replacing the repository files, run **Publish morning edition** manually once from GitHub Actions to generate a fresh Mustangs Daily using the new appearance-detection logic.

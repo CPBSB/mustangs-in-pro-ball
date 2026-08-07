@@ -1,0 +1,5 @@
+/data/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=300

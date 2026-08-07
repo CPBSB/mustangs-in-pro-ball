@@ -1,0 +1,320 @@
+{
+  "players": {
+    "571745": {
+      "name": "Mitch Haniger",
+      "recentLevel": "Not currently assigned",
+      "recentTeam": "Free Agent",
+      "stats": {
+        "2B": "\u2014",
+        "3B": "\u2014",
+        "AB": "\u2014",
+        "AVG": ".250",
+        "BB": "\u2014",
+        "CS": "\u2014",
+        "H": "\u2014",
+        "HR": 130,
+        "OBP": "\u2014",
+        "OPS": ".772",
+        "R": "\u2014",
+        "RBI": 395,
+        "SB": 19,
+        "SLG": "\u2014",
+        "SO": "\u2014"
+      },
+      "type": "hitter"
+    },
+    "674841": {
+      "name": "Andrew Alvarez",
+      "recentLevel": "MLB",
+      "recentTeam": "Washington Nationals",
+      "stats": {
+        "BB": 31,
+        "ER": 28,
+        "ERA": "3.94",
+        "H": 62,
+        "IP": "64.0",
+        "R": 28,
+        "SO": 63,
+        "WHIP": "1.45"
+      },
+      "type": "pitcher"
+    },
+    "686797": {
+      "name": "Brooks Lee",
+      "recentLevel": "MLB",
+      "recentTeam": "Minnesota Twins",
+      "stats": {
+        "2B": 17,
+        "3B": 3,
+        "AB": 404,
+        "AVG": ".240",
+        "BB": 32,
+        "CS": 4,
+        "H": 97,
+        "HR": 16,
+        "OBP": ".298",
+        "OPS": ".714",
+        "R": 51,
+        "RBI": 58,
+        "SB": 7,
+        "SLG": ".416",
+        "SO": 73
+      },
+      "type": "hitter"
+    },
+    "689223": {
+      "name": "Derek True",
+      "recentLevel": "Double-A",
+      "recentTeam": "Corpus Christi Hooks",
+      "stats": {
+        "BB": 6,
+        "ER": 10,
+        "ERA": "6.92",
+        "H": 20,
+        "IP": "13.0",
+        "R": 12,
+        "SO": 18,
+        "WHIP": "2.00"
+      },
+      "type": "pitcher"
+    },
+    "689672": {
+      "name": "Drew Thorpe",
+      "recentLevel": "Double-A",
+      "recentTeam": "Birmingham Barons",
+      "stats": {
+        "BB": "\u2014",
+        "ER": "\u2014",
+        "ERA": "\u2014",
+        "H": "\u2014",
+        "IP": "\u2014",
+        "R": "\u2014",
+        "SO": "\u2014",
+        "WHIP": "\u2014"
+      },
+      "type": "pitcher"
+    },
+    "693433": {
+      "name": "Bryan Woo",
+      "recentLevel": "MLB",
+      "recentTeam": "Seattle Mariners",
+      "stats": {
+        "BB": 27,
+        "ER": 61,
+        "ERA": "4.31",
+        "H": 115,
+        "IP": "127.1",
+        "R": 65,
+        "SO": 127,
+        "WHIP": "1.12"
+      },
+      "type": "pitcher"
+    },
+    "693440": {
+      "name": "Taylor Dollard",
+      "recentLevel": "High-A",
+      "recentTeam": "Everett AquaSox",
+      "stats": {
+        "BB": 23,
+        "ER": 51,
+        "ERA": "6.15",
+        "H": 89,
+        "IP": "74.2",
+        "R": 65,
+        "SO": 71,
+        "WHIP": "1.50"
+      },
+      "type": "pitcher"
+    },
+    "695425": {
+      "name": "Bryce Warrecker",
+      "recentLevel": "High-A",
+      "recentTeam": "Hudson Valley Renegades",
+      "stats": {
+        "BB": 12,
+        "ER": 10,
+        "ERA": "3.18",
+        "H": 24,
+        "IP": "28.1",
+        "R": 10,
+        "SO": 25,
+        "WHIP": "1.27"
+      },
+      "type": "pitcher"
+    },
+    "701696": {
+      "name": "Ryan Stafford",
+      "recentLevel": "High-A",
+      "recentTeam": "Frederick",
+      "stats": {
+        "2B": 4,
+        "3B": 0,
+        "AB": 123,
+        "AVG": ".179",
+        "BB": 17,
+        "CS": 5,
+        "H": 22,
+        "HR": 2,
+        "OBP": ".295",
+        "OPS": ".555",
+        "R": 18,
+        "RBI": 15,
+        "SB": 9,
+        "SLG": ".260",
+        "SO": 32
+      },
+      "type": "hitter"
+    },
+    "702493": {
+      "name": "Carson Turnquist",
+      "recentLevel": "Rookie",
+      "recentTeam": "ACL D-backs",
+      "stats": {
+        "BB": "\u2014",
+        "ER": "\u2014",
+        "ERA": "\u2014",
+        "H": "\u2014",
+        "IP": "\u2014",
+        "R": "\u2014",
+        "SO": "\u2014",
+        "WHIP": "\u2014"
+      },
+      "type": "pitcher"
+    },
+    "809915": {
+      "name": "Jakob Wright",
+      "recentLevel": "High-A",
+      "recentTeam": "Great Lakes Loons",
+      "stats": {
+        "BB": 48,
+        "ER": 41,
+        "ERA": "6.63",
+        "H": 49,
+        "IP": "55.2",
+        "R": 45,
+        "SO": 67,
+        "WHIP": "1.74"
+      },
+      "type": "pitcher"
+    },
+    "809933": {
+      "name": "Steven Brooks",
+      "recentLevel": "High-A",
+      "recentTeam": "Greenville Drive",
+      "stats": {
+        "BB": 26,
+        "ER": 22,
+        "ERA": "4.27",
+        "H": 44,
+        "IP": "46.1",
+        "R": 29,
+        "SO": 71,
+        "WHIP": "1.51"
+      },
+      "type": "pitcher"
+    },
+    "822034": {
+      "name": "Ryan Tayman",
+      "recentLevel": "Single-A",
+      "recentTeam": "St. Lucie Mets",
+      "stats": {
+        "2B": 2,
+        "3B": 0,
+        "AB": 21,
+        "AVG": ".381",
+        "BB": 1,
+        "CS": 0,
+        "H": 8,
+        "HR": 1,
+        "OBP": ".391",
+        "OPS": "1.010",
+        "R": 4,
+        "RBI": 6,
+        "SB": 0,
+        "SLG": ".619",
+        "SO": 2
+      },
+      "type": "hitter"
+    },
+    "828420": {
+      "name": "Luke Kovach",
+      "recentLevel": "Rookie",
+      "recentTeam": "FCL Blue Jays",
+      "stats": {
+        "BB": 7,
+        "ER": 10,
+        "ERA": "18.00",
+        "H": 6,
+        "IP": "5.0",
+        "R": 11,
+        "SO": 9,
+        "WHIP": "2.60"
+      },
+      "type": "pitcher"
+    },
+    "835211": {
+      "name": "Alejandro Garza",
+      "recentLevel": "Rookie",
+      "recentTeam": "ACL Guardians",
+      "stats": {
+        "2B": "\u2014",
+        "3B": "\u2014",
+        "AB": "\u2014",
+        "AVG": "\u2014",
+        "BB": "\u2014",
+        "CS": "\u2014",
+        "H": "\u2014",
+        "HR": "\u2014",
+        "OBP": "\u2014",
+        "OPS": "\u2014",
+        "R": "\u2014",
+        "RBI": "\u2014",
+        "SB": "\u2014",
+        "SLG": "\u2014",
+        "SO": "\u2014"
+      },
+      "type": "hitter"
+    },
+    "836055": {
+      "name": "Zach Daudet",
+      "recentLevel": "High-A",
+      "recentTeam": "Asheville Tourists",
+      "stats": {
+        "2B": 14,
+        "3B": 0,
+        "AB": 257,
+        "AVG": ".210",
+        "BB": 77,
+        "CS": 11,
+        "H": 54,
+        "HR": 3,
+        "OBP": ".405",
+        "OPS": ".705",
+        "R": 48,
+        "RBI": 29,
+        "SB": 20,
+        "SLG": ".300",
+        "SO": 58
+      },
+      "type": "hitter"
+    }
+  },
+  "season": 2026,
+  "source": "MLB Stats API season totals; multiple professional levels combined",
+  "updatedAt": "2026-08-06T21:54:34.038374+00:00",
+  "warnings": [
+    "Brooks Lee: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Mitch Haniger: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Ryan Stafford: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Zach Daudet: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Bryan Woo: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Andrew Alvarez: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Drew Thorpe: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Jakob Wright: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Derek True: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Bryce Warrecker: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Luke Kovach: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Steven Brooks: <urlopen error [Errno -3] Temporary failure in name resolution>",
+    "Taylor Dollard: <urlopen error [Errno -3] Temporary failure in name resolution>"
+  ]
+}
