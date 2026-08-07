@@ -1,4 +1,65 @@
 {
-  "generatedAt": "2026-08-06T22:30:00Z",
-  "transactions": []
+  "generatedAt": "2026-08-07T17:19:22.471424+00:00",
+  "transactions": [
+    {
+      "date": "2026-08-04",
+      "description": "Great Lakes Loons placed LHP Jakob Wright on the 7-day injured list.",
+      "player": "Jakob Wright"
+    },
+    {
+      "date": "2026-08-03",
+      "description": "Washington Nationals recalled LHP Andrew Alvarez from Rochester Red Wings.",
+      "player": "Andrew Alvarez"
+    },
+    {
+      "date": "2026-07-31",
+      "description": "3B Alejandro Garza assigned to ACL Guardians.",
+      "player": "Alejandro Garza"
+    },
+    {
+      "date": "2026-07-30",
+      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Birmingham Barons.",
+      "player": "Drew Thorpe"
+    },
+    {
+      "date": "2026-07-29",
+      "description": "ACL D-backs activated RHP Carson Turnquist.",
+      "player": "Carson Turnquist"
+    },
+    {
+      "date": "2026-07-29",
+      "description": "FCL Red Sox activated LHP Josh Volmerding.",
+      "player": "Josh Volmerding"
+    },
+    {
+      "date": "2026-07-29",
+      "description": "FCL Cardinals activated RHP Nick Bonn.",
+      "player": "Nick Bonn"
+    },
+    {
+      "date": "2026-07-28",
+      "description": "C Ryan Tayman assigned to St. Lucie Mets from FCL Mets.",
+      "player": "Ryan Tayman"
+    },
+    {
+      "date": "2026-07-28",
+      "description": "Washington Nationals optioned LHP Andrew Alvarez to Rochester Red Wings.",
+      "player": "Andrew Alvarez"
+    },
+    {
+      "date": "2026-07-24",
+      "description": "Cleveland Guardians signed 3B Alejandro Garza.",
+      "player": "Alejandro Garza"
+    },
+    {
+      "date": "2026-07-24",
+      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Winston-Salem Dash.",
+      "player": "Drew Thorpe"
+    },
+    {
+      "date": "2026-07-24",
+      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Winston-Salem Dash.",
+      "player": "Drew Thorpe"
+    }
+  ]
 }

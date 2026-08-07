@@ -1,5 +1,38 @@
 {
-  "date": "2026-08-06",
-  "generatedAt": "2026-08-06T22:30:00Z",
-  "games": []
+  "date": "2026-08-07",
+  "games": [
+    {
+      "gameDate": "2026-08-07T23:40:00Z",
+      "opponent": "Milwaukee Brewers",
+      "player": "Brooks Lee",
+      "status": "Scheduled",
+      "team": "Minnesota Twins",
+      "timeLabel": "2026-08-07T23:40:00Z"
+    },
+    {
+      "gameDate": "2026-08-08T01:45:00Z",
+      "opponent": "Tampa Bay Rays",
+      "player": "Bryan Woo",
+      "status": "Scheduled",
+      "team": "Seattle Mariners",
+      "timeLabel": "2026-08-08T01:45:00Z"
+    },
+    {
+      "gameDate": "2026-08-07T22:45:00Z",
+      "opponent": "Cincinnati Reds",
+      "player": "Andrew Alvarez",
+      "status": "Scheduled",
+      "team": "Washington Nationals",
+      "timeLabel": "2026-08-07T22:45:00Z"
+    },
+    {
+      "gameDate": "2026-08-07T23:40:00Z",
+      "opponent": "Cleveland Guardians",
+      "player": "Drew Thorpe",
+      "status": "Scheduled",
+      "team": "Chicago White Sox",
+      "timeLabel": "2026-08-07T23:40:00Z"
+    }
+  ],
+  "generatedAt": "2026-08-07T17:19:20.106664+00:00"
 }

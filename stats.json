@@ -37,6 +37,7 @@
         "SO": 63,
         "WHIP": "1.45"
       },
+      "team": "Washington Nationals",
       "type": "pitcher"
     },
     "686797": {
@@ -46,20 +47,21 @@
       "stats": {
         "2B": 17,
         "3B": 3,
-        "AB": 404,
+        "AB": 408,
         "AVG": ".240",
         "BB": 32,
         "CS": 4,
-        "H": 97,
+        "H": 98,
         "HR": 16,
         "OBP": ".298",
-        "OPS": ".714",
+        "OPS": ".712",
         "R": 51,
-        "RBI": 58,
+        "RBI": 60,
         "SB": 7,
-        "SLG": ".416",
+        "SLG": ".414",
         "SO": 73
       },
+      "team": "Minnesota Twins",
       "type": "hitter"
     },
     "689223": {
@@ -108,6 +110,7 @@
         "SO": 127,
         "WHIP": "1.12"
       },
+      "team": "Seattle Mariners",
       "type": "pitcher"
     },
     "693440": {
@@ -300,21 +303,23 @@
     }
   },
   "season": 2026,
-  "source": "MLB Stats API season totals; multiple professional levels combined",
-  "updatedAt": "2026-08-06T21:54:34.038374+00:00",
+  "source": "MLB Stats API season totals and latest game-log assignment; multiple professional levels combined",
+  "updatedAt": "2026-08-07T17:19:14.776903+00:00",
   "warnings": [
-    "Brooks Lee: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Mitch Haniger: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Ryan Stafford: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Zach Daudet: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Bryan Woo: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Andrew Alvarez: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Drew Thorpe: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Jakob Wright: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Derek True: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Bryce Warrecker: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Luke Kovach: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Steven Brooks: <urlopen error [Errno -3] Temporary failure in name resolution>",
-    "Taylor Dollard: <urlopen error [Errno -3] Temporary failure in name resolution>"
+    "Mitch Haniger: no 2026 professional split returned",
+    "Ryan Tayman: no 2026 professional split returned",
+    "Alejandro Garza: no 2026 professional split returned",
+    "Ryan Stafford: no 2026 professional split returned",
+    "Zach Daudet: no 2026 professional split returned",
+    "Drew Thorpe: no 2026 professional split returned",
+    "Carson Turnquist: no 2026 professional split returned",
+    "Josh Volmerding: no 2026 professional split returned",
+    "Nick Bonn: no 2026 professional split returned",
+    "Jakob Wright: no 2026 professional split returned",
+    "Derek True: no 2026 professional split returned",
+    "Bryce Warrecker: no 2026 professional split returned",
+    "Luke Kovach: no 2026 professional split returned",
+    "Steven Brooks: no 2026 professional split returned",
+    "Taylor Dollard: no 2026 professional split returned"
   ]
 }

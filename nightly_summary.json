@@ -1,9 +1,80 @@
 {
-  "date": "2026-08-05",
-  "generatedAt": "2026-08-06T10:15:00Z",
+  "appearances": [
+    {
+      "gamePk": 824080,
+      "highlights": [
+        {
+          "description": "Condensed Game: Brooks Lee and the Twins take on Jac Caglianone and the Royals on August 6, 2026",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/phk9rcjyt61b0xloc5om.jpg",
+          "source": "MLB/MiLB official game content",
+          "title": "Condensed Game: MIN@KC - 8/6/26",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/06/d3368a16-85b3c603-096589ee-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Brooks Lee hits the go-ahead single and Royce Lewis hammers a homer in the Twins' 4-3 win over the Royals",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/dwnqzty08vukkkeaqkgx.jpg",
+          "source": "MLB/MiLB official game content",
+          "title": "Lee hits the go-ahead, Lewis homers in Twins' win",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/06/7be8ea9c-0dbda55a-1e16b677-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Brooks Lee singles to right field, bringing in two runs to give the Twins the 4-3 lead in the top of the 8th inning",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/ch5inknzpftus7u9ztip.jpg",
+          "source": "MLB/MiLB official game content",
+          "title": "Brooks Lee's go-ahead single",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/06/814855aa-1132a96c-53cae2ed-csvm-diamondgcp-asset.m3u8"
+        }
+      ],
+      "name": "Brooks Lee",
+      "opponent": "Kansas City Royals",
+      "playerId": 686797,
+      "stats": {
+        "airOuts": 2,
+        "atBats": 4,
+        "atBatsPerHomeRun": "-.--",
+        "avg": ".240",
+        "babip": ".250",
+        "baseOnBalls": 0,
+        "catchersInterference": 0,
+        "caughtStealing": 0,
+        "caughtStealingPercentage": ".---",
+        "doubles": 0,
+        "flyOuts": 1,
+        "gamesPlayed": 1,
+        "groundIntoDoublePlay": 0,
+        "groundIntoTriplePlay": 0,
+        "groundOuts": 1,
+        "groundOutsToAirouts": "0.50",
+        "hitByPitch": 0,
+        "hits": 1,
+        "homeRuns": 0,
+        "intentionalWalks": 0,
+        "leftOnBase": 1,
+        "numberOfPitches": 10,
+        "obp": ".298",
+        "ops": ".712",
+        "plateAppearances": 4,
+        "rbi": 2,
+        "runs": 0,
+        "sacBunts": 0,
+        "sacFlies": 0,
+        "slg": ".414",
+        "stolenBasePercentage": ".---",
+        "stolenBases": 0,
+        "strikeOuts": 0,
+        "summary": "1-4 | 2 RBI",
+        "totalBases": 1,
+        "triples": 0
+      },
+      "summary": "Brooks Lee went 1-for-4, 2 RBI.",
+      "team": "Minnesota Twins",
+      "type": "hitter"
+    }
+  ],
+  "date": "2026-08-06",
+  "generatedAt": "2026-08-07T17:19:20.029945+00:00",
+  "intro": "One former Mustang appeared in a professional game on 2026-08-06.",
+  "source": "MLB Stats API game logs and official MLB/MiLB game content",
   "title": "Last Night's Mustangs",
-  "intro": "No tracked Mustangs were found in professional game logs for 2026-08-05.",
-  "appearances": [],
-  "warnings": [],
-  "source": "MLB Stats API game logs and official MLB/MiLB game content"
+  "warnings": []
 }

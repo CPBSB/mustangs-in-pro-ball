@@ -1,10 +1,21 @@
 {
-  "date": "2026-08-05",
-  "dateLabel": "Wednesday, August 5, 2026",
-  "title": "A Quiet Night Across Pro Ball",
-  "paragraphs": [
-    "No tracked Mustangs were found in professional game logs for 2026-08-05.",
-    "The professional roster and season leaderboards remain current, with the next nightly update set to capture new appearances, transactions and official highlights."
+  "awards": [
+    {
+      "label": "Player of the Night",
+      "line": "Brooks Lee went 1-for-4, 2 RBI.",
+      "player": "Brooks Lee"
+    },
+    {
+      "label": "Top Hitter",
+      "line": "Brooks Lee went 1-for-4, 2 RBI.",
+      "player": "Brooks Lee"
+    }
   ],
-  "awards": []
+  "date": "2026-08-06",
+  "dateLabel": "Thursday, August 6, 2026",
+  "paragraphs": [
+    "Brooks Lee went 1-for-4, 2 RBI. It was the headline performance in a night that featured 1 tracked Mustang across professional baseball.",
+    "The Mustangs in Pro Ball tracker refreshes each morning with official season totals, current assignments, game recaps and any player-tagged video published by MLB or MiLB."
+  ],
+  "title": "Brooks Lee Leads the Way for Mustangs in Pro Ball"
 }
