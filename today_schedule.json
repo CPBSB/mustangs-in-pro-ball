@@ -8,7 +8,7 @@
         "id": 805673,
         "link": "/api/v1/people/805673"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 142,
       "gameDate": "2026-08-07T23:40:00Z",
       "gamePk": 823750,
@@ -18,12 +18,12 @@
         "id": 675660,
         "link": "/api/v1/people/675660"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 158,
       "liveLine": null,
       "opponent": "Milwaukee Brewers",
       "player": "Brooks Lee",
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "American Family Field"
@@ -110,5 +110,5 @@
       "venue": "Rate Field"
     }
   ],
-  "generatedAt": "2026-08-07T20:27:47.418858+00:00"
+  "generatedAt": "2026-08-07T21:03:11.011032+00:00"
 }
