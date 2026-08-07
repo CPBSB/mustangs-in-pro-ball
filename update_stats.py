@@ -106,6 +106,86 @@ def fetch_recent_assignment(player, fallback_splits=None):
             return team, level
     return None, None
 
+
+def fetch_last_seven(player):
+    """Aggregate a player's seven most recent professional game-log appearances."""
+    group = "hitting" if player["type"] == "hitter" else "pitching"
+    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
+    data = get_json(url, {
+        "stats": "gameLog",
+        "group": group,
+        "season": SEASON,
+        "sportIds": SPORT_IDS,
+        "hydrate": "team(sport),league,game"
+    })
+    logs = relevant_splits(data)
+    logs = [row for row in logs if row.get("date") and row.get("stat")]
+    logs.sort(
+        key=lambda row: (
+            str(row.get("date") or ""),
+            int(((row.get("game") or {}).get("gamePk") or 0))
+        ),
+        reverse=True
+    )
+    recent = logs[:7]
+    if not recent:
+        return {"games": 0, "stats": {}, "startDate": None, "endDate": None}
+
+    dates = [str(row.get("date"))[:10] for row in recent if row.get("date")]
+    start_date = min(dates) if dates else None
+    end_date = max(dates) if dates else None
+
+    if player["type"] == "hitter":
+        keys = [
+            "atBats","runs","hits","doubles","triples","homeRuns","rbi",
+            "baseOnBalls","strikeOuts","stolenBases","caughtStealing",
+            "hitByPitch","sacFlies"
+        ]
+        totals = {key: sum(num(row.get("stat", {}), key) for row in recent) for key in keys}
+        ab = totals["atBats"]
+        h = totals["hits"]
+        bb = totals["baseOnBalls"]
+        hbp = totals["hitByPitch"]
+        sf = totals["sacFlies"]
+        tb = h + totals["doubles"] + 2 * totals["triples"] + 3 * totals["homeRuns"]
+        avg = f"{h/ab:.3f}"[1:] if ab else "—"
+        slg = f"{tb/ab:.3f}"[1:] if ab else "—"
+        obp_den = ab + bb + hbp + sf
+        obp = f"{(h+bb+hbp)/obp_den:.3f}"[1:] if obp_den else "—"
+        try:
+            ops = f"{float(obp)+float(slg):.3f}"[1:] if obp != "—" and slg != "—" else "—"
+        except Exception:
+            ops = "—"
+        stats = {
+            "G": len(recent), "AB": ab, "R": totals["runs"], "H": h,
+            "2B": totals["doubles"], "3B": totals["triples"], "HR": totals["homeRuns"],
+            "RBI": totals["rbi"], "BB": bb, "SO": totals["strikeOuts"],
+            "SB": totals["stolenBases"], "CS": totals["caughtStealing"],
+            "AVG": avg, "OBP": obp, "SLG": slg, "OPS": ops
+        }
+    else:
+        total_outs = sum(outs(row.get("stat", {}).get("inningsPitched")) for row in recent)
+        sums = {
+            key: sum(num(row.get("stat", {}), key) for row in recent)
+            for key in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]
+        }
+        ip = ip_from_outs(total_outs)
+        era = f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
+        whip = f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
+        stats = {
+            "G": len(recent), "IP": ip, "H": sums["hits"], "R": sums["runs"],
+            "ER": sums["earnedRuns"], "BB": sums["baseOnBalls"],
+            "SO": sums["strikeOuts"], "ERA": era, "WHIP": whip
+        }
+
+    return {
+        "games": len(recent),
+        "startDate": start_date,
+        "endDate": end_date,
+        "stats": stats
+    }
+
+
 def fetch_player(p):
     group="hitting" if p["type"]=="hitter" else "pitching"
     url=f"https://statsapi.mlb.com/api/v1/people/{p['id']}/stats"
@@ -148,7 +228,8 @@ def fetch_player(p):
         era=f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
         whip=f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
         stats={"IP":ip,"R":sums["runs"],"ER":sums["earnedRuns"],"BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],"ERA":era,"WHIP":whip}
-    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"stats":stats}
+    last7 = fetch_last_seven(p)
+    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"stats":stats,"last7":last7}
 
 
 def fmt_ip(value):
