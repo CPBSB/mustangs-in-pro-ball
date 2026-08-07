@@ -44,3 +44,8 @@
 .hero-metrics > *:nth-child(4){display:none!important}
 .hero-metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 @media(max-width:760px){.hero-metrics{grid-template-columns:1fr!important}}
+
+/* V5.7 season leader headshots */
+.leader-card .leader-portrait{width:72px;height:72px;min-width:72px;border-width:3px}
+.leader-card .leader-portrait img{object-fit:cover;object-position:50% 22%;transform:scale(1.08)}
+.leader-card .leader-portrait .portrait-fallback{font-size:15px}
