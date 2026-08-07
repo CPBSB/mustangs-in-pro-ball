@@ -578,7 +578,7 @@ def build_nightly_summary():
 
 
 
-def build_daily_article(summary):
+def build_daily_article(summary, transactions=None):
     """Write a natural, beat-writer-style recap from verified game data.
 
     This intentionally avoids a fixed "database summary" voice. One-player nights
@@ -589,8 +589,51 @@ def build_daily_article(summary):
     apps = summary.get("appearances", [])
     date = summary.get("date")
     label = datetime.fromisoformat(date).strftime("%A, %B %-d, %Y") if date else "the latest games"
+    transaction_rows = (transactions or {}).get("transactions", [])
+    day_transactions = [t for t in transaction_rows if not date or str(t.get("date") or "")[:10] == date]
+
+    def transaction_sentence(t):
+        name = t.get("player") or "A former Mustang"
+        desc = (t.get("description") or "had a roster transaction").strip()
+        clean = desc.rstrip(".")
+        lower = clean.lower()
+
+        # Prefer plain baseball language when the provider description makes
+        # the move clear, but never invent a destination or level.
+        if "selected" in lower and "contract" in lower:
+            return f"{name}'s contract was selected, putting him on the active roster."
+        if "recalled" in lower:
+            return f"{name} was recalled in a roster move."
+        if "promot" in lower:
+            return f"{name} was promoted. {clean}."
+        if "optioned" in lower:
+            return f"{name} was optioned in a roster move. {clean}."
+        if "assigned" in lower or "reassigned" in lower:
+            return f"{name} changed assignments. {clean}."
+        if "injured list" in lower or "disabled list" in lower:
+            return f"{name} had an injury-list move: {clean}."
+        if "activated" in lower:
+            return f"{name} was activated. {clean}."
+        if "released" in lower:
+            return f"{name} was released. {clean}."
+        if "signed" in lower or "contract" in lower:
+            return f"{name} had a contract move: {clean}."
+        return f"{name}: {clean}."
 
     if not apps:
+        if day_transactions:
+            tx_paragraphs = [
+                f"There were no confirmed game appearances for former Mustangs on {label}, but there was roster news to follow."
+            ]
+            tx_paragraphs.extend(transaction_sentence(t) for t in day_transactions[:6])
+            if len(day_transactions) > 6:
+                tx_paragraphs.append(f"{len(day_transactions)-6} additional Mustang transaction{'s' if len(day_transactions)-6 != 1 else ''} were also recorded and are listed in the Transactions section.")
+            return {
+                "date": date, "dateLabel": label,
+                "title": "Roster Moves Lead a Quiet Day for the Mustangs",
+                "paragraphs": tx_paragraphs,
+                "awards": []
+            }
         return {
             "date": date, "dateLabel": label,
             "title": "A Quiet Night for the Mustangs in Pro Ball",
@@ -792,6 +835,13 @@ def build_daily_article(summary):
             name_text=names[0] if len(names)==1 else ", ".join(names[:-1])+" and "+names[-1]
             paragraphs.append(f"Also getting into games were {name_text}.")
 
+    if day_transactions:
+        paragraphs.append("There was roster news to go with the action on the field.")
+        for t in day_transactions[:6]:
+            paragraphs.append(transaction_sentence(t))
+        if len(day_transactions) > 6:
+            paragraphs.append(f"{len(day_transactions)-6} additional Mustang transaction{'s' if len(day_transactions)-6 != 1 else ''} were recorded and are listed in the Transactions section.")
+
     clips=sum(len(a.get("highlights",[])) for a in apps)
     if clips:
         paragraphs.append(f"There {'was' if clips==1 else 'were'} {clips} official player-tagged highlight clip{'s' if clips!=1 else ''} available from the night's games, and they are included below when the video feed allows playback.")
@@ -932,8 +982,9 @@ def main():
     SCHEDULE_OUTPUT.write_text(json.dumps(build_today_schedule(), indent=2, sort_keys=True) + "\n")
     if args.mode == "full":
         summary = build_nightly_summary()
-        DAILY_OUTPUT.write_text(json.dumps(build_daily_article(summary or {}), indent=2, sort_keys=True) + "\n")
-        TRANSACTIONS_OUTPUT.write_text(json.dumps(build_transactions(), indent=2, sort_keys=True) + "\n")
+        transactions = build_transactions()
+        TRANSACTIONS_OUTPUT.write_text(json.dumps(transactions, indent=2, sort_keys=True) + "\n")
+        DAILY_OUTPUT.write_text(json.dumps(build_daily_article(summary or {}, transactions), indent=2, sort_keys=True) + "\n")
         print(f"Wrote full morning edition: {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, {TRANSACTIONS_OUTPUT}")
     else:
         print(f"Wrote live refresh: {OUTPUT}, {SCHEDULE_OUTPUT}")
