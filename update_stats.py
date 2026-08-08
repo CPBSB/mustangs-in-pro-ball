@@ -5,7 +5,7 @@ Designed for GitHub Actions. Existing stats are preserved for any player whose
 request fails, so a temporary provider outage cannot blank the website.
 """
 from __future__ import annotations
-import argparse, json, os, sys, time
+import argparse, json, os, re, sys, time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -21,7 +21,7 @@ DAILY_OUTPUT = ROOT / "daily_article.json"
 SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.20"
+GENERATOR_VERSION = "5.21"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
