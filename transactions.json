@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T02:39:27.134204+00:00",
+  "generatedAt": "2026-08-08T11:48:33.672400+00:00",
   "transactions": [
     {
       "date": "2026-08-07",
@@ -55,21 +55,6 @@
       "date": "2026-07-28",
       "description": "Washington Nationals optioned LHP Andrew Alvarez to Rochester Red Wings.",
       "player": "Andrew Alvarez"
-    },
-    {
-      "date": "2026-07-24",
-      "description": "Cleveland Guardians signed 3B Alejandro Garza.",
-      "player": "Alejandro Garza"
-    },
-    {
-      "date": "2026-07-24",
-      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Winston-Salem Dash.",
-      "player": "Drew Thorpe"
-    },
-    {
-      "date": "2026-07-24",
-      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Winston-Salem Dash.",
-      "player": "Drew Thorpe"
     }
   ]
 }
