@@ -152,69 +152,56 @@ function heroPhotoCarousel(){
   let target=document.querySelector('.hero .scorecard');
   if(!target)return;
 
-  // Action-photo only: use official MLB/MiLB highlight thumbnails from the
-  // current report and archived editions. Never fall back to headshots.
-  let actionPhotos=[];
-  let seen=new Set();
+  // Curated action photos supplied for the site. These always lead the carousel.
+  const curated=[
+    {image:'assets/action/brooks-lee.jpg',player:'Brooks Lee'},
+    {image:'assets/action/bryan-woo.webp',player:'Bryan Woo'},
+    {image:'assets/action/drew-thorpe.jpg',player:'Drew Thorpe'},
+    {image:'assets/action/andrew-alvarez.jpg',player:'Andrew Alvarez'}
+  ];
 
-  const addClip=(clip,playerName,playerId,dateLabel)=>{
-    if(!clip?.image)return;
-    let key=clip.image;
-    if(seen.has(key))return;
-    seen.add(key);
-
+  let actionPhotos=[],seen=new Set();
+  const addPhoto=(image,playerName,playerId,title='',video='',dateLabel='')=>{
+    if(!image||seen.has(image))return;
+    seen.add(image);
     let p=DATA.players.find(x=>String(x.mlbId)===String(playerId))
       || DATA.players.find(x=>x.name===playerName);
-
     actionPhotos.push({
-      image:clip.image,
-      video:clip.url||'',
-      title:clip.title||'Official game highlight',
-      player:playerName||clip.player||p?.name||'Mustang in Pro Ball',
+      image,
+      video,
+      title:title||'Mustang in Pro Ball',
+      player:playerName||p?.name||'Mustang in Pro Ball',
       team:p?.recentTeam||p?.team||'',
       level:p?normalizedLevel(p):'',
       date:dateLabel||''
     });
   };
 
+  curated.forEach(photo=>addPhoto(photo.image,photo.player,null,'Mustang in Pro Ball'));
+
+  // After the curated photos, continue adding official game-action imagery from
+  // current and archived MLB/MiLB highlights so the carousel can grow over time.
   (DATA.summary?.appearances||[]).forEach(a=>{
-    (a.highlights||[]).forEach(h=>addClip(h,a.name,a.playerId,DATA.daily?.dateLabel||DATA.summary?.date));
+    (a.highlights||[]).forEach(h=>addPhoto(h.image,a.name,a.playerId,h.title,h.url,DATA.daily?.dateLabel||DATA.summary?.date));
   });
-
   (DATA.archive?.editions||[]).forEach(e=>{
-    (e.highlights||[]).forEach(h=>addClip(h,h.player,h.playerId,e.dateLabel||e.date));
+    (e.highlights||[]).forEach(h=>addPhoto(h.image,h.player,h.playerId,h.title,h.url,e.dateLabel||e.date));
   });
 
-  // Keep the hero varied but not overloaded.
-  actionPhotos=actionPhotos.slice(0,16);
-
-  if(!actionPhotos.length){
-    target.outerHTML=`<div class="hero-photo-feature hero-action-empty"><div><small>Mustangs in Action</small><strong>Game action photos will appear here</strong><span>Official MLB and MiLB action imagery is added automatically as highlight clips become available.</span></div></div>`;
-    return;
-  }
+  actionPhotos=actionPhotos.slice(0,20);
+  if(!actionPhotos.length){target.remove();return}
 
   let slides=actionPhotos.map((photo,i)=>{
     let caption=[photo.team,photo.level].filter(Boolean).join(' · ');
-    let media=`<img src="${esc(photo.image)}" alt="${esc(photo.player)} game action">`;
-    let body=`<figure class="hero-player-slide hero-action-slide ${i===0?'active':''}" data-index="${i}">${media}<figcaption><small>${esc(photo.date||'Mustang in Pro Ball')}</small><strong>${esc(photo.player)}</strong><span>${esc(caption||photo.title)}</span><em>${esc(photo.title)}</em></figcaption></figure>`;
-    return photo.video?`<a class="hero-action-link" href="${esc(photo.video)}" target="_blank" rel="noopener" aria-label="Watch ${esc(photo.player)} highlight">${body}</a>`:body;
+    let figure=`<figure class="hero-player-slide hero-action-slide ${i===0?'active':''}" data-index="${i}"><img src="${esc(photo.image)}" alt="${esc(photo.player)} game action"><figcaption><small>${esc(photo.date||'Mustang in Pro Ball')}</small><strong>${esc(photo.player)}</strong>${caption?`<span>${esc(caption)}</span>`:''}</figcaption></figure>`;
+    return photo.video?`<a class="hero-action-link" href="${esc(photo.video)}" target="_blank" rel="noopener">${figure}</a>`:figure;
   }).join('');
 
   target.outerHTML=`<div class="hero-photo-feature" id="heroPhotoFeature"><div class="hero-photo-stage">${slides}</div><button class="hero-photo-nav prev" type="button" aria-label="Previous action photo">‹</button><button class="hero-photo-nav next" type="button" aria-label="Next action photo">›</button><div class="hero-photo-count"><span id="heroPhotoCurrent">1</span> / ${actionPhotos.length}</div></div>`;
 
-  let root=$('#heroPhotoFeature');
-  let slideEls=[...root.querySelectorAll('.hero-player-slide')];
-  let current=0,timer;
-  const show=n=>{
-    current=(n+slideEls.length)%slideEls.length;
-    slideEls.forEach((el,i)=>el.classList.toggle('active',i===current));
-    let c=$('#heroPhotoCurrent');
-    if(c)c.textContent=current+1;
-  };
-  const restart=()=>{
-    clearInterval(timer);
-    timer=setInterval(()=>show(current+1),5500);
-  };
+  let root=$('#heroPhotoFeature'),slideEls=[...root.querySelectorAll('.hero-player-slide')],current=0,timer;
+  const show=n=>{current=(n+slideEls.length)%slideEls.length;slideEls.forEach((el,i)=>el.classList.toggle('active',i===current));let c=$('#heroPhotoCurrent');if(c)c.textContent=current+1};
+  const restart=()=>{clearInterval(timer);timer=setInterval(()=>show(current+1),5500)};
   root.querySelector('.next').onclick=e=>{e.preventDefault();e.stopPropagation();show(current+1);restart()};
   root.querySelector('.prev').onclick=e=>{e.preventDefault();e.stopPropagation();show(current-1);restart()};
   root.addEventListener('mouseenter',()=>clearInterval(timer));
