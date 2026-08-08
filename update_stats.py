@@ -20,6 +20,7 @@ SUMMARY_OUTPUT = ROOT / "nightly_summary.json"
 DAILY_OUTPUT = ROOT / "daily_article.json"
 SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
+ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
 GENERATOR_VERSION = "5.21"
 SPORT_IDS = "1,11,12,13,14,15,16"
@@ -1492,6 +1493,77 @@ def patch_saved_assignment(players, player):
     return changed
 
 
+
+def update_archive(article, summary):
+    """Save one permanent Mustangs Daily edition per date.
+
+    Existing dates are replaced rather than duplicated, which makes manual
+    workflow reruns safe. Highlight metadata is copied into the archived edition
+    so old official clips remain discoverable after the live page advances.
+    """
+    existing = {"updatedAt": None, "editions": []}
+    if ARCHIVE_OUTPUT.exists():
+        try:
+            loaded = json.loads(ARCHIVE_OUTPUT.read_text())
+            if isinstance(loaded, dict):
+                existing = loaded
+        except Exception:
+            pass
+
+    editions = list(existing.get("editions") or [])
+    date = (article or {}).get("date") or (summary or {}).get("date")
+    if not date:
+        return existing
+
+    highlights = []
+    seen = set()
+    for appearance in (summary or {}).get("appearances") or []:
+        for clip in appearance.get("highlights") or []:
+            key = clip.get("url") or clip.get("id") or clip.get("title")
+            if key and key in seen:
+                continue
+            if key:
+                seen.add(key)
+            highlights.append({
+                **clip,
+                "player": appearance.get("name"),
+                "playerId": appearance.get("playerId"),
+            })
+
+    edition = {
+        "date": date,
+        "dateLabel": (article or {}).get("dateLabel"),
+        "title": (article or {}).get("title") or "Mustangs Daily",
+        "paragraphs": list((article or {}).get("paragraphs") or []),
+        "awards": list((article or {}).get("awards") or []),
+        "highlights": highlights,
+        "appearances": [
+            {
+                "playerId": a.get("playerId"),
+                "name": a.get("name"),
+                "team": a.get("team"),
+                "level": a.get("level"),
+                "summary": a.get("summary"),
+                "gamePk": a.get("gamePk"),
+            }
+            for a in ((summary or {}).get("appearances") or [])
+        ],
+        "generatedAt": (article or {}).get("generatedAt") or datetime.now(timezone.utc).isoformat(),
+    }
+
+    editions = [e for e in editions if e.get("date") != date]
+    editions.append(edition)
+    editions.sort(key=lambda e: str(e.get("date") or ""), reverse=True)
+
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(),
+        "editions": editions,
+    }
+    ARCHIVE_OUTPUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    print(f"Wrote {ARCHIVE_OUTPUT} with {len(editions)} archived editions")
+    return payload
+
+
 def main():
     parser = argparse.ArgumentParser(description="Refresh Mustangs in Pro Ball data feeds")
     parser.add_argument("--mode", choices=["full", "live"], default="full", help="full = morning edition; live = current stats + today schedule")
@@ -1526,8 +1598,10 @@ def main():
         summary = build_nightly_summary()
         transactions = build_transactions()
         TRANSACTIONS_OUTPUT.write_text(json.dumps(transactions, indent=2, sort_keys=True) + "\n")
-        DAILY_OUTPUT.write_text(json.dumps(build_daily_article(summary or {}, transactions), indent=2, sort_keys=True) + "\n")
-        print(f"Wrote full morning edition: {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, {TRANSACTIONS_OUTPUT}")
+        article = build_daily_article(summary or {}, transactions)
+        DAILY_OUTPUT.write_text(json.dumps(article, indent=2, sort_keys=True) + "\n")
+        update_archive(article, summary or {})
+        print(f"Wrote full morning edition: {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, {TRANSACTIONS_OUTPUT}, {ARCHIVE_OUTPUT}")
     else:
         print(f"Wrote live refresh: {OUTPUT}, {SCHEDULE_OUTPUT}")
     for e in errors: print("WARNING",e,file=sys.stderr)

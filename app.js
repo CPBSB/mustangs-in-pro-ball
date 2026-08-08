@@ -1,4 +1,4 @@
-const DATA={players:[],stats:{},summary:null,daily:null,schedule:null,transactions:null,career:null};
+const DATA={players:[],stats:{},summary:null,daily:null,schedule:null,transactions:null,career:null,archive:null};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const headshot=(id,minor=false)=>`https://img.mlbstatic.com/mlb-photos/image/upload/c_fill,g_auto,w_600,q_auto:best,f_auto/v1/people/${id}/headshot/${minor?'milb/':'67/'}current`;
@@ -6,7 +6,7 @@ const logo=id=>id?`https://www.mlbstatic.com/team-logos/${id}.svg`:'';
 const levels=['MLB','Triple-A','Double-A','High-A','Single-A','Rookie','Awaiting Pro Assignment','Free Agent'];
 function normalizedLevel(p){if(p.status==='fa')return'Free Agent';if(p.status==='mlb')return'MLB';let s=`${p.recentLevel||''} ${p.statusLabel||''}`.toLowerCase();if(s.includes('triple'))return'Triple-A';if(s.includes('double'))return'Double-A';if(s.includes('high'))return'High-A';if(s.includes('single')||s.includes('low-a'))return'Single-A';if(/rookie|acl|fcl|dsl/.test(s))return'Rookie';return'Awaiting Pro Assignment'}
 function merge(){DATA.players=DATA.players.map(p=>{let f=DATA.stats[String(p.mlbId)]||{};return{...p,...f,stats:{...(p.stats||{}),...(f.stats||{})}}})}
-async function loadAll(){let names=['players','stats','nightly_summary','daily_article','today_schedule','transactions','career_mlb'];let vals=await Promise.all(names.map(n=>fetch(`${n}.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)));DATA.players=vals[0]?.players||[];DATA.stats=vals[1]?.players||{};DATA.summary=vals[2];DATA.daily=vals[3];DATA.schedule=vals[4];DATA.transactions=vals[5];DATA.career=vals[6]||{players:[]};merge()}
+async function loadAll(){let names=['players','stats','nightly_summary','daily_article','today_schedule','transactions','career_mlb','archive'];let vals=await Promise.all(names.map(n=>fetch(`${n}.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)));DATA.players=vals[0]?.players||[];DATA.stats=vals[1]?.players||{};DATA.summary=vals[2];DATA.daily=vals[3];DATA.schedule=vals[4];DATA.transactions=vals[5];DATA.career=vals[6]||{players:[]};DATA.archive=vals[7]||{editions:[]};merge()}
 function portrait(p,cls=''){return`<div class="portrait ${cls}"><img src="${headshot(p.mlbId)}" data-alt="${headshot(p.mlbId,true)}" alt="${esc(p.name)} headshot" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src=this.dataset.alt}else{this.style.display='none';this.nextElementSibling.style.display='grid'}"><span class="portrait-fallback">${esc(p.initials||'CP')}</span></div>`}
 function orders(p){return p.type==='hitter'?['AB','R','H','2B','3B','HR','RBI','BB','SO','SB','CS','AVG','OBP','SLG','OPS']:['IP','R','ER','BB','SO','H','ERA','WHIP']}
 function playerCard(p){return`<article class="player-card"><div class="player-top">${portrait(p)}<div><div class="player-name">${esc(p.name)}</div><div class="assignment"><b>${esc(p.position)}</b><br>${esc(p.recentTeam||p.team)} · ${esc(normalizedLevel(p))}</div><span class="level-badge">${esc(p.statusLabel||normalizedLevel(p))}</span></div>${p.teamId?`<img class="team-logo" src="${logo(p.teamId)}" alt="">`:''}</div><div class="stats ${p.type==='pitcher'?'pitcher':''}">${orders(p).map(k=>`<div class="stat"><b>${esc(p.stats?.[k]??'—')}</b><small>${k}</small></div>`).join('')}</div><div class="player-note">${esc(p.note||'')}</div><div class="card-actions"><a href="player.html?id=${p.mlbId}">View Mustang profile</a>${p.profileUrl?`<a href="${esc(p.profileUrl)}" target="_blank" rel="noopener">Official profile ↗</a>`:''}</div></article>`}
@@ -83,7 +83,58 @@ function arrangeDailySections(){
     gamesSection.parentNode.insertBefore(highlightsSection,gamesSection);
   }
 }
-function renderHome(){ensureGameLinkStyles();arrangeDailySections();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(t=>`<div class="transaction-card"><span class="tx-icon">↕</span><div><small>Roster move</small><b>${esc(t.player)}</b><p>${esc(t.description)}</p><span>${esc(t.date||'')}</span></div></div>`).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer()}
+
+function archiveHighlightCard(h){
+  return `<article class="archive-video"><div class="archive-video-media">${h.image?`<img src="${esc(h.image)}" alt="">`:''}<span>▶</span></div><div><b>${esc(h.title||'Official highlight')}</b><small>${esc(h.player||'')}</small><a href="${esc(h.url||'#')}" target="_blank" rel="noopener">Watch official video ↗</a></div></article>`;
+}
+function archiveEditionCard(e,index){
+  let paragraphs=e.paragraphs||[], clips=e.highlights||[];
+  let excerpt=paragraphs[0]||'Mustangs Daily edition';
+  return `<article class="archive-edition"><button class="archive-edition-toggle" type="button" aria-expanded="${index===0?'true':'false'}"><div><small>${esc(e.dateLabel||e.date||'')}</small><h3>${esc(e.title||'Mustangs Daily')}</h3><p>${esc(excerpt)}</p></div><span>${clips.length} video${clips.length===1?'':'s'} · ${index===0?'−':'+'}</span></button><div class="archive-edition-body" ${index===0?'':'hidden'}>${paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${clips.length?`<div class="archive-video-grid">${clips.map(archiveHighlightCard).join('')}</div>`:'<div class="archive-no-video">No official player-tagged video was archived for this edition.</div>'}</div></article>`;
+}
+function ensureArchiveSection(){
+  if($('#archive'))return;
+  let about=$('#about')?.closest('section')||$('#about');
+  let html=`<section id="archive" class="section archive-section"><div class="section-head"><div><div class="eyebrow">Mustangs Daily history</div><h2 class="section-title">Article & Highlight Archive</h2></div><span class="meta">Newest first</span></div><div class="archive-tools"><input id="archiveSearch" type="search" placeholder="Search player, team or story"><select id="archiveYear"><option value="">All years</option></select></div><div id="archiveList" class="archive-list"></div></section>`;
+  if(about&&about.parentNode)about.parentNode.insertBefore(document.createRange().createContextualFragment(html),about);
+  else document.querySelector('main')?.insertAdjacentHTML('beforeend',html);
+  let nav=document.querySelector('header nav, nav');
+  if(nav&&!nav.querySelector('a[href="#archive"]'))nav.insertAdjacentHTML('beforeend','<a href="#archive">Archive</a>');
+}
+function renderArchive(){
+  ensureArchiveSection();
+  let editions=[...(DATA.archive?.editions||[])];
+  // On first deployment, surface the current article immediately even before
+  // archive.json has accumulated older nights.
+  if(!editions.length&&DATA.daily?.date){
+    let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name,playerId:a.playerId})));
+    editions=[{...DATA.daily,highlights:clips}];
+  }
+  let years=[...new Set(editions.map(e=>String(e.date||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  let year=$('#archiveYear');
+  if(year)year.innerHTML='<option value="">All years</option>'+years.map(y=>`<option value="${esc(y)}">${esc(y)}</option>`).join('');
+  let draw=()=>{
+    let q=($('#archiveSearch')?.value||'').trim().toLowerCase(), y=$('#archiveYear')?.value||'';
+    let rows=editions.filter(e=>{
+      if(y&&String(e.date||'').slice(0,4)!==y)return false;
+      if(!q)return true;
+      let hay=[e.title,...(e.paragraphs||[]),...(e.appearances||[]).flatMap(a=>[a.name,a.team,a.level,a.summary])].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+    $('#archiveList').innerHTML=rows.length?rows.map(archiveEditionCard).join(''):'<div class="empty">No archived editions match this search.</div>';
+    $$('.archive-edition-toggle').forEach(btn=>btn.onclick=()=>{
+      let body=btn.nextElementSibling, opening=body.hasAttribute('hidden');
+      if(opening)body.removeAttribute('hidden');else body.setAttribute('hidden','');
+      btn.setAttribute('aria-expanded',String(opening));
+      let span=btn.querySelector(':scope > span');
+      if(span)span.textContent=span.textContent.replace(/[+−]$/,opening?'−':'+');
+    });
+  };
+  if($('#archiveSearch'))$('#archiveSearch').oninput=draw;
+  if($('#archiveYear'))$('#archiveYear').onchange=draw;
+  draw();
+}
+function renderHome(){ensureGameLinkStyles();arrangeDailySections();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(t=>`<div class="transaction-card"><span class="tx-icon">↕</span><div><small>Roster move</small><b>${esc(t.player)}</b><p>${esc(t.description)}</p><span>${esc(t.date||'')}</span></div></div>`).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer();renderArchive()}
 
 function recentOrders(p){return p.type==='hitter'?['G','AB','R','H','2B','3B','HR','RBI','BB','SO','SB','AVG','OBP','SLG','OPS']:['G','IP','H','R','ER','BB','SO','ERA','WHIP']}
 function shortDate(v){if(!v)return'';let d=new Date(v+'T12:00:00');if(Number.isNaN(d.getTime()))return v;return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/Los_Angeles'}).format(d)}
