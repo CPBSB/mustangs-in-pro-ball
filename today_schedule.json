@@ -26,7 +26,7 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "In Progress",
+      "status": "Final",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-07T23:40:00Z",
       "venue": "American Family Field"
@@ -90,7 +90,7 @@
         "id": 656876,
         "link": "/api/v1/people/656876"
       },
-      "awayScore": 1,
+      "awayScore": 2,
       "awayTeamId": 139,
       "gameDate": "2026-08-08T01:45:00Z",
       "gamePk": 823103,
@@ -138,7 +138,7 @@
       "player": "Andrew Alvarez",
       "playerId": 674841,
       "sportId": 1,
-      "status": "In Progress",
+      "status": "Final",
       "team": "Washington Nationals",
       "timeLabel": "2026-08-07T22:45:00Z",
       "venue": "Nationals Park"
@@ -150,7 +150,7 @@
         "id": 683636,
         "link": "/api/v1/people/683636"
       },
-      "awayScore": null,
+      "awayScore": 4,
       "awayTeamId": 247,
       "gameDate": "2026-08-07T23:35:00Z",
       "gamePk": 817686,
@@ -160,7 +160,7 @@
         "id": 701836,
         "link": "/api/v1/people/701836"
       },
-      "homeScore": null,
+      "homeScore": 10,
       "homeTeamId": 559,
       "level": "Double-A",
       "liveLine": null,
@@ -168,7 +168,7 @@
       "player": "Drew Thorpe",
       "playerId": 689672,
       "sportId": 12,
-      "status": "In Progress",
+      "status": "Final",
       "team": "Birmingham Barons",
       "timeLabel": "2026-08-07T23:35:00Z",
       "venue": "Toyota Field"
@@ -260,30 +260,34 @@
       "venue": "Fluor Field at the West End"
     },
     {
-      "away": "Hudson Valley Renegades",
+      "away": "Portland Sea Dogs",
       "awayProbablePitcher": {
-        "fullName": "Pico Kohn",
-        "id": 695560,
-        "link": "/api/v1/people/695560"
+        "fullName": "Devin Futrell",
+        "id": 695656,
+        "link": "/api/v1/people/695656"
       },
-      "awayScore": 9,
-      "awayTeamId": 537,
-      "gameDate": "2026-08-07T22:45:00Z",
-      "gamePk": 822138,
-      "home": "Greenville Drive",
-      "homeProbablePitcher": null,
-      "homeScore": 3,
-      "homeTeamId": 428,
-      "level": "High-A",
+      "awayScore": 7,
+      "awayTeamId": 546,
+      "gameDate": "2026-08-07T22:03:00Z",
+      "gamePk": 818512,
+      "home": "New Hampshire Fisher Cats",
+      "homeProbablePitcher": {
+        "fullName": "Austin Cates",
+        "id": 827110,
+        "link": "/api/v1/people/827110"
+      },
+      "homeScore": 4,
+      "homeTeamId": 463,
+      "level": "Double-A",
       "liveLine": null,
-      "opponent": "Hudson Valley Renegades",
+      "opponent": "New Hampshire Fisher Cats",
       "player": "Steven Brooks",
       "playerId": 809933,
-      "sportId": 13,
+      "sportId": 12,
       "status": "Final",
-      "team": "Greenville Drive",
-      "timeLabel": "2026-08-07T22:45:00Z",
-      "venue": "Fluor Field at the West End"
+      "team": "Portland Sea Dogs",
+      "timeLabel": "2026-08-07T22:03:00Z",
+      "venue": "Delta Dental Stadium"
     },
     {
       "away": "Vancouver Canadians",
@@ -312,6 +316,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-08T02:22:46.871732+00:00",
+  "generatedAt": "2026-08-08T02:39:19.576232+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }

@@ -24,6 +24,8 @@
       "type": "hitter"
     },
     "674841": {
+      "assignmentDate": "2026-08-03",
+      "assignmentSource": "transaction",
       "last7": {
         "endDate": "2026-08-03",
         "games": 7,
@@ -58,6 +60,8 @@
       "type": "pitcher"
     },
     "686797": {
+      "assignmentDate": "2026-08-06",
+      "assignmentSource": "gameLog",
       "last7": {
         "endDate": "2026-08-06",
         "games": 7,
@@ -122,9 +126,12 @@
       "type": "pitcher"
     },
     "689672": {
+      "assignmentDate": "2026-07-30",
+      "assignmentSource": "transaction",
       "name": "Drew Thorpe",
       "recentLevel": "Double-A",
       "recentTeam": "Birmingham Barons",
+      "recentTeamId": 247,
       "stats": {
         "BB": "\u2014",
         "ER": "\u2014",
@@ -138,6 +145,8 @@
       "type": "pitcher"
     },
     "693433": {
+      "assignmentDate": "2026-08-05",
+      "assignmentSource": "gameLog",
       "last7": {
         "endDate": "2026-08-05",
         "games": 7,
@@ -227,9 +236,12 @@
       "type": "hitter"
     },
     "702493": {
+      "assignmentDate": "2026-07-29",
+      "assignmentSource": "transaction",
       "name": "Carson Turnquist",
       "recentLevel": "Rookie",
       "recentTeam": "ACL D-backs",
+      "recentTeamId": 1991,
       "stats": {
         "BB": "\u2014",
         "ER": "\u2014",
@@ -243,9 +255,12 @@
       "type": "pitcher"
     },
     "809915": {
+      "assignmentDate": "2026-08-04",
+      "assignmentSource": "transaction",
       "name": "Jakob Wright",
       "recentLevel": "High-A",
       "recentTeam": "Great Lakes Loons",
+      "recentTeamId": 456,
       "stats": {
         "BB": 48,
         "ER": 41,
@@ -259,9 +274,12 @@
       "type": "pitcher"
     },
     "809933": {
+      "assignmentDate": "2026-08-07",
+      "assignmentSource": "transaction",
       "name": "Steven Brooks",
-      "recentLevel": "High-A",
-      "recentTeam": "Greenville Drive",
+      "recentLevel": "Double-A",
+      "recentTeam": "Portland Sea Dogs",
+      "recentTeamId": 546,
       "stats": {
         "BB": 26,
         "ER": 22,
@@ -275,9 +293,12 @@
       "type": "pitcher"
     },
     "822034": {
+      "assignmentDate": "2026-07-28",
+      "assignmentSource": "transaction",
       "name": "Ryan Tayman",
       "recentLevel": "Single-A",
       "recentTeam": "St. Lucie Mets",
+      "recentTeamId": 507,
       "stats": {
         "2B": 2,
         "3B": 0,
@@ -314,9 +335,12 @@
       "type": "pitcher"
     },
     "835211": {
+      "assignmentDate": "2026-07-31",
+      "assignmentSource": "transaction",
       "name": "Alejandro Garza",
       "recentLevel": "Rookie",
       "recentTeam": "ACL Guardians",
+      "recentTeamId": 5374,
       "stats": {
         "2B": "\u2014",
         "3B": "\u2014",
@@ -361,23 +385,23 @@
     }
   },
   "season": 2026,
-  "source": "MLB Stats API season totals and latest game-log assignment; multiple professional levels combined",
-  "updatedAt": "2026-08-08T02:22:45.655991+00:00",
+  "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
+  "updatedAt": "2026-08-08T02:39:17.451046+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
-    "Ryan Tayman: no 2026 professional split returned",
-    "Alejandro Garza: no 2026 professional split returned",
+    "Ryan Tayman: no 2026 professional split returned; assignment updated from official transaction/game log",
+    "Alejandro Garza: no 2026 professional split returned; assignment updated from official transaction/game log",
     "Ryan Stafford: no 2026 professional split returned",
     "Zach Daudet: no 2026 professional split returned",
-    "Drew Thorpe: no 2026 professional split returned",
-    "Carson Turnquist: no 2026 professional split returned",
+    "Drew Thorpe: no 2026 professional split returned; assignment updated from official transaction/game log",
+    "Carson Turnquist: no 2026 professional split returned; assignment updated from official transaction/game log",
     "Josh Volmerding: no 2026 professional split returned",
     "Nick Bonn: no 2026 professional split returned",
-    "Jakob Wright: no 2026 professional split returned",
+    "Jakob Wright: no 2026 professional split returned; assignment updated from official transaction/game log",
     "Derek True: no 2026 professional split returned",
     "Bryce Warrecker: no 2026 professional split returned",
     "Luke Kovach: no 2026 professional split returned",
-    "Steven Brooks: no 2026 professional split returned",
+    "Steven Brooks: no 2026 professional split returned; assignment updated from official transaction/game log",
     "Taylor Dollard: no 2026 professional split returned"
   ]
 }
