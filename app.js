@@ -24,7 +24,32 @@ function pacificTime(iso){if(!iso)return'TBD';try{return new Intl.DateTimeFormat
 function probableName(p){return p?.fullName||p?.name||'TBD'}
 function probableId(p){return p?.id||null}
 function starterHtml(label,p){let id=probableId(p);return`<div class="starter"><span>${label}</span>${id?`<img src="${headshot(id)}" alt="${esc(probableName(p))}" onerror="this.style.display='none'">`:''}<b>${esc(probableName(p))}</b></div>`}
-function gameCards(games){let unique=[];let seen=new Map();for(const g of games){let key=g.gamePk||`${g.away}-${g.home}-${g.gameDate}`;if(!seen.has(key)){let row={...g,tracked:[]};seen.set(key,row);unique.push(row)}seen.get(key).tracked.push(g.player)}return unique.map(g=>{let awayLogo=g.awayTeamId?logo(g.awayTeamId):'',homeLogo=g.homeTeamId?logo(g.homeTeamId):'';let status=g.status||'Scheduled';let live=/in progress|live/i.test(status);return`<article class="matchup-card"><div class="matchup-top"><span class="matchup-time">${g.level?`${esc(g.level)} · `:''}${live?esc(status):pacificTime(g.gameDate)}</span>${g.venue?`<span class="matchup-venue">${esc(g.venue)}</span>`:''}</div><div class="teams-row"><div class="team-side">${awayLogo?`<img src="${awayLogo}" alt="${esc(g.away)}">`:''}<b>${esc(g.away||'Away')}</b>${g.awayScore!=null?`<strong>${esc(g.awayScore)}</strong>`:''}</div><div class="at-mark">@</div><div class="team-side">${homeLogo?`<img src="${homeLogo}" alt="${esc(g.home)}">`:''}<b>${esc(g.home||'Home')}</b>${g.homeScore!=null?`<strong>${esc(g.homeScore)}</strong>`:''}</div></div><div class="starters-row">${starterHtml('Projected starter',g.awayProbablePitcher)}${starterHtml('Projected starter',g.homeProbablePitcher)}</div>${g.tracked.length?`<div class="tracked-line"><span>Mustangs:</span> ${g.tracked.map(esc).join(', ')}</div>`:''}${g.liveLine?`<div class="live-line">${esc(g.liveLine)}</div>`:''}</article>`}).join('')}
+function gamedayUrl(g){
+  if(!g?.gamePk)return '';
+  let status=String(g.status||'');
+  let final=/final|completed|game over/i.test(status);
+  let live=/in progress|live|delayed|manager challenge|review/i.test(status);
+  let domain=Number(g.sportId)===1?'https://www.mlb.com':'https://www.milb.com';
+  let view=final?'final/box':live?'live':'preview';
+  return `${domain}/gameday/${g.gamePk}/${view}`;
+}
+function gameCards(games){
+  let unique=[];let seen=new Map();
+  for(const g of games){
+    let key=g.gamePk||`${g.away}-${g.home}-${g.gameDate}`;
+    if(!seen.has(key)){let row={...g,tracked:[]};seen.set(key,row);unique.push(row)}
+    seen.get(key).tracked.push(g.player)
+  }
+  return unique.map(g=>{
+    let awayLogo=g.awayTeamId?logo(g.awayTeamId):'',homeLogo=g.homeTeamId?logo(g.homeTeamId):'';
+    let status=g.status||'Scheduled';
+    let live=/in progress|live/i.test(status);
+    let final=/final|completed|game over/i.test(status);
+    let href=gamedayUrl(g);
+    let action=final?'View box score':live?'Open live Gameday':'Open game preview';
+    return`${href?`<a class="matchup-link" href="${href}" target="_blank" rel="noopener" aria-label="${esc(action)}: ${esc(g.away||'Away')} at ${esc(g.home||'Home')}">`:''}<article class="matchup-card clickable-game"><div class="matchup-top"><span class="matchup-time">${g.level?`${esc(g.level)} · `:''}${live?esc(status):pacificTime(g.gameDate)}</span>${g.venue?`<span class="matchup-venue">${esc(g.venue)}</span>`:''}</div><div class="teams-row"><div class="team-side">${awayLogo?`<img src="${awayLogo}" alt="${esc(g.away)}">`:''}<b>${esc(g.away||'Away')}</b>${g.awayScore!=null?`<strong>${esc(g.awayScore)}</strong>`:''}</div><div class="at-mark">@</div><div class="team-side">${homeLogo?`<img src="${homeLogo}" alt="${esc(g.home)}">`:''}<b>${esc(g.home||'Home')}</b>${g.homeScore!=null?`<strong>${esc(g.homeScore)}</strong>`:''}</div></div><div class="starters-row">${starterHtml('Projected starter',g.awayProbablePitcher)}${starterHtml('Projected starter',g.homeProbablePitcher)}</div>${g.tracked.length?`<div class="tracked-line"><span>Mustangs:</span> ${g.tracked.map(esc).join(', ')}</div>`:''}${g.liveLine?`<div class="live-line">${esc(g.liveLine)}</div>`:''}<div class="game-card-action">${esc(action)} ↗</div></article>${href?'</a>':''}`
+  }).join('')
+}
 function dailyResultStrip(){
   let apps=DATA.summary?.appearances||[];
   if(!apps.length)return '<div class="daily-results-empty">No tracked Mustang results from last night.</div>';
@@ -38,7 +63,13 @@ function dailyResultStrip(){
     return `<a class="daily-result" href="player.html?id=${esc(a.playerId)}">${portrait(p,'result-portrait')}<div class="daily-result-copy"><b>${esc(a.name)}</b><span>${esc(a.summary||'')}</span>${moment?`<small>★ ${esc(moment)}</small>`:''}</div><div class="daily-result-game"><strong>${esc(resultText)}</strong><span>${esc(a.team||'')}</span></div></a>`;
   }).join('');
 }
-function renderHome(){let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(t=>`<div class="transaction-card"><span class="tx-icon">↕</span><div><small>Roster move</small><b>${esc(t.player)}</b><p>${esc(t.description)}</p><span>${esc(t.date||'')}</span></div></div>`).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer()}
+function ensureGameLinkStyles(){
+  if(document.getElementById('gameLinkStyles'))return;
+  let s=document.createElement('style');s.id='gameLinkStyles';
+  s.textContent='.matchup-link{display:block;color:inherit;text-decoration:none}.matchup-link .matchup-card{height:100%;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}.matchup-link:hover .matchup-card{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.14);border-color:rgba(196,151,31,.55)}.game-card-action{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.09);font:700 10px \"Space Mono\";text-transform:uppercase;letter-spacing:.04em;color:var(--green)}';
+  document.head.appendChild(s);
+}
+function renderHome(){ensureGameLinkStyles();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(t=>`<div class="transaction-card"><span class="tx-icon">↕</span><div><small>Roster move</small><b>${esc(t.player)}</b><p>${esc(t.description)}</p><span>${esc(t.date||'')}</span></div></div>`).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer()}
 
 function recentOrders(p){return p.type==='hitter'?['G','AB','R','H','2B','3B','HR','RBI','BB','SO','SB','AVG','OBP','SLG','OPS']:['G','IP','H','R','ER','BB','SO','ERA','WHIP']}
 function shortDate(v){if(!v)return'';let d=new Date(v+'T12:00:00');if(Number.isNaN(d.getTime()))return v;return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/Los_Angeles'}).format(d)}
