@@ -346,3 +346,40 @@
     width:min(260px,calc(100vw - 32px));
   }
 }
+
+/* V5.31 — SLO Life V1 */
+.slo-life-page{margin:0;background:#f5f0e6;color:#102c22}
+.slo-topbar{position:sticky;top:0;z-index:50}
+.slo-topbar .nav-wrap{max-width:1320px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.slo-topbar .brand{color:var(--bright);font:400 28px 'Anton';text-decoration:none}
+.slo-nav{display:flex;gap:26px}.slo-nav a{color:#fff;text-decoration:none;font-weight:700}.slo-nav a.active{color:var(--bright)}
+.slo-hero{position:relative;min-height:660px;overflow:hidden;background:#08271d}
+.slo-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slo-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,27,19,.92) 0%,rgba(4,27,19,.62) 46%,rgba(4,27,19,.15) 100%)}
+.slo-hero-copy{position:relative;z-index:2;max-width:1320px;margin:auto;padding:150px 24px 90px;color:#fff}
+.slo-hero-copy span,.slo-kicker,.slo-feature-copy>span,.slo-ballpark-copy>span,.slo-next>span{font:700 11px 'Space Mono';letter-spacing:.15em;text-transform:uppercase;color:var(--bright)}
+.slo-hero-copy h1{margin:14px 0;font:400 clamp(86px,12vw,170px)/.82 'Anton';letter-spacing:-.025em}
+.slo-hero-copy p{max-width:620px;font-size:22px;line-height:1.5;color:rgba(255,255,255,.86)}
+.slo-intro{max-width:1050px;margin:0 auto;padding:100px 24px;text-align:center}
+.slo-intro h2,.slo-next h2{margin:12px 0 20px;font:400 clamp(42px,6vw,78px)/.95 'Anton'}
+.slo-intro p,.slo-next p{max-width:820px;margin:auto;font:20px/1.65 Georgia,serif;color:#53655e}
+.slo-feature{max-width:1320px;margin:0 auto 70px;padding:0 24px;display:grid;grid-template-columns:1.35fr .85fr;min-height:500px}
+.slo-feature.reverse{grid-template-columns:.85fr 1.35fr}.slo-feature.reverse .slo-feature-photo{order:2}
+.slo-feature-photo{overflow:hidden;border-radius:18px;min-height:500px;background:#ddd}
+.slo-feature-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.slo-feature-copy{display:flex;flex-direction:column;justify-content:center;padding:50px}
+.slo-feature-copy h2{margin:12px 0 20px;font:400 clamp(40px,5vw,68px)/.95 'Anton'}
+.slo-feature-copy p{font:18px/1.65 Georgia,serif;color:#586a62}
+.slo-feature-copy a,.slo-ballpark-copy a{align-self:flex-start;margin-top:15px;color:#0b4b37;font:700 11px 'Space Mono';text-transform:uppercase;text-decoration:none;border-bottom:2px solid #d3a51e;padding-bottom:5px}
+.slo-ballpark{position:relative;min-height:650px;margin-top:110px;overflow:hidden;background:#08271d}
+.slo-ballpark>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slo-ballpark-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,25,17,.9),rgba(3,25,17,.25))}
+.slo-ballpark-copy{position:relative;z-index:2;max-width:1320px;margin:auto;padding:150px 24px;color:#fff}
+.slo-ballpark-copy h2{margin:12px 0 18px;font:400 clamp(70px,9vw,130px)/.86 'Anton'}
+.slo-ballpark-copy p{max-width:600px;font-size:20px;line-height:1.5;color:rgba(255,255,255,.82)}
+.slo-ballpark-copy a{color:#fff}
+.slo-next{padding:100px 24px;max-width:1000px;margin:auto;text-align:center}
+.slo-footer{padding:28px;text-align:center;background:#08271d;color:rgba(255,255,255,.6);font:10px 'Space Mono';letter-spacing:.1em}
+@media(max-width:800px){.slo-hero{min-height:570px}.slo-hero-copy{padding-top:120px}.slo-feature,.slo-feature.reverse{grid-template-columns:1fr}.slo-feature.reverse .slo-feature-photo{order:0}.slo-feature-copy{padding:32px 6px 10px}.slo-feature-photo{min-height:340px}.slo-nav{gap:14px}.slo-topbar .brand{font-size:22px}}
+
+.slo-life-nav-link{color:#fff;text-decoration:none;font-weight:700;margin-right:24px}.slo-life-nav-link:hover{color:var(--bright)}

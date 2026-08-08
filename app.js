@@ -122,6 +122,8 @@ function buildProMustangsMenu(){
     return `<a href="${esc(href)}">${esc(label)}</a>`;
   }).join('');
 
+  if(!nav.querySelector('a[href="slo-life.html"]'))nav.insertAdjacentHTML('beforeend','<a class="slo-life-nav-link" href="slo-life.html">SLO Life</a>');
+
   nav.insertAdjacentHTML('beforeend',`
     <div class="pro-mustangs-menu">
       <button class="pro-mustangs-toggle" type="button" aria-expanded="false" aria-haspopup="true">
