@@ -96,15 +96,17 @@ def fetch_recent_assignment(player, fallback_splits=None):
         if logs:
             latest = max(logs, key=lambda item: str(item.get("date", "")))
             team, level = assignment_from_split(latest)
+            team_id = (latest.get("team") or {}).get("id")
             if team or level:
-                return team, level
+                return team, level, team_id
     except Exception:
         pass
     for split in reversed(fallback_splits or []):
         team, level = assignment_from_split(split)
+        team_id = (split.get("team") or {}).get("id")
         if team or level:
-            return team, level
-    return None, None
+            return team, level, team_id
+    return None, None, None
 
 
 def fetch_last_seven(player):
@@ -199,7 +201,7 @@ def fetch_player(p):
     aggregate=[s for s in splits if not s.get("team")]
     used=aggregate[:1] if aggregate else splits
     team=used[-1].get("team",{}).get("name") or splits[-1].get("team",{}).get("name")
-    recent_team, recent_level = fetch_recent_assignment(p, splits)
+    recent_team, recent_level, recent_team_id = fetch_recent_assignment(p, splits)
     if p["type"]=="hitter":
         totals={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]}
         ab=totals["atBats"]; h=totals["hits"]
@@ -229,7 +231,7 @@ def fetch_player(p):
         whip=f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
         stats={"IP":ip,"R":sums["runs"],"ER":sums["earnedRuns"],"BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],"ERA":era,"WHIP":whip}
     last7 = fetch_last_seven(p)
-    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"stats":stats,"last7":last7}
+    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"recentTeamId":recent_team_id,"stats":stats,"last7":last7}
 
 
 def fmt_ip(value):
@@ -939,63 +941,110 @@ def build_daily_article(summary, transactions=None):
     return {"date":date,"dateLabel":label,"title":headline,"paragraphs":paragraphs,"awards":awards}
 
 def build_today_schedule():
-    """Build today's MLB slate and, when available, current box-score lines.
+    """Build today's tracked MLB + MiLB slate.
 
-    This feed is refreshed every 30 minutes. The box score gives the homepage a
-    genuinely useful in-game snapshot instead of waiting for season totals to
-    settle after the final out.
+    The official MLB Stats API also carries affiliated minor-league schedules.
+    We query each tracked professional level, match games against each player's
+    most recent official assignment, and include probable starters when the
+    league has published them.
     """
     today = datetime.now(PACIFIC).date().isoformat()
     games = []
+    sport_levels = {
+        1: "MLB",
+        11: "Triple-A",
+        12: "Double-A",
+        13: "High-A",
+        14: "Single-A",
+        15: "Rookie",
+        16: "Rookie",
+    }
+
+    # Use the just-refreshed stats feed because it contains the player's latest
+    # team/level, which is more reliable than a static preseason assignment.
+    fresh_players = {}
     try:
-        data = get_json("https://statsapi.mlb.com/api/v1/schedule", {
-            "sportId": 1, "date": today, "hydrate": "team,probablePitcher"
-        })
-        by_team = {}
-        game_cache = {}
+        payload = json.loads(OUTPUT.read_text())
+        fresh_players = payload.get("players", {})
+    except Exception:
+        fresh_players = {}
+
+    schedule_games = []
+    for sport_id, level in sport_levels.items():
+        try:
+            data = get_json("https://statsapi.mlb.com/api/v1/schedule", {
+                "sportId": sport_id,
+                "date": today,
+                "hydrate": "team,probablePitcher,venue"
+            })
+        except Exception:
+            continue
+
         for d in data.get("dates", []):
             for g in d.get("games", []):
-                away_block = g.get("teams", {}).get("away", {})
-                home_block = g.get("teams", {}).get("home", {})
-                away = away_block.get("team", {})
-                home = home_block.get("team", {})
-                item = {
+                away_block = (g.get("teams") or {}).get("away") or {}
+                home_block = (g.get("teams") or {}).get("home") or {}
+                away = away_block.get("team") or {}
+                home = home_block.get("team") or {}
+                schedule_games.append({
                     "gamePk": g.get("gamePk"),
                     "gameDate": g.get("gameDate"),
-                    "status": g.get("status", {}).get("detailedState"),
-                    "away": away.get("name"), "home": home.get("name"),
-                    "awayTeamId": away.get("id"), "homeTeamId": home.get("id"),
-                    "awayScore": away_block.get("score"), "homeScore": home_block.get("score"),
+                    "status": (g.get("status") or {}).get("detailedState"),
+                    "level": level,
+                    "sportId": sport_id,
+                    "away": away.get("name"),
+                    "home": home.get("name"),
+                    "awayTeamId": away.get("id"),
+                    "homeTeamId": home.get("id"),
+                    "awayScore": away_block.get("score"),
+                    "homeScore": home_block.get("score"),
                     "awayProbablePitcher": away_block.get("probablePitcher"),
                     "homeProbablePitcher": home_block.get("probablePitcher"),
                     "venue": (g.get("venue") or {}).get("name"),
-                }
-                game_cache[g.get("gamePk")] = item
-                by_team[away.get("id")] = (away.get("name"), home.get("name"), item)
-                by_team[home.get("id")] = (home.get("name"), away.get("name"), item)
+                })
 
-        box_cache = {}
-        catalog = json.loads(PLAYERS_FILE.read_text()).get("players", [])
-        for p in catalog:
-            team_id = p.get("teamId")
-            if p.get("status") != "mlb" or team_id not in by_team:
-                continue
-            team, opponent, game = by_team[team_id]
+    box_cache = {}
+    catalog = json.loads(PLAYERS_FILE.read_text()).get("players", [])
+    for p in catalog:
+        if p.get("status") == "fa":
+            continue
+
+        fresh = fresh_players.get(str(p.get("mlbId"))) or {}
+        recent_team = fresh.get("recentTeam") or p.get("team")
+        recent_team_id = fresh.get("recentTeamId")
+        recent_level = fresh.get("recentLevel") or p.get("recentLevel")
+
+        # Find today's game using team id first, then exact official team name.
+        matches = []
+        for game in schedule_games:
+            id_match = recent_team_id and recent_team_id in (game.get("awayTeamId"), game.get("homeTeamId"))
+            name_match = recent_team and recent_team in (game.get("away"), game.get("home"))
+            if id_match or name_match:
+                matches.append(game)
+
+        if not matches:
+            continue
+
+        # A club can very occasionally appear twice (doubleheader), so preserve
+        # every distinct game instead of picking only the first one.
+        for game in matches:
             live_line = None
             game_pk = game.get("gamePk")
-            if game_pk and game.get("status") not in ("Scheduled", "Pre-Game", "Warmup"):
+            status = game.get("status") or ""
+            if game_pk and status not in ("Scheduled", "Pre-Game", "Warmup"):
                 try:
                     if game_pk not in box_cache:
                         box_cache[game_pk] = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
                     box = box_cache[game_pk]
                     person_key = f"ID{p.get('mlbId')}"
                     for side in ("away", "home"):
-                        player_row = ((box.get("teams") or {}).get(side) or {}).get("players", {}).get(person_key)
+                        player_row = (((box.get("teams") or {}).get(side) or {}).get("players") or {}).get(person_key)
                         if not player_row:
                             continue
                         if p.get("type") == "hitter":
                             st = (player_row.get("stats") or {}).get("batting") or {}
-                            ab = int(num(st, "atBats")); h = int(num(st, "hits")); hr = int(num(st, "homeRuns")); rbi = int(num(st, "rbi")); runs = int(num(st, "runs"))
+                            ab = int(num(st, "atBats")); h = int(num(st, "hits"))
+                            hr = int(num(st, "homeRuns")); rbi = int(num(st, "rbi")); runs = int(num(st, "runs"))
                             if ab or h or st.get("plateAppearances"):
                                 extras = []
                                 if hr: extras.append(f"{hr} HR")
@@ -1010,21 +1059,45 @@ def build_today_schedule():
                         break
                 except Exception:
                     pass
+
+            # Determine the tracked player's club/opponent from the matched game.
+            if recent_team_id == game.get("awayTeamId") or recent_team == game.get("away"):
+                team = game.get("away")
+                opponent = game.get("home")
+            else:
+                team = game.get("home")
+                opponent = game.get("away")
+
             games.append({
-                "player": p["name"], "team": team, "opponent": opponent,
-                "gamePk": game_pk, "gameDate": game.get("gameDate"),
-                "status": game.get("status"), "timeLabel": game.get("gameDate"),
-                "away": game.get("away"), "home": game.get("home"),
-                "awayTeamId": game.get("awayTeamId"), "homeTeamId": game.get("homeTeamId"),
+                "player": p["name"],
+                "playerId": p.get("mlbId"),
+                "team": team,
+                "opponent": opponent,
+                "level": game.get("level") or recent_level,
+                "sportId": game.get("sportId"),
+                "gamePk": game_pk,
+                "gameDate": game.get("gameDate"),
+                "status": game.get("status"),
+                "timeLabel": game.get("gameDate"),
+                "away": game.get("away"),
+                "home": game.get("home"),
+                "awayTeamId": game.get("awayTeamId"),
+                "homeTeamId": game.get("homeTeamId"),
                 "awayProbablePitcher": game.get("awayProbablePitcher"),
                 "homeProbablePitcher": game.get("homeProbablePitcher"),
                 "venue": game.get("venue"),
-                "awayScore": game.get("awayScore"), "homeScore": game.get("homeScore"),
+                "awayScore": game.get("awayScore"),
+                "homeScore": game.get("homeScore"),
                 "liveLine": live_line,
             })
-    except Exception:
-        pass
-    return {"date": today, "generatedAt": datetime.now(timezone.utc).isoformat(), "games": games}
+
+    return {
+        "date": today,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "source": "Official MLB/MiLB schedules and probable-pitcher feeds",
+        "games": games
+    }
+
 
 def build_transactions():
     rows=[]; since=(datetime.now(PACIFIC).date()-timedelta(days=14)).isoformat(); until=datetime.now(PACIFIC).date().isoformat()
