@@ -84,8 +84,114 @@ def assignment_from_split(split):
     return team, level
 
 
+
+_TEAM_CATALOG = None
+
+def team_catalog():
+    """Cache affiliated MLB/MiLB teams so transaction text can resolve a destination."""
+    global _TEAM_CATALOG
+    if _TEAM_CATALOG is not None:
+        return _TEAM_CATALOG
+    rows = []
+    try:
+        data = get_json("https://statsapi.mlb.com/api/v1/teams", {
+            "sportIds": SPORT_IDS,
+            "season": SEASON,
+            "hydrate": "sport,league"
+        })
+        for team in data.get("teams", []):
+            sport = team.get("sport") or {}
+            level = LEVEL_BY_SPORT_ID.get(sport.get("id")) or sport.get("name")
+            rows.append({
+                "id": team.get("id"),
+                "name": team.get("name"),
+                "level": level,
+            })
+    except Exception:
+        rows = []
+    _TEAM_CATALOG = rows
+    return rows
+
+
+def transaction_team_from_description(description):
+    """Resolve a team named in an official transaction description."""
+    text = str(description or "").lower()
+    if not text:
+        return None, None, None
+
+    matches = []
+    for team in team_catalog():
+        name = str(team.get("name") or "")
+        if name and name.lower() in text:
+            matches.append(team)
+
+    if not matches:
+        return None, None, None
+
+    # Official descriptions commonly read "assigned ... to DESTINATION from SOURCE".
+    # When two teams are present, prefer the team named after " to ".
+    to_pos = text.find(" to ")
+    if to_pos >= 0:
+        after = text[to_pos + 4:]
+        for team in matches:
+            if str(team.get("name") or "").lower() in after:
+                return team.get("name"), team.get("level"), team.get("id")
+
+    # "Activated by Portland Sea Dogs", "recalled by X", etc. normally contain
+    # only the destination/current club.
+    team = matches[-1]
+    return team.get("name"), team.get("level"), team.get("id")
+
+
+def fetch_transaction_assignment(player, days=30):
+    """Return the newest official transaction-based team assignment, if identifiable."""
+    end = datetime.now(PACIFIC).date()
+    start = end - timedelta(days=days)
+    try:
+        data = get_json(
+            f"https://statsapi.mlb.com/api/v1/people/{player['id']}",
+            {"hydrate": f"transactions(startDate={start.isoformat()},endDate={end.isoformat()})"}
+        )
+        person = (data.get("people") or [{}])[0]
+        txs = list(person.get("transactions") or [])
+    except Exception:
+        return None, None, None, None
+
+    txs.sort(key=lambda t: str(t.get("date") or ""), reverse=True)
+
+    for tx in txs:
+        tx_date = str(tx.get("date") or "")[:10] or None
+        desc = tx.get("description") or tx.get("typeDesc") or ""
+
+        # Prefer structured destination-team metadata when the API provides it.
+        to_team = tx.get("toTeam") or tx.get("team")
+        if isinstance(to_team, dict) and (to_team.get("id") or to_team.get("name")):
+            tid = to_team.get("id")
+            tname = to_team.get("name")
+            level = None
+            for row in team_catalog():
+                if (tid and row.get("id") == tid) or (tname and row.get("name") == tname):
+                    tname = row.get("name") or tname
+                    level = row.get("level")
+                    tid = row.get("id") or tid
+                    break
+            if tname:
+                return tname, level, tid, tx_date
+
+        tname, level, tid = transaction_team_from_description(desc)
+        if tname:
+            return tname, level, tid, tx_date
+
+    return None, None, None, None
+
+
 def fetch_recent_assignment(player, fallback_splits=None):
+    """Resolve current assignment using newest transaction before stale game logs."""
     group = "hitting" if player["type"] == "hitter" else "pitching"
+
+    tx_team, tx_level, tx_team_id, tx_date = fetch_transaction_assignment(player)
+
+    log_team = log_level = log_team_id = log_date = None
     url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
     try:
         data = get_json(url, {
@@ -95,18 +201,32 @@ def fetch_recent_assignment(player, fallback_splits=None):
         logs = relevant_splits(data)
         if logs:
             latest = max(logs, key=lambda item: str(item.get("date", "")))
-            team, level = assignment_from_split(latest)
-            team_id = (latest.get("team") or {}).get("id")
-            if team or level:
-                return team, level, team_id
+            log_team, log_level = assignment_from_split(latest)
+            log_team_id = (latest.get("team") or {}).get("id")
+            log_date = str(latest.get("date") or "")[:10] or None
     except Exception:
         pass
+
+    # If a transaction is at least as new as the latest appearance, it represents
+    # the current roster assignment even if the player has not debuted there yet.
+    if tx_team and (not log_date or not tx_date or tx_date >= log_date):
+        return tx_team, tx_level or log_level, tx_team_id, "transaction", tx_date
+
+    if log_team or log_level:
+        return log_team, log_level, log_team_id, "gameLog", log_date
+
+    # Season/year-by-year splits are the next-best fallback.
     for split in reversed(fallback_splits or []):
         team, level = assignment_from_split(split)
         team_id = (split.get("team") or {}).get("id")
         if team or level:
-            return team, level, team_id
-    return None, None, None
+            return team, level, team_id, "seasonSplit", None
+
+    # A recognizable transaction is still better than an old saved assignment.
+    if tx_team:
+        return tx_team, tx_level, tx_team_id, "transaction", tx_date
+
+    return None, None, None, None, None
 
 
 def fetch_last_seven(player):
@@ -201,7 +321,7 @@ def fetch_player(p):
     aggregate=[s for s in splits if not s.get("team")]
     used=aggregate[:1] if aggregate else splits
     team=used[-1].get("team",{}).get("name") or splits[-1].get("team",{}).get("name")
-    recent_team, recent_level, recent_team_id = fetch_recent_assignment(p, splits)
+    recent_team, recent_level, recent_team_id, assignment_source, assignment_date = fetch_recent_assignment(p, splits)
     if p["type"]=="hitter":
         totals={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]}
         ab=totals["atBats"]; h=totals["hits"]
@@ -231,7 +351,7 @@ def fetch_player(p):
         whip=f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
         stats={"IP":ip,"R":sums["runs"],"ER":sums["earnedRuns"],"BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],"ERA":era,"WHIP":whip}
     last7 = fetch_last_seven(p)
-    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"recentTeamId":recent_team_id,"stats":stats,"last7":last7}
+    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"recentTeamId":recent_team_id,"assignmentSource":assignment_source,"assignmentDate":assignment_date,"stats":stats,"last7":last7}
 
 
 def fmt_ip(value):
@@ -1110,6 +1230,36 @@ def build_transactions():
     rows.sort(key=lambda x:x.get("date") or "",reverse=True)
     return {"generatedAt":datetime.now(timezone.utc).isoformat(),"transactions":rows[:20]}
 
+
+def patch_saved_assignment(players, player):
+    """Update team/level on the saved record without disturbing existing stats."""
+    key = str(player["id"])
+    existing = players.get(key)
+    if not isinstance(existing, dict):
+        return False
+    try:
+        team, level, team_id, source, assigned_date = fetch_recent_assignment(player)
+    except Exception:
+        return False
+    if not (team or level):
+        return False
+
+    changed = False
+    updates = {
+        "recentTeam": team,
+        "recentLevel": level,
+        "recentTeamId": team_id,
+        "assignmentSource": source,
+        "assignmentDate": assigned_date,
+    }
+    for field, value in updates.items():
+        if value is not None and existing.get(field) != value:
+            existing[field] = value
+            changed = True
+    players[key] = existing
+    return changed
+
+
 def main():
     parser = argparse.ArgumentParser(description="Refresh Mustangs in Pro Ball data feeds")
     parser.add_argument("--mode", choices=["full", "live"], default="full", help="full = morning edition; live = current stats + today schedule")
@@ -1124,12 +1274,18 @@ def main():
     for p in PLAYERS:
         try:
             fresh=fetch_player(p)
-            if fresh: players[str(p["id"])]=fresh
-            else: errors.append(f"{p['name']}: no {SEASON} professional split returned")
+            if fresh:
+                players[str(p["id"])]=fresh
+            else:
+                patched = patch_saved_assignment(players, p)
+                suffix = "; assignment updated from official transaction/game log" if patched else ""
+                errors.append(f"{p['name']}: no {SEASON} professional split returned{suffix}")
         except Exception as e:
-            errors.append(f"{p['name']}: {e}")
+            patched = patch_saved_assignment(players, p)
+            suffix = "; assignment updated while preserving saved stats" if patched else ""
+            errors.append(f"{p['name']}: {e}{suffix}")
         time.sleep(.15)
-    payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals and latest game-log assignment; multiple professional levels combined","players":players,"warnings":errors}
+    payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined","players":players,"warnings":errors}
     OUTPUT.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
     print(f"Wrote {OUTPUT} with {len(players)} player records")
     # Today's schedule is refreshed in both modes so the live site stays useful during games.
