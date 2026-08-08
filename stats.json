@@ -43,6 +43,7 @@
       "name": "Andrew Alvarez",
       "recentLevel": "MLB",
       "recentTeam": "Washington Nationals",
+      "recentTeamId": 120,
       "stats": {
         "BB": 31,
         "ER": 28,
@@ -83,6 +84,7 @@
       "name": "Brooks Lee",
       "recentLevel": "MLB",
       "recentTeam": "Minnesota Twins",
+      "recentTeamId": 142,
       "stats": {
         "2B": 17,
         "3B": 3,
@@ -155,6 +157,7 @@
       "name": "Bryan Woo",
       "recentLevel": "MLB",
       "recentTeam": "Seattle Mariners",
+      "recentTeamId": 136,
       "stats": {
         "BB": 27,
         "ER": 61,
@@ -359,7 +362,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals and latest game-log assignment; multiple professional levels combined",
-  "updatedAt": "2026-08-07T23:46:35.924609+00:00",
+  "updatedAt": "2026-08-08T02:22:45.655991+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",

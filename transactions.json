@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-08-07T23:46:41.126961+00:00",
+  "generatedAt": "2026-08-08T02:22:51.368365+00:00",
   "transactions": [
+    {
+      "date": "2026-08-07",
+      "description": "Portland Sea Dogs activated RHP Steven Brooks.",
+      "player": "Steven Brooks"
+    },
     {
       "date": "2026-08-07",
       "description": "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive.",
