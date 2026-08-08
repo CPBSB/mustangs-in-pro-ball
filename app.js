@@ -104,11 +104,13 @@ function ensureArchiveSection(){
 function reorderTopNav(){
   let nav=document.querySelector('header nav, nav');
   if(!nav)return;
-  let desired=['#daily','#highlights','#games','#roster','#transactions','#leaders','#career','#mlb-history','#archive','#about'];
-  let links=[...nav.querySelectorAll('a[href^="#"]')];
-  let byHref=new Map(links.map(a=>[a.getAttribute('href'),a]));
-  desired.forEach(href=>{
-    let a=byHref.get(href);
+  let links=[...nav.querySelectorAll('a')];
+  let wanted=['Daily','Highlights','Games','Roster','Transactions','Leaders','Career','MLB History','Archive','About'];
+  let byLabel=new Map(links.map(a=>[a.textContent.trim().toLowerCase(),a]));
+  // Preserve the exact existing href for each label, but rebuild the nav in the
+  // requested order so mismatched section IDs cannot scramble the menu.
+  wanted.forEach(label=>{
+    let a=byLabel.get(label.toLowerCase());
     if(a)nav.appendChild(a);
   });
 }
