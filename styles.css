@@ -383,3 +383,53 @@
 @media(max-width:800px){.slo-hero{min-height:570px}.slo-hero-copy{padding-top:120px}.slo-feature,.slo-feature.reverse{grid-template-columns:1fr}.slo-feature.reverse .slo-feature-photo{order:0}.slo-feature-copy{padding:32px 6px 10px}.slo-feature-photo{min-height:340px}.slo-nav{gap:14px}.slo-topbar .brand{font-size:22px}}
 
 .slo-life-nav-link{color:#fff;text-decoration:none;font-weight:700;margin-right:24px}.slo-life-nav-link:hover{color:var(--bright)}
+
+/* V5.32 — SLO Life V2 additions */
+.slo-split-coast{max-width:1320px;margin:0 auto 90px;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.slo-coast-card{overflow:hidden;border-radius:18px;background:#fff;border:1px solid rgba(7,43,32,.1);box-shadow:0 16px 40px rgba(0,0,0,.06)}
+.slo-coast-card>img{width:100%;height:330px;object-fit:cover;display:block}
+.slo-coast-copy{padding:28px 30px 34px}
+.slo-coast-copy>span,.slo-around-head>span,.slo-weekend-head>span,.slo-travel-copy>span{font:700 10px 'Space Mono';letter-spacing:.14em;color:var(--bright);text-transform:uppercase}
+.slo-coast-copy h2{margin:10px 0 14px;font:400 42px/1 'Anton'}
+.slo-coast-copy p{font:16px/1.6 Georgia,serif;color:#586a62}
+.slo-coast-copy a,.slo-travel-copy a{display:inline-block;margin-top:12px;color:#0b4b37;text-decoration:none;font:700 10px 'Space Mono';text-transform:uppercase;border-bottom:2px solid #d3a51e;padding-bottom:5px}
+.slo-outdoor-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.slo-outdoor-tags span{padding:7px 9px;border-radius:999px;background:#e9e3d8;font:700 9px 'Space Mono';color:#345247}
+
+.slo-around{max-width:1320px;margin:100px auto;padding:0 24px}
+.slo-around-head,.slo-weekend-head{max-width:850px;margin-bottom:34px}
+.slo-around-head h2,.slo-weekend-head h2,.slo-travel-copy h2{margin:10px 0 14px;font:400 clamp(44px,6vw,78px)/.95 'Anton'}
+.slo-around-head p,.slo-weekend-head p,.slo-travel-copy p{font:18px/1.6 Georgia,serif;color:#586a62}
+.slo-map-shell{position:relative;min-height:560px;border-radius:22px;overflow:hidden;background:linear-gradient(145deg,#dfe8d8 0%,#edf0e5 46%,#d7e4ed 100%);border:1px solid rgba(7,43,32,.12)}
+.slo-map-shell::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(10,70,52,.08) 1px,transparent 1px);background-size:22px 22px}
+.slo-map-center{position:absolute;left:48%;top:47%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:#08271d;color:#fff;display:grid;place-content:center;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.18);z-index:2}
+.slo-map-center strong{font:400 30px 'Anton';color:var(--bright)}
+.slo-map-center span{font:9px 'Space Mono';color:rgba(255,255,255,.65)}
+.slo-map-point{position:absolute;z-index:2;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.92);box-shadow:0 10px 28px rgba(0,0,0,.08);border:1px solid rgba(7,43,32,.08)}
+.slo-map-point b{display:block;font:400 18px 'Anton';color:#0a3628}
+.slo-map-point span{display:block;margin-top:3px;font:9px 'Space Mono';color:#6b7d76}
+.point-downtown{left:58%;top:26%}.point-avila{left:27%;bottom:16%}.point-pismo{right:10%;bottom:12%}.point-morro{left:8%;top:18%}.point-hike{right:13%;top:12%}
+.slo-map-line{position:absolute;height:2px;background:rgba(9,73,54,.18);transform-origin:left center}.line-a{width:260px;left:32%;top:58%;transform:rotate(155deg)}.line-b{width:290px;left:49%;top:53%;transform:rotate(28deg)}.line-c{width:250px;left:31%;top:43%;transform:rotate(205deg)}
+
+.slo-weekend{background:#0a3226;color:#fff;padding:95px max(24px,calc((100vw - 1320px)/2));margin-top:110px}
+.slo-weekend-head p{color:rgba(255,255,255,.7)}
+.slo-itinerary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.slo-itinerary-grid article{padding:26px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.slo-itinerary-grid span{font:700 9px 'Space Mono';letter-spacing:.12em;color:var(--bright)}
+.slo-itinerary-grid h3{margin:10px 0 12px;font:400 28px/1 'Anton'}
+.slo-itinerary-grid p{margin:0;font:14px/1.6 Georgia,serif;color:rgba(255,255,255,.7)}
+
+.slo-travel{max-width:1320px;margin:100px auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+.slo-travel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.slo-travel-grid div{padding:22px 18px;border-radius:13px;background:#fff;border:1px solid rgba(7,43,32,.1)}
+.slo-travel-grid b{display:block;font:400 34px 'Anton';color:#0a3628}
+.slo-travel-grid span{display:block;margin-top:7px;font:9px/1.45 'Space Mono';color:#687a72}
+
+@media(max-width:900px){
+  .slo-split-coast{grid-template-columns:1fr}
+  .slo-itinerary-grid{grid-template-columns:1fr}
+  .slo-travel{grid-template-columns:1fr}
+  .slo-travel-grid{grid-template-columns:1fr}
+  .slo-map-shell{min-height:700px}
+  .point-morro{left:7%;top:10%}.point-hike{right:7%;top:20%}.point-downtown{left:55%;top:36%}.point-avila{left:8%;bottom:18%}.point-pismo{right:7%;bottom:8%}
+}
