@@ -183,3 +183,30 @@
 @media(max-width:520px){
   .recent-stats,.recent-stats.pitcher{grid-template-columns:repeat(2,1fr)}
 }
+
+/* V5.15 portrait face-centering */
+.portrait img{
+  object-position:50% 35%;
+  transform:scale(1.10);
+  transform-origin:50% 50%;
+}
+.award .portrait.award-photo img{
+  object-position:50% 36%;
+  transform:scale(1.12);
+  transform-origin:50% 50%;
+}
+.leader-card .leader-portrait img{
+  object-position:50% 35%;
+  transform:scale(1.12);
+  transform-origin:50% 50%;
+}
+.daily-result .result-portrait img{
+  object-position:50% 35%;
+  transform:scale(1.12);
+  transform-origin:50% 50%;
+}
+.player-hero .portrait img{
+  object-position:50% 36%;
+  transform:scale(1.08);
+  transform-origin:50% 50%;
+}
