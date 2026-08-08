@@ -101,8 +101,20 @@ function ensureArchiveSection(){
   let nav=document.querySelector('header nav, nav');
   if(nav&&!nav.querySelector('a[href="#archive"]'))nav.insertAdjacentHTML('beforeend','<a href="#archive">Archive</a>');
 }
+function reorderTopNav(){
+  let nav=document.querySelector('header nav, nav');
+  if(!nav)return;
+  let desired=['#daily','#highlights','#games','#roster','#transactions','#leaders','#career','#mlb-history','#archive','#about'];
+  let links=[...nav.querySelectorAll('a[href^="#"]')];
+  let byHref=new Map(links.map(a=>[a.getAttribute('href'),a]));
+  desired.forEach(href=>{
+    let a=byHref.get(href);
+    if(a)nav.appendChild(a);
+  });
+}
 function renderArchive(){
   ensureArchiveSection();
+  reorderTopNav();
   let editions=[...(DATA.archive?.editions||[])];
   // On first deployment, surface the current article immediately even before
   // archive.json has accumulated older nights.
