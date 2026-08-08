@@ -21,6 +21,7 @@ DAILY_OUTPUT = ROOT / "daily_article.json"
 SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
+GENERATOR_VERSION = "5.20"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -845,283 +846,451 @@ def build_nightly_summary():
 
 
 def build_daily_article(summary, transactions=None):
-    """Write a natural, beat-writer-style recap from verified game data.
+    """Write Mustangs Daily like a concise local baseball beat report.
 
-    This intentionally avoids a fixed "database summary" voice. One-player nights
-    become focused mini game stories; busy nights become roundups led by the most
-    meaningful performance. Every factual detail still comes from the official
-    game log, box score or play-by-play stored in nightly_summary.json.
+    Principles:
+      * Lead with what mattered, not tracker/database language.
+      * Match the headline to the actual performance; don't oversell quiet nights.
+      * Combine box score, game result, lineup role and key play into paragraphs.
+      * Fold same-player transactions into one clean roster-note paragraph.
+      * Avoid repeated names, canned closers and mechanical source language.
     """
     apps = summary.get("appearances", [])
     date = summary.get("date")
-    label = datetime.fromisoformat(date).strftime("%A, %B %-d, %Y") if date else "the latest games"
+    dt = datetime.fromisoformat(date) if date else None
+    label = dt.strftime("%A, %B %-d, %Y") if dt else "the latest games"
+    weekday = dt.strftime("%A") if dt else "the night"
+
     transaction_rows = (transactions or {}).get("transactions", [])
-    day_transactions = [t for t in transaction_rows if not date or str(t.get("date") or "")[:10] == date]
-
-    def transaction_sentence(t):
-        name = t.get("player") or "A former Mustang"
-        desc = (t.get("description") or "had a roster transaction").strip()
-        clean = desc.rstrip(".")
-        lower = clean.lower()
-
-        # Prefer plain baseball language when the provider description makes
-        # the move clear, but never invent a destination or level.
-        if "selected" in lower and "contract" in lower:
-            return f"{name}'s contract was selected, putting him on the active roster."
-        if "recalled" in lower:
-            return f"{name} was recalled in a roster move."
-        if "promot" in lower:
-            return f"{name} was promoted. {clean}."
-        if "optioned" in lower:
-            return f"{name} was optioned in a roster move. {clean}."
-        if "assigned" in lower or "reassigned" in lower:
-            return f"{name} changed assignments. {clean}."
-        if "injured list" in lower or "disabled list" in lower:
-            return f"{name} had an injury-list move: {clean}."
-        if "activated" in lower:
-            return f"{name} was activated. {clean}."
-        if "released" in lower:
-            return f"{name} was released. {clean}."
-        if "signed" in lower or "contract" in lower:
-            return f"{name} had a contract move: {clean}."
-        return f"{name}: {clean}."
-
-    if not apps:
-        if day_transactions:
-            tx_paragraphs = [
-                f"There were no confirmed game appearances for former Mustangs on {label}, but there was roster news to follow."
-            ]
-            tx_paragraphs.extend(transaction_sentence(t) for t in day_transactions[:6])
-            if len(day_transactions) > 6:
-                tx_paragraphs.append(f"{len(day_transactions)-6} additional Mustang transaction{'s' if len(day_transactions)-6 != 1 else ''} were also recorded and are listed in the Transactions section.")
-            return {
-                "date": date, "dateLabel": label,
-                "title": "Roster Moves Lead a Quiet Day for the Mustangs",
-                "paragraphs": tx_paragraphs,
-                "awards": []
-            }
-        return {
-            "date": date, "dateLabel": label,
-            "title": "A Quiet Night for the Mustangs in Pro Ball",
-            "paragraphs": [
-                f"No tracked Cal Poly player showed up in a completed professional box score for {label}.",
-                "That can happen on an off day, during travel, or when a minor-league game has not yet posted a complete official line. The roster and season totals remain current while the tracker waits for the next confirmed appearance."
-            ],
-            "awards": []
-        }
+    day_transactions = [
+        t for t in transaction_rows
+        if not date or str(t.get("date") or "")[:10] == date
+    ]
 
     hitters = [a for a in apps if a.get("type") == "hitter"]
     pitchers = [a for a in apps if a.get("type") == "pitcher"]
 
     def hscore(a):
         st = a.get("stats", {})
-        return num(st,"hits")*3 + num(st,"homeRuns")*6 + num(st,"rbi")*2 + num(st,"runs") + num(st,"stolenBases")*2 + num(st,"baseOnBalls")*.5
+        return (
+            num(st, "hits") * 3
+            + num(st, "homeRuns") * 6
+            + num(st, "rbi") * 2
+            + num(st, "runs")
+            + num(st, "stolenBases") * 2
+            + num(st, "baseOnBalls") * .5
+        )
 
     def pscore(a):
         st = a.get("stats", {})
-        return num(st,"strikeOuts")*2 + outs(st.get("inningsPitched")) - num(st,"earnedRuns")*4 - num(st,"baseOnBalls")*2 - num(st,"hits")
+        return (
+            num(st, "strikeOuts") * 2
+            + outs(st.get("inningsPitched"))
+            - num(st, "earnedRuns") * 4
+            - num(st, "baseOnBalls") * 2
+            - num(st, "hits")
+        )
 
-    def base_score(a):
-        return hscore(a) if a.get("type") == "hitter" else pscore(a)
+    def best_play(a):
+        plays = (a.get("gameContext") or {}).get("keyPlays") or []
+        if not plays:
+            return None
+        def rank(play):
+            tags = play.get("tags") or []
+            leverage = (
+                5 if "walk-off" in tags else
+                4 if "go-ahead" in tags else
+                3 if "game-tying" in tags else
+                1 if play.get("rbi") else 0
+            )
+            return leverage, int(play.get("inning") or 0), int(play.get("rbi") or 0)
+        return max(plays, key=rank)
 
-    def importance_bonus(a):
+    def importance(a):
         bonus = 0
-        for play in (a.get("gameContext") or {}).get("keyPlays") or []:
+        play = best_play(a)
+        if play:
             tags = play.get("tags") or []
             if "walk-off" in tags: bonus += 20
             if "go-ahead" in tags: bonus += 14
             if "game-tying" in tags: bonus += 9
-            bonus += min(int(play.get("rbi") or 0), 4)
-        return bonus
-
-    def score(a):
-        return base_score(a) + importance_bonus(a)
+            bonus += int(play.get("rbi") or 0)
+        return (hscore(a) if a.get("type") == "hitter" else pscore(a)) + bonus
 
     def inning_name(n):
-        names={1:"first",2:"second",3:"third",4:"fourth",5:"fifth",6:"sixth",7:"seventh",8:"eighth",9:"ninth",10:"10th",11:"11th",12:"12th",13:"13th",14:"14th",15:"15th"}
-        try: return names.get(int(n), f"{int(n)}th")
-        except: return "late"
+        names = {
+            1:"first",2:"second",3:"third",4:"fourth",5:"fifth",
+            6:"sixth",7:"seventh",8:"eighth",9:"ninth"
+        }
+        try:
+            n = int(n)
+            return names.get(n, f"{n}th")
+        except Exception:
+            return "late"
 
-    def best_play(a):
-        plays=(a.get("gameContext") or {}).get("keyPlays") or []
-        if not plays: return None
-        def rank(play):
-            tags=play.get("tags") or []
-            leverage=4 if "walk-off" in tags else 3 if "go-ahead" in tags else 2 if "game-tying" in tags else 1 if play.get("rbi") else 0
-            return (leverage, int(play.get("inning") or 0), int(play.get("rbi") or 0))
-        return max(plays,key=rank)
+    def result_text(a):
+        ctx = a.get("gameContext") or {}
+        team = a.get("team") or "his club"
+        opp = a.get("opponent") or "the opponent"
+        tf = ctx.get("teamFinal")
+        of = ctx.get("opponentFinal")
+        result = ctx.get("result")
+        if tf is None or of is None:
+            return None
+        if result == "win":
+            return f"{team} beat {opp}, {tf}-{of}."
+        if result == "loss":
+            return f"{team} fell to {opp}, {tf}-{of}."
+        return f"{team} and {opp} finished {tf}-{of}."
 
-    def play_phrase(a, play):
-        if not play: return None
-        name=a.get("name","He")
-        event=str(play.get("event") or "hit").lower()
-        inning=inning_name(play.get("inning"))
-        rbi=int(play.get("rbi") or 0)
-        tags=play.get("tags") or []
-        before=play.get("scoreBefore") or {}; after=play.get("scoreAfter") or {}
-        pitcher=play.get("pitcher")
-        run_word = "two-run " if rbi==2 else f"{rbi}-run " if rbi>2 else ""
+    def hitter_line(a, use_name=True):
+        st = a.get("stats", {})
+        name = a.get("name") if use_name else "He"
+        ab = int(num(st, "atBats"))
+        h = int(num(st, "hits"))
+        pa = int(num(st, "plateAppearances"))
+        r = int(num(st, "runs"))
+        rbi = int(num(st, "rbi"))
+        bb = int(num(st, "baseOnBalls"))
+        hr = int(num(st, "homeRuns"))
+        doubles = int(num(st, "doubles"))
+        triples = int(num(st, "triples"))
+        sb = int(num(st, "stolenBases"))
+
+        pieces = []
+        if ab or h:
+            pieces.append(f"{h}-for-{ab}")
+        elif pa:
+            pieces.append(f"{pa} plate appearances")
+        if hr:
+            pieces.append(f"{hr} home run{'s' if hr != 1 else ''}")
+        if doubles:
+            pieces.append(f"{doubles} double{'s' if doubles != 1 else ''}")
+        if triples:
+            pieces.append(f"{triples} triple{'s' if triples != 1 else ''}")
+        if rbi:
+            pieces.append(f"{rbi} RBI")
+        if r:
+            pieces.append(f"{r} run{'s' if r != 1 else ''} scored")
+        if bb:
+            pieces.append(f"{bb} walk{'s' if bb != 1 else ''}")
+        if sb:
+            pieces.append(f"{sb} stolen base{'s' if sb != 1 else ''}")
+
+        if not pieces:
+            return a.get("summary") or ""
+        return f"{name} went " + ", ".join(pieces) + "."
+
+    def pitcher_line(a, use_name=True):
+        st = a.get("stats", {})
+        name = a.get("name") if use_name else "He"
+        ip = st.get("inningsPitched") or "0.0"
+        h = int(num(st, "hits"))
+        er = int(num(st, "earnedRuns"))
+        bb = int(num(st, "baseOnBalls"))
+        k = int(num(st, "strikeOuts"))
+        return (
+            f"{name} worked {ip} innings, allowing {h} hit{'s' if h != 1 else ''} "
+            f"and {er} earned run{'s' if er != 1 else ''}, with "
+            f"{bb} walk{'s' if bb != 1 else ''} and {k} strikeout{'s' if k != 1 else ''}."
+        )
+
+    def stat_line(a, use_name=True):
+        return hitter_line(a, use_name) if a.get("type") == "hitter" else pitcher_line(a, use_name)
+
+    def role_phrase(a):
+        ctx = a.get("gameContext") or {}
+        order = ctx.get("battingOrder")
+        pos = ctx.get("position")
+        bits = []
+        if order:
+            suffix = "th"
+            if order == 1: suffix = "st"
+            elif order == 2: suffix = "nd"
+            elif order == 3: suffix = "rd"
+            bits.append(f"batted {order}{suffix}")
+        if pos:
+            bits.append(f"started at {pos}")
+        if not bits:
+            return None
+        return " and ".join(bits)
+
+    def key_play_sentence(a):
+        play = best_play(a)
+        if not play:
+            return None
+        tags = play.get("tags") or []
+        event = str(play.get("event") or "hit").lower()
+        inning = inning_name(play.get("inning"))
+        rbi = int(play.get("rbi") or 0)
+        name = a.get("name")
+        run_prefix = "two-run " if rbi == 2 else f"{rbi}-run " if rbi > 2 else ""
+
         if "walk-off" in tags:
-            sentence=f"{name} ended it with a {run_word}walk-off {event} in the {inning}."
-        elif "go-ahead" in tags:
-            sentence=f"The biggest swing came in the {inning}, when {name} delivered a {run_word}go-ahead {event}."
-        elif "game-tying" in tags:
-            sentence=f"{name} pulled the game even with a {run_word}game-tying {event} in the {inning}."
-        elif rbi:
-            sentence=f"{name} did his damage in the {inning}, driving in {rbi} run{'s' if rbi != 1 else ''} on a {event}."
-        else:
-            sentence=f"One of {name}'s key moments came in the {inning} on a {event}."
-        if before.get("team") is not None and before.get("opponent") is not None and after.get("team") is not None and after.get("opponent") is not None:
-            if before != after:
-                sentence += f" The play changed the score from {before.get('team')}-{before.get('opponent')} to {after.get('team')}-{after.get('opponent')} from his club's perspective."
-        if pitcher:
-            sentence += f" It came against {pitcher}."
-        return sentence
+            return f"{name}'s biggest moment came in the {inning}, when he delivered a {run_prefix}walk-off {event}."
+        if "go-ahead" in tags:
+            return f"The game's turning point came in the {inning}, when {name} delivered a {run_prefix}go-ahead {event}."
+        if "game-tying" in tags:
+            return f"{name} tied the game in the {inning} with a {run_prefix}{event}."
+        if rbi:
+            return f"{name} drove in {rbi} run{'s' if rbi != 1 else ''} with a {event} in the {inning}."
+        return None
 
-    def result_sentence(a):
-        ctx=a.get("gameContext") or {}
-        team=a.get("team") or "his club"
-        opp=a.get("opponent") or "the opposition"
-        tf=ctx.get("teamFinal"); of=ctx.get("opponentFinal")
-        result=ctx.get("result")
-        if tf is None or of is None: return None
-        if result=="win": return f"{team} made it stand up in a {tf}-{of} win over {opp}."
-        if result=="loss": return f"It came in a {tf}-{of} loss to {opp}."
-        return f"The game finished {tf}-{of} against {opp}."
+    def transaction_paragraphs(rows):
+        """Turn same-day provider transactions into one readable roster-news item."""
+        if not rows:
+            return []
 
-    def hitter_line(a):
-        st=a.get("stats",{}); name=a.get("name","He")
-        ab=int(num(st,"atBats")); h=int(num(st,"hits")); rbi=int(num(st,"rbi")); runs=int(num(st,"runs")); bb=int(num(st,"baseOnBalls")); so=int(num(st,"strikeOuts")); sb=int(num(st,"stolenBases")); hr=int(num(st,"homeRuns")); doubles=int(num(st,"doubles")); triples=int(num(st,"triples"))
-        pieces=[f"{h}-for-{ab}"] if ab or h else []
-        if hr: pieces.append(f"{hr} HR" if hr>1 else "a home run")
-        if triples: pieces.append(f"{triples} triples" if triples>1 else "a triple")
-        if doubles: pieces.append(f"{doubles} doubles" if doubles>1 else "a double")
-        if rbi: pieces.append(f"{rbi} RBI")
-        if runs: pieces.append(f"{runs} runs" if runs>1 else "a run scored")
-        if bb: pieces.append(f"{bb} walks" if bb>1 else "a walk")
-        if sb: pieces.append(f"{sb} stolen bases" if sb>1 else "a stolen base")
-        text=f"{name} finished " + ", ".join(pieces) + "." if pieces else a.get("summary","")
-        if so and so >= 2: text += f" He struck out {so} times."
-        return text
+        grouped = {}
+        for t in rows:
+            grouped.setdefault(t.get("player") or "A former Mustang", []).append(t)
 
-    def pitcher_line(a):
-        st=a.get("stats",{}); name=a.get("name","He")
-        ip=st.get("inningsPitched") or "0.0"; h=int(num(st,"hits")); er=int(num(st,"earnedRuns")); bb=int(num(st,"baseOnBalls")); k=int(num(st,"strikeOuts"))
-        text=f"{name} worked {ip} innings, allowing {h} hit{'s' if h!=1 else ''} and {er} earned run{'s' if er!=1 else ''} with {bb} walk{'s' if bb!=1 else ''} and {k} strikeout{'s' if k!=1 else ''}."
-        ctx=a.get("gameContext") or {}; entry=ctx.get("pitchingEntry") or {}
-        if entry.get("inning"):
-            text += f" He entered in the {inning_name(entry.get('inning'))} with the score {entry.get('teamScore')}-{entry.get('opponentScore')} from his team's perspective."
-        return text
+        # Resolve team names to levels using the same official affiliated-team
+        # catalog used by the assignment updater.
+        level_by_team = {
+            str(row.get("name") or "").lower(): row.get("level")
+            for row in team_catalog()
+            if row.get("name")
+        }
 
-    def line_sentence(a):
-        return hitter_line(a) if a.get("type")=="hitter" else pitcher_line(a)
+        paragraphs = []
+        for name, items in grouped.items():
+            descriptions = [
+                str(t.get("description") or "").strip().rstrip(".")
+                for t in items if t.get("description")
+            ]
+            if not descriptions:
+                continue
 
-    def lineup_sentence(a):
-        ctx=a.get("gameContext") or {}; bits=[]
-        if ctx.get("battingOrder"): bits.append(f"hit {ctx.get('battingOrder')} in the order")
-        if ctx.get("position"): bits.append(f"played {ctx.get('position')}")
-        if not bits: return None
-        return a.get("name","He") + " " + " and ".join(bits) + "."
+            assignment = next(
+                (d for d in descriptions if " assigned to " in d.lower() and " from " in d.lower()),
+                None
+            )
 
-    def team_level_phrase(a):
-        team=a.get("team"); level=a.get("level")
-        if team and level and level!="MLB": return f"with {team} at {level}"
-        if team: return f"with {team}"
-        return "in pro ball"
+            if assignment:
+                # Extract destination/source from the official sentence:
+                # "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive"
+                m = re.search(r"\bassigned to (.+?) from (.+)$", assignment, flags=re.I)
+                if m:
+                    destination = m.group(1).strip()
+                    source = m.group(2).strip()
+                    dest_level = level_by_team.get(destination.lower())
+                    source_level = level_by_team.get(source.lower())
 
-    star=max(apps,key=score)
-    star_play=best_play(star)
-    tags=(star_play or {}).get("tags") or []
-    name=star.get("name","A Mustang")
-    if "walk-off" in tags:
-        headline=f"{name} walks it off in the night's biggest Mustang moment"
-    elif "go-ahead" in tags:
-        headline=f"{name} comes through late with go-ahead hit"
-    elif "game-tying" in tags:
-        headline=f"{name} delivers in the clutch as Mustangs take the field"
-    elif num(star.get("stats",{}),"homeRuns"):
-        headline=f"{name} goes deep to lead the Mustangs' night in pro ball"
-    elif star.get("type")=="pitcher" and num(star.get("stats",{}),"strikeOuts")>=5:
-        headline=f"{name} misses bats in a strong night on the mound"
-    elif len(apps)==1:
-        headline=f"{name} carries the Mustang flag in Thursday's pro action" if date else f"{name} carries the Mustang flag in pro action"
-    else:
-        headline=f"{name} leads the way on a busy night for former Mustangs"
+                    # A move to a higher affiliate is best described as a call-up.
+                    rank = {
+                        "Rookie": 1, "Rookie Ball": 1, "Single-A": 2,
+                        "High-A": 3, "Double-A": 4, "Triple-A": 5, "MLB": 6
+                    }
+                    promoted = (
+                        dest_level and source_level
+                        and rank.get(dest_level, 0) > rank.get(source_level, 0)
+                    )
 
-    paragraphs=[]
-    if len(apps)==1:
-        # A focused mini game story reads much more naturally than pretending one
-        # appearance was a broad organizational roundup.
-        if star_play and ("go-ahead" in tags or "walk-off" in tags or "game-tying" in tags):
-            if "go-ahead" in tags:
-                paragraphs.append(f"{name} didn't need a pile of hits to leave his mark on {label}. He came up with the one that mattered most.")
-            elif "walk-off" in tags:
-                paragraphs.append(f"{name} saved his biggest moment for the end on {label}, giving Cal Poly fans a late-game highlight to remember.")
+                    tx_date = str(items[0].get("date") or "")[:10]
+                    day_word = ""
+                    if tx_date:
+                        try:
+                            day_word = datetime.fromisoformat(tx_date).strftime("%A")
+                        except Exception:
+                            pass
+
+                    if promoted:
+                        lead = f"{name} was called up"
+                        if day_word:
+                            lead += f" on {day_word}"
+                        lead += ","
+                        paragraphs.append(
+                            f"{lead} moving from the {source_level} {source} to the "
+                            f"{dest_level} {destination}."
+                        )
+                    else:
+                        paragraphs.append(
+                            f"{name} changed affiliates, moving from {source} to {destination}"
+                            + (f" at {dest_level}." if dest_level else ".")
+                        )
+                    continue
+
+            # Other transaction types remain concise and non-repetitive.
+            lower = " ".join(descriptions).lower()
+            if "activated" in lower:
+                paragraphs.append(f"{name} was activated in a roster move.")
+            elif "injured list" in lower or "disabled list" in lower:
+                paragraphs.append(f"{name} was placed on the injured list.")
+            elif "recalled" in lower:
+                paragraphs.append(f"{name} was recalled in a roster move.")
+            elif "optioned" in lower:
+                paragraphs.append(f"{name} was optioned in a roster move.")
+            elif "released" in lower:
+                paragraphs.append(f"{name} was released.")
             else:
-                paragraphs.append(f"{name} found himself in the middle of the game's biggest moment on {label}, coming through when his club needed a run.")
+                d = descriptions[0]
+                paragraphs.append(d + "." if name.lower() in d.lower() else f"{name}: {d}.")
+
+        return paragraphs
+
+    # No games: let actual roster news carry the edition when there is some.
+    if not apps:
+        txp = transaction_paragraphs(day_transactions)
+        if txp:
+            return {
+                "generatorVersion": GENERATOR_VERSION,
+                "date": date,
+                "dateLabel": label,
+                "title": "Roster Moves Highlight a Quiet Day for Former Mustangs",
+                "paragraphs": [
+                    f"No former Mustang recorded a confirmed game appearance on {label}, but there was movement on the transaction wire."
+                ] + txp,
+                "awards": []
+            }
+        return {
+            "generatorVersion": GENERATOR_VERSION,
+            "date": date,
+            "dateLabel": label,
+            "title": "A Quiet Night for Former Mustangs",
+            "paragraphs": [
+                f"No former Mustang recorded a confirmed appearance in a completed professional game on {label}."
+            ],
+            "awards": []
+        }
+
+    star = max(apps, key=importance)
+    star_play = best_play(star)
+    tags = (star_play or {}).get("tags") or []
+    name = star.get("name")
+    st = star.get("stats") or {}
+
+    # Headlines should describe the actual story, not manufacture one.
+    if "walk-off" in tags:
+        headline = f"{name} delivers a walk-off in the night's biggest Mustang moment"
+    elif "go-ahead" in tags:
+        headline = f"{name} comes through late with a go-ahead hit"
+    elif "game-tying" in tags:
+        headline = f"{name} delivers in a key spot"
+    elif star.get("type") == "hitter" and num(st, "homeRuns"):
+        headline = f"{name} homers to highlight {weekday}'s Mustang action"
+    elif star.get("type") == "pitcher" and num(st, "strikeOuts") >= 5:
+        headline = f"{name} turns in a strong outing on the mound"
+    elif len(apps) == 1:
+        result = (star.get("gameContext") or {}).get("result")
+        if result == "win" and int(num(st, "runs")):
+            headline = f"{name} scores as {star.get('team') or 'his club'} picks up a win"
+        elif result == "win":
+            headline = f"{name} in the lineup as {star.get('team') or 'his club'} wins"
         else:
-            paragraphs.append(f"It was a light night for Cal Poly's pro alumni on {label}, with {name} the only tracked Mustang to appear in a completed game.")
+            headline = f"{name} represents Cal Poly in {weekday}'s pro action"
     else:
-        teams=len({a.get('team') for a in apps if a.get('team')})
-        levels=len({a.get('level') for a in apps if a.get('level')})
-        scope=f"{len(apps)} former Mustangs appeared"
-        if teams: scope += f" for {teams} club{'s' if teams!=1 else ''}"
-        if levels>1: scope += f" across {levels} levels"
-        paragraphs.append(f"There was plenty to follow around pro baseball on {label}. {scope}, and {name} gave the night its defining moment.")
+        headline = f"{name} highlights a busy {weekday} for former Mustangs"
 
-    key=play_phrase(star,star_play)
-    if key: paragraphs.append(key)
-    result=result_sentence(star)
-    if result: paragraphs.append(result)
-    paragraphs.append(line_sentence(star))
-    lineup=lineup_sentence(star)
-    if lineup: paragraphs.append(lineup)
+    paragraphs = []
 
-    # Add a little context without inventing narrative. This is intentionally
-    # plainspoken and varies based on what the verified data actually says.
-    if star.get("team"):
-        if star.get("level") and star.get("level") != "MLB":
-            paragraphs.append(f"For Cal Poly followers, it was another look at {name} {team_level_phrase(star)} as the season moves deeper into August.")
-        elif len(apps)==1:
-            paragraphs.append(f"For Cal Poly followers, the night belonged to {name} and the {star.get('team')}. The box score may be brief, but the game context tells the better story.")
+    # Opening paragraph: game story first.
+    if len(apps) == 1:
+        team = star.get("team") or "his club"
+        opp = star.get("opponent") or "the opponent"
+        result = result_text(star)
+        role = role_phrase(star)
 
-    others=sorted([a for a in apps if a is not star],key=score,reverse=True)
-    for i,a in enumerate(others[:6]):
-        p=best_play(a); key=play_phrase(a,p)
-        if key: paragraphs.append(key)
-        text=line_sentence(a)
-        if text: paragraphs.append(text)
-        res=result_sentence(a)
-        if res and i<3: paragraphs.append(res)
+        opener = f"{name} was the lone former Mustang to appear in a confirmed professional game on {weekday},"
+        if role:
+            opener += f" {role}"
+        opener += f" for {team} against {opp}."
+        if result:
+            opener += " " + result
+        paragraphs.append(opener)
+    else:
+        clubs = len({a.get("team") for a in apps if a.get("team")})
+        levels = len({a.get("level") for a in apps if a.get("level")})
+        opener = f"{len(apps)} former Mustangs appeared in professional games on {weekday}"
+        if clubs:
+            opener += f" for {clubs} club{'s' if clubs != 1 else ''}"
+        if levels > 1:
+            opener += f" across {levels} levels"
+        opener += f", with {name} producing the night's most notable performance."
+        paragraphs.append(opener)
 
-    remaining=others[6:]
-    if remaining:
-        names=[a.get("name") for a in remaining if a.get("name")]
-        if names:
-            name_text=names[0] if len(names)==1 else ", ".join(names[:-1])+" and "+names[-1]
-            paragraphs.append(f"Also getting into games were {name_text}.")
+    key = key_play_sentence(star)
+    if key:
+        paragraphs.append(key)
 
-    if day_transactions:
-        paragraphs.append("There was roster news to go with the action on the field.")
-        for t in day_transactions[:6]:
-            paragraphs.append(transaction_sentence(t))
-        if len(day_transactions) > 6:
-            paragraphs.append(f"{len(day_transactions)-6} additional Mustang transaction{'s' if len(day_transactions)-6 != 1 else ''} were recorded and are listed in the Transactions section.")
+    # Merge stat line and role into prose instead of separate one-line fragments.
+    line = stat_line(star)
+    if line:
+        # On one-player nights the opening paragraph already establishes batting
+        # order/position, so don't repeat that information in the stat paragraph.
+        paragraphs.append(line)
 
-    clips=sum(len(a.get("highlights",[])) for a in apps)
+    if len(apps) > 1:
+        res = result_text(star)
+        if res:
+            paragraphs.append(res)
+
+    # Other appearances get compact, natural paragraphs rather than three lines apiece.
+    others = sorted([a for a in apps if a is not star], key=importance, reverse=True)
+    for a in others[:7]:
+        name2 = a.get("name")
+        team2 = a.get("team") or "his club"
+        level2 = a.get("level")
+        line2 = stat_line(a, use_name=False)
+        res2 = result_text(a)
+        role2 = role_phrase(a)
+
+        sentence = f"{name2} also appeared for {team2}"
+        if level2 and level2 != "MLB":
+            sentence += f" at {level2}"
+        sentence += "."
+        if line2:
+            sentence += " " + line2
+        if role2:
+            sentence += f" He {role2}."
+        if res2:
+            sentence += " " + res2
+        paragraphs.append(sentence)
+
+    # Transactions are part of the report, but not a raw transaction dump.
+    txp = transaction_paragraphs(day_transactions)
+    if txp:
+        paragraphs.append("Away from the box scores, there was also roster movement involving former Mustangs.")
+        paragraphs.extend(txp)
+
+    clips = sum(len(a.get("highlights", [])) for a in apps)
     if clips:
-        paragraphs.append(f"There {'was' if clips==1 else 'were'} {clips} official player-tagged highlight clip{'s' if clips!=1 else ''} available from the night's games, and they are included below when the video feed allows playback.")
-    elif len(apps)>1:
-        paragraphs.append("The next Mustangs Daily will pick up with the next set of completed games and any official player-tagged video that becomes available.")
+        paragraphs.append(
+            f"{clips} official player-tagged highlight clip{'s were' if clips != 1 else ' was'} available from the night's games and can be viewed below."
+        )
 
-    awards=[{"label":"Player of the Night","player":star["name"],"playerId":star.get("playerId"),"type":star.get("type"),"team":star.get("team"),"line":star["summary"]}]
+    awards = [{
+        "label": "Player of the Night",
+        "player": star["name"],
+        "playerId": star.get("playerId"),
+        "type": star.get("type"),
+        "team": star.get("team"),
+        "line": star["summary"]
+    }]
     if hitters:
-        b=max(hitters,key=hscore)
-        awards.append({"label":"Top Hitter","player":b["name"],"playerId":b.get("playerId"),"type":"hitter","team":b.get("team"),"line":b["summary"]})
+        b = max(hitters, key=hscore)
+        awards.append({
+            "label": "Top Hitter", "player": b["name"],
+            "playerId": b.get("playerId"), "type": "hitter",
+            "team": b.get("team"), "line": b["summary"]
+        })
     if pitchers:
-        b=max(pitchers,key=pscore)
-        awards.append({"label":"Top Pitcher","player":b["name"],"playerId":b.get("playerId"),"type":"pitcher","team":b.get("team"),"line":b["summary"]})
-    return {"date":date,"dateLabel":label,"title":headline,"paragraphs":paragraphs,"awards":awards}
+        b = max(pitchers, key=pscore)
+        awards.append({
+            "label": "Top Pitcher", "player": b["name"],
+            "playerId": b.get("playerId"), "type": "pitcher",
+            "team": b.get("team"), "line": b["summary"]
+        })
+
+    return {
+        "generatorVersion": GENERATOR_VERSION,
+        "date": date,
+        "dateLabel": label,
+        "title": headline,
+        "paragraphs": paragraphs,
+        "awards": awards
+    }
+
 
 def build_today_schedule():
     """Build today's tracked MLB + MiLB slate.
