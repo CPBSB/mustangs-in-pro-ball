@@ -432,68 +432,130 @@ def fetch_date_range(player, target_date):
     return matches
 
 
-def fetch_mlb_boxscore_appearances(player, target_date):
-    """Fallback for MLB players when the player gameLog endpoint misses a date.
+def fetch_official_boxscore_appearances(player, target_date):
+    """Authoritative fallback across MLB and every tracked MiLB level.
 
-    The schedule + official box score is the authoritative source for whether an
-    MLB player actually appeared. This catches cases where a game is present in
-    the box score before (or without) a matching per-player gameLog split.
+    Player gameLog/byDateRange endpoints can lag, especially in the minors.
+    When that happens, use the player's latest saved assignment to find the
+    club's official game and inspect the actual box score for the player ID.
     """
-    if player.get("status") != "mlb" or not player.get("teamId"):
-        return []
+    # The full stats refresh is written before the morning recap, so it normally
+    # contains a fresher team ID/level than the static players.json catalog.
+    fresh = {}
+    try:
+        fresh = (json.loads(OUTPUT.read_text()).get("players") or {}).get(str(player["id"])) or {}
+    except Exception:
+        fresh = {}
 
-    schedule = get_json("https://statsapi.mlb.com/api/v1/schedule", {
-        "sportId": 1,
-        "date": target_date,
-        "teamId": player["teamId"],
-    })
+    team_id = fresh.get("recentTeamId") or player.get("teamId")
+    level = fresh.get("recentLevel") or player.get("recentLevel")
+
+    level_to_sport = {
+        "MLB": 1,
+        "Triple-A": 11,
+        "Double-A": 12,
+        "High-A": 13,
+        "Single-A": 14,
+        "Rookie": 15,
+        "Rookie Ball": 15,
+    }
+    sport_id = level_to_sport.get(level)
+
+    # If level metadata is missing, try every affiliated level, but only as a
+    # last resort. This remains bounded to the tracked professional structure.
+    sport_ids = [sport_id] if sport_id else [1, 11, 12, 13, 14, 15, 16]
     matches = []
-    for date_block in schedule.get("dates", []):
-        for game in date_block.get("games", []):
-            game_pk = game.get("gamePk")
-            if not game_pk:
-                continue
-            box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
-            for side, other_side in (("away", "home"), ("home", "away")):
-                team_block = (box.get("teams") or {}).get(side) or {}
-                players = team_block.get("players") or {}
-                entry = players.get(f"ID{player['id']}")
-                if not entry:
-                    # Be tolerant if the provider changes the dictionary key format.
-                    entry = next((v for v in players.values()
-                                  if (v.get("person") or {}).get("id") == player["id"]), None)
-                if not entry:
+    seen_games = set()
+
+    for sid in sport_ids:
+        params = {"sportId": sid, "date": target_date}
+        if team_id:
+            params["teamId"] = team_id
+
+        try:
+            schedule = get_json("https://statsapi.mlb.com/api/v1/schedule", params)
+        except Exception:
+            continue
+
+        for date_block in schedule.get("dates", []):
+            for game in date_block.get("games", []):
+                game_pk = game.get("gamePk")
+                if not game_pk or game_pk in seen_games:
+                    continue
+                seen_games.add(game_pk)
+
+                # If we had no reliable team id, don't scan unrelated games at
+                # every level blindly unless the box score actually contains
+                # this player.
+                try:
+                    box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
+                except Exception:
                     continue
 
-                stats = entry.get("stats") or {}
-                stat = stats.get("batting" if player["type"] == "hitter" else "pitching") or {}
-                fielding = stats.get("fielding") or {}
+                for side, other_side in (("away", "home"), ("home", "away")):
+                    team_block = (box.get("teams") or {}).get(side) or {}
+                    players = team_block.get("players") or {}
+                    entry = players.get(f"ID{player['id']}")
+                    if not entry:
+                        entry = next(
+                            (v for v in players.values()
+                             if (v.get("person") or {}).get("id") == player["id"]),
+                            None
+                        )
+                    if not entry:
+                        continue
 
-                if player["type"] == "hitter":
-                    appeared = any(num(stat, k) for k in (
-                        "plateAppearances", "atBats", "runs", "hits", "baseOnBalls",
-                        "hitByPitch", "stolenBases", "caughtStealing", "rbi"
-                    )) or bool(fielding)
-                else:
-                    appeared = outs(stat.get("inningsPitched")) > 0
-                if not appeared:
-                    continue
+                    stats = entry.get("stats") or {}
+                    stat = stats.get("batting" if player["type"] == "hitter" else "pitching") or {}
+                    fielding = stats.get("fielding") or {}
 
-                opponent_block = (box.get("teams") or {}).get(other_side) or {}
-                team_name = (team_block.get("team") or {}).get("name")
-                opponent_name = (opponent_block.get("team") or {}).get("name")
-                matches.append({
-                    "date": target_date,
-                    "stat": stat,
-                    "team": {"name": team_name},
-                    "opponent": {"name": opponent_name},
-                    "game": {"gamePk": game_pk},
-                    "gamePk": game_pk,
-                    "boxscoreFallback": True,
-                    "appearanceOnly": player["type"] == "hitter" and not any(
-                        num(stat, k) for k in ("plateAppearances", "atBats", "runs", "hits", "baseOnBalls", "hitByPitch", "stolenBases", "caughtStealing", "rbi")
-                    ),
-                })
+                    if player["type"] == "hitter":
+                        appeared = (
+                            num(stat, "plateAppearances") > 0
+                            or num(stat, "atBats") > 0
+                            or any(num(stat, k) for k in (
+                                "runs", "hits", "baseOnBalls", "hitByPitch",
+                                "stolenBases", "caughtStealing", "rbi"
+                            ))
+                            or bool(fielding)
+                        )
+                    else:
+                        appeared = outs(stat.get("inningsPitched")) > 0
+
+                    if not appeared:
+                        continue
+
+                    opponent_block = (box.get("teams") or {}).get(other_side) or {}
+                    own_team = team_block.get("team") or {}
+                    opp_team = opponent_block.get("team") or {}
+
+                    matches.append({
+                        "date": target_date,
+                        "stat": stat,
+                        "team": {
+                            "id": own_team.get("id"),
+                            "name": own_team.get("name")
+                        },
+                        "opponent": {
+                            "id": opp_team.get("id"),
+                            "name": opp_team.get("name")
+                        },
+                        "sport": {"id": sid, "name": LEVEL_BY_SPORT_ID.get(sid)},
+                        "game": {"gamePk": game_pk, "officialDate": target_date},
+                        "gamePk": game_pk,
+                        "boxscoreFallback": True,
+                        "appearanceOnly": (
+                            player["type"] == "hitter"
+                            and num(stat, "plateAppearances") == 0
+                            and num(stat, "atBats") == 0
+                            and not any(num(stat, k) for k in (
+                                "runs", "hits", "baseOnBalls", "hitByPitch",
+                                "stolenBases", "caughtStealing", "rbi"
+                            ))
+                        ),
+                    })
+                    break
+
     return matches
 
 
@@ -717,9 +779,10 @@ def build_nightly_summary():
                 # not yet propagated into the season gameLog feed.
                 splits = fetch_date_range(player, target)
             if not splits:
-                # MLB game logs can lag or omit a date even when the official box
-                # score already shows the player. Fall back to schedule + box score.
-                splits = fetch_mlb_boxscore_appearances(player, target)
+                # Player-level feeds can lag at both MLB and MiLB levels. The
+                # official scheduled game + box score is the authoritative final
+                # appearance check, including plate appearances in minor-league games.
+                splits = fetch_official_boxscore_appearances(player, target)
             for split in splits:
                 stat = split.get("stat", {})
                 game = split.get("game", {}) or {}
@@ -764,7 +827,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB Stats API gameLog/byDateRange, official box scores, play-by-play and MLB/MiLB game content"
+        "source": "MLB/MiLB gameLog/byDateRange plus authoritative official team box-score audit, play-by-play and game content"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
