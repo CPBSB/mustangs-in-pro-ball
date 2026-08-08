@@ -101,22 +101,68 @@ function ensureArchiveSection(){
   let nav=document.querySelector('header nav, nav');
   if(nav&&!nav.querySelector('a[href="#archive"]'))nav.insertAdjacentHTML('beforeend','<a href="#archive">Archive</a>');
 }
-function reorderTopNav(){
+function buildProMustangsMenu(){
   let nav=document.querySelector('header nav, nav');
   if(!nav)return;
-  let links=[...nav.querySelectorAll('a')];
-  let wanted=['Daily','Highlights','Games','Roster','Transactions','Leaders','Career','MLB History','Archive','About'];
-  let byLabel=new Map(links.map(a=>[a.textContent.trim().toLowerCase(),a]));
-  // Preserve the exact existing href for each label, but rebuild the nav in the
-  // requested order so mismatched section IDs cannot scramble the menu.
-  wanted.forEach(label=>{
-    let a=byLabel.get(label.toLowerCase());
-    if(a)nav.appendChild(a);
+
+  const order=['Daily','Highlights','Games','Roster','Transactions','Leaders','Career','MLB History','Archive','About'];
+  const existing=[...nav.querySelectorAll('a')];
+  const byLabel=new Map(existing.map(a=>[a.textContent.trim().toLowerCase(),a.getAttribute('href')]));
+
+  // Remove the old flat links so the header becomes one clean category.
+  existing.forEach(a=>{
+    if(order.map(x=>x.toLowerCase()).includes(a.textContent.trim().toLowerCase()))a.remove();
+  });
+
+  let old=nav.querySelector('.pro-mustangs-menu');
+  if(old)old.remove();
+
+  let links=order.map(label=>{
+    let href=byLabel.get(label.toLowerCase())||'#';
+    return `<a href="${esc(href)}">${esc(label)}</a>`;
+  }).join('');
+
+  nav.insertAdjacentHTML('beforeend',`
+    <div class="pro-mustangs-menu">
+      <button class="pro-mustangs-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+        Pro Mustangs <span aria-hidden="true">▾</span>
+      </button>
+      <div class="pro-mustangs-dropdown" hidden>
+        ${links}
+      </div>
+    </div>
+  `);
+
+  let menu=nav.querySelector('.pro-mustangs-menu');
+  let button=menu.querySelector('.pro-mustangs-toggle');
+  let dropdown=menu.querySelector('.pro-mustangs-dropdown');
+
+  const close=()=>{
+    dropdown.hidden=true;
+    button.setAttribute('aria-expanded','false');
+    menu.classList.remove('open');
+  };
+  const open=()=>{
+    dropdown.hidden=false;
+    button.setAttribute('aria-expanded','true');
+    menu.classList.add('open');
+  };
+
+  button.onclick=e=>{
+    e.stopPropagation();
+    dropdown.hidden?open():close();
+  };
+  dropdown.querySelectorAll('a').forEach(a=>a.onclick=close);
+  document.addEventListener('click',e=>{
+    if(!menu.contains(e.target))close();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')close();
   });
 }
 function renderArchive(){
   ensureArchiveSection();
-  reorderTopNav();
+  buildProMustangsMenu();
   let editions=[...(DATA.archive?.editions||[])];
   // On first deployment, surface the current article immediately even before
   // archive.json has accumulated older nights.
