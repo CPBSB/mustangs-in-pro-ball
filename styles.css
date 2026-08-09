@@ -433,3 +433,19 @@
   .slo-map-shell{min-height:700px}
   .point-morro{left:7%;top:10%}.point-hike{right:7%;top:20%}.point-downtown{left:55%;top:36%}.point-avila{left:8%;bottom:18%}.point-pismo{right:7%;bottom:8%}
 }
+
+/* V5.33 — Mustang Favorites */
+.slo-favorites{max-width:1320px;margin:0 auto 95px;padding:0 24px}
+.slo-favorites-head{max-width:850px;margin-bottom:28px}
+.slo-favorites-head>span{font:700 10px 'Space Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--bright)}
+.slo-favorites-head h2{margin:10px 0 14px;font:400 clamp(42px,5.5vw,72px)/.95 'Anton'}
+.slo-favorites-head p{font:18px/1.6 Georgia,serif;color:#586a62}
+.slo-favorites-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.slo-favorite-card{min-height:245px;padding:24px;border-radius:15px;background:#fff;border:1px solid rgba(7,43,32,.1);box-shadow:0 12px 28px rgba(0,0,0,.045);display:flex;flex-direction:column}
+.slo-favorite-category{font:700 9px 'Space Mono';letter-spacing:.1em;text-transform:uppercase;color:#b88900}
+.slo-favorite-card h3{margin:12px 0 12px;font:400 28px/1 'Anton';color:#0a3628}
+.slo-favorite-card p{margin:0;font:15px/1.55 Georgia,serif;color:#63756d}
+.slo-favorite-card>span{margin-top:auto;padding-top:22px;font:700 9px 'Space Mono';text-transform:uppercase;color:#87968f}
+.slo-favorite-card.placeholder{background:linear-gradient(145deg,#fbfaf6,#f1ede4);border-style:dashed}
+@media(max-width:1000px){.slo-favorites-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.slo-favorites-grid{grid-template-columns:1fr}}
