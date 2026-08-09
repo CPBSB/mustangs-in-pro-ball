@@ -24,22 +24,22 @@
       "type": "hitter"
     },
     "674841": {
-      "assignmentDate": "2026-08-03",
-      "assignmentSource": "transaction",
+      "assignmentDate": "2026-08-08",
+      "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-03",
+        "endDate": "2026-08-08",
         "games": 7,
-        "startDate": "2026-06-26",
+        "startDate": "2026-07-01",
         "stats": {
-          "BB": 19,
-          "ER": 16,
-          "ERA": "4.55",
+          "BB": 17,
+          "ER": 15,
+          "ERA": "4.13",
           "G": 7,
-          "H": 29,
-          "IP": "31.2",
-          "R": 16,
-          "SO": 26,
-          "WHIP": "1.52"
+          "H": 26,
+          "IP": "32.2",
+          "R": 15,
+          "SO": 23,
+          "WHIP": "1.32"
         }
       },
       "name": "Andrew Alvarez",
@@ -47,42 +47,42 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 31,
-        "ER": 28,
-        "ERA": "3.94",
-        "H": 62,
-        "IP": "64.0",
-        "R": 28,
-        "SO": 63,
-        "WHIP": "1.45"
+        "BB": 32,
+        "ER": 29,
+        "ERA": "3.76",
+        "H": 65,
+        "IP": "69.1",
+        "R": 29,
+        "SO": 65,
+        "WHIP": "1.40"
       },
       "team": "Washington Nationals",
       "type": "pitcher"
     },
     "686797": {
-      "assignmentDate": "2026-08-06",
+      "assignmentDate": "2026-08-08",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-06",
+        "endDate": "2026-08-08",
         "games": 7,
-        "startDate": "2026-07-30",
+        "startDate": "2026-07-31",
         "stats": {
           "2B": 1,
           "3B": 0,
-          "AB": 24,
-          "AVG": ".167",
-          "BB": 2,
+          "AB": 26,
+          "AVG": ".154",
+          "BB": 1,
           "CS": 0,
           "G": 7,
           "H": 4,
           "HR": 1,
-          "OBP": ".231",
-          "OPS": ".564",
+          "OBP": ".185",
+          "OPS": ".493",
           "R": 2,
           "RBI": 4,
           "SB": 0,
-          "SLG": ".333",
-          "SO": 5
+          "SLG": ".308",
+          "SO": 6
         }
       },
       "name": "Brooks Lee",
@@ -92,19 +92,19 @@
       "stats": {
         "2B": 17,
         "3B": 3,
-        "AB": 408,
-        "AVG": ".240",
+        "AB": 412,
+        "AVG": ".238",
         "BB": 32,
         "CS": 4,
         "H": 98,
         "HR": 16,
-        "OBP": ".298",
-        "OPS": ".712",
+        "OBP": ".295",
+        "OPS": ".705",
         "R": 51,
         "RBI": 60,
         "SB": 7,
-        "SLG": ".414",
-        "SO": 73
+        "SLG": ".410",
+        "SO": 74
       },
       "team": "Minnesota Twins",
       "type": "hitter"
@@ -386,7 +386,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
-  "updatedAt": "2026-08-08T14:44:32.629155+00:00",
+  "updatedAt": "2026-08-09T11:49:59.616557+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",

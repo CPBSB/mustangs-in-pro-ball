@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Ryan Tayman went 0-for-3, 1 run.",
+      "line": "Ryan Tayman went 1-for-4, 1 RBI.",
       "player": "Ryan Tayman",
       "playerId": 822034,
       "team": "St. Lucie Mets",
@@ -10,21 +10,33 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Ryan Tayman went 0-for-3, 1 run.",
+      "line": "Ryan Tayman went 1-for-4, 1 RBI.",
       "player": "Ryan Tayman",
       "playerId": 822034,
       "team": "St. Lucie Mets",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Andrew Alvarez worked 5.1 IP, allowing 3 H, 1 R (1 ER) and 1 BB with 2 K.",
+      "player": "Andrew Alvarez",
+      "playerId": 674841,
+      "team": "Washington Nationals",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-08-07",
-  "dateLabel": "Friday, August 7, 2026",
+  "date": "2026-08-08",
+  "dateLabel": "Saturday, August 8, 2026",
   "generatorVersion": "5.21",
   "paragraphs": [
-    "Ryan Tayman was the lone former Mustang to appear in a confirmed professional game on Friday, batted 3rd and started at C for St. Lucie Mets against Daytona Tortugas. St. Lucie Mets beat Daytona Tortugas, 2-0.",
-    "Ryan Tayman went 0-for-3, 1 run scored.",
-    "Away from the box scores, there was also roster movement involving former Mustangs.",
-    "Steven Brooks was called up on Friday, moving from the High-A Greenville Drive to the Double-A Portland Sea Dogs."
+    "4 former Mustangs appeared in professional games on Saturday for 4 clubs across 3 levels, with Ryan Tayman producing the night's most notable performance.",
+    "Ryan Tayman tied the game in the first with a groundout.",
+    "Ryan Tayman went 1-for-4, 1 RBI.",
+    "St. Lucie Mets fell to Daytona Tortugas, 7-15.",
+    "Andrew Alvarez also appeared for Washington Nationals. He worked 5.1 innings, allowing 3 hits and 1 earned run, with 1 walk and 2 strikeouts. He started at P. Washington Nationals beat Cincinnati Reds, 8-2.",
+    "Brooks Lee also appeared for Minnesota Twins. He went 0-for-4. He batted 8th and started at 3B. Minnesota Twins fell to Milwaukee Brewers, 3-4.",
+    "Steven Brooks also appeared for Portland Sea Dogs at Double-A. He worked 2.0 innings, allowing 5 hits and 3 earned runs, with 1 walk and 2 strikeouts. He started at P. Portland Sea Dogs fell to New Hampshire Fisher Cats, 0-14.",
+    "4 official player-tagged highlight clips were available from the night's games and can be viewed below."
   ],
-  "title": "Ryan Tayman scores as St. Lucie Mets picks up a win"
+  "title": "Ryan Tayman delivers in a key spot"
 }
