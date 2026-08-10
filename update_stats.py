@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.21"
+GENERATOR_VERSION = "5.37"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -569,6 +569,104 @@ def _score_pair(result):
         return 0, 0
 
 
+
+_STATS_CACHE = None
+
+def current_player_stats(player_id):
+    """Read the just-refreshed season line for story milestones."""
+    global _STATS_CACHE
+    if _STATS_CACHE is None:
+        try:
+            _STATS_CACHE = json.loads(OUTPUT.read_text()).get("players", {})
+        except Exception:
+            _STATS_CACHE = {}
+    return ((_STATS_CACHE.get(str(player_id)) or {}).get("stats") or {})
+
+
+def season_milestone(player_id, event_type):
+    """Return the player's current season count for a notable hitting event."""
+    key_by_event = {
+        "home_run": "HR",
+        "double": "2B",
+        "triple": "3B",
+        "stolen_base": "SB",
+    }
+    key = key_by_event.get(str(event_type or "").lower())
+    if not key:
+        return None
+    value = current_player_stats(player_id).get(key)
+    try:
+        return int(value)
+    except Exception:
+        return None
+
+
+def decisive_pitch_context(play):
+    """Return count, pitch and contact data for the pitch that ended a plate appearance."""
+    balls = strikes = 0
+    last_pitch = None
+
+    for event in play.get("playEvents") or []:
+        if not event.get("isPitch"):
+            continue
+
+        details = event.get("details") or {}
+        pitch_data = event.get("pitchData") or {}
+        hit_data = event.get("hitData") or {}
+        pitch_type = details.get("type") or {}
+
+        last_pitch = {
+            "countBefore": {"balls": balls, "strikes": strikes},
+            "count": f"{balls}-{strikes}",
+            "pitchType": pitch_type.get("description"),
+            "pitchCode": pitch_type.get("code"),
+            "pitchDescription": details.get("description"),
+            "velocity": pitch_data.get("startSpeed"),
+            "endVelocity": pitch_data.get("endSpeed"),
+            "zone": pitch_data.get("zone"),
+            "exitVelocity": hit_data.get("launchSpeed"),
+            "launchAngle": hit_data.get("launchAngle"),
+            "distance": hit_data.get("totalDistance"),
+            "trajectory": hit_data.get("trajectory"),
+        }
+
+        count = event.get("count") or {}
+        if count.get("balls") is not None:
+            balls = count.get("balls")
+        if count.get("strikes") is not None:
+            strikes = count.get("strikes")
+
+    return last_pitch or {}
+
+
+def readable_pitch_type(value):
+    text = str(value or "").strip()
+    if not text:
+        return None
+    replacements = {
+        "Four-Seam Fastball": "four-seam fastball",
+        "4-Seam Fastball": "four-seam fastball",
+        "Two-Seam Fastball": "two-seam fastball",
+        "Sinker": "sinker",
+        "Cutter": "cutter",
+        "Slider": "slider",
+        "Sweeper": "sweeper",
+        "Curveball": "curveball",
+        "Knuckle Curve": "knuckle curve",
+        "Changeup": "changeup",
+        "Split-Finger": "splitter",
+        "Splitter": "splitter",
+    }
+    return replacements.get(text, text.lower())
+
+
+def mph_text(value):
+    try:
+        return f"{int(round(float(value)))} mph"
+    except Exception:
+        return None
+
+
 def fetch_game_context(game_pk, player):
     """Return verified box-score and play-by-play context for one appearance.
 
@@ -651,21 +749,41 @@ def fetch_game_context(game_pk, player):
             etype = str(result.get("eventType") or "").lower()
             important = score_changed or rbi or etype in {"home_run", "triple", "double"} or tags
             if important:
+                pitch_context = decisive_pitch_context(play)
+                milestone = season_milestone(player["id"], etype)
                 context["keyPlays"].append({
                     "inning": inning, "half": half, "event": event,
+                    "eventType": etype,
                     "description": desc, "rbi": rbi, "tags": tags,
                     "scoreBefore": {"team": before_us, "opponent": before_them},
                     "scoreAfter": {"team": after_us, "opponent": after_them},
                     "pitcher": (matchup.get("pitcher") or {}).get("fullName"),
+                    "seasonNumber": milestone,
+                    **pitch_context,
                 })
-        elif player.get("type") == "pitcher" and pitcher_id == player["id"] and first_pitching_play is None:
-            # Score at the moment the pitcher's first batter comes to the plate.
-            pitching_side = "home" if str(half).lower() == "top" else "away"
-            first_pitching_play = {
-                "inning": inning, "half": half,
-                "teamScore": prev_home if pitching_side == "home" else prev_away,
-                "opponentScore": prev_away if pitching_side == "home" else prev_home,
-            }
+        elif player.get("type") == "pitcher" and pitcher_id == player["id"]:
+            if first_pitching_play is None:
+                # Score at the moment the pitcher's first batter comes to the plate.
+                pitching_side = "home" if str(half).lower() == "top" else "away"
+                first_pitching_play = {
+                    "inning": inning, "half": half,
+                    "teamScore": prev_home if pitching_side == "home" else prev_away,
+                    "opponentScore": prev_away if pitching_side == "home" else prev_home,
+                }
+
+            # Preserve the pitch that finished each strikeout so a strong pitching
+            # performance can also receive pitch-level detail in the story.
+            etype = str(result.get("eventType") or "").lower()
+            if etype in {"strikeout", "strikeout_double_play"}:
+                moment = {
+                    "inning": inning,
+                    "half": half,
+                    "event": result.get("event") or "Strikeout",
+                    "batter": (matchup.get("batter") or {}).get("fullName"),
+                    **decisive_pitch_context(play),
+                }
+                context.setdefault("pitchingMoments", []).append(moment)
+
         prev_away, prev_home = away_after, home_after
 
     if plays:
@@ -829,7 +947,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB/MiLB gameLog/byDateRange plus authoritative official team box-score audit, play-by-play and game content"
+        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and game content"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
@@ -1020,22 +1138,137 @@ def build_daily_article(summary, transactions=None):
         play = best_play(a)
         if not play:
             return None
+
         tags = play.get("tags") or []
         event = str(play.get("event") or "hit").lower()
+        etype = str(play.get("eventType") or "").lower()
         inning = inning_name(play.get("inning"))
         rbi = int(play.get("rbi") or 0)
         name = a.get("name")
+        pitcher = play.get("pitcher")
+        count = play.get("count")
+        pitch_type = readable_pitch_type(play.get("pitchType"))
+        velocity = mph_text(play.get("velocity"))
+        season_number = play.get("seasonNumber")
         run_prefix = "two-run " if rbi == 2 else f"{rbi}-run " if rbi > 2 else ""
 
+        # Home runs deserve a fuller pitch-level description when the official
+        # play-by-play feed supplies it.
+        if etype == "home_run" or "home run" in event:
+            setup = f"{name}'s home run"
+            if season_number:
+                setup += f" — his {season_number}th of the season"
+            setup += f" came in the {inning} inning"
+
+            pitch_bits = []
+            if count:
+                pitch_bits.append(f"on a {count} pitch")
+            if velocity and pitch_type:
+                pitch_bits.append(f"a {velocity} {pitch_type}")
+            elif velocity:
+                pitch_bits.append(f"a {velocity} pitch")
+            elif pitch_type:
+                pitch_bits.append(f"a {pitch_type}")
+
+            if pitcher:
+                if pitch_bits:
+                    setup += f", when he turned around {' '.join(pitch_bits)} from {pitcher}"
+                else:
+                    setup += f" against {pitcher}"
+            elif pitch_bits:
+                setup += f", when he turned around {' '.join(pitch_bits)}"
+
+            before = play.get("scoreBefore") or {}
+            after = play.get("scoreAfter") or {}
+            if before and after and (
+                before.get("team") != after.get("team")
+                or before.get("opponent") != after.get("opponent")
+            ):
+                setup += (
+                    f". The swing moved the score from "
+                    f"{before.get('team')}-{before.get('opponent')} to "
+                    f"{after.get('team')}-{after.get('opponent')}"
+                )
+
+            metrics = []
+            if play.get("exitVelocity") is not None:
+                try:
+                    metrics.append(f"{float(play['exitVelocity']):.1f} mph off the bat")
+                except Exception:
+                    pass
+            if play.get("launchAngle") is not None:
+                try:
+                    metrics.append(f"a {int(round(float(play['launchAngle'])))}-degree launch angle")
+                except Exception:
+                    pass
+            if play.get("distance") is not None:
+                try:
+                    metrics.append(f"{int(round(float(play['distance'])))} feet")
+                except Exception:
+                    pass
+            if metrics:
+                setup += ". Statcast measured the ball at " + ", ".join(metrics)
+
+            return setup + "."
+
         if "walk-off" in tags:
-            return f"{name}'s biggest moment came in the {inning}, when he delivered a {run_prefix}walk-off {event}."
-        if "go-ahead" in tags:
-            return f"The game's turning point came in the {inning}, when {name} delivered a {run_prefix}go-ahead {event}."
-        if "game-tying" in tags:
-            return f"{name} tied the game in the {inning} with a {run_prefix}{event}."
-        if rbi:
-            return f"{name} drove in {rbi} run{'s' if rbi != 1 else ''} with a {event} in the {inning}."
-        return None
+            sentence = f"{name}'s biggest moment came in the {inning}, when he delivered a {run_prefix}walk-off {event}"
+        elif "go-ahead" in tags:
+            sentence = f"The game's turning point came in the {inning}, when {name} delivered a {run_prefix}go-ahead {event}"
+        elif "game-tying" in tags:
+            sentence = f"{name} tied the game in the {inning} with a {run_prefix}{event}"
+        elif rbi:
+            sentence = f"{name} drove in {rbi} run{'s' if rbi != 1 else ''} with a {event} in the {inning}"
+        else:
+            sentence = f"{name} produced a {event} in the {inning}"
+
+        detail = []
+        if count:
+            detail.append(f"on a {count} pitch")
+        if velocity and pitch_type:
+            detail.append(f"{velocity} {pitch_type}")
+        elif velocity:
+            detail.append(f"{velocity}")
+        elif pitch_type:
+            detail.append(pitch_type)
+        if pitcher:
+            detail.append(f"from {pitcher}")
+        if detail:
+            sentence += ", " + " ".join(detail)
+
+        return sentence + "."
+
+    def pitcher_detail_sentence(a):
+        ctx = a.get("gameContext") or {}
+        moments = ctx.get("pitchingMoments") or []
+        if not moments:
+            return None
+        # Use the hardest documented strikeout pitch as a concrete detail.
+        def velo(moment):
+            try:
+                return float(moment.get("velocity") or 0)
+            except Exception:
+                return 0
+        moment = max(moments, key=velo)
+        velocity = mph_text(moment.get("velocity"))
+        pitch_type = readable_pitch_type(moment.get("pitchType"))
+        count = moment.get("count")
+        batter = moment.get("batter")
+        inning = inning_name(moment.get("inning"))
+        if not (velocity or pitch_type or batter):
+            return None
+        pieces = []
+        if count:
+            pieces.append(f"on a {count} pitch")
+        if velocity and pitch_type:
+            pieces.append(f"a {velocity} {pitch_type}")
+        elif velocity:
+            pieces.append(f"a {velocity} pitch")
+        elif pitch_type:
+            pieces.append(f"a {pitch_type}")
+        target = f" to strike out {batter}" if batter else " for a strikeout"
+        return f"One of his strikeouts came in the {inning}, {' '.join(pieces)}{target}."
+
 
     def transaction_paragraphs(rows):
         """Turn same-day provider transactions into one readable roster-news item."""
@@ -1169,7 +1402,14 @@ def build_daily_article(summary, transactions=None):
     elif "game-tying" in tags:
         headline = f"{name} delivers in a key spot"
     elif star.get("type") == "hitter" and num(st, "homeRuns"):
-        headline = f"{name} homers to highlight {weekday}'s Mustang action"
+        hr_number = (star_play or {}).get("seasonNumber")
+        hr_velocity = mph_text((star_play or {}).get("velocity"))
+        if hr_number and hr_velocity:
+            headline = f"{name} turns around {hr_velocity} for home run No. {hr_number}"
+        elif hr_number:
+            headline = f"{name} launches home run No. {hr_number}"
+        else:
+            headline = f"{name} homers to highlight {weekday}'s Mustang action"
     elif star.get("type") == "pitcher" and num(st, "strikeOuts") >= 5:
         headline = f"{name} turns in a strong outing on the mound"
     elif len(apps) == 1:
@@ -1220,6 +1460,11 @@ def build_daily_article(summary, transactions=None):
         # On one-player nights the opening paragraph already establishes batting
         # order/position, so don't repeat that information in the stat paragraph.
         paragraphs.append(line)
+
+    if star.get("type") == "pitcher":
+        pitcher_detail = pitcher_detail_sentence(star)
+        if pitcher_detail:
+            paragraphs.append(pitcher_detail)
 
     if len(apps) > 1:
         res = result_text(star)
