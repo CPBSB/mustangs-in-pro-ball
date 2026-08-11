@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 2-for-5, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 2-for-4, 2B, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,21 +10,20 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 2-for-5, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 2-for-4, 2B, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-08-09",
-  "dateLabel": "Sunday, August 9, 2026",
+  "date": "2026-08-10",
+  "dateLabel": "Monday, August 10, 2026",
   "generatorVersion": "5.37",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted 5th and started at 3B for Minnesota Twins against Milwaukee Brewers. Minnesota Twins fell to Milwaukee Brewers, 3-4.",
-    "Brooks Lee's home run \u2014 his 17th of the season came in the fifth inning, when he turned around on a 1-1 pitch a 99 mph four-seam fastball from Jacob Misiorowski. The swing moved the score from 0-1 to 1-1. Statcast measured the ball at 103.8 mph off the bat, a 29-degree launch angle, 401 feet.",
-    "Brooks Lee went 2-for-5, 1 home run, 1 RBI, 1 run scored.",
-    "2 official player-tagged highlight clips were available from the night's games and can be viewed below."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted 6th and started at 3B for Minnesota Twins against Baltimore Orioles. Minnesota Twins beat Baltimore Orioles, 9-5.",
+    "Brooks Lee produced a double in the fourth, on a 3-2 pitch 84 mph cutter from Trevor Rogers.",
+    "Brooks Lee went 2-for-4, 1 double, 1 walk."
   ],
-  "title": "Brooks Lee delivers in a key spot"
+  "title": "Brooks Lee in the lineup as Minnesota Twins wins"
 }
