@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-08-11T12:32:11.741790+00:00",
+  "generatedAt": "2026-08-12T14:34:48.686941+00:00",
   "transactions": [
+    {
+      "date": "2026-08-11",
+      "description": "3B Alejandro Garza assigned to Hill City Howlers from ACL Guardians.",
+      "player": "Alejandro Garza"
+    },
     {
       "date": "2026-08-07",
       "description": "Portland Sea Dogs activated RHP Steven Brooks.",
@@ -45,16 +50,6 @@
       "date": "2026-07-29",
       "description": "FCL Cardinals activated RHP Nick Bonn.",
       "player": "Nick Bonn"
-    },
-    {
-      "date": "2026-07-28",
-      "description": "C Ryan Tayman assigned to St. Lucie Mets from FCL Mets.",
-      "player": "Ryan Tayman"
-    },
-    {
-      "date": "2026-07-28",
-      "description": "Washington Nationals optioned LHP Andrew Alvarez to Rochester Red Wings.",
-      "player": "Andrew Alvarez"
     }
   ]
 }

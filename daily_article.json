@@ -2,28 +2,43 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 2-for-4, 2B, 1 walk.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
-      "type": "hitter"
+      "line": "Bryan Woo worked 5.0 IP, allowing 3 H, 0 R (0 ER) and 1 BB with 5 K.",
+      "player": "Bryan Woo",
+      "playerId": 693433,
+      "team": "Seattle Mariners",
+      "type": "pitcher"
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 2-for-4, 2B, 1 walk.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Ryan Tayman went 3-for-3.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Bryan Woo worked 5.0 IP, allowing 3 H, 0 R (0 ER) and 1 BB with 5 K.",
+      "player": "Bryan Woo",
+      "playerId": 693433,
+      "team": "Seattle Mariners",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-08-10",
-  "dateLabel": "Monday, August 10, 2026",
+  "date": "2026-08-11",
+  "dateLabel": "Tuesday, August 11, 2026",
   "generatorVersion": "5.37",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted 6th and started at 3B for Minnesota Twins against Baltimore Orioles. Minnesota Twins beat Baltimore Orioles, 9-5.",
-    "Brooks Lee produced a double in the fourth, on a 3-2 pitch 84 mph cutter from Trevor Rogers.",
-    "Brooks Lee went 2-for-4, 1 double, 1 walk."
+    "4 former Mustangs appeared in professional games on Tuesday for 4 clubs across 2 levels, with Bryan Woo producing the night's most notable performance.",
+    "Bryan Woo worked 5.0 innings, allowing 3 hits and 0 earned runs, with 1 walk and 5 strikeouts.",
+    "One of his strikeouts came in the first, on a 0-2 pitch a 98 mph sinker to strike out Heliot Ramos.",
+    "Seattle Mariners fell to New York Yankees, 1-4.",
+    "Brooks Lee also appeared for Minnesota Twins. He went 2-for-4, 1 double, 1 RBI. He batted 6th and started at 3B. Minnesota Twins fell to Baltimore Orioles, 2-5.",
+    "Ryan Tayman also appeared for St. Lucie Mets at Single-A. He went 3-for-3. He batted 5th and started at C. St. Lucie Mets fell to Jupiter Hammerheads, 2-3.",
+    "Alejandro Garza also appeared for Hill City Howlers at Single-A. He went 1-for-4, 1 stolen base. He batted 8th and started at 2B. Hill City Howlers beat Myrtle Beach Pelicans, 9-4.",
+    "Away from the box scores, there was also roster movement involving former Mustangs.",
+    "Alejandro Garza was called up on Tuesday, moving from the Rookie ACL Guardians to the Single-A Hill City Howlers.",
+    "5 official player-tagged highlight clips were available from the night's games and can be viewed below."
   ],
-  "title": "Brooks Lee in the lineup as Minnesota Twins wins"
+  "title": "Bryan Woo turns in a strong outing on the mound"
 }
