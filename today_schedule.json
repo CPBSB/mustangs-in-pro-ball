@@ -1,48 +1,48 @@
 {
-  "date": "2026-08-12",
+  "date": "2026-08-13",
   "games": [
     {
-      "away": "Baltimore Orioles",
+      "away": "Philadelphia Phillies",
       "awayProbablePitcher": {
-        "fullName": "Shane Baz",
-        "id": 669358,
-        "link": "/api/v1/people/669358"
+        "fullName": "Aaron Nola",
+        "id": 605400,
+        "link": "/api/v1/people/605400"
       },
       "awayScore": null,
-      "awayTeamId": 110,
-      "gameDate": "2026-08-12T17:40:00Z",
-      "gamePk": 823672,
+      "awayTeamId": 143,
+      "gameDate": "2026-08-13T23:30:00Z",
+      "gamePk": 823669,
       "home": "Minnesota Twins",
       "homeProbablePitcher": {
-        "fullName": "Zebby Matthews",
-        "id": 805673,
-        "link": "/api/v1/people/805673"
+        "fullName": "Taj Bradley",
+        "id": 671737,
+        "link": "/api/v1/people/671737"
       },
       "homeScore": null,
       "homeTeamId": 142,
       "level": "MLB",
       "liveLine": null,
-      "opponent": "Baltimore Orioles",
+      "opponent": "Philadelphia Phillies",
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Scheduled",
       "team": "Minnesota Twins",
-      "timeLabel": "2026-08-12T17:40:00Z",
-      "venue": "Target Field"
+      "timeLabel": "2026-08-13T23:30:00Z",
+      "venue": "Field of Dreams"
     },
     {
       "away": "St. Lucie Mets",
       "awayProbablePitcher": null,
       "awayScore": null,
       "awayTeamId": 507,
-      "gameDate": "2026-08-12T22:30:00Z",
-      "gamePk": 820511,
+      "gameDate": "2026-08-13T22:30:00Z",
+      "gamePk": 820507,
       "home": "Jupiter Hammerheads",
       "homeProbablePitcher": {
-        "fullName": "Manuel Genao",
-        "id": 808510,
-        "link": "/api/v1/people/808510"
+        "fullName": "Jake Clemente",
+        "id": 701361,
+        "link": "/api/v1/people/701361"
       },
       "homeScore": null,
       "homeTeamId": 479,
@@ -54,20 +54,20 @@
       "sportId": 14,
       "status": "Scheduled",
       "team": "St. Lucie Mets",
-      "timeLabel": "2026-08-12T22:30:00Z",
+      "timeLabel": "2026-08-13T22:30:00Z",
       "venue": "Roger Dean Chevrolet Stadium"
     },
     {
       "away": "Hill City Howlers",
       "awayProbablePitcher": {
-        "fullName": "Will Hynes",
-        "id": 807077,
-        "link": "/api/v1/people/807077"
+        "fullName": "Ryan Prager",
+        "id": 696492,
+        "link": "/api/v1/people/696492"
       },
       "awayScore": null,
       "awayTeamId": 481,
-      "gameDate": "2026-08-12T23:05:00Z",
-      "gamePk": 826910,
+      "gameDate": "2026-08-13T23:05:00Z",
+      "gamePk": 826911,
       "home": "Myrtle Beach Pelicans",
       "homeProbablePitcher": null,
       "homeScore": null,
@@ -80,7 +80,7 @@
       "sportId": 14,
       "status": "Scheduled",
       "team": "Hill City Howlers",
-      "timeLabel": "2026-08-12T23:05:00Z",
+      "timeLabel": "2026-08-13T23:05:00Z",
       "venue": "Pelicans Ballpark"
     },
     {
@@ -88,13 +88,13 @@
       "awayProbablePitcher": null,
       "awayScore": null,
       "awayTeamId": 432,
-      "gameDate": "2026-08-12T22:35:00Z",
-      "gamePk": 822472,
+      "gameDate": "2026-08-13T22:35:00Z",
+      "gamePk": 822473,
       "home": "Asheville Tourists",
       "homeProbablePitcher": {
-        "fullName": "Javier Perez",
-        "id": 823649,
-        "link": "/api/v1/people/823649"
+        "fullName": "Adam Shoemaker",
+        "id": 692248,
+        "link": "/api/v1/people/692248"
       },
       "homeScore": null,
       "homeTeamId": 573,
@@ -106,25 +106,25 @@
       "sportId": 13,
       "status": "Scheduled",
       "team": "Asheville Tourists",
-      "timeLabel": "2026-08-12T22:35:00Z",
+      "timeLabel": "2026-08-13T22:35:00Z",
       "venue": "HomeTrust Park"
     },
     {
       "away": "Seattle Mariners",
       "awayProbablePitcher": {
-        "fullName": "Bryce Miller",
-        "id": 682243,
-        "link": "/api/v1/people/682243"
+        "fullName": "Logan Gilbert",
+        "id": 669302,
+        "link": "/api/v1/people/669302"
       },
       "awayScore": null,
       "awayTeamId": 136,
-      "gameDate": "2026-08-12T23:05:00Z",
-      "gamePk": 823511,
+      "gameDate": "2026-08-13T17:35:00Z",
+      "gamePk": 823508,
       "home": "New York Yankees",
       "homeProbablePitcher": {
-        "fullName": "Will Warren",
-        "id": 701542,
-        "link": "/api/v1/people/701542"
+        "fullName": "Max Fried",
+        "id": 608331,
+        "link": "/api/v1/people/608331"
       },
       "homeScore": null,
       "homeTeamId": 147,
@@ -136,25 +136,25 @@
       "sportId": 1,
       "status": "Scheduled",
       "team": "Seattle Mariners",
-      "timeLabel": "2026-08-12T23:05:00Z",
+      "timeLabel": "2026-08-13T17:35:00Z",
       "venue": "Yankee Stadium"
     },
     {
       "away": "Chicago Cubs",
       "awayProbablePitcher": {
-        "fullName": "David Peterson",
-        "id": 656849,
-        "link": "/api/v1/people/656849"
+        "fullName": "Kevin Gausman",
+        "id": 592332,
+        "link": "/api/v1/people/592332"
       },
       "awayScore": null,
       "awayTeamId": 112,
-      "gameDate": "2026-08-12T22:45:00Z",
-      "gamePk": 822698,
+      "gameDate": "2026-08-13T20:05:00Z",
+      "gamePk": 822696,
       "home": "Washington Nationals",
       "homeProbablePitcher": {
-        "fullName": "Jackson Kent",
-        "id": 800600,
-        "link": "/api/v1/people/800600"
+        "fullName": "Cade Cavalli",
+        "id": 676917,
+        "link": "/api/v1/people/676917"
       },
       "homeScore": null,
       "homeTeamId": 120,
@@ -166,55 +166,55 @@
       "sportId": 1,
       "status": "Scheduled",
       "team": "Washington Nationals",
-      "timeLabel": "2026-08-12T22:45:00Z",
+      "timeLabel": "2026-08-13T20:05:00Z",
       "venue": "Nationals Park"
     },
     {
-      "away": "Columbus Clingstones",
+      "away": "Charlotte Knights",
       "awayProbablePitcher": {
-        "fullName": "Cam Caminiti",
-        "id": 807284,
-        "link": "/api/v1/people/807284"
+        "fullName": "Shane Smith",
+        "id": 681343,
+        "link": "/api/v1/people/681343"
       },
       "awayScore": null,
-      "awayTeamId": 6325,
-      "gameDate": "2026-08-13T00:00:00Z",
-      "gamePk": 818097,
-      "home": "Birmingham Barons",
+      "awayTeamId": 494,
+      "gameDate": "2026-08-13T17:05:00Z",
+      "gamePk": 815867,
+      "home": "Rochester Red Wings",
       "homeProbablePitcher": {
-        "fullName": "Jake Palisch",
-        "id": 669449,
-        "link": "/api/v1/people/669449"
+        "fullName": "Carson Palmquist",
+        "id": 687223,
+        "link": "/api/v1/people/687223"
       },
       "homeScore": null,
-      "homeTeamId": 247,
-      "level": "Double-A",
+      "homeTeamId": 534,
+      "level": "Triple-A",
       "liveLine": null,
-      "opponent": "Columbus Clingstones",
+      "opponent": "Rochester Red Wings",
       "player": "Drew Thorpe",
       "playerId": 689672,
-      "sportId": 12,
+      "sportId": 11,
       "status": "Scheduled",
-      "team": "Birmingham Barons",
-      "timeLabel": "2026-08-13T00:00:00Z",
-      "venue": "Regions Field"
+      "team": "Charlotte Knights",
+      "timeLabel": "2026-08-13T17:05:00Z",
+      "venue": "ESL Ballpark"
     },
     {
       "away": "South Bend Cubs",
       "awayProbablePitcher": {
-        "fullName": "Braylon Myers",
-        "id": 830742,
-        "link": "/api/v1/people/830742"
+        "fullName": "Nazier Mul\u00e9",
+        "id": 702271,
+        "link": "/api/v1/people/702271"
       },
       "awayScore": null,
       "awayTeamId": 550,
-      "gameDate": "2026-08-12T23:05:00Z",
-      "gamePk": 819919,
+      "gameDate": "2026-08-13T23:05:00Z",
+      "gamePk": 819917,
       "home": "Great Lakes Loons",
       "homeProbablePitcher": {
-        "fullName": "Jacob Frost",
-        "id": 815088,
-        "link": "/api/v1/people/815088"
+        "fullName": "Sterling Patick",
+        "id": 814507,
+        "link": "/api/v1/people/814507"
       },
       "homeScore": null,
       "homeTeamId": 456,
@@ -226,25 +226,25 @@
       "sportId": 13,
       "status": "Scheduled",
       "team": "Great Lakes Loons",
-      "timeLabel": "2026-08-12T23:05:00Z",
+      "timeLabel": "2026-08-13T23:05:00Z",
       "venue": "Dow Diamond"
     },
     {
       "away": "Corpus Christi Hooks",
       "awayProbablePitcher": {
-        "fullName": "Cole Hertzler",
-        "id": 826315,
-        "link": "/api/v1/people/826315"
+        "fullName": "Brett Gillis",
+        "id": 702094,
+        "link": "/api/v1/people/702094"
       },
       "awayScore": null,
       "awayTeamId": 482,
-      "gameDate": "2026-08-12T23:35:00Z",
-      "gamePk": 816989,
+      "gameDate": "2026-08-13T23:35:00Z",
+      "gamePk": 816992,
       "home": "Wichita Wind Surge",
       "homeProbablePitcher": {
-        "fullName": "Preston Johnson",
-        "id": 699980,
-        "link": "/api/v1/people/699980"
+        "fullName": "Riley Quick",
+        "id": 804981,
+        "link": "/api/v1/people/804981"
       },
       "homeScore": null,
       "homeTeamId": 3898,
@@ -256,21 +256,25 @@
       "sportId": 12,
       "status": "Scheduled",
       "team": "Corpus Christi Hooks",
-      "timeLabel": "2026-08-12T23:35:00Z",
+      "timeLabel": "2026-08-13T23:35:00Z",
       "venue": "Equity Bank Park"
     },
     {
       "away": "Wilmington Blue Rocks",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Tucker Biven",
+        "id": 702712,
+        "link": "/api/v1/people/702712"
+      },
       "awayScore": null,
       "awayTeamId": 426,
-      "gameDate": "2026-08-12T22:35:00Z",
-      "gamePk": 822002,
+      "gameDate": "2026-08-13T22:35:00Z",
+      "gamePk": 822000,
       "home": "Hudson Valley Renegades",
       "homeProbablePitcher": {
-        "fullName": "Sean Paul Li\u00f1an",
-        "id": 800344,
-        "link": "/api/v1/people/800344"
+        "fullName": "Bryce Cunningham",
+        "id": 701480,
+        "link": "/api/v1/people/701480"
       },
       "homeScore": null,
       "homeTeamId": 537,
@@ -282,25 +286,25 @@
       "sportId": 13,
       "status": "Scheduled",
       "team": "Hudson Valley Renegades",
-      "timeLabel": "2026-08-12T22:35:00Z",
+      "timeLabel": "2026-08-13T22:35:00Z",
       "venue": "Heritage Financial Park"
     },
     {
       "away": "Binghamton Rumble Ponies",
       "awayProbablePitcher": {
-        "fullName": "Gary Gill Hill",
-        "id": 804541,
-        "link": "/api/v1/people/804541"
+        "fullName": "Dakota Hawkins",
+        "id": 809950,
+        "link": "/api/v1/people/809950"
       },
       "awayScore": null,
       "awayTeamId": 505,
-      "gameDate": "2026-08-12T22:00:00Z",
-      "gamePk": 818436,
+      "gameDate": "2026-08-13T22:00:00Z",
+      "gamePk": 818442,
       "home": "Portland Sea Dogs",
       "homeProbablePitcher": {
-        "fullName": "Jeremy Wu-Yelland",
-        "id": 695026,
-        "link": "/api/v1/people/695026"
+        "fullName": "Hayden Mullins",
+        "id": 683093,
+        "link": "/api/v1/people/683093"
       },
       "homeScore": null,
       "homeTeamId": 546,
@@ -312,25 +316,25 @@
       "sportId": 12,
       "status": "Scheduled",
       "team": "Portland Sea Dogs",
-      "timeLabel": "2026-08-12T22:00:00Z",
+      "timeLabel": "2026-08-13T22:00:00Z",
       "venue": "Delta Dental Park"
     },
     {
       "away": "Spokane Indians",
       "awayProbablePitcher": {
-        "fullName": "Yujanyer Herrera",
-        "id": 692632,
-        "link": "/api/v1/people/692632"
+        "fullName": "Everett Catlett",
+        "id": 700481,
+        "link": "/api/v1/people/700481"
       },
       "awayScore": null,
       "awayTeamId": 486,
-      "gameDate": "2026-08-13T02:05:00Z",
-      "gamePk": 819325,
+      "gameDate": "2026-08-13T19:05:00Z",
+      "gamePk": 819319,
       "home": "Everett AquaSox",
       "homeProbablePitcher": {
-        "fullName": "Taylor Dollard",
-        "id": 693440,
-        "link": "/api/v1/people/693440"
+        "fullName": "Mason Peters",
+        "id": 830336,
+        "link": "/api/v1/people/830336"
       },
       "homeScore": null,
       "homeTeamId": 403,
@@ -342,10 +346,10 @@
       "sportId": 13,
       "status": "Scheduled",
       "team": "Everett AquaSox",
-      "timeLabel": "2026-08-13T02:05:00Z",
+      "timeLabel": "2026-08-13T19:05:00Z",
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-12T14:34:19.052940+00:00",
+  "generatedAt": "2026-08-13T14:34:57.441357+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
