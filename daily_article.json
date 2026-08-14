@@ -2,42 +2,29 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Drew Thorpe worked 5.0 IP, allowing 3 H, 1 R (1 ER) and 0 BB with 6 K.",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "team": "Charlotte Knights",
-      "type": "pitcher"
-    },
-    {
-      "label": "Top Hitter",
-      "line": "Brooks Lee went 2-for-4, 1 run.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Ryan Tayman went 0-for-2, 1 run, 3 walks.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
     },
     {
-      "label": "Top Pitcher",
-      "line": "Drew Thorpe worked 5.0 IP, allowing 3 H, 1 R (1 ER) and 0 BB with 6 K.",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "team": "Charlotte Knights",
-      "type": "pitcher"
+      "label": "Top Hitter",
+      "line": "Ryan Tayman went 0-for-2, 1 run, 3 walks.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
+      "type": "hitter"
     }
   ],
-  "date": "2026-08-12",
-  "dateLabel": "Wednesday, August 12, 2026",
+  "date": "2026-08-13",
+  "dateLabel": "Thursday, August 13, 2026",
   "generatorVersion": "5.37",
   "paragraphs": [
-    "4 former Mustangs appeared in professional games on Wednesday for 4 clubs across 4 levels, with Drew Thorpe producing the night's most notable performance.",
-    "Drew Thorpe worked 5.0 innings, allowing 3 hits and 1 earned run, with 0 walks and 6 strikeouts.",
-    "One of his strikeouts came in the third, on a 1-2 pitch a 92 mph four-seam fastball to strike out Phillip Glasser.",
-    "Charlotte Knights fell to Rochester Red Wings, 1-13.",
-    "Brooks Lee also appeared for Minnesota Twins. He went 2-for-4, 1 run scored. He batted 5th and started at 3B. Minnesota Twins beat Baltimore Orioles, 7-5.",
-    "Steven Brooks also appeared for Portland Sea Dogs at Double-A. He worked 2.0 innings, allowing 2 hits and 0 earned runs, with 0 walks and 1 strikeout. He started at P. Portland Sea Dogs fell to Binghamton Rumble Ponies, 5-13.",
-    "Alejandro Garza also appeared for Hill City Howlers at Single-A. He went 1-for-3. He batted 6th and started at DH. Hill City Howlers fell to Myrtle Beach Pelicans, 1-3.",
-    "Away from the box scores, there was also roster movement involving former Mustangs.",
-    "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Charlotte Knights."
+    "2 former Mustangs appeared in professional games on Thursday for 2 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
+    "Ryan Tayman went 0-for-2, 1 run scored, 3 walks.",
+    "St. Lucie Mets beat Jupiter Hammerheads, 7-2.",
+    "Brooks Lee also appeared for Minnesota Twins. He went 0-for-4. He batted 8th and started at 3B. Minnesota Twins fell to Philadelphia Phillies, 1-7."
   ],
-  "title": "Drew Thorpe turns in a strong outing on the mound"
+  "title": "Ryan Tayman highlights a busy Thursday for former Mustangs"
 }

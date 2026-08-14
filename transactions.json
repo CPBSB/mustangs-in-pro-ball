@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T14:35:07.884128+00:00",
+  "generatedAt": "2026-08-14T12:31:49.116719+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
@@ -35,11 +35,6 @@
       "date": "2026-07-31",
       "description": "3B Alejandro Garza assigned to ACL Guardians.",
       "player": "Alejandro Garza"
-    },
-    {
-      "date": "2026-07-30",
-      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Birmingham Barons.",
-      "player": "Drew Thorpe"
     }
   ]
 }
