@@ -2,29 +2,39 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Ryan Tayman went 0-for-2, 1 run, 3 walks.",
-      "player": "Ryan Tayman",
-      "playerId": 822034,
-      "team": "St. Lucie Mets",
+      "line": "Alejandro Garza went 2-for-3, 2B, 3 RBI, 1 run, 2 walks, 1 SB.",
+      "player": "Alejandro Garza",
+      "playerId": 835211,
+      "team": "Hill City Howlers",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Ryan Tayman went 0-for-2, 1 run, 3 walks.",
-      "player": "Ryan Tayman",
-      "playerId": 822034,
-      "team": "St. Lucie Mets",
+      "line": "Alejandro Garza went 2-for-3, 2B, 3 RBI, 1 run, 2 walks, 1 SB.",
+      "player": "Alejandro Garza",
+      "playerId": 835211,
+      "team": "Hill City Howlers",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Andrew Alvarez worked 5.2 IP, allowing 2 H, 2 R (2 ER) and 1 BB with 4 K and took the loss.",
+      "player": "Andrew Alvarez",
+      "playerId": 674841,
+      "team": "Washington Nationals",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-08-13",
-  "dateLabel": "Thursday, August 13, 2026",
+  "date": "2026-08-14",
+  "dateLabel": "Friday, August 14, 2026",
   "generatorVersion": "5.37",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Thursday for 2 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
-    "Ryan Tayman went 0-for-2, 1 run scored, 3 walks.",
-    "St. Lucie Mets beat Jupiter Hammerheads, 7-2.",
-    "Brooks Lee also appeared for Minnesota Twins. He went 0-for-4. He batted 8th and started at 3B. Minnesota Twins fell to Philadelphia Phillies, 1-7."
+    "2 former Mustangs appeared in professional games on Friday for 2 clubs across 2 levels, with Alejandro Garza producing the night's most notable performance.",
+    "The game's turning point came in the seventh, when Alejandro Garza delivered a go-ahead walk, on a 3-2 pitch from David Bracho.",
+    "Alejandro Garza went 2-for-3, 1 double, 3 RBI, 1 run scored, 2 walks, 1 stolen base.",
+    "Hill City Howlers beat Myrtle Beach Pelicans, 11-7.",
+    "Andrew Alvarez also appeared for Washington Nationals. He worked 5.2 innings, allowing 2 hits and 2 earned runs, with 1 walk and 4 strikeouts. He started at P. Washington Nationals fell to New York Mets, 1-4.",
+    "3 official player-tagged highlight clips were available from the night's games and can be viewed below."
   ],
-  "title": "Ryan Tayman highlights a busy Thursday for former Mustangs"
+  "title": "Alejandro Garza comes through late with a go-ahead hit"
 }

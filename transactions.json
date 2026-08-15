@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T12:31:49.116719+00:00",
+  "generatedAt": "2026-08-15T10:57:45.750137+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
@@ -30,11 +30,6 @@
       "date": "2026-08-03",
       "description": "Washington Nationals recalled LHP Andrew Alvarez from Rochester Red Wings.",
       "player": "Andrew Alvarez"
-    },
-    {
-      "date": "2026-07-31",
-      "description": "3B Alejandro Garza assigned to ACL Guardians.",
-      "player": "Alejandro Garza"
     }
   ]
 }

@@ -24,22 +24,22 @@
       "type": "hitter"
     },
     "674841": {
-      "assignmentDate": "2026-08-08",
+      "assignmentDate": "2026-08-14",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-08",
+        "endDate": "2026-08-14",
         "games": 7,
-        "startDate": "2026-07-01",
+        "startDate": "2026-07-07",
         "stats": {
           "BB": 17,
-          "ER": 15,
-          "ERA": "4.13",
+          "ER": 17,
+          "ERA": "4.54",
           "G": 7,
           "H": 26,
-          "IP": "32.2",
-          "R": 15,
-          "SO": 23,
-          "WHIP": "1.32"
+          "IP": "33.2",
+          "R": 17,
+          "SO": 21,
+          "WHIP": "1.28"
         }
       },
       "name": "Andrew Alvarez",
@@ -47,14 +47,14 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 32,
-        "ER": 29,
-        "ERA": "3.76",
-        "H": 65,
-        "IP": "69.1",
-        "R": 29,
-        "SO": 65,
-        "WHIP": "1.40"
+        "BB": 33,
+        "ER": 31,
+        "ERA": "3.72",
+        "H": 67,
+        "IP": "75.0",
+        "R": 31,
+        "SO": 69,
+        "WHIP": "1.33"
       },
       "team": "Washington Nationals",
       "type": "pitcher"
@@ -386,7 +386,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
-  "updatedAt": "2026-08-14T12:31:19.188965+00:00",
+  "updatedAt": "2026-08-15T10:57:14.911889+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",
