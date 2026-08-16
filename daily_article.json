@@ -2,39 +2,40 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Alejandro Garza went 2-for-3, 2B, 3 RBI, 1 run, 2 walks, 1 SB.",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "team": "Hill City Howlers",
-      "type": "hitter"
+      "line": "Steven Brooks worked 2.1 IP, allowing 2 H, 2 R (0 ER) and 0 BB with 3 K.",
+      "player": "Steven Brooks",
+      "playerId": 809933,
+      "team": "Portland Sea Dogs",
+      "type": "pitcher"
     },
     {
       "label": "Top Hitter",
-      "line": "Alejandro Garza went 2-for-3, 2B, 3 RBI, 1 run, 2 walks, 1 SB.",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "team": "Hill City Howlers",
+      "line": "Brooks Lee went 1-for-4.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
     },
     {
       "label": "Top Pitcher",
-      "line": "Andrew Alvarez worked 5.2 IP, allowing 2 H, 2 R (2 ER) and 1 BB with 4 K and took the loss.",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "team": "Washington Nationals",
+      "line": "Steven Brooks worked 2.1 IP, allowing 2 H, 2 R (0 ER) and 0 BB with 3 K.",
+      "player": "Steven Brooks",
+      "playerId": 809933,
+      "team": "Portland Sea Dogs",
       "type": "pitcher"
     }
   ],
-  "date": "2026-08-14",
-  "dateLabel": "Friday, August 14, 2026",
+  "date": "2026-08-15",
+  "dateLabel": "Saturday, August 15, 2026",
   "generatorVersion": "5.37",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Friday for 2 clubs across 2 levels, with Alejandro Garza producing the night's most notable performance.",
-    "The game's turning point came in the seventh, when Alejandro Garza delivered a go-ahead walk, on a 3-2 pitch from David Bracho.",
-    "Alejandro Garza went 2-for-3, 1 double, 3 RBI, 1 run scored, 2 walks, 1 stolen base.",
-    "Hill City Howlers beat Myrtle Beach Pelicans, 11-7.",
-    "Andrew Alvarez also appeared for Washington Nationals. He worked 5.2 innings, allowing 2 hits and 2 earned runs, with 1 walk and 4 strikeouts. He started at P. Washington Nationals fell to New York Mets, 1-4.",
-    "3 official player-tagged highlight clips were available from the night's games and can be viewed below."
+    "3 former Mustangs appeared in professional games on Saturday for 3 clubs across 3 levels, with Steven Brooks producing the night's most notable performance.",
+    "Steven Brooks worked 2.1 innings, allowing 2 hits and 0 earned runs, with 0 walks and 3 strikeouts.",
+    "One of his strikeouts came in the seventh, on a 2-2 pitch to strike out Kevin Parada.",
+    "Portland Sea Dogs fell to Binghamton Rumble Ponies, 2-14.",
+    "Brooks Lee also appeared for Minnesota Twins. He went 1-for-4. He batted 7th and started at 3B. Minnesota Twins fell to Philadelphia Phillies, 1-9.",
+    "Ryan Tayman also appeared for St. Lucie Mets at Single-A. He went 0-for-4. He batted 5th and started at C. St. Lucie Mets fell to Jupiter Hammerheads, 1-3.",
+    "1 official player-tagged highlight clip was available from the night's games and can be viewed below."
   ],
-  "title": "Alejandro Garza comes through late with a go-ahead hit"
+  "title": "Steven Brooks highlights a busy Saturday for former Mustangs"
 }

@@ -60,12 +60,12 @@
       "type": "pitcher"
     },
     "686797": {
-      "assignmentDate": "2026-08-13",
+      "assignmentDate": "2026-08-15",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-13",
+        "endDate": "2026-08-15",
         "games": 7,
-        "startDate": "2026-08-06",
+        "startDate": "2026-08-08",
         "stats": {
           "2B": 2,
           "3B": 0,
@@ -79,10 +79,10 @@
           "OBP": ".333",
           "OPS": ".816",
           "R": 2,
-          "RBI": 4,
+          "RBI": 2,
           "SB": 0,
           "SLG": ".483",
-          "SO": 3
+          "SO": 5
         }
       },
       "name": "Brooks Lee",
@@ -92,19 +92,19 @@
       "stats": {
         "2B": 19,
         "3B": 3,
-        "AB": 433,
+        "AB": 437,
         "AVG": ".245",
         "BB": 33,
         "CS": 4,
-        "H": 106,
+        "H": 107,
         "HR": 17,
-        "OBP": ".301",
-        "OPS": ".721",
+        "OBP": ".300",
+        "OPS": ".719",
         "R": 53,
         "RBI": 62,
         "SB": 7,
-        "SLG": ".420",
-        "SO": 76
+        "SLG": ".419",
+        "SO": 78
       },
       "team": "Minnesota Twins",
       "type": "hitter"
@@ -386,7 +386,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
-  "updatedAt": "2026-08-15T10:57:14.911889+00:00",
+  "updatedAt": "2026-08-16T10:58:52.136515+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",
