@@ -26,7 +26,7 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-16T18:10:00Z",
       "venue": "Target Field"
@@ -350,6 +350,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-16T17:34:37.596670+00:00",
+  "generatedAt": "2026-08-16T17:40:20.391725+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
