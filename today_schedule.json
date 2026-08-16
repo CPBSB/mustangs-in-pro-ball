@@ -8,7 +8,7 @@
         "id": 691725,
         "link": "/api/v1/people/691725"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 143,
       "gameDate": "2026-08-16T18:10:00Z",
       "gamePk": 823670,
@@ -18,7 +18,7 @@
         "id": 665152,
         "link": "/api/v1/people/665152"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "level": "MLB",
       "liveLine": null,
@@ -26,14 +26,18 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-16T18:10:00Z",
       "venue": "Target Field"
     },
     {
       "away": "St. Lucie Mets",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Will Watson",
+        "id": 814492,
+        "link": "/api/v1/people/814492"
+      },
       "awayScore": null,
       "awayTeamId": 507,
       "gameDate": "2026-08-16T16:30:00Z",
@@ -52,7 +56,7 @@
       "player": "Ryan Tayman",
       "playerId": 822034,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "St. Lucie Mets",
       "timeLabel": "2026-08-16T16:30:00Z",
       "venue": "Roger Dean Chevrolet Stadium"
@@ -104,7 +108,7 @@
       "player": "Zach Daudet",
       "playerId": 836055,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Asheville Tourists",
       "timeLabel": "2026-08-16T17:05:00Z",
       "venue": "HomeTrust Park"
@@ -146,7 +150,7 @@
         "id": 663623,
         "link": "/api/v1/people/663623"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "gameDate": "2026-08-16T17:40:00Z",
       "gamePk": 823590,
@@ -156,7 +160,7 @@
         "id": 681035,
         "link": "/api/v1/people/681035"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 121,
       "level": "MLB",
       "liveLine": null,
@@ -164,7 +168,7 @@
       "player": "Andrew Alvarez",
       "playerId": 674841,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Warmup",
       "team": "Washington Nationals",
       "timeLabel": "2026-08-16T17:40:00Z",
       "venue": "Citi Field"
@@ -181,7 +185,11 @@
       "gameDate": "2026-08-16T17:05:00Z",
       "gamePk": 815865,
       "home": "Rochester Red Wings",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Zak Kent",
+        "id": 687849,
+        "link": "/api/v1/people/687849"
+      },
       "homeScore": null,
       "homeTeamId": 534,
       "level": "Triple-A",
@@ -190,7 +198,7 @@
       "player": "Drew Thorpe",
       "playerId": 689672,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Charlotte Knights",
       "timeLabel": "2026-08-16T17:05:00Z",
       "venue": "ESL Ballpark"
@@ -220,7 +228,7 @@
       "player": "Jakob Wright",
       "playerId": 809915,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Great Lakes Loons",
       "timeLabel": "2026-08-16T17:05:00Z",
       "venue": "Dow Diamond"
@@ -250,7 +258,7 @@
       "player": "Derek True",
       "playerId": 689223,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Corpus Christi Hooks",
       "timeLabel": "2026-08-16T18:05:00Z",
       "venue": "Equity Bank Park"
@@ -280,7 +288,7 @@
       "player": "Bryce Warrecker",
       "playerId": 695425,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Hudson Valley Renegades",
       "timeLabel": "2026-08-16T18:05:00Z",
       "venue": "Heritage Financial Park"
@@ -306,7 +314,7 @@
       "player": "Steven Brooks",
       "playerId": 809933,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Portland Sea Dogs",
       "timeLabel": "2026-08-16T17:00:00Z",
       "venue": "Delta Dental Park"
@@ -342,6 +350,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-16T10:58:53.238458+00:00",
+  "generatedAt": "2026-08-16T17:28:19.231369+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
