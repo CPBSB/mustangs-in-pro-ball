@@ -256,7 +256,52 @@ function heroPhotoCarousel(){
   root.addEventListener('mouseleave',restart);
   restart();
 }
-function renderHome(){ensureGameLinkStyles();heroPhotoCarousel();arrangeDailySections();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(t=>`<div class="transaction-card"><span class="tx-icon">↕</span><div><small>Roster move</small><b>${esc(t.player)}</b><p>${esc(t.description)}</p><span>${esc(t.date||'')}</span></div></div>`).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer();renderArchive()}
+
+function transactionVisual(t){
+  let text=String(t.description||'').toLowerCase();
+  let kind=t.kind||(
+    /injured list|disabled list/.test(text)?'injured':
+    /rehab assignment/.test(text)?'rehab':
+    /recalled|selected the contract|contract selected/.test(text)?'callup':
+    /activated/.test(text)?'activated':
+    /optioned/.test(text)?'optioned':
+    /assigned/.test(text)?'assignment':
+    /transferred/.test(text)?'transfer':
+    /released/.test(text)?'released':'move'
+  );
+  let labels={
+    injured:'Injured List',rehab:'Rehab Assignment',callup:'Call-Up',
+    activated:'Activated',optioned:'Optioned',assignment:'Assignment',
+    transfer:'Transfer',released:'Released',move:'Roster Move'
+  };
+  let icons={
+    injured:'＋',rehab:'↻',callup:'↑',activated:'✓',optioned:'↓',
+    assignment:'↕',transfer:'→',released:'×',move:'↕'
+  };
+  return {kind,label:t.label||labels[kind]||'Roster Move',icon:icons[kind]||'↕'};
+}
+function transactionDate(value){
+  if(!value)return'';
+  let d=new Date(String(value).slice(0,10)+'T12:00:00');
+  if(Number.isNaN(d.getTime()))return value;
+  return new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',year:'numeric'}).format(d);
+}
+function transactionCard(t){
+  let v=transactionVisual(t);
+  return `<article class="transaction-card tx-${v.kind}">
+    <div class="tx-top">
+      <span class="tx-icon" aria-hidden="true">${v.icon}</span>
+      <div class="tx-heading">
+        <small>${esc(v.label)}</small>
+        <b>${esc(t.player)}</b>
+      </div>
+      <time>${esc(transactionDate(t.date))}</time>
+    </div>
+    <p>${esc(t.description)}</p>
+  </article>`;
+}
+
+function renderHome(){ensureGameLinkStyles();heroPhotoCarousel();arrangeDailySections();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(transactionCard).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer();renderArchive()}
 
 function recentOrders(p){return p.type==='hitter'?['G','AB','R','H','2B','3B','HR','RBI','BB','SO','SB','AVG','OBP','SLG','OPS']:['G','IP','H','R','ER','BB','SO','ERA','WHIP']}
 function shortDate(v){if(!v)return'';let d=new Date(v+'T12:00:00');if(Number.isNaN(d.getTime()))return v;return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/Los_Angeles'}).format(d)}
