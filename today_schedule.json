@@ -8,7 +8,7 @@
         "id": 527048,
         "link": "/api/v1/people/527048"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 144,
       "gameDate": "2026-08-17T23:40:00Z",
       "gamePk": 823668,
@@ -18,7 +18,7 @@
         "id": 641927,
         "link": "/api/v1/people/641927"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "level": "MLB",
       "liveLine": null,
@@ -26,12 +26,12 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-17T23:40:00Z",
       "venue": "Target Field"
     }
   ],
-  "generatedAt": "2026-08-17T11:12:30.751997+00:00",
+  "generatedAt": "2026-08-17T23:24:31.735757+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
