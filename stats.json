@@ -56,6 +56,7 @@
         "SO": 69,
         "WHIP": "1.33"
       },
+      "statsSource": "seasonSummary",
       "team": "Washington Nationals",
       "type": "pitcher"
     },
@@ -106,6 +107,7 @@
         "SLG": ".424",
         "SO": 79
       },
+      "statsSource": "seasonSummary",
       "team": "Minnesota Twins",
       "type": "hitter"
     },
@@ -177,6 +179,7 @@
         "SO": 137,
         "WHIP": "1.08"
       },
+      "statsSource": "seasonSummary",
       "team": "Seattle Mariners",
       "type": "pitcher"
     },
@@ -385,8 +388,8 @@
     }
   },
   "season": 2026,
-  "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
-  "updatedAt": "2026-08-17T23:40:22.678556+00:00",
+  "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
+  "updatedAt": "2026-08-17T23:50:56.310694+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",

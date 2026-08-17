@@ -56,21 +56,21 @@
         {
           "description": "Brooks Lee hits a leadoff grand slam to right field in the bottom of the 1st, putting the first runs on the board for the Twin, 4-0",
           "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/dr9mlr8zj1y4d35cnr1l.jpg",
-          "source": "MLB/MiLB official game content",
+          "source": "MLB/MiLB official positive game content",
           "title": "Brooks Lee's GRAND SLAM! (18)",
           "url": "https://bdata-producedclips.mlb.com/74ed70f2-6072-4ece-85a6-fd9b176656c2.m3u8"
         },
         {
           "description": "Brooks Lee hits a long foul ball right before crushing a grand slam to right field in the bottom of the 1st inning",
           "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/vhkas15wjiojgivc5hfd.jpg",
-          "source": "MLB/MiLB official game content",
+          "source": "MLB/MiLB official positive game content",
           "title": "Brooks Lee hits long foul ball before grand slam",
           "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/16/57261e1c-0aa9361a-318d4b57-csvm-diamondgcp-asset.m3u8"
         },
         {
           "description": "Luke Keaschall gets hit by a pitch right after Brooks Lee's grand slam causing the umpires to issue a warning to both teams",
           "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/xtnksqxu0w2npjw8s952.jpg",
-          "source": "MLB/MiLB official game content",
+          "source": "MLB/MiLB official positive game content",
           "title": "Umpires issue warning after HBP on helmet",
           "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/16/109b88fd-314d1285-818a96c1-csvm-diamondgcp-asset.m3u8"
         }
@@ -250,23 +250,16 @@
       "gamePk": 824156,
       "highlights": [
         {
-          "description": "Randy Arozarena and Cal Raleigh both homer to back Bryan Woo, who pitched six strong innings to earn the win vs. the Astros",
-          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/zxnl6brib0ipvokiluu4.jpg",
-          "source": "MLB/MiLB official game content",
-          "title": "Arozarena, Raleigh back Woo in Mariners' 3-2 win",
-          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/16/868e9305-64e950ec-611f25bb-csvm-diamondgcp-asset.m3u8"
-        },
-        {
           "description": "Bryan Woo holds the Astros to three hits and strikes out five in a solid win in Houston",
           "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/qubopglqyzumtmc93wmh.jpg",
-          "source": "MLB/MiLB official game content",
+          "source": "MLB/MiLB official positive game content",
           "title": "Bryan Woo strikes out five in strong win vs. Astros",
           "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/16/558ab392-c4cd588b-95701881-csvm-diamondgcp-asset.m3u8"
         },
         {
           "description": "Bryan Woo strikes out Christian Walker swinging to end the 2nd inning",
           "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/vbc0vihjrvviudvgt7sp.jpg",
-          "source": "MLB/MiLB official game content",
+          "source": "MLB/MiLB official positive game content",
           "title": "Bryan Woo strikes out Walker to end the 2nd",
           "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/16/0314bd8a-cbdcfb4e-42a4ed89-csvm-diamondgcp-asset.m3u8"
         }
@@ -346,9 +339,9 @@
     }
   ],
   "date": "2026-08-16",
-  "generatedAt": "2026-08-17T11:12:38.388807+00:00",
+  "generatedAt": "2026-08-17T23:51:09.747157+00:00",
   "intro": "2 former Mustangs appeared in professional games on 2026-08-16.",
-  "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and game content",
+  "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights",
   "title": "Last Night's Mustangs",
   "warnings": []
 }

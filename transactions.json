@@ -1,35 +1,53 @@
 {
-  "generatedAt": "2026-08-17T11:12:39.059263+00:00",
+  "generatedAt": "2026-08-17T23:50:57.929066+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
       "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Charlotte Knights.",
-      "player": "Drew Thorpe"
+      "kind": "rehab",
+      "label": "Rehab Assignment",
+      "player": "Drew Thorpe",
+      "playerId": 689672
     },
     {
       "date": "2026-08-11",
       "description": "3B Alejandro Garza assigned to Hill City Howlers from ACL Guardians.",
-      "player": "Alejandro Garza"
+      "kind": "assignment",
+      "label": "Assignment",
+      "player": "Alejandro Garza",
+      "playerId": 835211
     },
     {
       "date": "2026-08-07",
       "description": "Portland Sea Dogs activated RHP Steven Brooks.",
-      "player": "Steven Brooks"
+      "kind": "activated",
+      "label": "Activated",
+      "player": "Steven Brooks",
+      "playerId": 809933
     },
     {
       "date": "2026-08-07",
       "description": "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive.",
-      "player": "Steven Brooks"
+      "kind": "assignment",
+      "label": "Assignment",
+      "player": "Steven Brooks",
+      "playerId": 809933
     },
     {
       "date": "2026-08-04",
       "description": "Great Lakes Loons placed LHP Jakob Wright on the 7-day injured list.",
-      "player": "Jakob Wright"
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Jakob Wright",
+      "playerId": 809915
     },
     {
       "date": "2026-08-03",
       "description": "Washington Nationals recalled LHP Andrew Alvarez from Rochester Red Wings.",
-      "player": "Andrew Alvarez"
+      "kind": "callup",
+      "label": "Call-Up",
+      "player": "Andrew Alvarez",
+      "playerId": 674841
     }
   ]
 }
