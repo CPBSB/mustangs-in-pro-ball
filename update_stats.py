@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.45"
+GENERATOR_VERSION = "5.47"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -30,28 +30,86 @@ LEVEL_BY_SPORT_ID = {
 }
 PLAYERS_FILE = ROOT / "players.json"
 
+PLAYER_ID_OVERRIDES = {
+    # Official MLB/MiLB IDs confirmed after the 2026 draft.
+    "Alejandro Garza": 835211,
+}
+
+
+def resolve_player_id(name, existing_id=None):
+    """Resolve a missing/stale MLBAM person ID from the official people search."""
+    override = PLAYER_ID_OVERRIDES.get(name)
+    if override:
+        return override
+
+    if existing_id:
+        return existing_id
+
+    try:
+        data = get_json(
+            "https://statsapi.mlb.com/api/v1/people/search",
+            {"names": name}
+        )
+        people = data.get("people") or []
+        exact = [
+            person for person in people
+            if str(person.get("fullName") or "").strip().lower() == name.strip().lower()
+        ]
+        if len(exact) == 1:
+            return exact[0].get("id")
+    except Exception:
+        pass
+
+    return existing_id
+
+
 def load_players():
     payload = json.loads(PLAYERS_FILE.read_text())
     rows = payload.get("players", payload)
-    return [
-        {
-            "id": p.get("mlbId"),
+
+    changed = False
+    loaded = []
+
+    for source in rows:
+        p = dict(source)
+        player_id = resolve_player_id(p.get("name", ""), p.get("mlbId"))
+
+        # Persist a newly resolved ID so every future workflow run uses the
+        # stable official identifier instead of repeating name discovery.
+        if player_id and p.get("mlbId") != player_id:
+            p["mlbId"] = player_id
+            source["mlbId"] = player_id
+            changed = True
+
+        if not player_id:
+            continue
+
+        loaded.append({
+            "id": player_id,
             "name": p["name"],
             "type": p["type"],
             "teamId": p.get("teamId"),
             "status": p.get("status"),
             "recentLevel": p.get("recentLevel"),
             "team": p.get("team"),
-        }
-        for p in rows if p.get("mlbId")
-    ]
+        })
 
-PLAYERS = load_players()
+    if changed:
+        if isinstance(payload, dict) and "players" in payload:
+            payload["players"] = rows
+            PLAYERS_FILE.write_text(json.dumps(payload, indent=2) + "\n")
+        else:
+            PLAYERS_FILE.write_text(json.dumps(rows, indent=2) + "\n")
+        print("Updated players.json with newly resolved MLB/MiLB player IDs")
+
+    return loaded
 
 def get_json(url, params):
     req=Request(url+"?"+urlencode(params),headers={"User-Agent":"MustangsProBall/1.0"})
     with urlopen(req,timeout=30) as r:
         return json.load(r)
+
+PLAYERS = load_players()
 
 def outs(ip):
     s=str(ip or "0.0"); a,b=(s.split(".")+["0"])[:2]
@@ -310,50 +368,397 @@ def fetch_last_seven(player):
     }
 
 
-def fetch_player(p):
-    group="hitting" if p["type"]=="hitter" else "pitching"
-    url=f"https://statsapi.mlb.com/api/v1/people/{p['id']}/stats"
-    data=get_json(url,{"stats":"season","group":group,"season":SEASON,"sportIds":SPORT_IDS,"hydrate":"team,league"})
-    splits=relevant_splits(data)
-    if not splits:
-        data=get_json(url,{"stats":"yearByYear","group":group,"season":SEASON,"sportIds":SPORT_IDS,"hydrate":"team,league"})
-        splits=relevant_splits(data)
-    if not splits: return None
-    # Prefer an explicit aggregate split when supplied. Otherwise combine team/level rows.
-    aggregate=[s for s in splits if not s.get("team")]
-    used=aggregate[:1] if aggregate else splits
-    team=used[-1].get("team",{}).get("name") or splits[-1].get("team",{}).get("name")
-    recent_team, recent_level, recent_team_id, assignment_source, assignment_date = fetch_recent_assignment(p, splits)
-    if p["type"]=="hitter":
-        totals={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]}
-        ab=totals["atBats"]; h=totals["hits"]
-        # Rate fields should come from an aggregate row where possible. When levels are combined,
-        # AVG and SLG can be calculated exactly; OBP uses the provider value unless full denominator fields exist.
-        st=used[0].get("stat",{}) if len(used)==1 else {}
-        avg=f"{h/ab:.3f}"[1:] if ab else "—"
-        tb=h+totals["doubles"]+2*totals["triples"]+3*totals["homeRuns"]
-        slg=f"{tb/ab:.3f}"[1:] if ab else "—"
-        obp=str(st.get("obp","—")); ops=str(st.get("ops","—"))
-        if obp not in ("—","") and slg!="—":
-            try: ops=f"{float(obp)+float(slg):.3f}"[1:]
-            except: pass
-        stats={"AB":totals["atBats"],"R":totals["runs"],"H":h,"2B":totals["doubles"],"3B":totals["triples"],"HR":totals["homeRuns"],"RBI":totals["rbi"],"BB":totals["baseOnBalls"],"SO":totals["strikeOuts"],"SB":totals["stolenBases"],"CS":totals["caughtStealing"],"AVG":avg,"OBP":obp,"SLG":slg,"OPS":ops}
-        # Reject abbreviated provider summaries: a professional hitter line must include
-        # every counting field used by the card. The previous stats.json entry is preserved
-        # by main() when this function raises, preventing complete lines from being replaced
-        # by headline-only MLB/MiLB summaries.
-        required_provider_keys = ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]
-        if len(used) == 1 and any(key not in used[0].get("stat", {}) for key in required_provider_keys):
-            raise ValueError(f"Incomplete hitting response for {p['name']}")
+
+def season_totals_from_game_log(player):
+    """Build season totals from every official game-log appearance.
+
+    This is the reliable fallback for newly assigned MiLB players whose season
+    summary endpoint can lag for several games or return an abbreviated split.
+    """
+    group = "hitting" if player["type"] == "hitter" else "pitching"
+    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
+    data = get_json(url, {
+        "stats": "gameLog",
+        "group": group,
+        "season": SEASON,
+        "sportIds": SPORT_IDS,
+        "hydrate": "team(sport),league,game"
+    })
+    logs = [
+        row for row in relevant_splits(data)
+        if row.get("stat") and row.get("date")
+    ]
+    if not logs:
+        return None
+
+    # A player can change affiliates/levels during the year. Summing game logs
+    # preserves the complete professional season instead of depending on a
+    # provider-generated aggregate row that may not exist yet.
+    if player["type"] == "hitter":
+        keys = [
+            "atBats","runs","hits","doubles","triples","homeRuns","rbi",
+            "baseOnBalls","strikeOuts","stolenBases","caughtStealing",
+            "hitByPitch","sacFlies"
+        ]
+        totals = {key: sum(num(row.get("stat", {}), key) for row in logs) for key in keys}
+        ab = totals["atBats"]
+        h = totals["hits"]
+        bb = totals["baseOnBalls"]
+        hbp = totals["hitByPitch"]
+        sf = totals["sacFlies"]
+        tb = h + totals["doubles"] + 2*totals["triples"] + 3*totals["homeRuns"]
+        avg = f"{h/ab:.3f}"[1:] if ab else "—"
+        slg = f"{tb/ab:.3f}"[1:] if ab else "—"
+        obp_den = ab + bb + hbp + sf
+        obp = f"{(h+bb+hbp)/obp_den:.3f}"[1:] if obp_den else "—"
+        ops = f"{float(obp)+float(slg):.3f}"[1:] if obp != "—" and slg != "—" else "—"
+        stats = {
+            "AB": ab, "R": totals["runs"], "H": h,
+            "2B": totals["doubles"], "3B": totals["triples"],
+            "HR": totals["homeRuns"], "RBI": totals["rbi"],
+            "BB": bb, "SO": totals["strikeOuts"],
+            "SB": totals["stolenBases"], "CS": totals["caughtStealing"],
+            "AVG": avg, "OBP": obp, "SLG": slg, "OPS": ops
+        }
     else:
-        total_outs=sum(outs(s.get("stat",{}).get("inningsPitched")) for s in used)
-        sums={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]}
-        ip=ip_from_outs(total_outs)
-        era=f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
-        whip=f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
-        stats={"IP":ip,"R":sums["runs"],"ER":sums["earnedRuns"],"BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],"ERA":era,"WHIP":whip}
-    last7 = fetch_last_seven(p)
-    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"recentTeamId":recent_team_id,"assignmentSource":assignment_source,"assignmentDate":assignment_date,"stats":stats,"last7":last7}
+        total_outs = sum(outs(row.get("stat", {}).get("inningsPitched")) for row in logs)
+        sums = {
+            key: sum(num(row.get("stat", {}), key) for row in logs)
+            for key in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]
+        }
+        ip = ip_from_outs(total_outs)
+        era = f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
+        whip = f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
+        stats = {
+            "IP": ip, "R": sums["runs"], "ER": sums["earnedRuns"],
+            "BB": sums["baseOnBalls"], "SO": sums["strikeOuts"],
+            "H": sums["hits"], "ERA": era, "WHIP": whip
+        }
+
+    latest = max(
+        logs,
+        key=lambda row: (
+            str(row.get("date") or ""),
+            int(((row.get("game") or {}).get("gamePk") or 0))
+        )
+    )
+    team, level = assignment_from_split(latest)
+    team_id = (latest.get("team") or {}).get("id")
+    latest_date = str(latest.get("date") or "")[:10] or None
+    return {
+        "stats": stats,
+        "team": team,
+        "level": level,
+        "teamId": team_id,
+        "date": latest_date,
+        "games": len(logs),
+    }
+
+
+
+def stats_from_boxscore_rows(player, rows):
+    """Aggregate a list of official box-score stat dictionaries."""
+    if not rows:
+        return None
+    if player["type"] == "hitter":
+        keys = [
+            "atBats","runs","hits","doubles","triples","homeRuns","rbi",
+            "baseOnBalls","strikeOuts","stolenBases","caughtStealing",
+            "hitByPitch","sacFlies"
+        ]
+        totals = {key: sum(num(row, key) for row in rows) for key in keys}
+        ab = totals["atBats"]; h = totals["hits"]; bb = totals["baseOnBalls"]
+        hbp = totals["hitByPitch"]; sf = totals["sacFlies"]
+        tb = h + totals["doubles"] + 2*totals["triples"] + 3*totals["homeRuns"]
+        avg = f"{h/ab:.3f}"[1:] if ab else "—"
+        slg = f"{tb/ab:.3f}"[1:] if ab else "—"
+        den = ab + bb + hbp + sf
+        obp = f"{(h+bb+hbp)/den:.3f}"[1:] if den else "—"
+        ops = f"{float(obp)+float(slg):.3f}"[1:] if obp != "—" and slg != "—" else "—"
+        return {
+            "AB":ab,"R":totals["runs"],"H":h,"2B":totals["doubles"],
+            "3B":totals["triples"],"HR":totals["homeRuns"],"RBI":totals["rbi"],
+            "BB":bb,"SO":totals["strikeOuts"],"SB":totals["stolenBases"],
+            "CS":totals["caughtStealing"],"AVG":avg,"OBP":obp,"SLG":slg,"OPS":ops
+        }
+
+    total_outs = sum(outs(row.get("inningsPitched")) for row in rows)
+    sums = {
+        key: sum(num(row, key) for row in rows)
+        for key in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]
+    }
+    return {
+        "IP":ip_from_outs(total_outs),"R":sums["runs"],"ER":sums["earnedRuns"],
+        "BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],
+        "ERA":f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—",
+        "WHIP":f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
+    }
+
+
+def current_assignment_boxscore_totals(player, team_id, start_date=None):
+    """Authoritative fallback using the assigned club's schedule + box scores.
+
+    This is intentionally independent of the player's season/gameLog endpoints,
+    which can lag for newly drafted MiLB players.
+    """
+    if not team_id:
+        return None
+
+    today = datetime.now(PACIFIC).date()
+    try:
+        start = datetime.fromisoformat(str(start_date)[:10]).date() if start_date else today - timedelta(days=45)
+    except Exception:
+        start = today - timedelta(days=45)
+    # Include a couple of days before the assignment transaction in case the
+    # provider posts the transaction one day after the first appearance.
+    start = max(today - timedelta(days=90), start - timedelta(days=2))
+
+    try:
+        schedule = get_json("https://statsapi.mlb.com/api/v1/schedule", {
+            "teamId": team_id,
+            "startDate": start.isoformat(),
+            "endDate": today.isoformat(),
+            "hydrate": "team"
+        })
+    except Exception:
+        return None
+
+    rows = []
+    games_seen = 0
+    for date_block in schedule.get("dates", []):
+        for game in date_block.get("games", []):
+            game_pk = game.get("gamePk")
+            state = str((game.get("status") or {}).get("abstractGameState") or "")
+            if not game_pk or state not in ("Final", "Live"):
+                continue
+            games_seen += 1
+            try:
+                box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
+            except Exception:
+                continue
+
+            for side in ("away","home"):
+                team_block = (box.get("teams") or {}).get(side) or {}
+                own_team = team_block.get("team") or {}
+                if own_team.get("id") != team_id:
+                    continue
+                players = team_block.get("players") or {}
+                entry = players.get(f"ID{player['id']}")
+                if not entry:
+                    entry = next(
+                        (value for value in players.values()
+                         if (value.get("person") or {}).get("id") == player["id"]),
+                        None
+                    )
+                if not entry:
+                    continue
+                stat_group = "batting" if player["type"] == "hitter" else "pitching"
+                stat = ((entry.get("stats") or {}).get(stat_group) or {})
+                if player["type"] == "hitter":
+                    if num(stat,"plateAppearances") or num(stat,"atBats") or any(
+                        num(stat,k) for k in ("runs","hits","baseOnBalls","rbi","stolenBases")
+                    ):
+                        rows.append(stat)
+                elif outs(stat.get("inningsPitched")) > 0:
+                    rows.append(stat)
+
+    stats = stats_from_boxscore_rows(player, rows)
+    if not stats:
+        return None
+    return {
+        "stats": stats,
+        "games": len(rows),
+        "scheduledGamesChecked": games_seen,
+        "startDate": start.isoformat(),
+        "endDate": today.isoformat(),
+    }
+
+
+def fetch_player(p):
+    group = "hitting" if p["type"] == "hitter" else "pitching"
+    url = f"https://statsapi.mlb.com/api/v1/people/{p['id']}/stats"
+
+    # Always obtain game-log totals as a cross-check. Newly promoted/assigned
+    # minor leaguers frequently have game logs before the season summary feed
+    # has produced a complete aggregate line.
+    game_log = None
+    try:
+        game_log = season_totals_from_game_log(p)
+    except Exception:
+        game_log = None
+
+    splits = []
+    try:
+        data = get_json(url, {
+            "stats": "season", "group": group, "season": SEASON,
+            "sportIds": SPORT_IDS, "hydrate": "team,league"
+        })
+        splits = relevant_splits(data)
+    except Exception:
+        splits = []
+
+    if not splits:
+        try:
+            data = get_json(url, {
+                "stats": "yearByYear", "group": group, "season": SEASON,
+                "sportIds": SPORT_IDS, "hydrate": "team,league"
+            })
+            splits = relevant_splits(data)
+        except Exception:
+            splits = []
+
+    aggregate = [row for row in splits if not row.get("team")]
+    used = aggregate[:1] if aggregate else splits
+    team = (
+        (used[-1].get("team") or {}).get("name") if used else None
+    ) or (
+        (splits[-1].get("team") or {}).get("name") if splits else None
+    )
+
+    recent_team, recent_level, recent_team_id, assignment_source, assignment_date = fetch_recent_assignment(p, splits)
+
+    boxscore_fallback = None
+    provider_stats = None
+    provider_complete = False
+
+    if p["type"] == "hitter" and used:
+        required = [
+            "atBats","runs","hits","doubles","triples","homeRuns","rbi",
+            "baseOnBalls","strikeOuts","stolenBases","caughtStealing"
+        ]
+        provider_complete = not (
+            len(used) == 1
+            and any(key not in used[0].get("stat", {}) for key in required)
+        )
+        if provider_complete:
+            totals = {k: sum(num(row.get("stat", {}), k) for row in used) for k in required}
+            ab = totals["atBats"]
+            h = totals["hits"]
+            st = used[0].get("stat", {}) if len(used) == 1 else {}
+            avg = f"{h/ab:.3f}"[1:] if ab else "—"
+            tb = h + totals["doubles"] + 2*totals["triples"] + 3*totals["homeRuns"]
+            slg = f"{tb/ab:.3f}"[1:] if ab else "—"
+            obp = str(st.get("obp", "—"))
+            ops = str(st.get("ops", "—"))
+            if obp not in ("—", "") and slg != "—":
+                try:
+                    ops = f"{float(obp)+float(slg):.3f}"[1:]
+                except Exception:
+                    pass
+            provider_stats = {
+                "AB": totals["atBats"], "R": totals["runs"], "H": h,
+                "2B": totals["doubles"], "3B": totals["triples"],
+                "HR": totals["homeRuns"], "RBI": totals["rbi"],
+                "BB": totals["baseOnBalls"], "SO": totals["strikeOuts"],
+                "SB": totals["stolenBases"], "CS": totals["caughtStealing"],
+                "AVG": avg, "OBP": obp, "SLG": slg, "OPS": ops
+            }
+
+    elif p["type"] == "pitcher" and used:
+        provider_complete = True
+        total_outs = sum(outs(row.get("stat", {}).get("inningsPitched")) for row in used)
+        sums = {
+            k: sum(num(row.get("stat", {}), k) for row in used)
+            for k in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]
+        }
+        ip = ip_from_outs(total_outs)
+        era = f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
+        whip = f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
+        provider_stats = {
+            "IP": ip, "R": sums["runs"], "ER": sums["earnedRuns"],
+            "BB": sums["baseOnBalls"], "SO": sums["strikeOuts"],
+            "H": sums["hits"], "ERA": era, "WHIP": whip
+        }
+
+    # Prefer the game-log aggregation whenever it proves the player has more
+    # current activity than the summary endpoint. This fixes blank cards for
+    # players like Alejandro Garza immediately after they begin Low-A games.
+    stats = provider_stats
+    stats_source = "seasonSummary"
+    if game_log:
+        gl_stats = game_log["stats"]
+        if stats is None:
+            stats = gl_stats
+            stats_source = "gameLogAggregate"
+        elif p["type"] == "hitter":
+            if num(gl_stats, "AB") > num(stats, "AB") or not provider_complete:
+                stats = gl_stats
+                stats_source = "gameLogAggregate"
+        else:
+            if outs(gl_stats.get("IP")) > outs(stats.get("IP")):
+                stats = gl_stats
+                stats_source = "gameLogAggregate"
+
+    # If both season-summary and personal game-log feeds are blank/stale, audit
+    # the assigned club's official box scores. This is the strongest fallback for
+    # new MiLB players such as Alejandro Garza.
+    needs_boxscore = stats is None
+    if stats is not None and p["type"] == "hitter":
+        needs_boxscore = num(stats, "AB") == 0
+    elif stats is not None and p["type"] == "pitcher":
+        needs_boxscore = outs(stats.get("IP")) == 0
+
+    if needs_boxscore and recent_team_id:
+        try:
+            boxscore_fallback = current_assignment_boxscore_totals(
+                p, recent_team_id, assignment_date
+            )
+        except Exception:
+            boxscore_fallback = None
+        if boxscore_fallback and boxscore_fallback.get("stats"):
+            stats = boxscore_fallback["stats"]
+            stats_source = "officialTeamBoxscores"
+
+    if stats is None:
+        return None
+
+    # Game-log assignment is also useful when a transaction has not populated
+    # the season-summary team yet.
+    if game_log:
+        gl_date = game_log.get("date")
+        if (
+            not recent_team
+            or not assignment_date
+            or (gl_date and gl_date >= assignment_date)
+        ):
+            recent_team = game_log.get("team") or recent_team
+            recent_level = game_log.get("level") or recent_level
+            recent_team_id = game_log.get("teamId") or recent_team_id
+            assignment_source = "gameLog"
+            assignment_date = gl_date or assignment_date
+
+    # For hitters with a current-team assignment, a non-zero summary can still
+    # lag. Compare the current-team boxscore AB total against a zero/very small
+    # provider line for newly active players.
+    if recent_team_id and p["type"] == "hitter" and num(stats, "AB") < 5:
+        try:
+            boxscore_fallback = boxscore_fallback or current_assignment_boxscore_totals(
+                p, recent_team_id, assignment_date
+            )
+        except Exception:
+            boxscore_fallback = boxscore_fallback
+        if boxscore_fallback and num(boxscore_fallback.get("stats", {}), "AB") > num(stats, "AB"):
+            stats = boxscore_fallback["stats"]
+            stats_source = "officialTeamBoxscores"
+
+    try:
+        last7 = fetch_last_seven(p)
+    except Exception:
+        # Do not let a lagging player gameLog endpoint discard otherwise valid
+        # season totals obtained from official box scores.
+        last7 = {"games":0,"stats":{},"startDate":None,"endDate":None}
+    return {
+        "name": p["name"], "type": p["type"],
+        "team": team or (game_log or {}).get("team"),
+        "recentTeam": recent_team or team or (game_log or {}).get("team"),
+        "recentLevel": recent_level or (game_log or {}).get("level"),
+        "recentTeamId": recent_team_id or (game_log or {}).get("teamId"),
+        "assignmentSource": assignment_source,
+        "assignmentDate": assignment_date,
+        "statsSource": stats_source,
+        "stats": stats,
+        "last7": last7
+    }
 
 
 def fmt_ip(value):
@@ -665,7 +1070,6 @@ def mph_text(value):
         return f"{int(round(float(value)))} mph"
     except Exception:
         return None
-
 
 
 def find_milb_highlights(player, game_date=None):
@@ -2013,7 +2417,7 @@ def main():
             suffix = "; assignment updated while preserving saved stats" if patched else ""
             errors.append(f"{p['name']}: {e}{suffix}")
         time.sleep(.15)
-    payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined","players":players,"warnings":errors}
+    payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled","players":players,"warnings":errors}
     OUTPUT.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
     print(f"Wrote {OUTPUT} with {len(players)} player records")
     # Today's schedule and recent transactions refresh in both modes.
