@@ -1,1993 +1,318 @@
-#!/usr/bin/env python3
-"""Generate stats.json from MLB's public statistics service.
+const DATA={players:[],stats:{},statsMeta:null,summary:null,daily:null,schedule:null,transactions:null,career:null,archive:null};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const headshot=(id,minor=false)=>`https://img.mlbstatic.com/mlb-photos/image/upload/c_fill,g_auto,w_600,q_auto:best,f_auto/v1/people/${id}/headshot/${minor?'milb/':'67/'}current`;
+const logo=id=>id?`https://www.mlbstatic.com/team-logos/${id}.svg`:'';
+const levels=['MLB','Triple-A','Double-A','High-A','Single-A','Rookie','Awaiting Pro Assignment','Free Agent'];
+function normalizedLevel(p){if(p.status==='fa')return'Free Agent';if(p.status==='mlb')return'MLB';let s=`${p.recentLevel||''} ${p.statusLabel||''}`.toLowerCase();if(s.includes('triple'))return'Triple-A';if(s.includes('double'))return'Double-A';if(s.includes('high'))return'High-A';if(s.includes('single')||s.includes('low-a'))return'Single-A';if(/rookie|acl|fcl|dsl/.test(s))return'Rookie';return'Awaiting Pro Assignment'}
+function merge(){DATA.players=DATA.players.map(p=>{let f=DATA.stats[String(p.mlbId)]||{};return{...p,...f,stats:{...(p.stats||{}),...(f.stats||{})}}})}
+async function loadAll(){let names=['players','stats','nightly_summary','daily_article','today_schedule','transactions','career_mlb','archive'];let vals=await Promise.all(names.map(n=>fetch(`${n}.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)));DATA.players=vals[0]?.players||[];DATA.statsMeta=vals[1]||null;DATA.stats=vals[1]?.players||{};DATA.summary=vals[2];DATA.daily=vals[3];DATA.schedule=vals[4];DATA.transactions=vals[5];DATA.career=vals[6]||{players:[]};DATA.archive=vals[7]||{editions:[]};merge()}
+function portrait(p,cls=''){return`<div class="portrait ${cls}"><img src="${headshot(p.mlbId)}" data-alt="${headshot(p.mlbId,true)}" alt="${esc(p.name)} headshot" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src=this.dataset.alt}else{this.style.display='none';this.nextElementSibling.style.display='grid'}"><span class="portrait-fallback">${esc(p.initials||'CP')}</span></div>`}
+function orders(p){return p.type==='hitter'?['AB','R','H','2B','3B','HR','RBI','BB','SO','SB','CS','AVG','OBP','SLG','OPS']:['IP','R','ER','BB','SO','H','ERA','WHIP']}
+function playerCard(p){return`<article class="player-card"><div class="player-top">${portrait(p)}<div><div class="player-name">${esc(p.name)}</div><div class="assignment"><b>${esc(p.position)}</b><br>${esc(p.recentTeam||p.team)} · ${esc(normalizedLevel(p))}</div><span class="level-badge">${esc(p.statusLabel||normalizedLevel(p))}</span></div>${p.teamId?`<img class="team-logo" src="${logo(p.teamId)}" alt="">`:''}</div><div class="stats ${p.type==='pitcher'?'pitcher':''}">${orders(p).map(k=>`<div class="stat"><b>${esc(p.stats?.[k]??'—')}</b><small>${k}</small></div>`).join('')}</div><div class="player-note">${esc(p.note||'')}</div><div class="card-actions"><a href="player.html?id=${p.mlbId}">View Mustang profile</a>${p.profileUrl?`<a href="${esc(p.profileUrl)}" target="_blank" rel="noopener">Official profile ↗</a>`:''}</div></article>`}
+function awardCard(a){let p=DATA.players.find(x=>String(x.mlbId)===String(a.playerId))||DATA.players.find(x=>x.name===a.player);return`<div class="award">${p?portrait(p,'award-photo'):''}<div class="award-copy"><small>${esc(a.label)}</small><strong>${esc(a.player)}</strong>${a.team?`<em>${esc(a.team)}</em>`:''}<span>${esc(a.line||'')}</span></div></div>`}
+function highlightCard(h){return`<article class="highlight"><div class="video-wrap"><video controls preload="metadata" poster="${esc(h.image||'')}"><source src="${esc(h.url)}"></video></div><div><b>${esc(h.title)}</b><p>${esc(h.player)}</p><a href="${esc(h.url)}" target="_blank" rel="noopener">Open official video ↗</a></div></article>`}
+function leaderCard(label,p,k){if(!p)return`<div class="leader-card untracked"><small>${label}</small><b>Not tracked yet</b></div>`;return`<div class="leader-card">${portrait(p,'leader-portrait')}<div class="leader-copy"><small>${label}</small><b>${esc(p.name)}</b><strong>${esc(p.stats[k])} ${k}</strong><span class="meta">${esc(p.recentTeam||p.team)} · ${esc(normalizedLevel(p))}</span></div>${p.teamId?`<img class="team-logo" src="${logo(p.teamId)}" alt="">`:''}</div>`}
+function leaders(){let hitters=DATA.players.filter(p=>p.type==='hitter'&&p.status!=='fa'),pitchers=DATA.players.filter(p=>p.type==='pitcher'&&p.status!=='fa');let n=v=>{let x=parseFloat(String(v).replace('—',''));return Number.isFinite(x)?x:-Infinity};let best=(arr,key,min=false)=>arr.filter(p=>n(p.stats?.[key])!==-Infinity).sort((a,b)=>(min?1:-1)*(n(a.stats[key])-n(b.stats[key])))[0];$('#hitterLeaders').innerHTML=[['Highest AVG',best(hitters,'AVG'),'AVG'],['Highest OPS',best(hitters,'OPS'),'OPS'],['Most HR',best(hitters,'HR'),'HR'],['Most RBI',best(hitters,'RBI'),'RBI'],['Most SB',best(hitters,'SB'),'SB']].map(x=>leaderCard(...x)).join('');$('#pitcherLeaders').innerHTML=[['Lowest ERA',best(pitchers,'ERA',true),'ERA'],['Most Strikeouts',best(pitchers,'SO'),'SO'],['Lowest WHIP',best(pitchers,'WHIP',true),'WHIP']].map(x=>leaderCard(...x)).join('')}
+function careerNumber(v){let n=parseFloat(String(v??'').replace(/,/g,''));return Number.isFinite(n)?n:-Infinity}function careerIp(v){let s=String(v??'0'),[i,f='0']=s.split('.');return(parseInt(i)||0)+((parseInt(f)||0)/3)}
+function careerLeaderCard(label,p,key){if(!p)return'';return`<a class="career-leader-card" href="${esc(p.url)}" target="_blank" rel="noopener"><small>${esc(label)}</small><b>${esc(p.name)}</b><strong>${esc(p.stats?.[key]??'—')}</strong><span>${esc(p.years)} · Baseball Reference ↗</span>${p.hof?'<i class="hof-badge">HOF</i>':''}</a>`}
+function careerCard(p){let keys=p.type==='hitter'?['AB','H','HR','RBI','SB','AVG','OBP','OPS']:['G','GS','W','L','SV','IP','SO','ERA','WHIP'];return`<a class="career-card" href="${esc(p.url)}" target="_blank" rel="noopener"><div class="career-card-head"><div><span class="career-type">${p.type==='hitter'?'Hitter':'Pitcher'}</span><h4>${esc(p.name)}</h4><p>${esc(p.years)}</p></div>${p.hof?'<span class="hof-badge">Hall of Fame</span>':'<span class="br-badge">B-R ↗</span>'}</div><div class="career-stats">${keys.map(k=>`<div><b>${esc(p.stats?.[k]??'—')}</b><small>${k}</small></div>`).join('')}</div></a>`}
+function renderCareer(){let all=DATA.career?.players||[],hitters=all.filter(p=>p.type==='hitter'),pitchers=all.filter(p=>p.type==='pitcher');if(!all.length)return;let max=(arr,key)=>[...arr].sort((a,b)=>careerNumber(b.stats?.[key])-careerNumber(a.stats?.[key]))[0],minRate=(arr,key,minIp=200)=>[...arr].filter(p=>careerIp(p.stats?.IP)>=minIp&&careerNumber(p.stats?.[key])!==-Infinity).sort((a,b)=>careerNumber(a.stats?.[key])-careerNumber(b.stats?.[key]))[0];let bestOps=[...hitters].filter(p=>careerNumber(p.stats?.AB)>=500).sort((a,b)=>careerNumber(b.stats?.OPS)-careerNumber(a.stats?.OPS))[0];$('#careerHitterLeaders').innerHTML=[['Most Hits',max(hitters,'H'),'H'],['Most Home Runs',max(hitters,'HR'),'HR'],['Most RBI',max(hitters,'RBI'),'RBI'],['Most Stolen Bases',max(hitters,'SB'),'SB'],['Highest OPS (500+ AB)',bestOps,'OPS']].map(x=>careerLeaderCard(...x)).join('');$('#careerPitcherLeaders').innerHTML=[['Most Wins',max(pitchers,'W'),'W'],['Most Strikeouts',max(pitchers,'SO'),'SO'],['Most Saves',max(pitchers,'SV'),'SV'],['Most Games',max(pitchers,'G'),'G'],['Lowest ERA (200+ IP)',minRate(pitchers,'ERA'),'ERA'],['Lowest WHIP (200+ IP)',minRate(pitchers,'WHIP'),'WHIP']].map(x=>careerLeaderCard(...x)).join('');$('#careerHitters').innerHTML=[...hitters].sort((a,b)=>a.name.localeCompare(b.name)).map(careerCard).join('');$('#careerPitchers').innerHTML=[...pitchers].sort((a,b)=>a.name.localeCompare(b.name)).map(careerCard).join('');$('#careerCount').textContent=`${all.length} Mustangs have reached Major League Baseball`}
+function renderRoster(){let q=($('#search')?.value||'').toLowerCase(),sort=$('#sort')?.value||'level';let list=DATA.players.filter(p=>!q||`${p.name} ${p.position} ${p.team} ${p.recentTeam} ${normalizedLevel(p)}`.toLowerCase().includes(q));if(sort==='name')list.sort((a,b)=>a.name.localeCompare(b.name));else if(sort==='organization')list.sort((a,b)=>(a.team||'').localeCompare(b.team||'')||a.name.localeCompare(b.name));else if(sort==='position')list.sort((a,b)=>(a.position||'').localeCompare(b.position||'')||a.name.localeCompare(b.name));else list.sort((a,b)=>levels.indexOf(normalizedLevel(a))-levels.indexOf(normalizedLevel(b))||a.name.localeCompare(b.name));let root=$('#roster');if(sort!=='level'){root.innerHTML=`<div class="grid">${list.map(playerCard).join('')}</div>`;return}root.innerHTML=levels.map(l=>{let ps=list.filter(p=>normalizedLevel(p)===l);return ps.length?`<section class="level-section"><div class="level-header" data-level="${l}"><h3>${l}</h3><span class="level-count">${ps.length} Mustang${ps.length===1?'':'s'}</span></div><div class="grid">${ps.map(playerCard).join('')}</div></section>`:''}).join('')}
 
-Designed for GitHub Actions. Existing stats are preserved for any player whose
-request fails, so a temporary provider outage cannot blank the website.
-"""
-from __future__ import annotations
-import argparse, json, os, re, sys, time
-from datetime import datetime, timedelta, timezone
-from pathlib import Path
-from zoneinfo import ZoneInfo
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
-
-SEASON = int(os.getenv("BASEBALL_SEASON", datetime.now().year))
-ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT
-OUTPUT = ROOT / "stats.json"
-SUMMARY_OUTPUT = ROOT / "nightly_summary.json"
-DAILY_OUTPUT = ROOT / "daily_article.json"
-SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
-TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
-ARCHIVE_OUTPUT = ROOT / "archive.json"
-PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.44"
-SPORT_IDS = "1,11,12,13,14,15,16"
-LEVEL_BY_SPORT_ID = {
-    1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
-    14: "Single-A", 15: "Rookie", 16: "Rookie"
+function pacificTime(iso){if(!iso)return'TBD';try{return new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'numeric',minute:'2-digit'}).format(new Date(iso))+' PT'}catch{return iso}}
+function probableName(p){return p?.fullName||p?.name||'TBD'}
+function probableId(p){return p?.id||null}
+function starterHtml(label,p){let id=probableId(p);return`<div class="starter"><span>${label}</span>${id?`<img src="${headshot(id)}" alt="${esc(probableName(p))}" onerror="this.style.display='none'">`:''}<b>${esc(probableName(p))}</b></div>`}
+function gamedayUrl(g){
+  if(!g?.gamePk)return '';
+  let status=String(g.status||'');
+  let final=/final|completed|game over/i.test(status);
+  let live=/in progress|live|delayed|manager challenge|review/i.test(status);
+  let domain=Number(g.sportId)===1?'https://www.mlb.com':'https://www.milb.com';
+  let view=final?'final/box':live?'live':'preview';
+  return `${domain}/gameday/${g.gamePk}/${view}`;
 }
-PLAYERS_FILE = ROOT / "players.json"
-
-def load_players():
-    payload = json.loads(PLAYERS_FILE.read_text())
-    rows = payload.get("players", payload)
-    return [
-        {
-            "id": p.get("mlbId"),
-            "name": p["name"],
-            "type": p["type"],
-            "teamId": p.get("teamId"),
-            "status": p.get("status"),
-            "recentLevel": p.get("recentLevel"),
-            "team": p.get("team"),
-        }
-        for p in rows if p.get("mlbId")
-    ]
-
-PLAYERS = load_players()
-
-def get_json(url, params):
-    req=Request(url+"?"+urlencode(params),headers={"User-Agent":"MustangsProBall/1.0"})
-    with urlopen(req,timeout=30) as r:
-        return json.load(r)
-
-def outs(ip):
-    s=str(ip or "0.0"); a,b=(s.split(".")+["0"])[:2]
-    return int(a)*3+int(b)
-
-def ip_from_outs(n): return f"{n//3}.{n%3}"
-
-def num(stat,key):
-    v=stat.get(key,0)
-    try: return int(v)
-    except:
-        try: return float(v)
-        except: return 0
-
-def relevant_splits(payload):
-    result=[]
-    for block in payload.get("stats",[]):
-        for split in block.get("splits",[]):
-            season=str(split.get("season", SEASON))
-            if season != str(SEASON): continue
-            result.append(split)
-    return result
-
-def assignment_from_split(split):
-    team = (split.get("team") or {}).get("name")
-    sport = split.get("sport") or (split.get("team") or {}).get("sport") or {}
-    sport_id = sport.get("id")
-    level = LEVEL_BY_SPORT_ID.get(sport_id) or sport.get("name")
-    if not level:
-        league = split.get("league") or {}
-        level = league.get("name")
-    return team, level
-
-
-
-_TEAM_CATALOG = None
-
-def team_catalog():
-    """Cache affiliated MLB/MiLB teams so transaction text can resolve a destination."""
-    global _TEAM_CATALOG
-    if _TEAM_CATALOG is not None:
-        return _TEAM_CATALOG
-    rows = []
-    try:
-        data = get_json("https://statsapi.mlb.com/api/v1/teams", {
-            "sportIds": SPORT_IDS,
-            "season": SEASON,
-            "hydrate": "sport,league"
-        })
-        for team in data.get("teams", []):
-            sport = team.get("sport") or {}
-            level = LEVEL_BY_SPORT_ID.get(sport.get("id")) or sport.get("name")
-            rows.append({
-                "id": team.get("id"),
-                "name": team.get("name"),
-                "level": level,
-            })
-    except Exception:
-        rows = []
-    _TEAM_CATALOG = rows
-    return rows
-
-
-def transaction_team_from_description(description):
-    """Resolve a team named in an official transaction description."""
-    text = str(description or "").lower()
-    if not text:
-        return None, None, None
-
-    matches = []
-    for team in team_catalog():
-        name = str(team.get("name") or "")
-        if name and name.lower() in text:
-            matches.append(team)
-
-    if not matches:
-        return None, None, None
-
-    # Official descriptions commonly read "assigned ... to DESTINATION from SOURCE".
-    # When two teams are present, prefer the team named after " to ".
-    to_pos = text.find(" to ")
-    if to_pos >= 0:
-        after = text[to_pos + 4:]
-        for team in matches:
-            if str(team.get("name") or "").lower() in after:
-                return team.get("name"), team.get("level"), team.get("id")
-
-    # "Activated by Portland Sea Dogs", "recalled by X", etc. normally contain
-    # only the destination/current club.
-    team = matches[-1]
-    return team.get("name"), team.get("level"), team.get("id")
-
-
-def fetch_transaction_assignment(player, days=30):
-    """Return the newest official transaction-based team assignment, if identifiable."""
-    end = datetime.now(PACIFIC).date()
-    start = end - timedelta(days=days)
-    try:
-        data = get_json(
-            f"https://statsapi.mlb.com/api/v1/people/{player['id']}",
-            {"hydrate": f"transactions(startDate={start.isoformat()},endDate={end.isoformat()})"}
-        )
-        person = (data.get("people") or [{}])[0]
-        txs = list(person.get("transactions") or [])
-    except Exception:
-        return None, None, None, None
-
-    txs.sort(key=lambda t: str(t.get("date") or ""), reverse=True)
-
-    for tx in txs:
-        tx_date = str(tx.get("date") or "")[:10] or None
-        desc = tx.get("description") or tx.get("typeDesc") or ""
-
-        # Prefer structured destination-team metadata when the API provides it.
-        to_team = tx.get("toTeam") or tx.get("team")
-        if isinstance(to_team, dict) and (to_team.get("id") or to_team.get("name")):
-            tid = to_team.get("id")
-            tname = to_team.get("name")
-            level = None
-            for row in team_catalog():
-                if (tid and row.get("id") == tid) or (tname and row.get("name") == tname):
-                    tname = row.get("name") or tname
-                    level = row.get("level")
-                    tid = row.get("id") or tid
-                    break
-            if tname:
-                return tname, level, tid, tx_date
-
-        tname, level, tid = transaction_team_from_description(desc)
-        if tname:
-            return tname, level, tid, tx_date
-
-    return None, None, None, None
-
-
-def fetch_recent_assignment(player, fallback_splits=None):
-    """Resolve current assignment using newest transaction before stale game logs."""
-    group = "hitting" if player["type"] == "hitter" else "pitching"
-
-    tx_team, tx_level, tx_team_id, tx_date = fetch_transaction_assignment(player)
-
-    log_team = log_level = log_team_id = log_date = None
-    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    try:
-        data = get_json(url, {
-            "stats": "gameLog", "group": group, "season": SEASON,
-            "sportIds": SPORT_IDS, "hydrate": "team(sport),league,game"
-        })
-        logs = relevant_splits(data)
-        if logs:
-            latest = max(logs, key=lambda item: str(item.get("date", "")))
-            log_team, log_level = assignment_from_split(latest)
-            log_team_id = (latest.get("team") or {}).get("id")
-            log_date = str(latest.get("date") or "")[:10] or None
-    except Exception:
-        pass
-
-    # If a transaction is at least as new as the latest appearance, it represents
-    # the current roster assignment even if the player has not debuted there yet.
-    if tx_team and (not log_date or not tx_date or tx_date >= log_date):
-        return tx_team, tx_level or log_level, tx_team_id, "transaction", tx_date
-
-    if log_team or log_level:
-        return log_team, log_level, log_team_id, "gameLog", log_date
-
-    # Season/year-by-year splits are the next-best fallback.
-    for split in reversed(fallback_splits or []):
-        team, level = assignment_from_split(split)
-        team_id = (split.get("team") or {}).get("id")
-        if team or level:
-            return team, level, team_id, "seasonSplit", None
-
-    # A recognizable transaction is still better than an old saved assignment.
-    if tx_team:
-        return tx_team, tx_level, tx_team_id, "transaction", tx_date
-
-    return None, None, None, None, None
-
-
-def fetch_last_seven(player):
-    """Aggregate a player's seven most recent professional game-log appearances."""
-    group = "hitting" if player["type"] == "hitter" else "pitching"
-    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "gameLog",
-        "group": group,
-        "season": SEASON,
-        "sportIds": SPORT_IDS,
-        "hydrate": "team(sport),league,game"
-    })
-    logs = relevant_splits(data)
-    logs = [row for row in logs if row.get("date") and row.get("stat")]
-    logs.sort(
-        key=lambda row: (
-            str(row.get("date") or ""),
-            int(((row.get("game") or {}).get("gamePk") or 0))
-        ),
-        reverse=True
-    )
-    recent = logs[:7]
-    if not recent:
-        return {"games": 0, "stats": {}, "startDate": None, "endDate": None}
-
-    dates = [str(row.get("date"))[:10] for row in recent if row.get("date")]
-    start_date = min(dates) if dates else None
-    end_date = max(dates) if dates else None
-
-    if player["type"] == "hitter":
-        keys = [
-            "atBats","runs","hits","doubles","triples","homeRuns","rbi",
-            "baseOnBalls","strikeOuts","stolenBases","caughtStealing",
-            "hitByPitch","sacFlies"
-        ]
-        totals = {key: sum(num(row.get("stat", {}), key) for row in recent) for key in keys}
-        ab = totals["atBats"]
-        h = totals["hits"]
-        bb = totals["baseOnBalls"]
-        hbp = totals["hitByPitch"]
-        sf = totals["sacFlies"]
-        tb = h + totals["doubles"] + 2 * totals["triples"] + 3 * totals["homeRuns"]
-        avg = f"{h/ab:.3f}"[1:] if ab else "—"
-        slg = f"{tb/ab:.3f}"[1:] if ab else "—"
-        obp_den = ab + bb + hbp + sf
-        obp = f"{(h+bb+hbp)/obp_den:.3f}"[1:] if obp_den else "—"
-        try:
-            ops = f"{float(obp)+float(slg):.3f}"[1:] if obp != "—" and slg != "—" else "—"
-        except Exception:
-            ops = "—"
-        stats = {
-            "G": len(recent), "AB": ab, "R": totals["runs"], "H": h,
-            "2B": totals["doubles"], "3B": totals["triples"], "HR": totals["homeRuns"],
-            "RBI": totals["rbi"], "BB": bb, "SO": totals["strikeOuts"],
-            "SB": totals["stolenBases"], "CS": totals["caughtStealing"],
-            "AVG": avg, "OBP": obp, "SLG": slg, "OPS": ops
-        }
-    else:
-        total_outs = sum(outs(row.get("stat", {}).get("inningsPitched")) for row in recent)
-        sums = {
-            key: sum(num(row.get("stat", {}), key) for row in recent)
-            for key in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]
-        }
-        ip = ip_from_outs(total_outs)
-        era = f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
-        whip = f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
-        stats = {
-            "G": len(recent), "IP": ip, "H": sums["hits"], "R": sums["runs"],
-            "ER": sums["earnedRuns"], "BB": sums["baseOnBalls"],
-            "SO": sums["strikeOuts"], "ERA": era, "WHIP": whip
-        }
-
-    return {
-        "games": len(recent),
-        "startDate": start_date,
-        "endDate": end_date,
-        "stats": stats
-    }
-
-
-def fetch_player(p):
-    group="hitting" if p["type"]=="hitter" else "pitching"
-    url=f"https://statsapi.mlb.com/api/v1/people/{p['id']}/stats"
-    data=get_json(url,{"stats":"season","group":group,"season":SEASON,"sportIds":SPORT_IDS,"hydrate":"team,league"})
-    splits=relevant_splits(data)
-    if not splits:
-        data=get_json(url,{"stats":"yearByYear","group":group,"season":SEASON,"sportIds":SPORT_IDS,"hydrate":"team,league"})
-        splits=relevant_splits(data)
-    if not splits: return None
-    # Prefer an explicit aggregate split when supplied. Otherwise combine team/level rows.
-    aggregate=[s for s in splits if not s.get("team")]
-    used=aggregate[:1] if aggregate else splits
-    team=used[-1].get("team",{}).get("name") or splits[-1].get("team",{}).get("name")
-    recent_team, recent_level, recent_team_id, assignment_source, assignment_date = fetch_recent_assignment(p, splits)
-    if p["type"]=="hitter":
-        totals={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]}
-        ab=totals["atBats"]; h=totals["hits"]
-        # Rate fields should come from an aggregate row where possible. When levels are combined,
-        # AVG and SLG can be calculated exactly; OBP uses the provider value unless full denominator fields exist.
-        st=used[0].get("stat",{}) if len(used)==1 else {}
-        avg=f"{h/ab:.3f}"[1:] if ab else "—"
-        tb=h+totals["doubles"]+2*totals["triples"]+3*totals["homeRuns"]
-        slg=f"{tb/ab:.3f}"[1:] if ab else "—"
-        obp=str(st.get("obp","—")); ops=str(st.get("ops","—"))
-        if obp not in ("—","") and slg!="—":
-            try: ops=f"{float(obp)+float(slg):.3f}"[1:]
-            except: pass
-        stats={"AB":totals["atBats"],"R":totals["runs"],"H":h,"2B":totals["doubles"],"3B":totals["triples"],"HR":totals["homeRuns"],"RBI":totals["rbi"],"BB":totals["baseOnBalls"],"SO":totals["strikeOuts"],"SB":totals["stolenBases"],"CS":totals["caughtStealing"],"AVG":avg,"OBP":obp,"SLG":slg,"OPS":ops}
-        # Reject abbreviated provider summaries: a professional hitter line must include
-        # every counting field used by the card. The previous stats.json entry is preserved
-        # by main() when this function raises, preventing complete lines from being replaced
-        # by headline-only MLB/MiLB summaries.
-        required_provider_keys = ["atBats","runs","hits","doubles","triples","homeRuns","rbi","baseOnBalls","strikeOuts","stolenBases","caughtStealing"]
-        if len(used) == 1 and any(key not in used[0].get("stat", {}) for key in required_provider_keys):
-            raise ValueError(f"Incomplete hitting response for {p['name']}")
-    else:
-        total_outs=sum(outs(s.get("stat",{}).get("inningsPitched")) for s in used)
-        sums={k:sum(num(s.get("stat",{}),k) for s in used) for k in ["runs","earnedRuns","baseOnBalls","strikeOuts","hits"]}
-        ip=ip_from_outs(total_outs)
-        era=f"{sums['earnedRuns']*27/total_outs:.2f}" if total_outs else "—"
-        whip=f"{(sums['baseOnBalls']+sums['hits'])*3/total_outs:.2f}" if total_outs else "—"
-        stats={"IP":ip,"R":sums["runs"],"ER":sums["earnedRuns"],"BB":sums["baseOnBalls"],"SO":sums["strikeOuts"],"H":sums["hits"],"ERA":era,"WHIP":whip}
-    last7 = fetch_last_seven(p)
-    return {"name":p["name"],"type":p["type"],"team":team,"recentTeam":recent_team or team,"recentLevel":recent_level,"recentTeamId":recent_team_id,"assignmentSource":assignment_source,"assignmentDate":assignment_date,"stats":stats,"last7":last7}
-
-
-def fmt_ip(value):
-    value = str(value or "0.0")
-    return value if value not in ("0", "0.0") else "0.0"
-
-
-def hitter_sentence(name, stat):
-    ab = int(num(stat, "atBats")); hits = int(num(stat, "hits"))
-    parts = [f"{hits}-for-{ab}"]
-    extras = []
-    for key, label in (("homeRuns", "HR"), ("triples", "3B"), ("doubles", "2B")):
-        value = int(num(stat, key))
-        if value: extras.append(f"{value} {label}" if value > 1 else label)
-    rbi = int(num(stat, "rbi")); runs = int(num(stat, "runs")); walks = int(num(stat, "baseOnBalls")); steals = int(num(stat, "stolenBases"))
-    if extras: parts.append(", ".join(extras))
-    if rbi: parts.append(f"{rbi} RBI")
-    if runs: parts.append(f"{runs} run" + ("s" if runs != 1 else ""))
-    if walks: parts.append(f"{walks} walk" + ("s" if walks != 1 else ""))
-    if steals: parts.append(f"{steals} SB")
-    return f"{name} went " + ", ".join(parts) + "."
-
-
-def pitcher_sentence(name, stat):
-    ip = fmt_ip(stat.get("inningsPitched"))
-    hits = int(num(stat, "hits")); runs = int(num(stat, "runs")); er = int(num(stat, "earnedRuns")); walks = int(num(stat, "baseOnBalls")); strikeouts = int(num(stat, "strikeOuts"))
-    decision = ""
-    if stat.get("wins"): decision = " and earned the win"
-    elif stat.get("losses"): decision = " and took the loss"
-    elif stat.get("saves"): decision = " and recorded the save"
-    return f"{name} worked {ip} IP, allowing {hits} H, {runs} R ({er} ER) and {walks} BB with {strikeouts} K{decision}."
-
-
-def fetch_game_log(player, target_date):
-    group = "hitting" if player["type"] == "hitter" else "pitching"
-    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "gameLog", "group": group, "season": SEASON,
-        "sportIds": SPORT_IDS, "hydrate": "team,game"
-    })
-    matches = []
-    for block in data.get("stats", []):
-        for split in block.get("splits", []):
-            if str(split.get("date", ""))[:10] == target_date:
-                matches.append(split)
-    return matches
-
-
-def fetch_date_range(player, target_date):
-    """Direct one-day stats lookup across MLB and every tracked MiLB level.
-
-    The regular gameLog feed occasionally lags for minor-league players. A
-    byDateRange request is a second independent path and is especially useful
-    for same-day/next-morning recaps.
-    """
-    group = "hitting" if player["type"] == "hitter" else "pitching"
-    url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "byDateRange", "group": group,
-        "startDate": target_date, "endDate": target_date,
-        "sportIds": SPORT_IDS, "hydrate": "team(sport),league,game"
-    })
-    matches = []
-    for split in relevant_splits(data):
-        split_date = str(split.get("date") or split.get("game", {}).get("officialDate") or "")[:10]
-        if split_date and split_date != target_date:
-            continue
-        stat = split.get("stat") or {}
-        if player["type"] == "hitter":
-            appeared = any(num(stat, k) for k in (
-                "plateAppearances", "atBats", "runs", "hits", "baseOnBalls",
-                "hitByPitch", "stolenBases", "caughtStealing", "rbi"
-            ))
-        else:
-            appeared = outs(stat.get("inningsPitched")) > 0
-        if appeared:
-            matches.append(split)
-    return matches
-
-
-def fetch_official_boxscore_appearances(player, target_date):
-    """Authoritative fallback across MLB and every tracked MiLB level.
-
-    Player gameLog/byDateRange endpoints can lag, especially in the minors.
-    When that happens, use the player's latest saved assignment to find the
-    club's official game and inspect the actual box score for the player ID.
-    """
-    # The full stats refresh is written before the morning recap, so it normally
-    # contains a fresher team ID/level than the static players.json catalog.
-    fresh = {}
-    try:
-        fresh = (json.loads(OUTPUT.read_text()).get("players") or {}).get(str(player["id"])) or {}
-    except Exception:
-        fresh = {}
-
-    team_id = fresh.get("recentTeamId") or player.get("teamId")
-    level = fresh.get("recentLevel") or player.get("recentLevel")
-
-    level_to_sport = {
-        "MLB": 1,
-        "Triple-A": 11,
-        "Double-A": 12,
-        "High-A": 13,
-        "Single-A": 14,
-        "Rookie": 15,
-        "Rookie Ball": 15,
-    }
-    sport_id = level_to_sport.get(level)
-
-    # If level metadata is missing, try every affiliated level, but only as a
-    # last resort. This remains bounded to the tracked professional structure.
-    sport_ids = [sport_id] if sport_id else [1, 11, 12, 13, 14, 15, 16]
-    matches = []
-    seen_games = set()
-
-    for sid in sport_ids:
-        params = {"sportId": sid, "date": target_date}
-        if team_id:
-            params["teamId"] = team_id
-
-        try:
-            schedule = get_json("https://statsapi.mlb.com/api/v1/schedule", params)
-        except Exception:
-            continue
-
-        for date_block in schedule.get("dates", []):
-            for game in date_block.get("games", []):
-                game_pk = game.get("gamePk")
-                if not game_pk or game_pk in seen_games:
-                    continue
-                seen_games.add(game_pk)
-
-                # If we had no reliable team id, don't scan unrelated games at
-                # every level blindly unless the box score actually contains
-                # this player.
-                try:
-                    box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
-                except Exception:
-                    continue
-
-                for side, other_side in (("away", "home"), ("home", "away")):
-                    team_block = (box.get("teams") or {}).get(side) or {}
-                    players = team_block.get("players") or {}
-                    entry = players.get(f"ID{player['id']}")
-                    if not entry:
-                        entry = next(
-                            (v for v in players.values()
-                             if (v.get("person") or {}).get("id") == player["id"]),
-                            None
-                        )
-                    if not entry:
-                        continue
-
-                    stats = entry.get("stats") or {}
-                    stat = stats.get("batting" if player["type"] == "hitter" else "pitching") or {}
-                    fielding = stats.get("fielding") or {}
-
-                    if player["type"] == "hitter":
-                        appeared = (
-                            num(stat, "plateAppearances") > 0
-                            or num(stat, "atBats") > 0
-                            or any(num(stat, k) for k in (
-                                "runs", "hits", "baseOnBalls", "hitByPitch",
-                                "stolenBases", "caughtStealing", "rbi"
-                            ))
-                            or bool(fielding)
-                        )
-                    else:
-                        appeared = outs(stat.get("inningsPitched")) > 0
-
-                    if not appeared:
-                        continue
-
-                    opponent_block = (box.get("teams") or {}).get(other_side) or {}
-                    own_team = team_block.get("team") or {}
-                    opp_team = opponent_block.get("team") or {}
-
-                    matches.append({
-                        "date": target_date,
-                        "stat": stat,
-                        "team": {
-                            "id": own_team.get("id"),
-                            "name": own_team.get("name")
-                        },
-                        "opponent": {
-                            "id": opp_team.get("id"),
-                            "name": opp_team.get("name")
-                        },
-                        "sport": {"id": sid, "name": LEVEL_BY_SPORT_ID.get(sid)},
-                        "game": {"gamePk": game_pk, "officialDate": target_date},
-                        "gamePk": game_pk,
-                        "boxscoreFallback": True,
-                        "appearanceOnly": (
-                            player["type"] == "hitter"
-                            and num(stat, "plateAppearances") == 0
-                            and num(stat, "atBats") == 0
-                            and not any(num(stat, k) for k in (
-                                "runs", "hits", "baseOnBalls", "hitByPitch",
-                                "stolenBases", "caughtStealing", "rbi"
-                            ))
-                        ),
-                    })
-                    break
-
-    return matches
-
-
-
-def _score_pair(result):
-    try:
-        return int(result.get("awayScore", 0)), int(result.get("homeScore", 0))
-    except Exception:
-        return 0, 0
-
-
-
-_STATS_CACHE = None
-
-def current_player_stats(player_id):
-    """Read the just-refreshed season line for story milestones."""
-    global _STATS_CACHE
-    if _STATS_CACHE is None:
-        try:
-            _STATS_CACHE = json.loads(OUTPUT.read_text()).get("players", {})
-        except Exception:
-            _STATS_CACHE = {}
-    return ((_STATS_CACHE.get(str(player_id)) or {}).get("stats") or {})
-
-
-def season_milestone(player_id, event_type):
-    """Return the player's current season count for a notable hitting event."""
-    key_by_event = {
-        "home_run": "HR",
-        "double": "2B",
-        "triple": "3B",
-        "stolen_base": "SB",
-    }
-    key = key_by_event.get(str(event_type or "").lower())
-    if not key:
-        return None
-    value = current_player_stats(player_id).get(key)
-    try:
-        return int(value)
-    except Exception:
-        return None
-
-
-def decisive_pitch_context(play):
-    """Return count, pitch and contact data for the pitch that ended a plate appearance."""
-    balls = strikes = 0
-    last_pitch = None
-
-    for event in play.get("playEvents") or []:
-        if not event.get("isPitch"):
-            continue
-
-        details = event.get("details") or {}
-        pitch_data = event.get("pitchData") or {}
-        hit_data = event.get("hitData") or {}
-        pitch_type = details.get("type") or {}
-
-        last_pitch = {
-            "countBefore": {"balls": balls, "strikes": strikes},
-            "count": f"{balls}-{strikes}",
-            "pitchType": pitch_type.get("description"),
-            "pitchCode": pitch_type.get("code"),
-            "pitchDescription": details.get("description"),
-            "velocity": pitch_data.get("startSpeed"),
-            "endVelocity": pitch_data.get("endSpeed"),
-            "zone": pitch_data.get("zone"),
-            "exitVelocity": hit_data.get("launchSpeed"),
-            "launchAngle": hit_data.get("launchAngle"),
-            "distance": hit_data.get("totalDistance"),
-            "trajectory": hit_data.get("trajectory"),
-        }
-
-        count = event.get("count") or {}
-        if count.get("balls") is not None:
-            balls = count.get("balls")
-        if count.get("strikes") is not None:
-            strikes = count.get("strikes")
-
-    return last_pitch or {}
-
-
-def readable_pitch_type(value):
-    text = str(value or "").strip()
-    if not text:
-        return None
-    replacements = {
-        "Four-Seam Fastball": "four-seam fastball",
-        "4-Seam Fastball": "four-seam fastball",
-        "Two-Seam Fastball": "two-seam fastball",
-        "Sinker": "sinker",
-        "Cutter": "cutter",
-        "Slider": "slider",
-        "Sweeper": "sweeper",
-        "Curveball": "curveball",
-        "Knuckle Curve": "knuckle curve",
-        "Changeup": "changeup",
-        "Split-Finger": "splitter",
-        "Splitter": "splitter",
-    }
-    return replacements.get(text, text.lower())
-
-
-def mph_text(value):
-    try:
-        return f"{int(round(float(value)))} mph"
-    except Exception:
-        return None
-
-
-
-def find_milb_highlights(player, game_date=None):
-    """Search official MiLB/MLB content search for positive Minor League clips."""
-    name = str(player.get("name") or "").strip()
-    if not name:
-        return []
-
-    candidates = []
-    # MiLB's public video pages are populated from MLB Advanced Media content.
-    # Search the structured content service by player name as a second source
-    # when a game's own content feed does not expose Minor League clips.
-    for params in (
-        {"query": name, "type": "video", "limit": 100},
-        {"query": name, "tags": "milb", "limit": 100},
-    ):
-        try:
-            payload = get_json("https://statsapi.mlb.com/api/v1/content", params)
-        except Exception:
-            continue
-        stack = [payload]
-        while stack:
-            node = stack.pop()
-            if isinstance(node, dict):
-                if best_video_url(node):
-                    candidates.append(node)
-                stack.extend(node.values())
-            elif isinstance(node, list):
-                stack.extend(node)
-
-    found, seen = [], set()
-    wanted_date = str(game_date or "")[:10]
-    for node in candidates:
-        title = str(node.get("title") or node.get("headline") or "")
-        desc = str(node.get("description") or node.get("blurb") or "")
-        text = f"{title} {desc}".lower()
-        if name.lower() not in text:
-            continue
-        if not positive_highlight_for_player(node, player):
-            continue
-
-        raw_date = (
-            node.get("date") or node.get("displayDate") or node.get("created")
-            or node.get("timestamp") or node.get("lastModified")
-        )
-        if wanted_date and raw_date and wanted_date not in str(raw_date):
-            continue
-
-        url = best_video_url(node)
-        if not url or url in seen:
-            continue
-        seen.add(url)
-
-        image = None
-        cuts = ((node.get("image") or {}).get("cuts") or [])
-        if cuts:
-            image = cuts[-1].get("src") or cuts[0].get("src")
-
-        found.append({
-            "title": title or f"{name} MiLB highlight",
-            "description": desc,
-            "url": url,
-            "image": image,
-            "source": "MiLB official positive highlight"
-        })
-    return found[:8]
-
-
-def merge_player_highlights(game_pk, player, game_date=None):
-    clips, seen = [], set()
-    for clip in find_highlights(game_pk, player) + find_milb_highlights(player, game_date):
-        key = clip.get("url") or clip.get("title")
-        if not key or key in seen:
-            continue
-        seen.add(key)
-        clips.append(clip)
-    return clips[:10]
-
-
-def fetch_game_context(game_pk, player):
-    """Return verified box-score and play-by-play context for one appearance.
-
-    This is intentionally descriptive rather than speculative.  It recognizes
-    score-changing plays (go-ahead, tying and walk-off), final score/result,
-    lineup slot/position and pitching entry inning when those facts are present
-    in MLB/MiLB's official game feeds.
-    """
-    context = {"keyPlays": []}
-    if not game_pk:
-        return context
-    try:
-        box = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
-        teams = box.get("teams") or {}
-        player_side = None
-        player_row = None
-        for side in ("away", "home"):
-            rows = ((teams.get(side) or {}).get("players") or {})
-            row = rows.get(f"ID{player['id']}")
-            if not row:
-                row = next((v for v in rows.values() if (v.get("person") or {}).get("id") == player["id"]), None)
-            if row:
-                player_side, player_row = side, row
-                break
-        if player_side:
-            other = "home" if player_side == "away" else "away"
-            own_team = ((teams.get(player_side) or {}).get("team") or {}).get("name")
-            opp_team = ((teams.get(other) or {}).get("team") or {}).get("name")
-            own_score = (teams.get(player_side) or {}).get("teamStats", {}).get("batting", {}).get("runs")
-            opp_score = (teams.get(other) or {}).get("teamStats", {}).get("batting", {}).get("runs")
-            # Some boxscore responses expose totals directly under teamStats; if
-            # they do not, game linescore below will supply the final score.
-            context.update({"side": player_side, "team": own_team, "opponent": opp_team})
-            if player_row:
-                order = player_row.get("battingOrder")
-                if order:
-                    try: context["battingOrder"] = max(1, int(order) // 100)
-                    except Exception: pass
-                pos = (player_row.get("position") or {}).get("abbreviation")
-                if pos: context["position"] = pos
-    except Exception:
-        box = None
-
-    try:
-        pbp = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/playByPlay", {})
-    except Exception:
-        return context
-
-    plays = pbp.get("allPlays") or []
-    prev_away = prev_home = 0
-    first_pitching_play = None
-    for play in plays:
-        about = play.get("about") or {}
-        result = play.get("result") or {}
-        matchup = play.get("matchup") or {}
-        inning = about.get("inning")
-        half = about.get("halfInning") or ""
-        away_after, home_after = _score_pair(result)
-        batter_id = ((matchup.get("batter") or {}).get("id"))
-        pitcher_id = ((matchup.get("pitcher") or {}).get("id"))
-
-        if player.get("type") == "hitter" and batter_id == player["id"]:
-            batting_side = "away" if str(half).lower() == "top" else "home"
-            before_us = prev_away if batting_side == "away" else prev_home
-            before_them = prev_home if batting_side == "away" else prev_away
-            after_us = away_after if batting_side == "away" else home_after
-            after_them = home_after if batting_side == "away" else away_after
-            event = result.get("event") or result.get("eventType") or "Plate appearance"
-            desc = result.get("description") or ""
-            rbi = int(num(result, "rbi"))
-            score_changed = after_us != before_us
-            tags = []
-            if score_changed:
-                if before_us <= before_them and after_us > after_them:
-                    tags.append("go-ahead")
-                elif before_us < before_them and after_us == after_them:
-                    tags.append("game-tying")
-                if str(half).lower() == "bottom" and int(inning or 0) >= 9 and after_us > after_them:
-                    tags.append("walk-off")
-            etype = str(result.get("eventType") or "").lower()
-            important = score_changed or rbi or etype in {"home_run", "triple", "double"} or tags
-            if important:
-                pitch_context = decisive_pitch_context(play)
-                milestone = season_milestone(player["id"], etype)
-                context["keyPlays"].append({
-                    "inning": inning, "half": half, "event": event,
-                    "eventType": etype,
-                    "description": desc, "rbi": rbi, "tags": tags,
-                    "scoreBefore": {"team": before_us, "opponent": before_them},
-                    "scoreAfter": {"team": after_us, "opponent": after_them},
-                    "pitcher": (matchup.get("pitcher") or {}).get("fullName"),
-                    "seasonNumber": milestone,
-                    **pitch_context,
-                })
-        elif player.get("type") == "pitcher" and pitcher_id == player["id"]:
-            if first_pitching_play is None:
-                # Score at the moment the pitcher's first batter comes to the plate.
-                pitching_side = "home" if str(half).lower() == "top" else "away"
-                first_pitching_play = {
-                    "inning": inning, "half": half,
-                    "teamScore": prev_home if pitching_side == "home" else prev_away,
-                    "opponentScore": prev_away if pitching_side == "home" else prev_home,
-                }
-
-            # Preserve the pitch that finished each strikeout so a strong pitching
-            # performance can also receive pitch-level detail in the story.
-            etype = str(result.get("eventType") or "").lower()
-            if etype in {"strikeout", "strikeout_double_play"}:
-                moment = {
-                    "inning": inning,
-                    "half": half,
-                    "event": result.get("event") or "Strikeout",
-                    "batter": (matchup.get("batter") or {}).get("fullName"),
-                    **decisive_pitch_context(play),
-                }
-                context.setdefault("pitchingMoments", []).append(moment)
-
-        prev_away, prev_home = away_after, home_after
-
-    if plays:
-        final = plays[-1].get("result") or {}
-        away_final, home_final = _score_pair(final)
-        context["awayFinal"] = away_final
-        context["homeFinal"] = home_final
-        side = context.get("side")
-        if side:
-            team_final = away_final if side == "away" else home_final
-            opp_final = home_final if side == "away" else away_final
-            context["teamFinal"] = team_final
-            context["opponentFinal"] = opp_final
-            context["result"] = "win" if team_final > opp_final else "loss" if team_final < opp_final else "tie"
-    if first_pitching_play:
-        context["pitchingEntry"] = first_pitching_play
-    return context
-
-
-def key_play_sentence(appearance):
-    ctx = appearance.get("gameContext") or {}
-    plays = ctx.get("keyPlays") or []
-    if not plays:
-        return None
-    # Prioritize walk-off, then go-ahead, then tying, then other run-producing/XBH plays.
-    def rank(play):
-        tags = play.get("tags") or []
-        return (3 if "walk-off" in tags else 2 if "go-ahead" in tags else 1 if "game-tying" in tags else 0,
-                int(play.get("inning") or 0), int(play.get("rbi") or 0))
-    play = max(plays, key=rank)
-    name = appearance.get("name") or "The Mustang"
-    inning = int(play.get("inning") or 0)
-    ords = {1:"first",2:"second",3:"third",4:"fourth",5:"fifth",6:"sixth",7:"seventh",8:"eighth",9:"ninth",10:"10th",11:"11th",12:"12th"}
-    inning_word = ords.get(inning, f"{inning}th") if inning else "late"
-    tags = play.get("tags") or []
-    event = str(play.get("event") or "hit").lower()
-    rbi = int(play.get("rbi") or 0)
-    before = play.get("scoreBefore") or {}; after = play.get("scoreAfter") or {}
-    if "walk-off" in tags:
-        lead = f"{name} delivered the walk-off {event} in the {inning_word} inning"
-    elif "go-ahead" in tags:
-        lead = f"{name} delivered a {('two-run ' if rbi == 2 else str(rbi)+'-run ' if rbi > 2 else '')}go-ahead {event} in the {inning_word} inning"
-    elif "game-tying" in tags:
-        lead = f"{name} delivered a {('two-run ' if rbi == 2 else str(rbi)+'-run ' if rbi > 2 else '')}game-tying {event} in the {inning_word} inning"
-    elif rbi:
-        lead = f"{name}'s {event} in the {inning_word} inning drove in {rbi} run{'s' if rbi != 1 else ''}"
-    else:
-        lead = f"{name} produced a {event} in the {inning_word} inning"
-    if before and after and (before.get("team") != after.get("team") or before.get("opponent") != after.get("opponent")):
-        lead += f", moving his team from {before.get('team')}-{before.get('opponent')} to {after.get('team')}-{after.get('opponent')}"
-    pitcher = play.get("pitcher")
-    if pitcher:
-        lead += f" against {pitcher}"
-    return lead + "."
-
-def best_video_url(item):
-    playbacks = item.get("playbacks") or []
-    preferred = ("1280x720", "HTTP_CLOUD_WIRED_60", "mp4Avc")
-    for marker in preferred:
-        for playback in playbacks:
-            if marker.lower() in str(playback.get("name", "")).lower() and playback.get("url"):
-                return playback["url"]
-    for playback in playbacks:
-        if playback.get("url"):
-            return playback["url"]
-    return None
-
-
-
-def positive_highlight_for_player(node, player):
-    """Keep clips where the tracked Mustang is the positive subject of the play.
-
-    MLB/MiLB game-content feeds often tag every participant in a clip, which can
-    make a hitter appear in an opposing pitcher's strikeout highlight. This
-    classifier intentionally requires positive baseball language for the tracked
-    player's role instead of accepting every player-tagged video.
-    """
-    title = str(node.get("title") or node.get("headline") or "")
-    description = str(node.get("description") or node.get("blurb") or "")
-    text = f"{title} {description}".lower()
-    name = str(player.get("name") or "").lower()
-
-    # If the visible text names another player but not our Mustang, the metadata
-    # tag alone is not enough to publish the clip.
-    if name and name not in text:
-        return False
-
-    common_good = [
-        "walk-off", "go-ahead", "game-tying", "game tying",
-        "great catch", "diving catch", "sliding catch", "leaping catch",
-        "robs", "robbed", "web gem", "nice play", "great play",
-        "throws out", "throwing out", "double play",
-    ]
-
-    if player.get("type") == "hitter":
-        bad = [
-            "strikes out", "strikeout", "struck out",
-            "grounds out", "groundout", "flies out", "flyout",
-            "lines out", "lineout", "pops out", "popout",
-            "caught stealing", "picked off",
-            "commits an error", "error allows",
-        ]
-        if any(term in text for term in bad):
-            return False
-
-        good = common_good + [
-            "home run", "homers", "homer", "grand slam",
-            "single", "singles", "double", "doubles", "triple", "triples",
-            "rbi", "drives in", "plates", "run-scoring", "run scoring",
-            "stolen base", "steals", "scores", "base hit",
-            "hits a", "knocks", "sacrifice fly", "sac fly",
-        ]
-        return any(term in text for term in good)
-
-    # Pitchers: strikeout clips are positive, while clips centered on damage
-    # allowed by the pitcher should not be surfaced.
-    bad = [
-        "allows a home run", "allows home run", "gives up a home run",
-        "gives up home run", "allows a homer", "gives up a homer",
-        "allows an rbi", "allows a run", "charged with",
-    ]
-    if any(term in text for term in bad):
-        return False
-
-    good = common_good + [
-        "strikes out", "strikeout", "fans ", "fans the", "punches out",
-        "scoreless", "shutout", "retires", "escapes", "gets out of",
-        "induces", "inning-ending", "inning ending",
-    ]
-    return any(term in text for term in good)
-
-
-def find_highlights(game_pk, player):
-    try:
-        content = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/content", {})
-    except Exception:
-        return []
-    found = []
-    seen = set()
-    def walk(node):
-        if isinstance(node, dict):
-            if node.get("playbacks"):
-                haystack = json.dumps(node, ensure_ascii=False).lower()
-                tokens = [str(player["id"]), player["name"].lower()]
-                if any(token in haystack for token in tokens):
-                    if not positive_highlight_for_player(node, player):
-                        pass
-                    else:
-                        url = best_video_url(node)
-                        if url and url not in seen:
-                            seen.add(url)
-                            image = None
-                            cuts = ((node.get("image") or {}).get("cuts") or [])
-                            if cuts: image = cuts[-1].get("src") or cuts[0].get("src")
-                            found.append({
-                                "title": node.get("title") or node.get("headline") or f"{player['name']} highlight",
-                                "description": node.get("description") or node.get("blurb") or "",
-                                "url": url,
-                                "image": image,
-                                "source": "MLB/MiLB official positive game content"
-                            })
-            for value in node.values(): walk(value)
-        elif isinstance(node, list):
-            for value in node: walk(value)
-    walk(content)
-    return found[:3]
-
-
-def build_nightly_summary():
-    now = datetime.now(PACIFIC)
-    target = (now.date() - timedelta(days=1)).isoformat()
-    appearances = []
-    warnings = []
-    game_highlight_cache = {}
-    for player in PLAYERS:
-        try:
-            splits = fetch_game_log(player, target)
-            if not splits:
-                # A direct one-day lookup catches many MiLB appearances that have
-                # not yet propagated into the season gameLog feed.
-                splits = fetch_date_range(player, target)
-            if not splits:
-                # Player-level feeds can lag at both MLB and MiLB levels. The
-                # official scheduled game + box score is the authoritative final
-                # appearance check, including plate appearances in minor-league games.
-                splits = fetch_official_boxscore_appearances(player, target)
-            for split in splits:
-                stat = split.get("stat", {})
-                game = split.get("game", {}) or {}
-                team = (split.get("team") or {}).get("name")
-                level = assignment_from_split(split)[1] or ("MLB" if player.get("status") == "mlb" else player.get("recentLevel"))
-                opponent = (split.get("opponent") or {}).get("name")
-                game_pk = game.get("gamePk") or split.get("gamePk")
-                if split.get("appearanceOnly"):
-                    recap = f"{player['name']} appeared defensively for {team or 'his club'} against {opponent or 'the opponent'}."
-                else:
-                    recap = hitter_sentence(player["name"], stat) if player["type"] == "hitter" else pitcher_sentence(player["name"], stat)
-                highlights = []
-                if game_pk:
-                    cache_key = (game_pk, player["id"])
-                    if cache_key not in game_highlight_cache:
-                        game_highlight_cache[cache_key] = find_highlights(game_pk, player)
-                    highlights = game_highlight_cache[cache_key]
-                game_context = fetch_game_context(game_pk, player) if game_pk else {}
-                if not team and game_context.get("team"):
-                    team = game_context.get("team")
-                if not opponent and game_context.get("opponent"):
-                    opponent = game_context.get("opponent")
-                appearances.append({
-                    "playerId": player["id"], "name": player["name"], "type": player["type"],
-                    "team": team, "level": level, "opponent": opponent, "gamePk": game_pk,
-                    "summary": recap, "stats": stat, "highlights": highlights,
-                    "gameContext": game_context
-                })
-        except Exception as exc:
-            warnings.append(f"{player['name']}: {exc}")
-        time.sleep(.1)
-    if appearances:
-        names = [a["name"] for a in appearances]
-        if len(names) == 1: intro = f"One former Mustang appeared in a professional game on {target}."
-        else: intro = f"{len(names)} former Mustangs appeared in professional games on {target}."
-    else:
-        intro = f"No tracked Mustangs were found in professional game logs for {target}."
-    payload = {
-        "date": target,
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "title": "Last Night's Mustangs",
-        "intro": intro,
-        "appearances": appearances,
-        "warnings": warnings,
-        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights"
-    }
-    # A total provider/network outage must not replace the last good recap with a false
-    # "nobody played" report. Partial success is still written normally.
-    if not appearances and len(warnings) == len(PLAYERS) and SUMMARY_OUTPUT.exists():
-        print("All game-log requests failed; preserving previous nightly_summary.json", file=sys.stderr)
-        try:
-            return json.loads(SUMMARY_OUTPUT.read_text())
-        except Exception:
-            return payload
-    SUMMARY_OUTPUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
-    print(f"Wrote {SUMMARY_OUTPUT} with {len(appearances)} appearances")
-    for warning in warnings: print("WARNING", warning, file=sys.stderr)
-    return payload
-
-
-
-def build_daily_article(summary, transactions=None):
-    """Write Mustangs Daily like a concise local baseball beat report.
-
-    Principles:
-      * Lead with what mattered, not tracker/database language.
-      * Match the headline to the actual performance; don't oversell quiet nights.
-      * Combine box score, game result, lineup role and key play into paragraphs.
-      * Fold same-player transactions into one clean roster-note paragraph.
-      * Avoid repeated names, canned closers and mechanical source language.
-    """
-    apps = summary.get("appearances", [])
-    date = summary.get("date")
-    dt = datetime.fromisoformat(date) if date else None
-    label = dt.strftime("%A, %B %-d, %Y") if dt else "the latest games"
-    weekday = dt.strftime("%A") if dt else "the night"
-
-    transaction_rows = (transactions or {}).get("transactions", [])
-    day_transactions = [
-        t for t in transaction_rows
-        if not date or str(t.get("date") or "")[:10] == date
-    ]
-
-    hitters = [a for a in apps if a.get("type") == "hitter"]
-    pitchers = [a for a in apps if a.get("type") == "pitcher"]
-
-    def hscore(a):
-        st = a.get("stats", {})
-        return (
-            num(st, "hits") * 3
-            + num(st, "homeRuns") * 6
-            + num(st, "rbi") * 2
-            + num(st, "runs")
-            + num(st, "stolenBases") * 2
-            + num(st, "baseOnBalls") * .5
-        )
-
-    def pscore(a):
-        st = a.get("stats", {})
-        return (
-            num(st, "strikeOuts") * 2
-            + outs(st.get("inningsPitched"))
-            - num(st, "earnedRuns") * 4
-            - num(st, "baseOnBalls") * 2
-            - num(st, "hits")
-        )
-
-    def best_play(a):
-        plays = (a.get("gameContext") or {}).get("keyPlays") or []
-        if not plays:
-            return None
-        def rank(play):
-            tags = play.get("tags") or []
-            leverage = (
-                5 if "walk-off" in tags else
-                4 if "go-ahead" in tags else
-                3 if "game-tying" in tags else
-                1 if play.get("rbi") else 0
-            )
-            return leverage, int(play.get("inning") or 0), int(play.get("rbi") or 0)
-        return max(plays, key=rank)
-
-    def importance(a):
-        bonus = 0
-        play = best_play(a)
-        if play:
-            tags = play.get("tags") or []
-            if "walk-off" in tags: bonus += 20
-            if "go-ahead" in tags: bonus += 14
-            if "game-tying" in tags: bonus += 9
-            bonus += int(play.get("rbi") or 0)
-        return (hscore(a) if a.get("type") == "hitter" else pscore(a)) + bonus
-
-    def inning_name(n):
-        names = {
-            1:"first",2:"second",3:"third",4:"fourth",5:"fifth",
-            6:"sixth",7:"seventh",8:"eighth",9:"ninth"
-        }
-        try:
-            n = int(n)
-            return names.get(n, f"{n}th")
-        except Exception:
-            return "late"
-
-    def result_text(a):
-        ctx = a.get("gameContext") or {}
-        team = a.get("team") or "his club"
-        opp = a.get("opponent") or "the opponent"
-        tf = ctx.get("teamFinal")
-        of = ctx.get("opponentFinal")
-        result = ctx.get("result")
-        if tf is None or of is None:
-            return None
-        if result == "win":
-            return f"{team} beat {opp}, {tf}-{of}."
-        if result == "loss":
-            return f"{team} fell to {opp}, {tf}-{of}."
-        return f"{team} and {opp} finished {tf}-{of}."
-
-    def hitter_line(a, use_name=True):
-        st = a.get("stats", {})
-        name = a.get("name") if use_name else "He"
-        ab = int(num(st, "atBats"))
-        h = int(num(st, "hits"))
-        pa = int(num(st, "plateAppearances"))
-        r = int(num(st, "runs"))
-        rbi = int(num(st, "rbi"))
-        bb = int(num(st, "baseOnBalls"))
-        hr = int(num(st, "homeRuns"))
-        doubles = int(num(st, "doubles"))
-        triples = int(num(st, "triples"))
-        sb = int(num(st, "stolenBases"))
-
-        pieces = []
-        if ab or h:
-            pieces.append(f"{h}-for-{ab}")
-        elif pa:
-            pieces.append(f"{pa} plate appearances")
-        if hr:
-            pieces.append(f"{hr} home run{'s' if hr != 1 else ''}")
-        if doubles:
-            pieces.append(f"{doubles} double{'s' if doubles != 1 else ''}")
-        if triples:
-            pieces.append(f"{triples} triple{'s' if triples != 1 else ''}")
-        if rbi:
-            pieces.append(f"{rbi} RBI")
-        if r:
-            pieces.append(f"{r} run{'s' if r != 1 else ''} scored")
-        if bb:
-            pieces.append(f"{bb} walk{'s' if bb != 1 else ''}")
-        if sb:
-            pieces.append(f"{sb} stolen base{'s' if sb != 1 else ''}")
-
-        if not pieces:
-            return a.get("summary") or ""
-        return f"{name} went " + ", ".join(pieces) + "."
-
-    def pitcher_line(a, use_name=True):
-        st = a.get("stats", {})
-        name = a.get("name") if use_name else "He"
-        ip = st.get("inningsPitched") or "0.0"
-        h = int(num(st, "hits"))
-        er = int(num(st, "earnedRuns"))
-        bb = int(num(st, "baseOnBalls"))
-        k = int(num(st, "strikeOuts"))
-        return (
-            f"{name} worked {ip} innings, allowing {h} hit{'s' if h != 1 else ''} "
-            f"and {er} earned run{'s' if er != 1 else ''}, with "
-            f"{bb} walk{'s' if bb != 1 else ''} and {k} strikeout{'s' if k != 1 else ''}."
-        )
-
-    def stat_line(a, use_name=True):
-        return hitter_line(a, use_name) if a.get("type") == "hitter" else pitcher_line(a, use_name)
-
-    def role_phrase(a):
-        ctx = a.get("gameContext") or {}
-        order = ctx.get("battingOrder")
-        pos = ctx.get("position")
-        bits = []
-        if order:
-            suffix = "th"
-            if order == 1: suffix = "st"
-            elif order == 2: suffix = "nd"
-            elif order == 3: suffix = "rd"
-            bits.append(f"batted {order}{suffix}")
-        if pos:
-            bits.append(f"started at {pos}")
-        if not bits:
-            return None
-        return " and ".join(bits)
-
-    def key_play_sentence(a):
-        play = best_play(a)
-        if not play:
-            return None
-
-        tags = play.get("tags") or []
-        event = str(play.get("event") or "hit").lower()
-        etype = str(play.get("eventType") or "").lower()
-        inning = inning_name(play.get("inning"))
-        rbi = int(play.get("rbi") or 0)
-        name = a.get("name")
-        pitcher = play.get("pitcher")
-        count = play.get("count")
-        pitch_type = readable_pitch_type(play.get("pitchType"))
-        velocity = mph_text(play.get("velocity"))
-        season_number = play.get("seasonNumber")
-        run_prefix = "two-run " if rbi == 2 else f"{rbi}-run " if rbi > 2 else ""
-
-        # Home runs deserve a fuller pitch-level description when the official
-        # play-by-play feed supplies it.
-        if etype == "home_run" or "home run" in event:
-            setup = f"{name}'s home run"
-            if season_number:
-                setup += f" — his {season_number}th of the season"
-            setup += f" came in the {inning} inning"
-
-            pitch_bits = []
-            if count:
-                pitch_bits.append(f"on a {count} pitch")
-            if velocity and pitch_type:
-                pitch_bits.append(f"a {velocity} {pitch_type}")
-            elif velocity:
-                pitch_bits.append(f"a {velocity} pitch")
-            elif pitch_type:
-                pitch_bits.append(f"a {pitch_type}")
-
-            if pitcher:
-                if pitch_bits:
-                    setup += f", when he turned around {' '.join(pitch_bits)} from {pitcher}"
-                else:
-                    setup += f" against {pitcher}"
-            elif pitch_bits:
-                setup += f", when he turned around {' '.join(pitch_bits)}"
-
-            before = play.get("scoreBefore") or {}
-            after = play.get("scoreAfter") or {}
-            if before and after and (
-                before.get("team") != after.get("team")
-                or before.get("opponent") != after.get("opponent")
-            ):
-                setup += (
-                    f". The swing moved the score from "
-                    f"{before.get('team')}-{before.get('opponent')} to "
-                    f"{after.get('team')}-{after.get('opponent')}"
-                )
-
-            metrics = []
-            if play.get("exitVelocity") is not None:
-                try:
-                    metrics.append(f"{float(play['exitVelocity']):.1f} mph off the bat")
-                except Exception:
-                    pass
-            if play.get("launchAngle") is not None:
-                try:
-                    metrics.append(f"a {int(round(float(play['launchAngle'])))}-degree launch angle")
-                except Exception:
-                    pass
-            if play.get("distance") is not None:
-                try:
-                    metrics.append(f"{int(round(float(play['distance'])))} feet")
-                except Exception:
-                    pass
-            if metrics:
-                setup += ". Statcast measured the ball at " + ", ".join(metrics)
-
-            return setup + "."
-
-        if "walk-off" in tags:
-            sentence = f"{name}'s biggest moment came in the {inning}, when he delivered a {run_prefix}walk-off {event}"
-        elif "go-ahead" in tags:
-            sentence = f"The game's turning point came in the {inning}, when {name} delivered a {run_prefix}go-ahead {event}"
-        elif "game-tying" in tags:
-            sentence = f"{name} tied the game in the {inning} with a {run_prefix}{event}"
-        elif rbi:
-            sentence = f"{name} drove in {rbi} run{'s' if rbi != 1 else ''} with a {event} in the {inning}"
-        else:
-            sentence = f"{name} produced a {event} in the {inning}"
-
-        detail = []
-        if count:
-            detail.append(f"on a {count} pitch")
-        if velocity and pitch_type:
-            detail.append(f"{velocity} {pitch_type}")
-        elif velocity:
-            detail.append(f"{velocity}")
-        elif pitch_type:
-            detail.append(pitch_type)
-        if pitcher:
-            detail.append(f"from {pitcher}")
-        if detail:
-            sentence += ", " + " ".join(detail)
-
-        return sentence + "."
-
-    def pitcher_detail_sentence(a):
-        ctx = a.get("gameContext") or {}
-        moments = ctx.get("pitchingMoments") or []
-        if not moments:
-            return None
-        # Use the hardest documented strikeout pitch as a concrete detail.
-        def velo(moment):
-            try:
-                return float(moment.get("velocity") or 0)
-            except Exception:
-                return 0
-        moment = max(moments, key=velo)
-        velocity = mph_text(moment.get("velocity"))
-        pitch_type = readable_pitch_type(moment.get("pitchType"))
-        count = moment.get("count")
-        batter = moment.get("batter")
-        inning = inning_name(moment.get("inning"))
-        if not (velocity or pitch_type or batter):
-            return None
-        pieces = []
-        if count:
-            pieces.append(f"on a {count} pitch")
-        if velocity and pitch_type:
-            pieces.append(f"a {velocity} {pitch_type}")
-        elif velocity:
-            pieces.append(f"a {velocity} pitch")
-        elif pitch_type:
-            pieces.append(f"a {pitch_type}")
-        target = f" to strike out {batter}" if batter else " for a strikeout"
-        return f"One of his strikeouts came in the {inning}, {' '.join(pieces)}{target}."
-
-
-    def transaction_paragraphs(rows):
-        """Turn same-day provider transactions into one readable roster-news item."""
-        if not rows:
-            return []
-
-        grouped = {}
-        for t in rows:
-            grouped.setdefault(t.get("player") or "A former Mustang", []).append(t)
-
-        # Resolve team names to levels using the same official affiliated-team
-        # catalog used by the assignment updater.
-        level_by_team = {
-            str(row.get("name") or "").lower(): row.get("level")
-            for row in team_catalog()
-            if row.get("name")
-        }
-
-        paragraphs = []
-        for name, items in grouped.items():
-            descriptions = [
-                str(t.get("description") or "").strip().rstrip(".")
-                for t in items if t.get("description")
-            ]
-            if not descriptions:
-                continue
-
-            assignment = next(
-                (d for d in descriptions if " assigned to " in d.lower() and " from " in d.lower()),
-                None
-            )
-
-            if assignment:
-                # Extract destination/source from the official sentence:
-                # "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive"
-                m = re.search(r"\bassigned to (.+?) from (.+)$", assignment, flags=re.I)
-                if m:
-                    destination = m.group(1).strip()
-                    source = m.group(2).strip()
-                    dest_level = level_by_team.get(destination.lower())
-                    source_level = level_by_team.get(source.lower())
-
-                    # A move to a higher affiliate is best described as a call-up.
-                    rank = {
-                        "Rookie": 1, "Rookie Ball": 1, "Single-A": 2,
-                        "High-A": 3, "Double-A": 4, "Triple-A": 5, "MLB": 6
-                    }
-                    promoted = (
-                        dest_level and source_level
-                        and rank.get(dest_level, 0) > rank.get(source_level, 0)
-                    )
-
-                    tx_date = str(items[0].get("date") or "")[:10]
-                    day_word = ""
-                    if tx_date:
-                        try:
-                            day_word = datetime.fromisoformat(tx_date).strftime("%A")
-                        except Exception:
-                            pass
-
-                    if promoted:
-                        lead = f"{name} was called up"
-                        if day_word:
-                            lead += f" on {day_word}"
-                        lead += ","
-                        paragraphs.append(
-                            f"{lead} moving from the {source_level} {source} to the "
-                            f"{dest_level} {destination}."
-                        )
-                    else:
-                        paragraphs.append(
-                            f"{name} changed affiliates, moving from {source} to {destination}"
-                            + (f" at {dest_level}." if dest_level else ".")
-                        )
-                    continue
-
-            # Other transaction types remain concise and non-repetitive.
-            lower = " ".join(descriptions).lower()
-            if "activated" in lower:
-                paragraphs.append(f"{name} was activated in a roster move.")
-            elif "injured list" in lower or "disabled list" in lower:
-                paragraphs.append(f"{name} was placed on the injured list.")
-            elif "recalled" in lower:
-                paragraphs.append(f"{name} was recalled in a roster move.")
-            elif "optioned" in lower:
-                paragraphs.append(f"{name} was optioned in a roster move.")
-            elif "released" in lower:
-                paragraphs.append(f"{name} was released.")
-            else:
-                d = descriptions[0]
-                paragraphs.append(d + "." if name.lower() in d.lower() else f"{name}: {d}.")
-
-        return paragraphs
-
-    # No games: let actual roster news carry the edition when there is some.
-    if not apps:
-        txp = transaction_paragraphs(day_transactions)
-        if txp:
-            return {
-                "generatorVersion": GENERATOR_VERSION,
-                "date": date,
-                "dateLabel": label,
-                "title": "Roster Moves Highlight a Quiet Day for Former Mustangs",
-                "paragraphs": [
-                    f"No former Mustang recorded a confirmed game appearance on {label}, but there was movement on the transaction wire."
-                ] + txp,
-                "awards": []
-            }
-        return {
-            "generatorVersion": GENERATOR_VERSION,
-            "date": date,
-            "dateLabel": label,
-            "title": "A Quiet Night for Former Mustangs",
-            "paragraphs": [
-                f"No former Mustang recorded a confirmed appearance in a completed professional game on {label}."
-            ],
-            "awards": []
-        }
-
-    star = max(apps, key=importance)
-    star_play = best_play(star)
-    tags = (star_play or {}).get("tags") or []
-    name = star.get("name")
-    st = star.get("stats") or {}
-
-    # Headlines should describe the actual story, not manufacture one.
-    if "walk-off" in tags:
-        headline = f"{name} delivers a walk-off in the night's biggest Mustang moment"
-    elif "go-ahead" in tags:
-        headline = f"{name} comes through late with a go-ahead hit"
-    elif "game-tying" in tags:
-        headline = f"{name} delivers in a key spot"
-    elif star.get("type") == "hitter" and num(st, "homeRuns"):
-        hr_number = (star_play or {}).get("seasonNumber")
-        hr_velocity = mph_text((star_play or {}).get("velocity"))
-        if hr_number and hr_velocity:
-            headline = f"{name} turns around {hr_velocity} for home run No. {hr_number}"
-        elif hr_number:
-            headline = f"{name} launches home run No. {hr_number}"
-        else:
-            headline = f"{name} homers to highlight {weekday}'s Mustang action"
-    elif star.get("type") == "pitcher" and num(st, "strikeOuts") >= 5:
-        headline = f"{name} turns in a strong outing on the mound"
-    elif len(apps) == 1:
-        result = (star.get("gameContext") or {}).get("result")
-        if result == "win" and int(num(st, "runs")):
-            headline = f"{name} scores as {star.get('team') or 'his club'} picks up a win"
-        elif result == "win":
-            headline = f"{name} in the lineup as {star.get('team') or 'his club'} wins"
-        else:
-            headline = f"{name} represents Cal Poly in {weekday}'s pro action"
-    else:
-        headline = f"{name} highlights a busy {weekday} for former Mustangs"
-
-    paragraphs = []
-
-    # Opening paragraph: game story first.
-    if len(apps) == 1:
-        team = star.get("team") or "his club"
-        opp = star.get("opponent") or "the opponent"
-        result = result_text(star)
-        role = role_phrase(star)
-
-        opener = f"{name} was the lone former Mustang to appear in a confirmed professional game on {weekday},"
-        if role:
-            opener += f" {role}"
-        opener += f" for {team} against {opp}."
-        if result:
-            opener += " " + result
-        paragraphs.append(opener)
-    else:
-        clubs = len({a.get("team") for a in apps if a.get("team")})
-        levels = len({a.get("level") for a in apps if a.get("level")})
-        opener = f"{len(apps)} former Mustangs appeared in professional games on {weekday}"
-        if clubs:
-            opener += f" for {clubs} club{'s' if clubs != 1 else ''}"
-        if levels > 1:
-            opener += f" across {levels} levels"
-        opener += f", with {name} producing the night's most notable performance."
-        paragraphs.append(opener)
-
-    key = key_play_sentence(star)
-    if key:
-        paragraphs.append(key)
-
-    # Merge stat line and role into prose instead of separate one-line fragments.
-    line = stat_line(star)
-    if line:
-        # On one-player nights the opening paragraph already establishes batting
-        # order/position, so don't repeat that information in the stat paragraph.
-        paragraphs.append(line)
-
-    if star.get("type") == "pitcher":
-        pitcher_detail = pitcher_detail_sentence(star)
-        if pitcher_detail:
-            paragraphs.append(pitcher_detail)
-
-    if len(apps) > 1:
-        res = result_text(star)
-        if res:
-            paragraphs.append(res)
-
-    # Other appearances get compact, natural paragraphs rather than three lines apiece.
-    others = sorted([a for a in apps if a is not star], key=importance, reverse=True)
-    for a in others[:7]:
-        name2 = a.get("name")
-        team2 = a.get("team") or "his club"
-        level2 = a.get("level")
-        line2 = stat_line(a, use_name=False)
-        res2 = result_text(a)
-        role2 = role_phrase(a)
-
-        sentence = f"{name2} also appeared for {team2}"
-        if level2 and level2 != "MLB":
-            sentence += f" at {level2}"
-        sentence += "."
-        if line2:
-            sentence += " " + line2
-        if role2:
-            sentence += f" He {role2}."
-        if res2:
-            sentence += " " + res2
-        paragraphs.append(sentence)
-
-    # Transactions are part of the report, but not a raw transaction dump.
-    txp = transaction_paragraphs(day_transactions)
-    if txp:
-        paragraphs.append("Away from the box scores, there was also roster movement involving former Mustangs.")
-        paragraphs.extend(txp)
-
-    awards = [{
-        "label": "Player of the Night",
-        "player": star["name"],
-        "playerId": star.get("playerId"),
-        "type": star.get("type"),
-        "team": star.get("team"),
-        "line": star["summary"]
-    }]
-    if hitters:
-        b = max(hitters, key=hscore)
-        awards.append({
-            "label": "Top Hitter", "player": b["name"],
-            "playerId": b.get("playerId"), "type": "hitter",
-            "team": b.get("team"), "line": b["summary"]
-        })
-    if pitchers:
-        b = max(pitchers, key=pscore)
-        awards.append({
-            "label": "Top Pitcher", "player": b["name"],
-            "playerId": b.get("playerId"), "type": "pitcher",
-            "team": b.get("team"), "line": b["summary"]
-        })
-
-    return {
-        "generatorVersion": GENERATOR_VERSION,
-        "date": date,
-        "dateLabel": label,
-        "title": headline,
-        "paragraphs": paragraphs,
-        "awards": awards
-    }
-
-
-def build_today_schedule():
-    """Build today's tracked MLB + MiLB slate.
-
-    The official MLB Stats API also carries affiliated minor-league schedules.
-    We query each tracked professional level, match games against each player's
-    most recent official assignment, and include probable starters when the
-    league has published them.
-    """
-    today = datetime.now(PACIFIC).date().isoformat()
-    games = []
-    sport_levels = {
-        1: "MLB",
-        11: "Triple-A",
-        12: "Double-A",
-        13: "High-A",
-        14: "Single-A",
-        15: "Rookie",
-        16: "Rookie",
-    }
-
-    # Use the just-refreshed stats feed because it contains the player's latest
-    # team/level, which is more reliable than a static preseason assignment.
-    fresh_players = {}
-    try:
-        payload = json.loads(OUTPUT.read_text())
-        fresh_players = payload.get("players", {})
-    except Exception:
-        fresh_players = {}
-
-    schedule_games = []
-    for sport_id, level in sport_levels.items():
-        try:
-            data = get_json("https://statsapi.mlb.com/api/v1/schedule", {
-                "sportId": sport_id,
-                "date": today,
-                "hydrate": "team,probablePitcher,venue"
-            })
-        except Exception:
-            continue
-
-        for d in data.get("dates", []):
-            for g in d.get("games", []):
-                away_block = (g.get("teams") or {}).get("away") or {}
-                home_block = (g.get("teams") or {}).get("home") or {}
-                away = away_block.get("team") or {}
-                home = home_block.get("team") or {}
-                schedule_games.append({
-                    "gamePk": g.get("gamePk"),
-                    "gameDate": g.get("gameDate"),
-                    "status": (g.get("status") or {}).get("detailedState"),
-                    "level": level,
-                    "sportId": sport_id,
-                    "away": away.get("name"),
-                    "home": home.get("name"),
-                    "awayTeamId": away.get("id"),
-                    "homeTeamId": home.get("id"),
-                    "awayScore": away_block.get("score"),
-                    "homeScore": home_block.get("score"),
-                    "awayProbablePitcher": away_block.get("probablePitcher"),
-                    "homeProbablePitcher": home_block.get("probablePitcher"),
-                    "venue": (g.get("venue") or {}).get("name"),
-                })
-
-    box_cache = {}
-    catalog = json.loads(PLAYERS_FILE.read_text()).get("players", [])
-    for p in catalog:
-        if p.get("status") == "fa":
-            continue
-
-        fresh = fresh_players.get(str(p.get("mlbId"))) or {}
-        recent_team = fresh.get("recentTeam") or p.get("team")
-        recent_team_id = fresh.get("recentTeamId")
-        recent_level = fresh.get("recentLevel") or p.get("recentLevel")
-
-        # Find today's game using team id first, then exact official team name.
-        matches = []
-        for game in schedule_games:
-            id_match = recent_team_id and recent_team_id in (game.get("awayTeamId"), game.get("homeTeamId"))
-            name_match = recent_team and recent_team in (game.get("away"), game.get("home"))
-            if id_match or name_match:
-                matches.append(game)
-
-        if not matches:
-            continue
-
-        # A club can very occasionally appear twice (doubleheader), so preserve
-        # every distinct game instead of picking only the first one.
-        for game in matches:
-            live_line = None
-            game_pk = game.get("gamePk")
-            status = game.get("status") or ""
-            if game_pk and status not in ("Scheduled", "Pre-Game", "Warmup"):
-                try:
-                    if game_pk not in box_cache:
-                        box_cache[game_pk] = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", {})
-                    box = box_cache[game_pk]
-                    person_key = f"ID{p.get('mlbId')}"
-                    for side in ("away", "home"):
-                        player_row = (((box.get("teams") or {}).get(side) or {}).get("players") or {}).get(person_key)
-                        if not player_row:
-                            continue
-                        if p.get("type") == "hitter":
-                            st = (player_row.get("stats") or {}).get("batting") or {}
-                            ab = int(num(st, "atBats")); h = int(num(st, "hits"))
-                            hr = int(num(st, "homeRuns")); rbi = int(num(st, "rbi")); runs = int(num(st, "runs"))
-                            if ab or h or st.get("plateAppearances"):
-                                extras = []
-                                if hr: extras.append(f"{hr} HR")
-                                if rbi: extras.append(f"{rbi} RBI")
-                                if runs: extras.append(f"{runs} R")
-                                live_line = f"{h}-for-{ab}" + ((", " + ", ".join(extras)) if extras else "")
-                        else:
-                            st = (player_row.get("stats") or {}).get("pitching") or {}
-                            ip = st.get("inningsPitched")
-                            if ip and str(ip) != "0.0":
-                                live_line = f"{ip} IP, {int(num(st,'strikeOuts'))} K, {int(num(st,'earnedRuns'))} ER"
-                        break
-                except Exception:
-                    pass
-
-            # Determine the tracked player's club/opponent from the matched game.
-            if recent_team_id == game.get("awayTeamId") or recent_team == game.get("away"):
-                team = game.get("away")
-                opponent = game.get("home")
-            else:
-                team = game.get("home")
-                opponent = game.get("away")
-
-            games.append({
-                "player": p["name"],
-                "playerId": p.get("mlbId"),
-                "team": team,
-                "opponent": opponent,
-                "level": game.get("level") or recent_level,
-                "sportId": game.get("sportId"),
-                "gamePk": game_pk,
-                "gameDate": game.get("gameDate"),
-                "status": game.get("status"),
-                "timeLabel": game.get("gameDate"),
-                "away": game.get("away"),
-                "home": game.get("home"),
-                "awayTeamId": game.get("awayTeamId"),
-                "homeTeamId": game.get("homeTeamId"),
-                "awayProbablePitcher": game.get("awayProbablePitcher"),
-                "homeProbablePitcher": game.get("homeProbablePitcher"),
-                "venue": game.get("venue"),
-                "awayScore": game.get("awayScore"),
-                "homeScore": game.get("homeScore"),
-                "liveLine": live_line,
-            })
-
-    return {
-        "date": today,
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "source": "Official MLB/MiLB schedules and probable-pitcher feeds",
-        "games": games
-    }
-
-
-def build_transactions():
-    rows=[]; since=(datetime.now(PACIFIC).date()-timedelta(days=14)).isoformat(); until=datetime.now(PACIFIC).date().isoformat()
-    for p in PLAYERS:
-        try:
-            data=get_json(f"https://statsapi.mlb.com/api/v1/people/{p['id']}",{"hydrate":f"transactions(startDate={since},endDate={until})"})
-            person=(data.get("people") or [{}])[0]
-            for t in person.get("transactions",[])[:5]: rows.append({"player":p["name"],"date":t.get("date"),"description":t.get("description") or t.get("typeDesc") or "Roster transaction"})
-        except Exception: continue
-    rows.sort(key=lambda x:x.get("date") or "",reverse=True)
-    return {"generatedAt":datetime.now(timezone.utc).isoformat(),"transactions":rows[:20]}
-
-
-def patch_saved_assignment(players, player):
-    """Update team/level on the saved record without disturbing existing stats."""
-    key = str(player["id"])
-    existing = players.get(key)
-    if not isinstance(existing, dict):
-        return False
-    try:
-        team, level, team_id, source, assigned_date = fetch_recent_assignment(player)
-    except Exception:
-        return False
-    if not (team or level):
-        return False
-
-    changed = False
-    updates = {
-        "recentTeam": team,
-        "recentLevel": level,
-        "recentTeamId": team_id,
-        "assignmentSource": source,
-        "assignmentDate": assigned_date,
-    }
-    for field, value in updates.items():
-        if value is not None and existing.get(field) != value:
-            existing[field] = value
-            changed = True
-    players[key] = existing
-    return changed
-
-
-
-def update_archive(article, summary):
-    """Save one permanent Mustangs Daily edition per date.
-
-    Existing dates are replaced rather than duplicated, which makes manual
-    workflow reruns safe. Highlight metadata is copied into the archived edition
-    so old official clips remain discoverable after the live page advances.
-    """
-    existing = {"updatedAt": None, "editions": []}
-    if ARCHIVE_OUTPUT.exists():
-        try:
-            loaded = json.loads(ARCHIVE_OUTPUT.read_text())
-            if isinstance(loaded, dict):
-                existing = loaded
-        except Exception:
-            pass
-
-    editions = list(existing.get("editions") or [])
-    date = (article or {}).get("date") or (summary or {}).get("date")
-    if not date:
-        return existing
-
-    highlights = []
-    seen = set()
-    for appearance in (summary or {}).get("appearances") or []:
-        for clip in appearance.get("highlights") or []:
-            key = clip.get("url") or clip.get("id") or clip.get("title")
-            if key and key in seen:
-                continue
-            if key:
-                seen.add(key)
-            highlights.append({
-                **clip,
-                "player": appearance.get("name"),
-                "playerId": appearance.get("playerId"),
-            })
-
-    edition = {
-        "date": date,
-        "dateLabel": (article or {}).get("dateLabel"),
-        "title": (article or {}).get("title") or "Mustangs Daily",
-        "paragraphs": list((article or {}).get("paragraphs") or []),
-        "awards": list((article or {}).get("awards") or []),
-        "highlights": highlights,
-        "appearances": [
-            {
-                "playerId": a.get("playerId"),
-                "name": a.get("name"),
-                "team": a.get("team"),
-                "level": a.get("level"),
-                "summary": a.get("summary"),
-                "gamePk": a.get("gamePk"),
-            }
-            for a in ((summary or {}).get("appearances") or [])
-        ],
-        "generatedAt": (article or {}).get("generatedAt") or datetime.now(timezone.utc).isoformat(),
-    }
-
-    editions = [e for e in editions if e.get("date") != date]
-    editions.append(edition)
-    editions.sort(key=lambda e: str(e.get("date") or ""), reverse=True)
-
-    payload = {
-        "updatedAt": datetime.now(timezone.utc).isoformat(),
-        "editions": editions,
-    }
-    ARCHIVE_OUTPUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
-    print(f"Wrote {ARCHIVE_OUTPUT} with {len(editions)} archived editions")
-    return payload
-
-
-def main():
-    parser = argparse.ArgumentParser(description="Refresh Mustangs in Pro Ball data feeds")
-    parser.add_argument("--mode", choices=["full", "live"], default="full", help="full = morning edition; live = current stats + today schedule")
-    args = parser.parse_args()
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    old={}
-    if OUTPUT.exists():
-        try: old=json.loads(OUTPUT.read_text())
-        except: pass
-    players=dict(old.get("players",{}))
-    errors=[]
-    for p in PLAYERS:
-        try:
-            fresh=fetch_player(p)
-            if fresh:
-                players[str(p["id"])]=fresh
-            else:
-                patched = patch_saved_assignment(players, p)
-                suffix = "; assignment updated from official transaction/game log" if patched else ""
-                errors.append(f"{p['name']}: no {SEASON} professional split returned{suffix}")
-        except Exception as e:
-            patched = patch_saved_assignment(players, p)
-            suffix = "; assignment updated while preserving saved stats" if patched else ""
-            errors.append(f"{p['name']}: {e}{suffix}")
-        time.sleep(.15)
-    payload={"season":SEASON,"updatedAt":datetime.now(timezone.utc).isoformat(),"source":"MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined","players":players,"warnings":errors}
-    OUTPUT.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n")
-    print(f"Wrote {OUTPUT} with {len(players)} player records")
-    # Today's schedule is refreshed in both modes so the live site stays useful during games.
-    SCHEDULE_OUTPUT.write_text(json.dumps(build_today_schedule(), indent=2, sort_keys=True) + "\n")
-    if args.mode == "full":
-        summary = build_nightly_summary()
-        transactions = build_transactions()
-        TRANSACTIONS_OUTPUT.write_text(json.dumps(transactions, indent=2, sort_keys=True) + "\n")
-        article = build_daily_article(summary or {}, transactions)
-        DAILY_OUTPUT.write_text(json.dumps(article, indent=2, sort_keys=True) + "\n")
-        update_archive(article, summary or {})
-        print(f"Wrote full morning edition: {DAILY_OUTPUT}, {SCHEDULE_OUTPUT}, {TRANSACTIONS_OUTPUT}, {ARCHIVE_OUTPUT}")
-    else:
-        print(f"Wrote live refresh: {OUTPUT}, {SCHEDULE_OUTPUT}")
-    for e in errors: print("WARNING",e,file=sys.stderr)
-
-if __name__=="__main__": main()
+function gameCards(games){
+  let unique=[];let seen=new Map();
+  for(const g of games){
+    let key=g.gamePk||`${g.away}-${g.home}-${g.gameDate}`;
+    if(!seen.has(key)){let row={...g,tracked:[]};seen.set(key,row);unique.push(row)}
+    seen.get(key).tracked.push(g.player)
+  }
+  const levelRank={"MLB":1,"Triple-A":2,"Double-A":3,"High-A":4,"Single-A":5,"Rookie":6,"Rookie Ball":6};
+  unique.sort((a,b)=>{
+    let ar=levelRank[a.level]??99, br=levelRank[b.level]??99;
+    if(ar!==br)return ar-br;
+    let at=new Date(a.gameDate||0).getTime()||0, bt=new Date(b.gameDate||0).getTime()||0;
+    return at-bt;
+  });
+  return unique.map(g=>{
+    let awayLogo=g.awayTeamId?logo(g.awayTeamId):'',homeLogo=g.homeTeamId?logo(g.homeTeamId):'';
+    let status=g.status||'Scheduled';
+    let live=/in progress|live/i.test(status);
+    let final=/final|completed|game over/i.test(status);
+    let href=gamedayUrl(g);
+    let action=final?'View box score':live?'Open live Gameday':'Open game preview';
+    return`${href?`<a class="matchup-link" href="${href}" target="_blank" rel="noopener" aria-label="${esc(action)}: ${esc(g.away||'Away')} at ${esc(g.home||'Home')}">`:''}<article class="matchup-card clickable-game"><div class="matchup-top"><span class="matchup-time">${g.level?`${esc(g.level)} · `:''}${live?esc(status):pacificTime(g.gameDate)}</span>${g.venue?`<span class="matchup-venue">${esc(g.venue)}</span>`:''}</div><div class="teams-row"><div class="team-side">${awayLogo?`<img src="${awayLogo}" alt="${esc(g.away)}">`:''}<b>${esc(g.away||'Away')}</b>${g.awayScore!=null?`<strong>${esc(g.awayScore)}</strong>`:''}</div><div class="at-mark">@</div><div class="team-side">${homeLogo?`<img src="${homeLogo}" alt="${esc(g.home)}">`:''}<b>${esc(g.home||'Home')}</b>${g.homeScore!=null?`<strong>${esc(g.homeScore)}</strong>`:''}</div></div><div class="starters-row">${starterHtml('Projected starter',g.awayProbablePitcher)}${starterHtml('Projected starter',g.homeProbablePitcher)}</div>${g.tracked.length?`<div class="tracked-line"><span>Mustangs:</span> ${g.tracked.map(esc).join(', ')}</div>`:''}${g.liveLine?`<div class="live-line">${esc(g.liveLine)}</div>`:''}<div class="game-card-action">${esc(action)} ↗</div></article>${href?'</a>':''}`
+  }).join('')
+}
+function dailyResultStrip(){
+  let apps=DATA.summary?.appearances||[];
+  if(!apps.length)return '<div class="daily-results-empty">No tracked Mustang results from last night.</div>';
+  return apps.map(a=>{
+    let p=DATA.players.find(x=>String(x.mlbId)===String(a.playerId))||{mlbId:a.playerId,name:a.name,initials:(a.name||'CP').split(/\s+/).map(x=>x[0]).join('').slice(0,2)};
+    let ctx=a.gameContext||{}, result=ctx.result, score=(ctx.teamFinal!=null&&ctx.opponentFinal!=null)?`${ctx.teamFinal}-${ctx.opponentFinal}`:'';
+    let resultText=result==='win'?`W ${score}`:result==='loss'?`L ${score}`:score;
+    let key=(ctx.keyPlays||[]).find(x=>(x.tags||[]).includes('walk-off'))||(ctx.keyPlays||[]).find(x=>(x.tags||[]).includes('go-ahead'))||(ctx.keyPlays||[]).find(x=>(x.tags||[]).includes('game-tying'));
+    let moment='';
+    if(key){let tags=key.tags||[], inning=key.inning?`${key.inning}${Number(key.inning)===1?'st':Number(key.inning)===2?'nd':Number(key.inning)===3?'rd':'th'}`:'';moment=tags.includes('walk-off')?`Walk-off ${key.event||'hit'}`:tags.includes('go-ahead')?`Go-ahead ${key.event||'hit'}${inning?' · '+inning:''}`:`Game-tying ${key.event||'hit'}${inning?' · '+inning:''}`}
+    return `<a class="daily-result" href="player.html?id=${esc(a.playerId)}">${portrait(p,'result-portrait')}<div class="daily-result-copy"><b>${esc(a.name)}</b><span>${esc(a.summary||'')}</span>${moment?`<small>★ ${esc(moment)}</small>`:''}</div><div class="daily-result-game"><strong>${esc(resultText)}</strong><span>${esc(a.team||'')}</span></div></a>`;
+  }).join('');
+}
+function ensureGameLinkStyles(){
+  if(document.getElementById('gameLinkStyles'))return;
+  let s=document.createElement('style');s.id='gameLinkStyles';
+  s.textContent='.matchup-link{display:block;color:inherit;text-decoration:none}.matchup-link .matchup-card{height:100%;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}.matchup-link:hover .matchup-card{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.14);border-color:rgba(196,151,31,.55)}.game-card-action{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.09);font:700 10px \"Space Mono\";text-transform:uppercase;letter-spacing:.04em;color:var(--green)}';
+  document.head.appendChild(s);
+}
+function arrangeDailySections(){
+  let highlightsSection=$('#highlights')?.closest('section');
+  let gamesSection=$('#games')?.closest('section');
+  if(highlightsSection&&gamesSection&&highlightsSection!==gamesSection&&gamesSection.parentNode){
+    gamesSection.parentNode.insertBefore(highlightsSection,gamesSection);
+  }
+}
+
+function archiveHighlightCard(h){
+  return `<article class="archive-video"><div class="archive-video-media">${h.image?`<img src="${esc(h.image)}" alt="">`:''}<span>▶</span></div><div><b>${esc(h.title||'Official highlight')}</b><small>${esc(h.player||'')}</small><a href="${esc(h.url||'#')}" target="_blank" rel="noopener">Watch official video ↗</a></div></article>`;
+}
+function archiveEditionCard(e,index){
+  let paragraphs=e.paragraphs||[], clips=e.highlights||[];
+  let excerpt=paragraphs[0]||'Mustangs Daily edition';
+  return `<article class="archive-edition"><button class="archive-edition-toggle" type="button" aria-expanded="${index===0?'true':'false'}"><div><small>${esc(e.dateLabel||e.date||'')}</small><h3>${esc(e.title||'Mustangs Daily')}</h3><p>${esc(excerpt)}</p></div><span>${clips.length} video${clips.length===1?'':'s'} · ${index===0?'−':'+'}</span></button><div class="archive-edition-body" ${index===0?'':'hidden'}>${paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${clips.length?`<div class="archive-video-grid">${clips.map(archiveHighlightCard).join('')}</div>`:'<div class="archive-no-video">No official player-tagged video was archived for this edition.</div>'}</div></article>`;
+}
+function ensureArchiveSection(){
+  if($('#archive'))return;
+  let about=$('#about')?.closest('section')||$('#about');
+  let html=`<section id="archive" class="section archive-section"><div class="section-head"><div><div class="eyebrow">Mustangs Daily history</div><h2 class="section-title">Article & Highlight Archive</h2></div><span class="meta">Newest first</span></div><div class="archive-tools"><input id="archiveSearch" type="search" placeholder="Search player, team or story"><select id="archiveYear"><option value="">All years</option></select></div><div id="archiveList" class="archive-list"></div></section>`;
+  if(about&&about.parentNode)about.parentNode.insertBefore(document.createRange().createContextualFragment(html),about);
+  else document.querySelector('main')?.insertAdjacentHTML('beforeend',html);
+  let nav=document.querySelector('header nav, nav');
+  if(nav&&!nav.querySelector('a[href="#archive"]'))nav.insertAdjacentHTML('beforeend','<a href="#archive">Archive</a>');
+}
+function buildProMustangsMenu(){
+  let nav=document.querySelector('header nav, nav');
+  if(!nav)return;
+
+  const order=['Daily','Highlights','Games','Roster','Transactions','Leaders','Career','MLB History','Archive','About'];
+  const existing=[...nav.querySelectorAll('a')];
+  const byLabel=new Map(existing.map(a=>[a.textContent.trim().toLowerCase(),a.getAttribute('href')]));
+
+  // Remove the old flat links so the header becomes one clean category.
+  existing.forEach(a=>{
+    if(order.map(x=>x.toLowerCase()).includes(a.textContent.trim().toLowerCase()))a.remove();
+  });
+
+  let old=nav.querySelector('.pro-mustangs-menu');
+  if(old)old.remove();
+
+  let links=order.map(label=>{
+    let href=byLabel.get(label.toLowerCase())||'#';
+    return `<a href="${esc(href)}">${esc(label)}</a>`;
+  }).join('');
+
+  if(!nav.querySelector('a[href="slo-life.html"]'))nav.insertAdjacentHTML('beforeend','<a class="slo-life-nav-link" href="slo-life.html">SLO Life</a>');
+
+  nav.insertAdjacentHTML('beforeend',`
+    <div class="pro-mustangs-menu">
+      <button class="pro-mustangs-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+        Pro Mustangs <span aria-hidden="true">▾</span>
+      </button>
+      <div class="pro-mustangs-dropdown" hidden>
+        ${links}
+      </div>
+    </div>
+  `);
+
+  let menu=nav.querySelector('.pro-mustangs-menu');
+  let button=menu.querySelector('.pro-mustangs-toggle');
+  let dropdown=menu.querySelector('.pro-mustangs-dropdown');
+
+  const close=()=>{
+    dropdown.hidden=true;
+    button.setAttribute('aria-expanded','false');
+    menu.classList.remove('open');
+  };
+  const open=()=>{
+    dropdown.hidden=false;
+    button.setAttribute('aria-expanded','true');
+    menu.classList.add('open');
+  };
+
+  button.onclick=e=>{
+    e.stopPropagation();
+    dropdown.hidden?open():close();
+  };
+  dropdown.querySelectorAll('a').forEach(a=>a.onclick=close);
+  document.addEventListener('click',e=>{
+    if(!menu.contains(e.target))close();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')close();
+  });
+}
+function renderArchive(){
+  ensureArchiveSection();
+  buildProMustangsMenu();
+  let editions=[...(DATA.archive?.editions||[])];
+  // On first deployment, surface the current article immediately even before
+  // archive.json has accumulated older nights.
+  if(!editions.length&&DATA.daily?.date){
+    let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name,playerId:a.playerId})));
+    editions=[{...DATA.daily,highlights:clips}];
+  }
+  let years=[...new Set(editions.map(e=>String(e.date||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  let year=$('#archiveYear');
+  if(year)year.innerHTML='<option value="">All years</option>'+years.map(y=>`<option value="${esc(y)}">${esc(y)}</option>`).join('');
+  let draw=()=>{
+    let q=($('#archiveSearch')?.value||'').trim().toLowerCase(), y=$('#archiveYear')?.value||'';
+    let rows=editions.filter(e=>{
+      if(y&&String(e.date||'').slice(0,4)!==y)return false;
+      if(!q)return true;
+      let hay=[e.title,...(e.paragraphs||[]),...(e.appearances||[]).flatMap(a=>[a.name,a.team,a.level,a.summary])].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+    $('#archiveList').innerHTML=rows.length?rows.map(archiveEditionCard).join(''):'<div class="empty">No archived editions match this search.</div>';
+    $$('.archive-edition-toggle').forEach(btn=>btn.onclick=()=>{
+      let body=btn.nextElementSibling, opening=body.hasAttribute('hidden');
+      if(opening)body.removeAttribute('hidden');else body.setAttribute('hidden','');
+      btn.setAttribute('aria-expanded',String(opening));
+      let span=btn.querySelector(':scope > span');
+      if(span)span.textContent=span.textContent.replace(/[+−]$/,opening?'−':'+');
+    });
+  };
+  if($('#archiveSearch'))$('#archiveSearch').oninput=draw;
+  if($('#archiveYear'))$('#archiveYear').onchange=draw;
+  draw();
+}
+function heroPhotoCarousel(){
+  let target=document.querySelector('.hero .scorecard');
+  if(!target)return;
+
+  // Curated action photos supplied for the site. These always lead the carousel.
+  const curated=[
+    {image:'assets/action/brooks-lee.jpg',player:'Brooks Lee'},
+    {image:'assets/action/bryan-woo.webp',player:'Bryan Woo'},
+    {image:'assets/action/drew-thorpe.jpg',player:'Drew Thorpe'},
+    {image:'assets/action/andrew-alvarez.jpg',player:'Andrew Alvarez'}
+  ];
+
+  let actionPhotos=[],seen=new Set();
+  const addPhoto=(image,playerName,playerId,title='',video='',dateLabel='')=>{
+    if(!image||seen.has(image))return;
+    seen.add(image);
+    let p=DATA.players.find(x=>String(x.mlbId)===String(playerId))
+      || DATA.players.find(x=>x.name===playerName);
+    actionPhotos.push({
+      image,
+      video,
+      title:title||'Mustang in Pro Ball',
+      player:playerName||p?.name||'Mustang in Pro Ball',
+      team:p?.recentTeam||p?.team||'',
+      level:p?normalizedLevel(p):'',
+      date:dateLabel||''
+    });
+  };
+
+  curated.forEach(photo=>addPhoto(photo.image,photo.player,null,'Mustang in Pro Ball'));
+
+  // After the curated photos, continue adding official game-action imagery from
+  // current and archived MLB/MiLB highlights so the carousel can grow over time.
+  (DATA.summary?.appearances||[]).forEach(a=>{
+    (a.highlights||[]).forEach(h=>addPhoto(h.image,a.name,a.playerId,h.title,h.url,DATA.daily?.dateLabel||DATA.summary?.date));
+  });
+  (DATA.archive?.editions||[]).forEach(e=>{
+    (e.highlights||[]).forEach(h=>addPhoto(h.image,h.player,h.playerId,h.title,h.url,e.dateLabel||e.date));
+  });
+
+  actionPhotos=actionPhotos.slice(0,20);
+  if(!actionPhotos.length){target.remove();return}
+
+  let slides=actionPhotos.map((photo,i)=>{
+    let caption=[photo.team,photo.level].filter(Boolean).join(' · ');
+    let figure=`<figure class="hero-player-slide hero-action-slide ${i===0?'active':''}" data-index="${i}"><img src="${esc(photo.image)}" alt="${esc(photo.player)} game action"><figcaption><small>${esc(photo.date||'Mustang in Pro Ball')}</small><strong>${esc(photo.player)}</strong>${caption?`<span>${esc(caption)}</span>`:''}</figcaption></figure>`;
+    return photo.video?`<a class="hero-action-link" href="${esc(photo.video)}" target="_blank" rel="noopener">${figure}</a>`:figure;
+  }).join('');
+
+  target.outerHTML=`<div class="hero-photo-feature" id="heroPhotoFeature"><div class="hero-photo-stage">${slides}</div><button class="hero-photo-nav prev" type="button" aria-label="Previous action photo">‹</button><button class="hero-photo-nav next" type="button" aria-label="Next action photo">›</button><div class="hero-photo-count"><span id="heroPhotoCurrent">1</span> / ${actionPhotos.length}</div></div>`;
+
+  let root=$('#heroPhotoFeature'),slideEls=[...root.querySelectorAll('.hero-player-slide')],current=0,timer;
+  const show=n=>{current=(n+slideEls.length)%slideEls.length;slideEls.forEach((el,i)=>el.classList.toggle('active',i===current));let c=$('#heroPhotoCurrent');if(c)c.textContent=current+1};
+  const restart=()=>{clearInterval(timer);timer=setInterval(()=>show(current+1),5500)};
+  root.querySelector('.next').onclick=e=>{e.preventDefault();e.stopPropagation();show(current+1);restart()};
+  root.querySelector('.prev').onclick=e=>{e.preventDefault();e.stopPropagation();show(current-1);restart()};
+  root.addEventListener('mouseenter',()=>clearInterval(timer));
+  root.addEventListener('mouseleave',restart);
+  restart();
+}
+
+function transactionVisual(t){
+  let text=String(t.description||'').toLowerCase();
+  let kind=t.kind||(
+    /injured list|disabled list/.test(text)?'injured':
+    /rehab assignment/.test(text)?'rehab':
+    /recalled|selected the contract|contract selected/.test(text)?'callup':
+    /activated/.test(text)?'activated':
+    /optioned/.test(text)?'optioned':
+    /assigned/.test(text)?'assignment':
+    /transferred/.test(text)?'transfer':
+    /released/.test(text)?'released':'move'
+  );
+  let labels={
+    injured:'Injured List',rehab:'Rehab Assignment',callup:'Call-Up',
+    activated:'Activated',optioned:'Optioned',assignment:'Assignment',
+    transfer:'Transfer',released:'Released',move:'Roster Move'
+  };
+  let icons={
+    injured:'＋',rehab:'↻',callup:'↑',activated:'✓',optioned:'↓',
+    assignment:'↕',transfer:'→',released:'×',move:'↕'
+  };
+  return {kind,label:t.label||labels[kind]||'Roster Move',icon:icons[kind]||'↕'};
+}
+function transactionDate(value){
+  if(!value)return'';
+  let d=new Date(String(value).slice(0,10)+'T12:00:00');
+  if(Number.isNaN(d.getTime()))return value;
+  return new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',year:'numeric'}).format(d);
+}
+function transactionCard(t){
+  let v=transactionVisual(t);
+  return `<article class="transaction-card tx-${v.kind}">
+    <div class="tx-top">
+      <span class="tx-icon" aria-hidden="true">${v.icon}</span>
+      <div class="tx-heading">
+        <small>${esc(v.label)}</small>
+        <b>${esc(t.player)}</b>
+      </div>
+      <time>${esc(transactionDate(t.date))}</time>
+    </div>
+    <p>${esc(t.description)}</p>
+  </article>`;
+}
+
+function renderHome(){ensureGameLinkStyles();heroPhotoCarousel();arrangeDailySections();let dailySection=$('#dailyBody')?.closest('.daily');if(dailySection&&!$('#dailyResultsWrap'))dailySection.insertAdjacentHTML('afterend','<section id="dailyResultsWrap" class="daily-results-wrap"><div class="daily-results-head"><div><span>LAST NIGHT</span><h3>Daily Results</h3></div><small>Click a player for full profile</small></div><div id="dailyResults" class="daily-results-strip"></div></section>');let article=DATA.daily||{};$('#dailyTitle').textContent=article.title||'Mustangs Daily';$('#dailyDate').textContent=article.dateLabel||DATA.summary?.date||'Latest report';$('#dailyBody').innerHTML=(article.paragraphs||['The next morning edition will publish the latest Mustangs Daily report.']).map(p=>`<p>${esc(p)}</p>`).join('');let results=$('#dailyResults');if(results)results.innerHTML=dailyResultStrip();let awards=article.awards||[];$('#awards').innerHTML=awards.length?awards.map(awardCard).join(''):'<div class="empty">Awards appear after tracked players compete.</div>';let clips=(DATA.summary?.appearances||[]).flatMap(a=>(a.highlights||[]).map(h=>({...h,player:a.name})));$('#highlights').innerHTML=clips.length?clips.map(highlightCard).join(''):'<div class="empty">Official highlights will appear when MLB or MiLB publishes player-tagged video.</div>';let games=DATA.schedule?.games||[];$('#games').innerHTML=games.length?gameCards(games):'<div class="empty">No tracked games were found on today’s schedule.</div>';let tx=DATA.transactions?.transactions||[];$('#transactions').innerHTML=tx.length?tx.map(transactionCard).join(''):'<div class="empty">No recent tracked transactions.</div>';renderRoster();leaders();renderCareer();renderArchive()}
+
+function recentOrders(p){return p.type==='hitter'?['G','AB','R','H','2B','3B','HR','RBI','BB','SO','SB','AVG','OBP','SLG','OPS']:['G','IP','H','R','ER','BB','SO','ERA','WHIP']}
+function shortDate(v){if(!v)return'';let d=new Date(v+'T12:00:00');if(Number.isNaN(d.getTime()))return v;return new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/Los_Angeles'}).format(d)}
+function lastSevenSection(p){
+  let recent=p.last7||{}, st=recent.stats||{}, games=Number(recent.games||0);
+  let range=recent.startDate&&recent.endDate?`${shortDate(recent.startDate)} – ${shortDate(recent.endDate)}`:'Rolling seven-game window';
+  if(!games)return `<section class="section recent-section"><div class="section-head"><div><div class="eyebrow">Recent form</div><h2 class="section-title">Last 7 Games</h2></div><span class="meta">Waiting for game logs</span></div><div class="empty">Seven recent professional appearances are not available yet for ${esc(p.name)}.</div></section>`;
+  return `<section class="section recent-section"><div class="section-head"><div><div class="eyebrow">Recent form</div><h2 class="section-title">Last 7 Games</h2></div><div class="recent-meta"><b>${games} most recent appearance${games===1?'':'s'}</b><span>${esc(range)}</span></div></div><div class="stats recent-stats ${p.type==='pitcher'?'pitcher':''}">${recentOrders(p).map(k=>`<div class="stat"><b>${esc(st[k]??'—')}</b><small>${k}</small></div>`).join('')}</div><p class="recent-note">Rolling totals from ${games===7?'the seven most recent professional games/appearances':`the ${games} available professional appearance${games===1?'':'s'}`} — not the last seven calendar days.</p></section>`;
+}
+function renderPlayer(){let id=new URLSearchParams(location.search).get('id'),p=DATA.players.find(x=>String(x.mlbId)===String(id));if(!p){$('#playerRoot').innerHTML='<div class="empty">Player not found.</div>';return}document.title=`${p.name} — Mustangs in Pro Ball`;$('#playerRoot').innerHTML=`<section class="hero"><div class="shell player-hero">${portrait(p)}<div><div class="eyebrow">Mustang profile · ${esc(normalizedLevel(p))}</div><h1>${esc(p.name)}</h1><p class="lede">${esc(p.position)} · ${esc(p.recentTeam||p.team)}<br>${esc(p.drafted||'')}</p>${p.profileUrl?`<a class="hero-link" href="${esc(p.profileUrl)}" target="_blank" rel="noopener">Official player profile ↗</a>`:''}</div></div></section><main class="shell"><section class="section"><div class="section-head"><h2 class="section-title">2026 Season</h2><span class="meta">Updated automatically</span></div><div class="stats ${p.type==='pitcher'?'pitcher':''} player-page-stats">${orders(p).map(k=>`<div class="stat"><b>${esc(p.stats?.[k]??'—')}</b><small>${k}</small></div>`).join('')}</div></section>${lastSevenSection(p)}<section class="section daily"><div class="article-card"><div class="eyebrow">Player story</div><h2>${esc(p.name)}</h2><div class="article-body"><p>${esc(p.note||'')}</p></div></div><div class="panel current-panel"><div class="eyebrow">Current assignment</div><h3>${esc(p.recentTeam||p.team)}</h3><p>${esc(normalizedLevel(p))}</p><hr><div class="eyebrow">Draft</div><p>${esc(p.drafted||'')}</p></div></section></main>`}
+function setupNav(){const header=$('#siteHeader'),toggle=$('#menuToggle'),nav=$('#primaryNav');toggle?.addEventListener('click',()=>{let open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false')}));addEventListener('scroll',()=>header?.classList.toggle('is-scrolled',scrollY>24),{passive:true})}
+function formatPacificStamp(value){if(!value)return '—';let d=new Date(value);if(Number.isNaN(d.getTime()))return String(value);return new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true,timeZoneName:'short'}).format(d)}
+function updateHeroMeta(){let mlb=DATA.players.filter(p=>normalizedLevel(p)==='MLB').length,orgs=new Set(DATA.players.filter(p=>p.status!=='fa').map(p=>p.team).filter(Boolean)).size;let countPlayers=$('#countPlayers'),countMlb=$('#countMlb'),countOrgs=$('#countOrgs');if(countPlayers)countPlayers.textContent=DATA.players.length;if(countMlb)countMlb.textContent=mlb;if(countOrgs)countOrgs.textContent=orgs;let stamp=DATA.statsMeta?.updatedAt||DATA.schedule?.generatedAt||DATA.summary?.generatedAt||DATA.daily?.generatedAt||DATA.summary?.date;let pretty=formatPacificStamp(stamp);let hero=$('#heroUpdated'),about=$('#aboutUpdated');if(hero)hero.textContent='Last refreshed: '+pretty;if(about)about.textContent='Last refresh: '+pretty}
+document.addEventListener('DOMContentLoaded',async()=>{await loadAll();if(document.body.dataset.page==='player')renderPlayer();else{renderHome();updateHeroMeta();setupNav();$('#search')?.addEventListener('input',renderRoster);$('#sort')?.addEventListener('change',renderRoster)}});
