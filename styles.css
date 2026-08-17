@@ -532,3 +532,116 @@
   .transaction-card time{grid-column:2;justify-self:start}
   .transaction-card p{padding-left:56px}
 }
+
+/* V5.46 â€” transaction card layout correction
+   Explicitly neutralizes older grid rules that caused text/date overlap. */
+#transactions.transactions{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:18px !important;
+  align-items:stretch;
+}
+
+#transactions .transaction-card{
+  display:block !important;
+  grid-template-columns:none !important;
+  gap:0 !important;
+  position:relative;
+  min-width:0;
+  min-height:215px;
+  padding:22px 22px 20px !important;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+#transactions .transaction-card::before{
+  width:5px;
+}
+
+#transactions .tx-top{
+  display:grid !important;
+  grid-template-columns:52px minmax(0,1fr) !important;
+  grid-template-areas:
+    "icon heading"
+    "icon date";
+  column-gap:15px;
+  row-gap:6px;
+  align-items:start;
+  margin:0 0 18px;
+}
+
+#transactions .tx-icon{
+  grid-area:icon;
+  width:48px !important;
+  height:48px !important;
+  margin:0;
+  flex:none;
+}
+
+#transactions .tx-heading{
+  grid-area:heading;
+  min-width:0;
+}
+
+#transactions .tx-heading small{
+  margin:0 0 5px;
+  line-height:1.25;
+}
+
+#transactions .tx-heading b{
+  margin:0 !important;
+  font-size:27px;
+  line-height:1;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
+#transactions .transaction-card time{
+  grid-area:date;
+  justify-self:start;
+  display:inline-flex;
+  width:auto;
+  padding:4px 8px;
+  margin:0;
+  font-size:8px;
+  line-height:1.2;
+}
+
+#transactions .transaction-card p{
+  display:block;
+  width:auto;
+  max-width:none;
+  margin:0 !important;
+  padding:0 0 0 67px !important;
+  font-size:15px;
+  line-height:1.52;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+/* subtle card hierarchy */
+#transactions .transaction-card{
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+#transactions .transaction-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(20,45,35,.11);
+}
+
+@media(max-width:1180px){
+  #transactions.transactions{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:700px){
+  #transactions.transactions{
+    grid-template-columns:1fr !important;
+  }
+  #transactions .transaction-card{
+    min-height:0;
+  }
+  #transactions .transaction-card p{
+    padding-left:0 !important;
+  }
+}
