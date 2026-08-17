@@ -60,28 +60,28 @@
       "type": "pitcher"
     },
     "686797": {
-      "assignmentDate": "2026-08-15",
+      "assignmentDate": "2026-08-16",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-15",
+        "endDate": "2026-08-16",
         "games": 7,
-        "startDate": "2026-08-08",
+        "startDate": "2026-08-09",
         "stats": {
           "2B": 2,
           "3B": 0,
           "AB": 29,
-          "AVG": ".310",
+          "AVG": ".345",
           "BB": 1,
           "CS": 0,
           "G": 7,
-          "H": 9,
-          "HR": 1,
-          "OBP": ".333",
-          "OPS": ".816",
-          "R": 2,
-          "RBI": 2,
+          "H": 10,
+          "HR": 2,
+          "OBP": ".367",
+          "OPS": ".988",
+          "R": 3,
+          "RBI": 6,
           "SB": 0,
-          "SLG": ".483",
+          "SLG": ".621",
           "SO": 5
         }
       },
@@ -92,19 +92,19 @@
       "stats": {
         "2B": 19,
         "3B": 3,
-        "AB": 437,
+        "AB": 441,
         "AVG": ".245",
         "BB": 33,
         "CS": 4,
-        "H": 107,
-        "HR": 17,
+        "H": 108,
+        "HR": 18,
         "OBP": ".300",
-        "OPS": ".719",
-        "R": 53,
-        "RBI": 62,
+        "OPS": ".724",
+        "R": 54,
+        "RBI": 66,
         "SB": 7,
-        "SLG": ".419",
-        "SO": 78
+        "SLG": ".424",
+        "SO": 79
       },
       "team": "Minnesota Twins",
       "type": "hitter"
@@ -145,22 +145,22 @@
       "type": "pitcher"
     },
     "693433": {
-      "assignmentDate": "2026-08-11",
+      "assignmentDate": "2026-08-16",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-11",
+        "endDate": "2026-08-16",
         "games": 7,
-        "startDate": "2026-06-30",
+        "startDate": "2026-07-07",
         "stats": {
           "BB": 10,
           "ER": 17,
-          "ERA": "3.89",
+          "ERA": "3.92",
           "G": 7,
-          "H": 39,
-          "IP": "39.1",
+          "H": 38,
+          "IP": "39.0",
           "R": 19,
           "SO": 40,
-          "WHIP": "1.25"
+          "WHIP": "1.23"
         }
       },
       "name": "Bryan Woo",
@@ -168,14 +168,14 @@
       "recentTeam": "Seattle Mariners",
       "recentTeamId": 136,
       "stats": {
-        "BB": 28,
-        "ER": 61,
-        "ERA": "4.15",
-        "H": 118,
-        "IP": "132.1",
-        "R": 65,
-        "SO": 132,
-        "WHIP": "1.10"
+        "BB": 29,
+        "ER": 63,
+        "ERA": "4.10",
+        "H": 121,
+        "IP": "138.1",
+        "R": 67,
+        "SO": 137,
+        "WHIP": "1.08"
       },
       "team": "Seattle Mariners",
       "type": "pitcher"
@@ -386,7 +386,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals with current assignment resolved from newest official transaction, then game log; multiple professional levels combined",
-  "updatedAt": "2026-08-16T17:40:19.773604+00:00",
+  "updatedAt": "2026-08-17T11:12:30.444862+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",

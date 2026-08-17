@@ -1,355 +1,37 @@
 {
-  "date": "2026-08-16",
+  "date": "2026-08-17",
   "games": [
     {
-      "away": "Philadelphia Phillies",
+      "away": "Atlanta Braves",
       "awayProbablePitcher": {
-        "fullName": "Andrew Painter",
-        "id": 691725,
-        "link": "/api/v1/people/691725"
+        "fullName": "Mart\u00edn P\u00e9rez",
+        "id": 527048,
+        "link": "/api/v1/people/527048"
       },
-      "awayScore": 0,
-      "awayTeamId": 143,
-      "gameDate": "2026-08-16T18:10:00Z",
-      "gamePk": 823670,
+      "awayScore": null,
+      "awayTeamId": 144,
+      "gameDate": "2026-08-17T23:40:00Z",
+      "gamePk": 823668,
       "home": "Minnesota Twins",
       "homeProbablePitcher": {
-        "fullName": "Dean Kremer",
-        "id": 665152,
-        "link": "/api/v1/people/665152"
+        "fullName": "Bailey Ober",
+        "id": 641927,
+        "link": "/api/v1/people/641927"
       },
-      "homeScore": 0,
+      "homeScore": null,
       "homeTeamId": 142,
       "level": "MLB",
       "liveLine": null,
-      "opponent": "Philadelphia Phillies",
+      "opponent": "Atlanta Braves",
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Warmup",
+      "status": "Scheduled",
       "team": "Minnesota Twins",
-      "timeLabel": "2026-08-16T18:10:00Z",
+      "timeLabel": "2026-08-17T23:40:00Z",
       "venue": "Target Field"
-    },
-    {
-      "away": "St. Lucie Mets",
-      "awayProbablePitcher": {
-        "fullName": "Will Watson",
-        "id": 814492,
-        "link": "/api/v1/people/814492"
-      },
-      "awayScore": null,
-      "awayTeamId": 507,
-      "gameDate": "2026-08-16T16:30:00Z",
-      "gamePk": 820505,
-      "home": "Jupiter Hammerheads",
-      "homeProbablePitcher": {
-        "fullName": "Jonas Uzcategui",
-        "id": 801387,
-        "link": "/api/v1/people/801387"
-      },
-      "homeScore": null,
-      "homeTeamId": 479,
-      "level": "Single-A",
-      "liveLine": null,
-      "opponent": "Jupiter Hammerheads",
-      "player": "Ryan Tayman",
-      "playerId": 822034,
-      "sportId": 14,
-      "status": "In Progress",
-      "team": "St. Lucie Mets",
-      "timeLabel": "2026-08-16T16:30:00Z",
-      "venue": "Roger Dean Chevrolet Stadium"
-    },
-    {
-      "away": "Hill City Howlers",
-      "awayProbablePitcher": {
-        "fullName": "Miguel Flores",
-        "id": 821793,
-        "link": "/api/v1/people/821793"
-      },
-      "awayScore": null,
-      "awayTeamId": 481,
-      "gameDate": "2026-08-16T22:35:00Z",
-      "gamePk": 826907,
-      "home": "Myrtle Beach Pelicans",
-      "homeProbablePitcher": null,
-      "homeScore": null,
-      "homeTeamId": 521,
-      "level": "Single-A",
-      "liveLine": null,
-      "opponent": "Myrtle Beach Pelicans",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "sportId": 14,
-      "status": "Scheduled",
-      "team": "Hill City Howlers",
-      "timeLabel": "2026-08-16T22:35:00Z",
-      "venue": "Pelicans Ballpark"
-    },
-    {
-      "away": "Rome Emperors",
-      "awayProbablePitcher": null,
-      "awayScore": null,
-      "awayTeamId": 432,
-      "gameDate": "2026-08-16T17:05:00Z",
-      "gamePk": 822466,
-      "home": "Asheville Tourists",
-      "homeProbablePitcher": {
-        "fullName": "Dylan Howard",
-        "id": 703440,
-        "link": "/api/v1/people/703440"
-      },
-      "homeScore": null,
-      "homeTeamId": 573,
-      "level": "High-A",
-      "liveLine": null,
-      "opponent": "Rome Emperors",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "sportId": 13,
-      "status": "In Progress",
-      "team": "Asheville Tourists",
-      "timeLabel": "2026-08-16T17:05:00Z",
-      "venue": "HomeTrust Park"
-    },
-    {
-      "away": "Seattle Mariners",
-      "awayProbablePitcher": {
-        "fullName": "Bryan Woo",
-        "id": 693433,
-        "link": "/api/v1/people/693433"
-      },
-      "awayScore": null,
-      "awayTeamId": 136,
-      "gameDate": "2026-08-16T23:20:00Z",
-      "gamePk": 824156,
-      "home": "Houston Astros",
-      "homeProbablePitcher": {
-        "fullName": "Hunter Brown",
-        "id": 686613,
-        "link": "/api/v1/people/686613"
-      },
-      "homeScore": null,
-      "homeTeamId": 117,
-      "level": "MLB",
-      "liveLine": null,
-      "opponent": "Houston Astros",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "sportId": 1,
-      "status": "Scheduled",
-      "team": "Seattle Mariners",
-      "timeLabel": "2026-08-16T23:20:00Z",
-      "venue": "Daikin Park"
-    },
-    {
-      "away": "Washington Nationals",
-      "awayProbablePitcher": {
-        "fullName": "Jake Irvin",
-        "id": 663623,
-        "link": "/api/v1/people/663623"
-      },
-      "awayScore": 0,
-      "awayTeamId": 120,
-      "gameDate": "2026-08-16T17:40:00Z",
-      "gamePk": 823590,
-      "home": "New York Mets",
-      "homeProbablePitcher": {
-        "fullName": "Christian Scott",
-        "id": 681035,
-        "link": "/api/v1/people/681035"
-      },
-      "homeScore": 0,
-      "homeTeamId": 121,
-      "level": "MLB",
-      "liveLine": null,
-      "opponent": "New York Mets",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "sportId": 1,
-      "status": "Warmup",
-      "team": "Washington Nationals",
-      "timeLabel": "2026-08-16T17:40:00Z",
-      "venue": "Citi Field"
-    },
-    {
-      "away": "Charlotte Knights",
-      "awayProbablePitcher": {
-        "fullName": "Jonathan Cannon",
-        "id": 686563,
-        "link": "/api/v1/people/686563"
-      },
-      "awayScore": null,
-      "awayTeamId": 494,
-      "gameDate": "2026-08-16T17:05:00Z",
-      "gamePk": 815865,
-      "home": "Rochester Red Wings",
-      "homeProbablePitcher": {
-        "fullName": "Zak Kent",
-        "id": 687849,
-        "link": "/api/v1/people/687849"
-      },
-      "homeScore": null,
-      "homeTeamId": 534,
-      "level": "Triple-A",
-      "liveLine": null,
-      "opponent": "Rochester Red Wings",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "sportId": 11,
-      "status": "In Progress",
-      "team": "Charlotte Knights",
-      "timeLabel": "2026-08-16T17:05:00Z",
-      "venue": "ESL Ballpark"
-    },
-    {
-      "away": "South Bend Cubs",
-      "awayProbablePitcher": {
-        "fullName": "Ethan Flanagan",
-        "id": 701579,
-        "link": "/api/v1/people/701579"
-      },
-      "awayScore": null,
-      "awayTeamId": 550,
-      "gameDate": "2026-08-16T17:05:00Z",
-      "gamePk": 819907,
-      "home": "Great Lakes Loons",
-      "homeProbablePitcher": {
-        "fullName": "Tyler Gough",
-        "id": 702640,
-        "link": "/api/v1/people/702640"
-      },
-      "homeScore": null,
-      "homeTeamId": 456,
-      "level": "High-A",
-      "liveLine": null,
-      "opponent": "South Bend Cubs",
-      "player": "Jakob Wright",
-      "playerId": 809915,
-      "sportId": 13,
-      "status": "In Progress",
-      "team": "Great Lakes Loons",
-      "timeLabel": "2026-08-16T17:05:00Z",
-      "venue": "Dow Diamond"
-    },
-    {
-      "away": "Corpus Christi Hooks",
-      "awayProbablePitcher": {
-        "fullName": "James Hicks",
-        "id": 801802,
-        "link": "/api/v1/people/801802"
-      },
-      "awayScore": null,
-      "awayTeamId": 482,
-      "gameDate": "2026-08-16T18:05:00Z",
-      "gamePk": 816993,
-      "home": "Wichita Wind Surge",
-      "homeProbablePitcher": {
-        "fullName": "Ty Langenberg",
-        "id": 807716,
-        "link": "/api/v1/people/807716"
-      },
-      "homeScore": null,
-      "homeTeamId": 3898,
-      "level": "Double-A",
-      "liveLine": null,
-      "opponent": "Wichita Wind Surge",
-      "player": "Derek True",
-      "playerId": 689223,
-      "sportId": 12,
-      "status": "Pre-Game",
-      "team": "Corpus Christi Hooks",
-      "timeLabel": "2026-08-16T18:05:00Z",
-      "venue": "Equity Bank Park"
-    },
-    {
-      "away": "Wilmington Blue Rocks",
-      "awayProbablePitcher": {
-        "fullName": "Jarlin Susana",
-        "id": 703186,
-        "link": "/api/v1/people/703186"
-      },
-      "awayScore": null,
-      "awayTeamId": 426,
-      "gameDate": "2026-08-16T18:05:00Z",
-      "gamePk": 821999,
-      "home": "Hudson Valley Renegades",
-      "homeProbablePitcher": {
-        "fullName": "Allen Facundo",
-        "id": 702098,
-        "link": "/api/v1/people/702098"
-      },
-      "homeScore": null,
-      "homeTeamId": 537,
-      "level": "High-A",
-      "liveLine": null,
-      "opponent": "Wilmington Blue Rocks",
-      "player": "Bryce Warrecker",
-      "playerId": 695425,
-      "sportId": 13,
-      "status": "Pre-Game",
-      "team": "Hudson Valley Renegades",
-      "timeLabel": "2026-08-16T18:05:00Z",
-      "venue": "Heritage Financial Park"
-    },
-    {
-      "away": "Binghamton Rumble Ponies",
-      "awayProbablePitcher": {
-        "fullName": "R.J. Gordon",
-        "id": 822161,
-        "link": "/api/v1/people/822161"
-      },
-      "awayScore": null,
-      "awayTeamId": 505,
-      "gameDate": "2026-08-16T17:00:00Z",
-      "gamePk": 818439,
-      "home": "Portland Sea Dogs",
-      "homeProbablePitcher": null,
-      "homeScore": null,
-      "homeTeamId": 546,
-      "level": "Double-A",
-      "liveLine": null,
-      "opponent": "Binghamton Rumble Ponies",
-      "player": "Steven Brooks",
-      "playerId": 809933,
-      "sportId": 12,
-      "status": "In Progress",
-      "team": "Portland Sea Dogs",
-      "timeLabel": "2026-08-16T17:00:00Z",
-      "venue": "Delta Dental Park"
-    },
-    {
-      "away": "Spokane Indians",
-      "awayProbablePitcher": {
-        "fullName": "Angel Jimenez",
-        "id": 691439,
-        "link": "/api/v1/people/691439"
-      },
-      "awayScore": null,
-      "awayTeamId": 486,
-      "gameDate": "2026-08-16T23:05:00Z",
-      "gamePk": 819310,
-      "home": "Everett AquaSox",
-      "homeProbablePitcher": {
-        "fullName": "Walter Ford",
-        "id": 703609,
-        "link": "/api/v1/people/703609"
-      },
-      "homeScore": null,
-      "homeTeamId": 403,
-      "level": "High-A",
-      "liveLine": null,
-      "opponent": "Spokane Indians",
-      "player": "Taylor Dollard",
-      "playerId": 693440,
-      "sportId": 13,
-      "status": "Scheduled",
-      "team": "Everett AquaSox",
-      "timeLabel": "2026-08-16T23:05:00Z",
-      "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-16T17:40:20.391725+00:00",
+  "generatedAt": "2026-08-17T11:12:30.751997+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
