@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.37"
+GENERATOR_VERSION = "5.44"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -667,6 +667,84 @@ def mph_text(value):
         return None
 
 
+
+def find_milb_highlights(player, game_date=None):
+    """Search official MiLB/MLB content search for positive Minor League clips."""
+    name = str(player.get("name") or "").strip()
+    if not name:
+        return []
+
+    candidates = []
+    # MiLB's public video pages are populated from MLB Advanced Media content.
+    # Search the structured content service by player name as a second source
+    # when a game's own content feed does not expose Minor League clips.
+    for params in (
+        {"query": name, "type": "video", "limit": 100},
+        {"query": name, "tags": "milb", "limit": 100},
+    ):
+        try:
+            payload = get_json("https://statsapi.mlb.com/api/v1/content", params)
+        except Exception:
+            continue
+        stack = [payload]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                if best_video_url(node):
+                    candidates.append(node)
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+
+    found, seen = [], set()
+    wanted_date = str(game_date or "")[:10]
+    for node in candidates:
+        title = str(node.get("title") or node.get("headline") or "")
+        desc = str(node.get("description") or node.get("blurb") or "")
+        text = f"{title} {desc}".lower()
+        if name.lower() not in text:
+            continue
+        if not positive_highlight_for_player(node, player):
+            continue
+
+        raw_date = (
+            node.get("date") or node.get("displayDate") or node.get("created")
+            or node.get("timestamp") or node.get("lastModified")
+        )
+        if wanted_date and raw_date and wanted_date not in str(raw_date):
+            continue
+
+        url = best_video_url(node)
+        if not url or url in seen:
+            continue
+        seen.add(url)
+
+        image = None
+        cuts = ((node.get("image") or {}).get("cuts") or [])
+        if cuts:
+            image = cuts[-1].get("src") or cuts[0].get("src")
+
+        found.append({
+            "title": title or f"{name} MiLB highlight",
+            "description": desc,
+            "url": url,
+            "image": image,
+            "source": "MiLB official positive highlight"
+        })
+    return found[:8]
+
+
+def merge_player_highlights(game_pk, player, game_date=None):
+    clips, seen = [], set()
+    for clip in find_highlights(game_pk, player) + find_milb_highlights(player, game_date):
+        key = clip.get("url") or clip.get("title")
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        clips.append(clip)
+    return clips[:10]
+
+
 def fetch_game_context(game_pk, player):
     """Return verified box-score and play-by-play context for one appearance.
 
@@ -852,6 +930,70 @@ def best_video_url(item):
     return None
 
 
+
+def positive_highlight_for_player(node, player):
+    """Keep clips where the tracked Mustang is the positive subject of the play.
+
+    MLB/MiLB game-content feeds often tag every participant in a clip, which can
+    make a hitter appear in an opposing pitcher's strikeout highlight. This
+    classifier intentionally requires positive baseball language for the tracked
+    player's role instead of accepting every player-tagged video.
+    """
+    title = str(node.get("title") or node.get("headline") or "")
+    description = str(node.get("description") or node.get("blurb") or "")
+    text = f"{title} {description}".lower()
+    name = str(player.get("name") or "").lower()
+
+    # If the visible text names another player but not our Mustang, the metadata
+    # tag alone is not enough to publish the clip.
+    if name and name not in text:
+        return False
+
+    common_good = [
+        "walk-off", "go-ahead", "game-tying", "game tying",
+        "great catch", "diving catch", "sliding catch", "leaping catch",
+        "robs", "robbed", "web gem", "nice play", "great play",
+        "throws out", "throwing out", "double play",
+    ]
+
+    if player.get("type") == "hitter":
+        bad = [
+            "strikes out", "strikeout", "struck out",
+            "grounds out", "groundout", "flies out", "flyout",
+            "lines out", "lineout", "pops out", "popout",
+            "caught stealing", "picked off",
+            "commits an error", "error allows",
+        ]
+        if any(term in text for term in bad):
+            return False
+
+        good = common_good + [
+            "home run", "homers", "homer", "grand slam",
+            "single", "singles", "double", "doubles", "triple", "triples",
+            "rbi", "drives in", "plates", "run-scoring", "run scoring",
+            "stolen base", "steals", "scores", "base hit",
+            "hits a", "knocks", "sacrifice fly", "sac fly",
+        ]
+        return any(term in text for term in good)
+
+    # Pitchers: strikeout clips are positive, while clips centered on damage
+    # allowed by the pitcher should not be surfaced.
+    bad = [
+        "allows a home run", "allows home run", "gives up a home run",
+        "gives up home run", "allows a homer", "gives up a homer",
+        "allows an rbi", "allows a run", "charged with",
+    ]
+    if any(term in text for term in bad):
+        return False
+
+    good = common_good + [
+        "strikes out", "strikeout", "fans ", "fans the", "punches out",
+        "scoreless", "shutout", "retires", "escapes", "gets out of",
+        "induces", "inning-ending", "inning ending",
+    ]
+    return any(term in text for term in good)
+
+
 def find_highlights(game_pk, player):
     try:
         content = get_json(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/content", {})
@@ -865,19 +1007,22 @@ def find_highlights(game_pk, player):
                 haystack = json.dumps(node, ensure_ascii=False).lower()
                 tokens = [str(player["id"]), player["name"].lower()]
                 if any(token in haystack for token in tokens):
-                    url = best_video_url(node)
-                    if url and url not in seen:
-                        seen.add(url)
-                        image = None
-                        cuts = ((node.get("image") or {}).get("cuts") or [])
-                        if cuts: image = cuts[-1].get("src") or cuts[0].get("src")
-                        found.append({
-                            "title": node.get("title") or node.get("headline") or f"{player['name']} highlight",
-                            "description": node.get("description") or node.get("blurb") or "",
-                            "url": url,
-                            "image": image,
-                            "source": "MLB/MiLB official game content"
-                        })
+                    if not positive_highlight_for_player(node, player):
+                        pass
+                    else:
+                        url = best_video_url(node)
+                        if url and url not in seen:
+                            seen.add(url)
+                            image = None
+                            cuts = ((node.get("image") or {}).get("cuts") or [])
+                            if cuts: image = cuts[-1].get("src") or cuts[0].get("src")
+                            found.append({
+                                "title": node.get("title") or node.get("headline") or f"{player['name']} highlight",
+                                "description": node.get("description") or node.get("blurb") or "",
+                                "url": url,
+                                "image": image,
+                                "source": "MLB/MiLB official positive game content"
+                            })
             for value in node.values(): walk(value)
         elif isinstance(node, list):
             for value in node: walk(value)
@@ -947,7 +1092,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and game content"
+        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
@@ -1498,12 +1643,6 @@ def build_daily_article(summary, transactions=None):
     if txp:
         paragraphs.append("Away from the box scores, there was also roster movement involving former Mustangs.")
         paragraphs.extend(txp)
-
-    clips = sum(len(a.get("highlights", [])) for a in apps)
-    if clips:
-        paragraphs.append(
-            f"{clips} official player-tagged highlight clip{'s were' if clips != 1 else ' was'} available from the night's games and can be viewed below."
-        )
 
     awards = [{
         "label": "Player of the Night",
