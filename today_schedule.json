@@ -51,12 +51,12 @@
       "homeScore": null,
       "homeTeamId": 507,
       "level": "Single-A",
-      "liveLine": null,
+      "liveLine": "1-for-1",
       "opponent": "Lakeland Flying Tigers",
       "player": "Ryan Tayman",
       "playerId": 822034,
       "sportId": 14,
-      "status": "Pre-Game",
+      "status": "In Progress",
       "team": "St. Lucie Mets",
       "timeLabel": "2026-08-18T22:10:00Z",
       "venue": "Clover Park"
@@ -82,7 +82,7 @@
       "player": "Alejandro Garza",
       "playerId": 835211,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Warmup",
       "team": "Hill City Howlers",
       "timeLabel": "2026-08-18T23:05:00Z",
       "venue": "Joseph P. Riley, Jr. Ballpark"
@@ -112,7 +112,7 @@
       "player": "Ryan Stafford",
       "playerId": 701696,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Frederick Keys",
       "timeLabel": "2026-08-18T22:35:00Z",
       "venue": "Frawley Stadium"
@@ -142,7 +142,7 @@
       "player": "Zach Daudet",
       "playerId": 836055,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "In Progress",
       "team": "Asheville Tourists",
       "timeLabel": "2026-08-18T22:35:00Z",
       "venue": "HomeTrust Park"
@@ -232,7 +232,7 @@
       "player": "Drew Thorpe",
       "playerId": 689672,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "Warmup",
       "team": "Charlotte Knights",
       "timeLabel": "2026-08-18T23:05:00Z",
       "venue": "PNC Field"
@@ -244,7 +244,7 @@
         "id": 802392,
         "link": "/api/v1/people/802392"
       },
-      "awayScore": null,
+      "awayScore": 6,
       "awayTeamId": 584,
       "gameDate": "2026-08-18T21:35:00Z",
       "gamePk": 819915,
@@ -254,7 +254,7 @@
         "id": 807724,
         "link": "/api/v1/people/807724"
       },
-      "homeScore": null,
+      "homeScore": 5,
       "homeTeamId": 456,
       "level": "High-A",
       "liveLine": null,
@@ -262,7 +262,7 @@
       "player": "Jakob Wright",
       "playerId": 809915,
       "sportId": 13,
-      "status": "In Progress",
+      "status": "Final",
       "team": "Great Lakes Loons",
       "timeLabel": "2026-08-18T21:35:00Z",
       "venue": "Parkview Field"
@@ -292,7 +292,7 @@
       "player": "Jakob Wright",
       "playerId": 809915,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Great Lakes Loons",
       "timeLabel": "2026-08-18T22:35:00Z",
       "venue": "Parkview Field"
@@ -348,7 +348,7 @@
       "player": "Bryce Warrecker",
       "playerId": 695425,
       "sportId": 13,
-      "status": "Pre-Game",
+      "status": "In Progress",
       "team": "Hudson Valley Renegades",
       "timeLabel": "2026-08-18T22:35:00Z",
       "venue": "ShoreTown Ballpark"
@@ -378,7 +378,7 @@
       "player": "Steven Brooks",
       "playerId": 809933,
       "sportId": 12,
-      "status": "Warmup",
+      "status": "In Progress",
       "team": "Portland Sea Dogs",
       "timeLabel": "2026-08-18T22:00:00Z",
       "venue": "Delta Dental Park"
@@ -414,6 +414,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-18T21:51:01.817253+00:00",
+  "generatedAt": "2026-08-18T22:55:21.481732+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
