@@ -8,7 +8,7 @@
         "id": 641816,
         "link": "/api/v1/people/641816"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 144,
       "gameDate": "2026-08-18T23:40:00Z",
       "gamePk": 823667,
@@ -18,7 +18,7 @@
         "id": 805673,
         "link": "/api/v1/people/805673"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "level": "MLB",
       "liveLine": null,
@@ -154,7 +154,7 @@
         "id": 682243,
         "link": "/api/v1/people/682243"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 136,
       "gameDate": "2026-08-18T23:40:00Z",
       "gamePk": 823749,
@@ -164,7 +164,7 @@
         "id": 690986,
         "link": "/api/v1/people/690986"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 158,
       "level": "MLB",
       "liveLine": null,
@@ -172,7 +172,7 @@
       "player": "Bryan Woo",
       "playerId": 693433,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Seattle Mariners",
       "timeLabel": "2026-08-18T23:40:00Z",
       "venue": "American Family Field"
@@ -184,7 +184,7 @@
         "id": 800600,
         "link": "/api/v1/people/800600"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "gameDate": "2026-08-19T00:05:00Z",
       "gamePk": 822859,
@@ -194,7 +194,7 @@
         "id": 615698,
         "link": "/api/v1/people/615698"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 140,
       "level": "MLB",
       "liveLine": null,
@@ -202,7 +202,7 @@
       "player": "Andrew Alvarez",
       "playerId": 674841,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Washington Nationals",
       "timeLabel": "2026-08-19T00:05:00Z",
       "venue": "Globe Life Field"
@@ -262,7 +262,7 @@
       "player": "Jakob Wright",
       "playerId": 809915,
       "sportId": 13,
-      "status": "Suspended",
+      "status": "Pre-Game",
       "team": "Great Lakes Loons",
       "timeLabel": "2026-08-18T21:35:00Z",
       "venue": "Parkview Field"
@@ -410,6 +410,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-18T19:59:47.736334+00:00",
+  "generatedAt": "2026-08-18T20:56:05.754352+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
