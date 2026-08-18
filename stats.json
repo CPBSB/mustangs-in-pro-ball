@@ -389,7 +389,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-17T23:50:56.310694+00:00",
+  "updatedAt": "2026-08-18T00:01:16.120595+00:00",
   "warnings": [
     "Mitch Haniger: no 2026 professional split returned",
     "Ryan Tayman: no 2026 professional split returned",
