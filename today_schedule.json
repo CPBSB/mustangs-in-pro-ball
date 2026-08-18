@@ -26,14 +26,18 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-18T23:40:00Z",
       "venue": "Target Field"
     },
     {
       "away": "Lakeland Flying Tigers",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Caleb Leys",
+        "id": 834393,
+        "link": "/api/v1/people/834393"
+      },
       "awayScore": null,
       "awayTeamId": 570,
       "gameDate": "2026-08-18T22:10:00Z",
@@ -406,6 +410,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-18T19:16:57.363471+00:00",
+  "generatedAt": "2026-08-18T19:59:47.736334+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
