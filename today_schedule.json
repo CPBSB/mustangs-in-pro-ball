@@ -39,7 +39,11 @@
       "gameDate": "2026-08-18T22:10:00Z",
       "gamePk": 820315,
       "home": "St. Lucie Mets",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Owen Woodward",
+        "id": 699257,
+        "link": "/api/v1/people/699257"
+      },
       "homeScore": null,
       "homeTeamId": 507,
       "level": "Single-A",
@@ -91,7 +95,11 @@
       "gameDate": "2026-08-18T22:35:00Z",
       "gamePk": 821804,
       "home": "Wilmington Blue Rocks",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Austin Amaral",
+        "id": 694544,
+        "link": "/api/v1/people/694544"
+      },
       "homeScore": null,
       "homeTeamId": 426,
       "level": "High-A",
@@ -230,9 +238,9 @@
       "gamePk": 819915,
       "home": "Great Lakes Loons",
       "homeProbablePitcher": {
-        "fullName": "Isaac Ayon",
-        "id": 694847,
-        "link": "/api/v1/people/694847"
+        "fullName": "Justin Chambers",
+        "id": 807724,
+        "link": "/api/v1/people/807724"
       },
       "homeScore": null,
       "homeTeamId": 456,
@@ -382,6 +390,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-18T14:06:30.445817+00:00",
+  "generatedAt": "2026-08-18T15:58:47.070329+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
