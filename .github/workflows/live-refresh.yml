@@ -19,21 +19,26 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Refresh current stats and today's games
+      - name: Refresh current stats, today's games and transactions
         run: python update_stats.py --mode live
 
       - name: Commit live data changes
+        shell: bash
         run: |
+          set -e
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add stats.json today_schedule.json players.json
+          git add stats.json today_schedule.json transactions.json players.json
 
           if git diff --cached --quiet; then
             echo "No live baseball changes to publish"
@@ -41,4 +46,13 @@ jobs:
           fi
 
           git commit -m "Refresh live baseball data"
-          git push
+
+          git fetch origin main
+          git rebase origin/main
+
+          if ! git push origin HEAD:main; then
+            echo "Main changed again; rebasing one more time"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
