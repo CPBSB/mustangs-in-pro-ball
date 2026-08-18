@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.47"
+GENERATOR_VERSION = "5.49"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -110,6 +110,40 @@ def get_json(url, params):
         return json.load(r)
 
 PLAYERS = load_players()
+
+SPORT_ID_LIST = [1, 11, 12, 13, 14, 15, 16]
+
+def player_stats_payload(player_id, stats_type, group, **extra):
+    """Fetch player stats without relying on a comma-separated sportIds filter.
+
+    The Stats API can return an empty splits array when multiple sport IDs are
+    supplied together for some MiLB players. First ask for the player's stats
+    without sportIds; if that is empty, query each professional level
+    individually and merge the returned stat blocks.
+    """
+    url = f"https://statsapi.mlb.com/api/v1/people/{player_id}/stats"
+    base = {"stats": stats_type, "group": group, "season": SEASON, **extra}
+
+    try:
+        payload = get_json(url, base)
+        if relevant_splits(payload):
+            return payload
+    except Exception:
+        payload = None
+
+    merged = {"stats": []}
+    for sport_id in SPORT_ID_LIST:
+        params = {**base, "sportId": sport_id}
+        try:
+            part = get_json(url, params)
+        except Exception:
+            continue
+        for block in part.get("stats", []) or []:
+            if block.get("splits"):
+                merged["stats"].append(block)
+
+    return merged
+
 
 def outs(ip):
     s=str(ip or "0.0"); a,b=(s.split(".")+["0"])[:2]
@@ -254,10 +288,10 @@ def fetch_recent_assignment(player, fallback_splits=None):
     log_team = log_level = log_team_id = log_date = None
     url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
     try:
-        data = get_json(url, {
-            "stats": "gameLog", "group": group, "season": SEASON,
-            "sportIds": SPORT_IDS, "hydrate": "team(sport),league,game"
-        })
+        data = player_stats_payload(
+            player["id"], "gameLog", group,
+            hydrate="team(sport),league,game"
+        )
         logs = relevant_splits(data)
         if logs:
             latest = max(logs, key=lambda item: str(item.get("date", "")))
@@ -293,13 +327,10 @@ def fetch_last_seven(player):
     """Aggregate a player's seven most recent professional game-log appearances."""
     group = "hitting" if player["type"] == "hitter" else "pitching"
     url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "gameLog",
-        "group": group,
-        "season": SEASON,
-        "sportIds": SPORT_IDS,
-        "hydrate": "team(sport),league,game"
-    })
+    data = player_stats_payload(
+        player["id"], "gameLog", group,
+        hydrate="team(sport),league,game"
+    )
     logs = relevant_splits(data)
     logs = [row for row in logs if row.get("date") and row.get("stat")]
     logs.sort(
@@ -589,20 +620,20 @@ def fetch_player(p):
 
     splits = []
     try:
-        data = get_json(url, {
-            "stats": "season", "group": group, "season": SEASON,
-            "sportIds": SPORT_IDS, "hydrate": "team,league"
-        })
+        data = player_stats_payload(
+            p["id"], "season", group,
+            hydrate="team,league"
+        )
         splits = relevant_splits(data)
     except Exception:
         splits = []
 
     if not splits:
         try:
-            data = get_json(url, {
-                "stats": "yearByYear", "group": group, "season": SEASON,
-                "sportIds": SPORT_IDS, "hydrate": "team,league"
-            })
+            data = player_stats_payload(
+                p["id"], "yearByYear", group,
+                hydrate="team,league"
+            )
             splits = relevant_splits(data)
         except Exception:
             splits = []
@@ -795,10 +826,10 @@ def pitcher_sentence(name, stat):
 def fetch_game_log(player, target_date):
     group = "hitting" if player["type"] == "hitter" else "pitching"
     url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "gameLog", "group": group, "season": SEASON,
-        "sportIds": SPORT_IDS, "hydrate": "team,game"
-    })
+    data = player_stats_payload(
+        player["id"], "gameLog", group,
+        hydrate="team,game"
+    )
     matches = []
     for block in data.get("stats", []):
         for split in block.get("splits", []):
@@ -816,11 +847,11 @@ def fetch_date_range(player, target_date):
     """
     group = "hitting" if player["type"] == "hitter" else "pitching"
     url = f"https://statsapi.mlb.com/api/v1/people/{player['id']}/stats"
-    data = get_json(url, {
-        "stats": "byDateRange", "group": group,
-        "startDate": target_date, "endDate": target_date,
-        "sportIds": SPORT_IDS, "hydrate": "team(sport),league,game"
-    })
+    data = player_stats_payload(
+        player["id"], "byDateRange", group,
+        startDate=target_date, endDate=target_date,
+        hydrate="team(sport),league,game"
+    )
     matches = []
     for split in relevant_splits(data):
         split_date = str(split.get("date") or split.get("game", {}).get("officialDate") or "")[:10]
@@ -2411,7 +2442,7 @@ def main():
             else:
                 patched = patch_saved_assignment(players, p)
                 suffix = "; assignment updated from official transaction/game log" if patched else ""
-                errors.append(f"{p['name']}: no {SEASON} professional split returned{suffix}")
+                errors.append(f"{p['name']} (ID {p['id']}): no {SEASON} professional split returned{suffix}")
         except Exception as e:
             patched = patch_saved_assignment(players, p)
             suffix = "; assignment updated while preserving saved stats" if patched else ""
