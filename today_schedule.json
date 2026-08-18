@@ -56,7 +56,7 @@
       "player": "Ryan Tayman",
       "playerId": 822034,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "St. Lucie Mets",
       "timeLabel": "2026-08-18T22:10:00Z",
       "venue": "Clover Park"
@@ -262,7 +262,7 @@
       "player": "Jakob Wright",
       "playerId": 809915,
       "sportId": 13,
-      "status": "Pre-Game",
+      "status": "In Progress",
       "team": "Great Lakes Loons",
       "timeLabel": "2026-08-18T21:35:00Z",
       "venue": "Parkview Field"
@@ -318,7 +318,7 @@
       "player": "Derek True",
       "playerId": 689223,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Corpus Christi Hooks",
       "timeLabel": "2026-08-18T23:35:00Z",
       "venue": "Whataburger Field"
@@ -348,7 +348,7 @@
       "player": "Bryce Warrecker",
       "playerId": 695425,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "team": "Hudson Valley Renegades",
       "timeLabel": "2026-08-18T22:35:00Z",
       "venue": "ShoreTown Ballpark"
@@ -378,7 +378,7 @@
       "player": "Steven Brooks",
       "playerId": 809933,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Warmup",
       "team": "Portland Sea Dogs",
       "timeLabel": "2026-08-18T22:00:00Z",
       "venue": "Delta Dental Park"
@@ -395,7 +395,11 @@
       "gameDate": "2026-08-19T02:05:00Z",
       "gamePk": 819125,
       "home": "Tri-City Dust Devils",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Jose Atencio",
+        "id": 682719,
+        "link": "/api/v1/people/682719"
+      },
       "homeScore": null,
       "homeTeamId": 460,
       "level": "High-A",
@@ -410,6 +414,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-18T20:56:05.754352+00:00",
+  "generatedAt": "2026-08-18T21:51:01.817253+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
