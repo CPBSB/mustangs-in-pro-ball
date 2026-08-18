@@ -150,7 +150,7 @@
     },
     "689672": {
       "assignmentDate": "2026-08-12",
-      "assignmentSource": "transaction",
+      "assignmentSource": "rehab",
       "last7": {
         "endDate": "2026-08-12",
         "games": 5,
@@ -633,7 +633,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-18T00:08:35.587714+00:00",
+  "updatedAt": "2026-08-18T00:18:21.004821+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
