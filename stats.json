@@ -112,9 +112,28 @@
       "type": "hitter"
     },
     "689223": {
+      "assignmentDate": "2026-05-09",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-05-09",
+        "games": 7,
+        "startDate": "2026-04-10",
+        "stats": {
+          "BB": 3,
+          "ER": 9,
+          "ERA": "7.36",
+          "G": 7,
+          "H": 18,
+          "IP": "11.0",
+          "R": 10,
+          "SO": 15,
+          "WHIP": "1.91"
+        }
+      },
       "name": "Derek True",
       "recentLevel": "Double-A",
       "recentTeam": "Corpus Christi Hooks",
+      "recentTeamId": 482,
       "stats": {
         "BB": 6,
         "ER": 10,
@@ -125,25 +144,45 @@
         "SO": 18,
         "WHIP": "2.00"
       },
+      "statsSource": "seasonSummary",
+      "team": "Corpus Christi Hooks",
       "type": "pitcher"
     },
     "689672": {
       "assignmentDate": "2026-08-12",
       "assignmentSource": "transaction",
+      "last7": {
+        "endDate": "2026-08-12",
+        "games": 5,
+        "startDate": "2026-07-18",
+        "stats": {
+          "BB": 5,
+          "ER": 5,
+          "ERA": "2.65",
+          "G": 5,
+          "H": 10,
+          "IP": "17.0",
+          "R": 6,
+          "SO": 19,
+          "WHIP": "0.88"
+        }
+      },
       "name": "Drew Thorpe",
       "recentLevel": "Triple-A",
       "recentTeam": "Charlotte Knights",
       "recentTeamId": 494,
       "stats": {
-        "BB": "\u2014",
-        "ER": "\u2014",
-        "ERA": "\u2014",
-        "H": "\u2014",
-        "IP": "\u2014",
-        "R": "\u2014",
-        "SO": "\u2014",
-        "WHIP": "\u2014"
+        "BB": 5,
+        "ER": 5,
+        "ERA": "2.65",
+        "H": 10,
+        "IP": "17.0",
+        "R": 6,
+        "SO": 19,
+        "WHIP": "0.88"
       },
+      "statsSource": "seasonSummary",
+      "team": "ACL White Sox",
       "type": "pitcher"
     },
     "693433": {
@@ -184,41 +223,109 @@
       "type": "pitcher"
     },
     "693440": {
+      "assignmentDate": "2026-08-12",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-12",
+        "games": 7,
+        "startDate": "2026-06-30",
+        "stats": {
+          "BB": 9,
+          "ER": 15,
+          "ERA": "3.97",
+          "G": 7,
+          "H": 32,
+          "IP": "34.0",
+          "R": 17,
+          "SO": 25,
+          "WHIP": "1.21"
+        }
+      },
       "name": "Taylor Dollard",
       "recentLevel": "High-A",
       "recentTeam": "Everett AquaSox",
+      "recentTeamId": 403,
       "stats": {
-        "BB": 23,
-        "ER": 51,
-        "ERA": "6.15",
-        "H": 89,
-        "IP": "74.2",
-        "R": 65,
-        "SO": 71,
-        "WHIP": "1.50"
+        "BB": 27,
+        "ER": 54,
+        "ERA": "5.61",
+        "H": 99,
+        "IP": "86.2",
+        "R": 68,
+        "SO": 76,
+        "WHIP": "1.45"
       },
+      "statsSource": "seasonSummary",
+      "team": "Everett AquaSox",
       "type": "pitcher"
     },
     "695425": {
+      "assignmentDate": "2026-08-13",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-13",
+        "games": 7,
+        "startDate": "2026-07-19",
+        "stats": {
+          "BB": 8,
+          "ER": 4,
+          "ERA": "4.32",
+          "G": 7,
+          "H": 7,
+          "IP": "8.1",
+          "R": 5,
+          "SO": 8,
+          "WHIP": "1.80"
+        }
+      },
       "name": "Bryce Warrecker",
       "recentLevel": "High-A",
       "recentTeam": "Hudson Valley Renegades",
+      "recentTeamId": 537,
       "stats": {
-        "BB": 12,
-        "ER": 10,
-        "ERA": "3.18",
-        "H": 24,
-        "IP": "28.1",
-        "R": 10,
-        "SO": 25,
-        "WHIP": "1.27"
+        "BB": 17,
+        "ER": 11,
+        "ERA": "3.06",
+        "H": 27,
+        "IP": "32.1",
+        "R": 12,
+        "SO": 30,
+        "WHIP": "1.36"
       },
+      "statsSource": "seasonSummary",
+      "team": "Tampa Tarpons",
       "type": "pitcher"
     },
     "701696": {
+      "assignmentDate": "2026-06-27",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-06-27",
+        "games": 7,
+        "startDate": "2026-06-14",
+        "stats": {
+          "2B": 0,
+          "3B": 0,
+          "AB": 22,
+          "AVG": ".227",
+          "BB": 3,
+          "CS": 2,
+          "G": 7,
+          "H": 5,
+          "HR": 0,
+          "OBP": ".320",
+          "OPS": ".547",
+          "R": 0,
+          "RBI": 0,
+          "SB": 2,
+          "SLG": ".227",
+          "SO": 4
+        }
+      },
       "name": "Ryan Stafford",
       "recentLevel": "High-A",
-      "recentTeam": "Frederick",
+      "recentTeam": "Frederick Keys",
+      "recentTeamId": 493,
       "stats": {
         "2B": 4,
         "3B": 0,
@@ -236,6 +343,8 @@
         "SLG": ".260",
         "SO": 32
       },
+      "statsSource": "seasonSummary",
+      "team": "Frederick Keys",
       "type": "hitter"
     },
     "702493": {
@@ -260,6 +369,22 @@
     "809915": {
       "assignmentDate": "2026-08-04",
       "assignmentSource": "transaction",
+      "last7": {
+        "endDate": "2026-07-31",
+        "games": 7,
+        "startDate": "2026-06-12",
+        "stats": {
+          "BB": 17,
+          "ER": 17,
+          "ERA": "7.52",
+          "G": 7,
+          "H": 20,
+          "IP": "20.1",
+          "R": 17,
+          "SO": 20,
+          "WHIP": "1.82"
+        }
+      },
       "name": "Jakob Wright",
       "recentLevel": "High-A",
       "recentTeam": "Great Lakes Loons",
@@ -274,30 +399,73 @@
         "SO": 67,
         "WHIP": "1.74"
       },
+      "statsSource": "seasonSummary",
+      "team": "Great Lakes Loons",
       "type": "pitcher"
     },
     "809933": {
-      "assignmentDate": "2026-08-07",
-      "assignmentSource": "transaction",
+      "assignmentDate": "2026-08-15",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-15",
+        "games": 7,
+        "startDate": "2026-07-21",
+        "stats": {
+          "BB": 2,
+          "ER": 5,
+          "ERA": "3.86",
+          "G": 7,
+          "H": 16,
+          "IP": "11.2",
+          "R": 8,
+          "SO": 15,
+          "WHIP": "1.54"
+        }
+      },
       "name": "Steven Brooks",
       "recentLevel": "Double-A",
       "recentTeam": "Portland Sea Dogs",
       "recentTeamId": 546,
       "stats": {
-        "BB": 26,
-        "ER": 22,
+        "BB": 27,
+        "ER": 25,
         "ERA": "4.27",
-        "H": 44,
-        "IP": "46.1",
-        "R": 29,
-        "SO": 71,
-        "WHIP": "1.51"
+        "H": 53,
+        "IP": "52.2",
+        "R": 34,
+        "SO": 77,
+        "WHIP": "1.52"
       },
+      "statsSource": "seasonSummary",
+      "team": "Greenville Drive",
       "type": "pitcher"
     },
     "822034": {
-      "assignmentDate": "2026-07-28",
-      "assignmentSource": "transaction",
+      "assignmentDate": "2026-08-15",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-15",
+        "games": 7,
+        "startDate": "2026-08-05",
+        "stats": {
+          "2B": 0,
+          "3B": 0,
+          "AB": 24,
+          "AVG": ".250",
+          "BB": 3,
+          "CS": 0,
+          "G": 7,
+          "H": 6,
+          "HR": 0,
+          "OBP": ".367",
+          "OPS": ".617",
+          "R": 3,
+          "RBI": 3,
+          "SB": 0,
+          "SLG": ".250",
+          "SO": 3
+        }
+      },
       "name": "Ryan Tayman",
       "recentLevel": "Single-A",
       "recentTeam": "St. Lucie Mets",
@@ -305,26 +473,47 @@
       "stats": {
         "2B": 2,
         "3B": 0,
-        "AB": 21,
-        "AVG": ".381",
-        "BB": 1,
+        "AB": 37,
+        "AVG": ".324",
+        "BB": 4,
         "CS": 0,
-        "H": 8,
+        "H": 12,
         "HR": 1,
-        "OBP": ".391",
-        "OPS": "1.010",
-        "R": 4,
-        "RBI": 6,
+        "OBP": ".409",
+        "OPS": ".868",
+        "R": 6,
+        "RBI": 7,
         "SB": 0,
-        "SLG": ".619",
-        "SO": 2
+        "SLG": ".459",
+        "SO": 5
       },
+      "statsSource": "seasonSummary",
+      "team": "St. Lucie Mets",
       "type": "hitter"
     },
     "828420": {
+      "assignmentDate": "2026-07-23",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-07-23",
+        "games": 5,
+        "startDate": "2026-07-07",
+        "stats": {
+          "BB": 7,
+          "ER": 10,
+          "ERA": "18.00",
+          "G": 5,
+          "H": 6,
+          "IP": "5.0",
+          "R": 11,
+          "SO": 9,
+          "WHIP": "2.60"
+        }
+      },
       "name": "Luke Kovach",
       "recentLevel": "Rookie",
       "recentTeam": "FCL Blue Jays",
+      "recentTeamId": 1390,
       "stats": {
         "BB": 7,
         "ER": 10,
@@ -335,76 +524,120 @@
         "SO": 9,
         "WHIP": "2.60"
       },
+      "statsSource": "seasonSummary",
+      "team": "FCL Blue Jays",
       "type": "pitcher"
     },
     "835211": {
-      "assignmentDate": "2026-08-11",
-      "assignmentSource": "transaction",
+      "assignmentDate": "2026-08-14",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-14",
+        "games": 3,
+        "startDate": "2026-08-11",
+        "stats": {
+          "2B": 1,
+          "3B": 0,
+          "AB": 10,
+          "AVG": ".400",
+          "BB": 2,
+          "CS": 0,
+          "G": 3,
+          "H": 4,
+          "HR": 0,
+          "OBP": ".500",
+          "OPS": ".000",
+          "R": 1,
+          "RBI": 3,
+          "SB": 2,
+          "SLG": ".500",
+          "SO": 2
+        }
+      },
       "name": "Alejandro Garza",
       "recentLevel": "Single-A",
       "recentTeam": "Hill City Howlers",
       "recentTeamId": 481,
       "stats": {
-        "2B": "\u2014",
-        "3B": "\u2014",
-        "AB": "\u2014",
-        "AVG": "\u2014",
-        "BB": "\u2014",
-        "CS": "\u2014",
-        "H": "\u2014",
-        "HR": "\u2014",
-        "OBP": "\u2014",
-        "OPS": "\u2014",
-        "R": "\u2014",
-        "RBI": "\u2014",
-        "SB": "\u2014",
-        "SLG": "\u2014",
-        "SO": "\u2014"
+        "2B": 1,
+        "3B": 0,
+        "AB": 10,
+        "AVG": ".400",
+        "BB": 2,
+        "CS": 0,
+        "H": 4,
+        "HR": 0,
+        "OBP": ".500",
+        "OPS": ".000",
+        "R": 1,
+        "RBI": 3,
+        "SB": 2,
+        "SLG": ".500",
+        "SO": 2
       },
+      "statsSource": "seasonSummary",
+      "team": "Hill City Howlers",
       "type": "hitter"
     },
     "836055": {
+      "assignmentDate": "2026-08-16",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-16",
+        "games": 7,
+        "startDate": "2026-08-07",
+        "stats": {
+          "2B": 1,
+          "3B": 0,
+          "AB": 19,
+          "AVG": ".211",
+          "BB": 6,
+          "CS": 1,
+          "G": 7,
+          "H": 4,
+          "HR": 0,
+          "OBP": ".400",
+          "OPS": ".663",
+          "R": 5,
+          "RBI": 2,
+          "SB": 1,
+          "SLG": ".263",
+          "SO": 3
+        }
+      },
       "name": "Zach Daudet",
       "recentLevel": "High-A",
       "recentTeam": "Asheville Tourists",
+      "recentTeamId": 573,
       "stats": {
-        "2B": 14,
+        "2B": 15,
         "3B": 0,
-        "AB": 257,
-        "AVG": ".210",
-        "BB": 77,
-        "CS": 11,
-        "H": 54,
+        "AB": 279,
+        "AVG": ".208",
+        "BB": 84,
+        "CS": 12,
+        "H": 58,
         "HR": 3,
         "OBP": ".405",
-        "OPS": ".705",
-        "R": 48,
-        "RBI": 29,
-        "SB": 20,
-        "SLG": ".300",
-        "SO": 58
+        "OPS": ".699",
+        "R": 53,
+        "RBI": 31,
+        "SB": 21,
+        "SLG": ".294",
+        "SO": 61
       },
+      "statsSource": "seasonSummary",
+      "team": "Asheville Tourists",
       "type": "hitter"
     }
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-18T00:01:16.120595+00:00",
+  "updatedAt": "2026-08-18T00:08:35.587714+00:00",
   "warnings": [
-    "Mitch Haniger: no 2026 professional split returned",
-    "Ryan Tayman: no 2026 professional split returned",
-    "Alejandro Garza: no 2026 professional split returned",
-    "Ryan Stafford: no 2026 professional split returned",
-    "Zach Daudet: no 2026 professional split returned",
-    "Drew Thorpe: no 2026 professional split returned",
-    "Carson Turnquist: no 2026 professional split returned",
-    "Josh Volmerding: no 2026 professional split returned",
-    "Nick Bonn: no 2026 professional split returned",
-    "Jakob Wright: no 2026 professional split returned",
-    "Derek True: no 2026 professional split returned",
-    "Bryce Warrecker: no 2026 professional split returned",
-    "Luke Kovach: no 2026 professional split returned",
-    "Steven Brooks: no 2026 professional split returned",
-    "Taylor Dollard: no 2026 professional split returned"
+    "Mitch Haniger (ID 571745): no 2026 professional split returned",
+    "Carson Turnquist (ID 702493): no 2026 professional split returned",
+    "Josh Volmerding (ID 835281): no 2026 professional split returned",
+    "Nick Bonn (ID 824678): no 2026 professional split returned"
   ]
 }

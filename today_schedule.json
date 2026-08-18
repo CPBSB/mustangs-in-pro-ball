@@ -26,12 +26,12 @@
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Delayed Start",
+      "status": "Warmup",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-17T23:40:00Z",
       "venue": "Target Field"
     }
   ],
-  "generatedAt": "2026-08-18T00:01:16.878484+00:00",
+  "generatedAt": "2026-08-18T00:08:36.602703+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
