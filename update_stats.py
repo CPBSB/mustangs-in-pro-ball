@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.49"
+GENERATOR_VERSION = "5.50"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -279,9 +279,75 @@ def fetch_transaction_assignment(player, days=30):
     return None, None, None, None
 
 
+
+def fetch_active_rehab_assignment(player, days=60):
+    """Return the player's current rehab club/level when a rehab assignment is active.
+
+    A rehab assignment should control where the player is displayed on the site,
+    even when he remains on an MLB roster administratively.
+    """
+    end = datetime.now(PACIFIC).date()
+    start = end - timedelta(days=days)
+
+    try:
+        data = get_json(
+            f"https://statsapi.mlb.com/api/v1/people/{player['id']}",
+            {"hydrate": f"transactions(startDate={start.isoformat()},endDate={end.isoformat()})"}
+        )
+        person = (data.get("people") or [{}])[0]
+        txs = list(person.get("transactions") or [])
+    except Exception:
+        return None, None, None, None
+
+    txs.sort(key=lambda t: str(t.get("date") or ""), reverse=True)
+
+    # Once we encounter a transaction newer than the rehab assignment that
+    # clearly ends or supersedes rehab, do not use an older rehab transaction.
+    rehab_end_terms = (
+        "reinstated", "activated from", "returned from rehab",
+        "recalled from rehab", "rehab assignment ended",
+        "optioned to", "assigned to"  # non-rehab assignment supersedes rehab
+    )
+
+    for tx in txs:
+        desc = str(tx.get("description") or tx.get("typeDesc") or "")
+        text = desc.lower()
+        tx_date = str(tx.get("date") or "")[:10] or None
+
+        if "rehab assignment" in text:
+            # Prefer structured destination metadata.
+            to_team = tx.get("toTeam") or tx.get("team")
+            if isinstance(to_team, dict) and (to_team.get("id") or to_team.get("name")):
+                tid = to_team.get("id")
+                tname = to_team.get("name")
+                level = None
+                for row in team_catalog():
+                    if (tid and row.get("id") == tid) or (tname and row.get("name") == tname):
+                        tname = row.get("name") or tname
+                        level = row.get("level")
+                        tid = row.get("id") or tid
+                        break
+                if tname:
+                    return tname, level, tid, tx_date
+
+            tname, level, tid = transaction_team_from_description(desc)
+            if tname:
+                return tname, level, tid, tx_date
+
+        # A newer non-rehab transaction can end/supersede a prior rehab stint.
+        if any(term in text for term in rehab_end_terms) and "rehab assignment" not in text:
+            return None, None, None, None
+
+    return None, None, None, None
+
+
 def fetch_recent_assignment(player, fallback_splits=None):
-    """Resolve current assignment using newest transaction before stale game logs."""
+    """Resolve current playing assignment, prioritizing active rehab assignments."""
     group = "hitting" if player["type"] == "hitter" else "pitching"
+
+    rehab_team, rehab_level, rehab_team_id, rehab_date = fetch_active_rehab_assignment(player)
+    if rehab_team or rehab_level:
+        return rehab_team, rehab_level, rehab_team_id, "rehab", rehab_date
 
     tx_team, tx_level, tx_team_id, tx_date = fetch_transaction_assignment(player)
 
@@ -745,7 +811,7 @@ def fetch_player(p):
 
     # Game-log assignment is also useful when a transaction has not populated
     # the season-summary team yet.
-    if game_log:
+    if game_log and assignment_source != "rehab":
         gl_date = game_log.get("date")
         if (
             not recent_team
