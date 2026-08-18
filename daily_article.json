@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-4, HR, 4 RBI, 1 run.",
+      "line": "Brooks Lee went 0-for-3.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,30 +10,19 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-4, HR, 4 RBI, 1 run.",
+      "line": "Brooks Lee went 0-for-3.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Bryan Woo worked 6.0 IP, allowing 3 H, 2 R (2 ER) and 1 BB with 5 K and earned the win.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-08-16",
-  "dateLabel": "Sunday, August 16, 2026",
-  "generatorVersion": "5.47",
+  "date": "2026-08-17",
+  "dateLabel": "Monday, August 17, 2026",
+  "generatorVersion": "5.50",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Sunday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee's home run \u2014 his 18th of the season came in the first inning, when he turned around on a 1-2 pitch a 90 mph slider from Andrew Painter. The swing moved the score from 0-0 to 4-0. Statcast measured the ball at 99.5 mph off the bat, a 36-degree launch angle, 353 feet.",
-    "Brooks Lee went 1-for-4, 1 home run, 4 RBI, 1 run scored.",
-    "Minnesota Twins fell to Philadelphia Phillies, 5-7.",
-    "Bryan Woo also appeared for Seattle Mariners. He worked 6.0 innings, allowing 3 hits and 2 earned runs, with 1 walk and 5 strikeouts. He started at P. Seattle Mariners beat Houston Astros, 3-2."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted 7th and started at 3B for Minnesota Twins against Atlanta Braves. Minnesota Twins beat Atlanta Braves, 4-2.",
+    "Brooks Lee went 0-for-3."
   ],
-  "title": "Brooks Lee comes through late with a go-ahead hit"
+  "title": "Brooks Lee in the lineup as Minnesota Twins wins"
 }
