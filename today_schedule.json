@@ -8,7 +8,7 @@
         "id": 527048,
         "link": "/api/v1/people/527048"
       },
-      "awayScore": 0,
+      "awayScore": 2,
       "awayTeamId": 144,
       "gameDate": "2026-08-17T23:40:00Z",
       "gamePk": 823668,
@@ -18,20 +18,20 @@
         "id": 641927,
         "link": "/api/v1/people/641927"
       },
-      "homeScore": 0,
+      "homeScore": 4,
       "homeTeamId": 142,
       "level": "MLB",
-      "liveLine": null,
+      "liveLine": "0-for-3",
       "opponent": "Atlanta Braves",
       "player": "Brooks Lee",
       "playerId": 686797,
       "sportId": 1,
-      "status": "Warmup",
+      "status": "Final",
       "team": "Minnesota Twins",
       "timeLabel": "2026-08-17T23:40:00Z",
       "venue": "Target Field"
     }
   ],
-  "generatedAt": "2026-08-18T00:18:21.961033+00:00",
+  "generatedAt": "2026-08-18T03:25:13.679740+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
