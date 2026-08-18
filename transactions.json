@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T05:05:59.788139+00:00",
+  "generatedAt": "2026-08-18T07:27:02.995408+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
@@ -40,14 +40,6 @@
       "label": "Injured List",
       "player": "Jakob Wright",
       "playerId": 809915
-    },
-    {
-      "date": "2026-08-03",
-      "description": "Washington Nationals recalled LHP Andrew Alvarez from Rochester Red Wings.",
-      "kind": "callup",
-      "label": "Call-Up",
-      "player": "Andrew Alvarez",
-      "playerId": 674841
     }
   ]
 }
