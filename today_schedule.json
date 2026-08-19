@@ -566,21 +566,21 @@
       "venue": "Delta Dental Park"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Everett AquaSox",
       "awayProbablePitcher": {
         "fullName": "Adam Maier",
         "id": 683264,
         "link": "/api/v1/people/683264"
       },
-      "awayScore": 4,
+      "awayScore": 9,
       "awayTeamId": 403,
-      "balls": 0,
-      "currentBatter": "Brandon Eike",
-      "currentInning": 5,
-      "currentPitcher": "Zachary Redner",
+      "balls": 2,
+      "currentBatter": "Carlos Jimenez",
+      "currentInning": 9,
+      "currentPitcher": "Sam Tookoian",
       "defenseTeam": "Tri-City Dust Devils",
-      "firstOccupied": true,
+      "firstOccupied": false,
       "gameDate": "2026-08-19T02:05:00Z",
       "gamePk": 819125,
       "home": "Tri-City Dust Devils",
@@ -589,7 +589,7 @@
         "id": 682719,
         "link": "/api/v1/people/682719"
       },
-      "homeScore": 11,
+      "homeScore": 12,
       "homeTeamId": 460,
       "inningHalf": "Top",
       "inningState": "Top",
@@ -597,12 +597,12 @@
       "liveLine": null,
       "offenseTeam": "Everett AquaSox",
       "opponent": "Tri-City Dust Devils",
-      "outs": 2,
+      "outs": 3,
       "player": "Taylor Dollard",
       "playerId": 693440,
       "secondOccupied": false,
       "sportId": 13,
-      "status": "In Progress",
+      "status": "Final",
       "strikes": 2,
       "team": "Everett AquaSox",
       "thirdOccupied": false,
@@ -610,6 +610,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-19T03:28:17.147148+00:00",
+  "generatedAt": "2026-08-19T05:06:54.941940+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
