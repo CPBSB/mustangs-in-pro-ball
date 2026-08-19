@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.50"
+GENERATOR_VERSION = "5.52"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -2178,6 +2178,53 @@ def build_daily_article(summary, transactions=None):
     }
 
 
+
+def fetch_live_game_state(game_pk):
+    """Return current official scoreboard state from MLB/MiLB's live game feed."""
+    if not game_pk:
+        return {}
+    try:
+        feed = get_json(f"https://statsapi.mlb.com/api/v1.1/game/{game_pk}/feed/live", {})
+    except Exception:
+        return {}
+
+    game_data = feed.get("gameData") or {}
+    live_data = feed.get("liveData") or {}
+    linescore = live_data.get("linescore") or {}
+    teams = linescore.get("teams") or {}
+    status = game_data.get("status") or {}
+    offense = linescore.get("offense") or {}
+    defense = linescore.get("defense") or {}
+
+    def occupied(key):
+        runner = offense.get(key)
+        return bool(isinstance(runner, dict) and runner.get("id"))
+
+    current_play = ((live_data.get("plays") or {}).get("currentPlay") or {})
+    matchup = current_play.get("matchup") or {}
+    count = current_play.get("count") or {}
+
+    return {
+        "status": status.get("detailedState"),
+        "abstractState": status.get("abstractGameState"),
+        "awayScore": ((teams.get("away") or {}).get("runs")),
+        "homeScore": ((teams.get("home") or {}).get("runs")),
+        "currentInning": linescore.get("currentInning"),
+        "inningState": linescore.get("inningState"),
+        "inningHalf": linescore.get("inningHalf"),
+        "outs": linescore.get("outs"),
+        "balls": count.get("balls"),
+        "strikes": count.get("strikes"),
+        "firstOccupied": occupied("first"),
+        "secondOccupied": occupied("second"),
+        "thirdOccupied": occupied("third"),
+        "currentBatter": ((matchup.get("batter") or {}).get("fullName")),
+        "currentPitcher": ((matchup.get("pitcher") or {}).get("fullName")),
+        "offenseTeam": ((offense.get("team") or {}).get("name")),
+        "defenseTeam": ((defense.get("team") or {}).get("name")),
+    }
+
+
 def build_today_schedule():
     """Build today's tracked MLB + MiLB slate.
 
@@ -2242,6 +2289,7 @@ def build_today_schedule():
                 })
 
     box_cache = {}
+    live_state_cache = {}
     catalog = json.loads(PLAYERS_FILE.read_text()).get("players", [])
     for p in catalog:
         if p.get("status") == "fa":
@@ -2269,6 +2317,19 @@ def build_today_schedule():
             live_line = None
             game_pk = game.get("gamePk")
             status = game.get("status") or ""
+
+            live_state = {}
+            if game_pk and status not in ("Scheduled", "Pre-Game", "Warmup"):
+                if game_pk not in live_state_cache:
+                    live_state_cache[game_pk] = fetch_live_game_state(game_pk)
+                live_state = live_state_cache.get(game_pk) or {}
+                if live_state.get("status"):
+                    status = live_state.get("status")
+                if live_state.get("awayScore") is not None:
+                    game["awayScore"] = live_state.get("awayScore")
+                if live_state.get("homeScore") is not None:
+                    game["homeScore"] = live_state.get("homeScore")
+
             if game_pk and status not in ("Scheduled", "Pre-Game", "Warmup"):
                 try:
                     if game_pk not in box_cache:
@@ -2315,7 +2376,21 @@ def build_today_schedule():
                 "sportId": game.get("sportId"),
                 "gamePk": game_pk,
                 "gameDate": game.get("gameDate"),
-                "status": game.get("status"),
+                "status": status or game.get("status"),
+                "abstractState": live_state.get("abstractState"),
+                "currentInning": live_state.get("currentInning"),
+                "inningState": live_state.get("inningState"),
+                "inningHalf": live_state.get("inningHalf"),
+                "outs": live_state.get("outs"),
+                "balls": live_state.get("balls"),
+                "strikes": live_state.get("strikes"),
+                "firstOccupied": live_state.get("firstOccupied"),
+                "secondOccupied": live_state.get("secondOccupied"),
+                "thirdOccupied": live_state.get("thirdOccupied"),
+                "currentBatter": live_state.get("currentBatter"),
+                "currentPitcher": live_state.get("currentPitcher"),
+                "offenseTeam": live_state.get("offenseTeam"),
+                "defenseTeam": live_state.get("defenseTeam"),
                 "timeLabel": game.get("gameDate"),
                 "away": game.get("away"),
                 "home": game.get("home"),
