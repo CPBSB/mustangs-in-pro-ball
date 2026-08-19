@@ -5,7 +5,18 @@ const headshot=(id,minor=false)=>`https://img.mlbstatic.com/mlb-photos/image/upl
 const logo=id=>id?`https://www.mlbstatic.com/team-logos/${id}.svg`:'';
 const levels=['MLB','Triple-A','Double-A','High-A','Single-A','Rookie','Awaiting Pro Assignment','Free Agent'];
 function normalizedLevel(p){if(p.status==='fa')return'Free Agent';let s=`${p.recentLevel||''} ${p.statusLabel||''}`.toLowerCase();if(p.assignmentSource==='rehab'){if(s.includes('triple'))return'Triple-A';if(s.includes('double'))return'Double-A';if(s.includes('high'))return'High-A';if(s.includes('single')||s.includes('low-a'))return'Single-A';if(/rookie|acl|fcl|dsl/.test(s))return'Rookie'}if(p.status==='mlb')return'MLB';if(s.includes('triple'))return'Triple-A';if(s.includes('double'))return'Double-A';if(s.includes('high'))return'High-A';if(s.includes('single')||s.includes('low-a'))return'Single-A';if(/rookie|acl|fcl|dsl/.test(s))return'Rookie';return'Awaiting Pro Assignment'}
-function displayStatusLabel(p){return p.assignmentSource==='rehab'?`MLB · REHAB`:p.statusLabel||normalizedLevel(p)}
+function displayStatusLabel(p){
+  if(p.assignmentSource==='rehab')return'MLB · REHAB';
+  let raw=String(p.statusLabel||'').toUpperCase();
+  if(raw.includes('INJURED'))return'MINORS · INJURED';
+  if(p.status==='fa')return'FREE AGENT';
+  let level=normalizedLevel(p);
+  if(level==='MLB')return raw||'MLB ACTIVE';
+  if(['Triple-A','Double-A','High-A','Single-A','Rookie'].includes(level)){
+    return `MINORS · ${level.toUpperCase()}`;
+  }
+  return p.statusLabel||level;
+}
 function merge(){DATA.players=DATA.players.map(p=>{let f=DATA.stats[String(p.mlbId)]||{};return{...p,...f,stats:{...(p.stats||{}),...(f.stats||{})}}})}
 async function loadAll(){let names=['players','stats','nightly_summary','daily_article','today_schedule','transactions','career_mlb','archive'];let vals=await Promise.all(names.map(n=>fetch(`${n}.json?v=${Date.now()}`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)));DATA.players=vals[0]?.players||[];DATA.statsMeta=vals[1]||null;DATA.stats=vals[1]?.players||{};DATA.summary=vals[2];DATA.daily=vals[3];DATA.schedule=vals[4];DATA.transactions=vals[5];DATA.career=vals[6]||{players:[]};DATA.archive=vals[7]||{editions:[]};merge()}
 function portrait(p,cls=''){return`<div class="portrait ${cls}"><img src="${headshot(p.mlbId)}" data-alt="${headshot(p.mlbId,true)}" alt="${esc(p.name)} headshot" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src=this.dataset.alt}else{this.style.display='none';this.nextElementSibling.style.display='grid'}"><span class="portrait-fallback">${esc(p.initials||'CP')}</span></div>`}
