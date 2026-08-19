@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T06:03:54.183115+00:00",
+  "generatedAt": "2026-08-19T08:04:39.518099+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
@@ -32,14 +32,6 @@
       "label": "Assignment",
       "player": "Steven Brooks",
       "playerId": 809933
-    },
-    {
-      "date": "2026-08-04",
-      "description": "Great Lakes Loons placed LHP Jakob Wright on the 7-day injured list.",
-      "kind": "injured",
-      "label": "Injured List",
-      "player": "Jakob Wright",
-      "playerId": 809915
     }
   ]
 }
