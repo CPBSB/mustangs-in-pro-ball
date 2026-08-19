@@ -5,6 +5,7 @@
         "awayFinal": 1,
         "battingOrder": 7,
         "homeFinal": 4,
+        "isSubstitute": false,
         "keyPlays": [],
         "opponent": "Atlanta Braves",
         "opponentFinal": 1,
@@ -67,6 +68,7 @@
         "awayFinal": 10,
         "battingOrder": 4,
         "homeFinal": 1,
+        "isSubstitute": false,
         "keyPlays": [
           {
             "count": "0-0",
@@ -83,6 +85,7 @@
             "half": "bottom",
             "inning": 4,
             "launchAngle": 39.0,
+            "location": "to deep center field",
             "pitchCode": "CH",
             "pitchDescription": "In play, run(s)",
             "pitchType": "Changeup",
@@ -164,6 +167,7 @@
         "awayFinal": 7,
         "battingOrder": 2,
         "homeFinal": 10,
+        "isSubstitute": false,
         "keyPlays": [
           {
             "count": "2-2",
@@ -180,6 +184,7 @@
             "half": "top",
             "inning": 7,
             "launchAngle": null,
+            "location": "to right field",
             "pitchCode": null,
             "pitchDescription": "In play, run(s)",
             "pitchType": null,
@@ -214,6 +219,7 @@
             "half": "top",
             "inning": 8,
             "launchAngle": null,
+            "location": "to left field",
             "pitchCode": null,
             "pitchDescription": "In play, run(s)",
             "pitchType": null,
@@ -294,13 +300,16 @@
       "gameContext": {
         "awayFinal": 10,
         "homeFinal": 5,
+        "isSubstitute": false,
         "keyPlays": [],
         "opponent": "Jersey Shore BlueClaws",
         "opponentFinal": 5,
         "pitchingEntry": {
+          "batter": "Griffin Burkholder",
           "half": "bottom",
           "inning": 4,
           "opponentScore": 4,
+          "outsBefore": 2,
           "teamScore": 4
         },
         "pitchingMoments": [
@@ -326,6 +335,7 @@
             "zone": null
           }
         ],
+        "pitchingRole": "reliever",
         "position": "P",
         "result": "win",
         "side": "away",
@@ -409,7 +419,7 @@
     }
   ],
   "date": "2026-08-18",
-  "generatedAt": "2026-08-19T11:05:49.910933+00:00",
+  "generatedAt": "2026-08-19T22:17:41.115082+00:00",
   "intro": "4 former Mustangs appeared in professional games on 2026-08-18.",
   "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights",
   "title": "Last Night's Mustangs",
