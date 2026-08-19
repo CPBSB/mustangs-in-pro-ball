@@ -440,7 +440,11 @@
     {
       "abstractState": null,
       "away": "Midland RockHounds",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Nathan Dettmer",
+        "id": 700579,
+        "link": "/api/v1/people/700579"
+      },
       "awayScore": null,
       "awayTeamId": 237,
       "balls": null,
@@ -610,6 +614,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-19T11:57:29.580958+00:00",
+  "generatedAt": "2026-08-19T14:08:07.830674+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
