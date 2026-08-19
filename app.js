@@ -73,13 +73,11 @@ function baseDiamond(g){
   </div>`;
 }
 function liveSituation(g){
-  let parts=[];
-  if(g.currentBatter)parts.push(`At bat: ${g.currentBatter}`);
-  if(g.currentPitcher)parts.push(`Pitching: ${g.currentPitcher}`);
-  if(g.balls!=null&&g.strikes!=null)parts.push(`Count ${g.balls}-${g.strikes}`);
-  let text=parts.length?`<span>${parts.map(esc).join(' · ')}</span>`:'';
+  let batter=g.currentBatter?`<div class="live-chip"><small>At Bat</small><b>${esc(g.currentBatter)}</b></div>`:'';
+  let pitcher=g.currentPitcher?`<div class="live-chip"><small>Pitching</small><b>${esc(g.currentPitcher)}</b></div>`:'';
+  let count=(g.balls!=null&&g.strikes!=null)?`<div class="count-chip"><small>Count</small><b>${esc(g.balls)}-${esc(g.strikes)}</b></div>`:'';
   let bases=baseDiamond(g);
-  return (text||bases)?`<div class="live-situation">${text}${bases}</div>`:'';
+  return (batter||pitcher||count||bases)?`<div class="live-situation"><div class="live-situation-main">${batter}${pitcher}${count}</div>${bases?`<div class="live-situation-bases">${bases}</div>`:''}</div>`:'';
 }
 
 function gameCards(games){
@@ -145,6 +143,10 @@ function ensureGameLinkStyles(){
   let s=document.createElement('style');s.id='gameLinkStyles';
   s.textContent='.matchup-link{display:block;color:inherit;text-decoration:none}.matchup-link .matchup-card{height:100%;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}.matchup-link:hover .matchup-card{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.14);border-color:rgba(196,151,31,.55)}.game-card-action{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.09);font:700 10px \"Space Mono\";text-transform:uppercase;letter-spacing:.04em;color:var(--green)}.matchup-card.is-live{border-color:rgba(196,151,31,.62);box-shadow:0 12px 30px rgba(196,151,31,.10)}.live-pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#b42318;color:#fff;font:700 9px \"Space Mono\";letter-spacing:.08em}.live-situation{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0;padding:10px 12px;border-radius:10px;background:rgba(9,58,43,.06);font:700 10px \"Space Mono\";color:var(--green)}.live-bases{position:relative;width:34px;height:28px;flex:0 0 34px}.base{position:absolute;width:10px;height:10px;border:1px solid #b7b7ae;background:#fff;transform:rotate(45deg)}.base.on{background:var(--gold);border-color:var(--gold)}.base.second{top:0;left:12px}.base.third{top:12px;left:1px}.base.first{top:12px;right:1px}.live-line strong{color:var(--gold)}';
   document.head.appendChild(s);
+  let livePanelStyle=document.createElement('style');
+  livePanelStyle.id='livePanelStyle';
+  livePanelStyle.textContent='.live-situation{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:14px 0;padding:14px 16px;border:1px solid rgba(9,58,43,.10);border-left:4px solid var(--gold);border-radius:12px;background:linear-gradient(90deg,rgba(9,58,43,.045),rgba(196,151,31,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.75)}.live-situation-main{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}.live-chip,.count-chip{display:flex;align-items:baseline;gap:8px;padding:9px 12px;border-radius:9px;background:#fff;border:1px solid rgba(9,58,43,.10)}.live-chip small,.count-chip small{font:700 8px "Space Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.live-chip b{font:700 13px "Space Mono";color:var(--deep)}.count-chip{background:var(--deep);border-color:var(--deep)}.count-chip small{color:rgba(255,255,255,.65)}.count-chip b{font:700 16px "Space Mono";color:var(--gold)}.live-situation-bases{display:flex;align-items:center;justify-content:center;min-width:54px;padding:6px 10px;border-radius:9px;background:rgba(255,255,255,.7);border:1px solid rgba(9,58,43,.08)}@media(max-width:760px){.live-situation{align-items:flex-start;flex-direction:column}.live-situation-main{width:100%}.live-chip,.count-chip{flex:1 1 140px}.live-situation-bases{align-self:flex-end}}';
+  document.head.appendChild(livePanelStyle);
 }
 function arrangeDailySections(){
   let highlightsSection=$('#highlights')?.closest('section');
