@@ -65,8 +65,7 @@ function liveGameDetail(g){
 }
 function baseDiamond(g){
   let b1=!!g.firstOccupied,b2=!!g.secondOccupied,b3=!!g.thirdOccupied;
-  if(!(b1||b2||b3))return '';
-  return `<div class="live-bases" aria-label="Runners on base">
+  return `<div class="live-bases" aria-label="Base occupancy">
     <span class="base second ${b2?'on':''}"></span>
     <span class="base third ${b3?'on':''}"></span>
     <span class="base first ${b1?'on':''}"></span>
