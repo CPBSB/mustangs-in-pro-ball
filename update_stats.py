@@ -5,11 +5,11 @@ Designed for GitHub Actions. Existing stats are preserved for any player whose
 request fails, so a temporary provider outage cannot blank the website.
 """
 from __future__ import annotations
-import argparse, json, os, re, sys, time
+import argparse, html as html_lib, json, os, re, sys, time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urljoin
 from urllib.request import Request, urlopen
 
 SEASON = int(os.getenv("BASEBALL_SEASON", datetime.now().year))
@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.56"
+GENERATOR_VERSION = "5.57"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -108,6 +108,15 @@ def get_json(url, params):
     req=Request(url+"?"+urlencode(params),headers={"User-Agent":"MustangsProBall/1.0"})
     with urlopen(req,timeout=30) as r:
         return json.load(r)
+
+
+def get_text(url):
+    req = Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (compatible; MustangsProBall/1.0)",
+        "Accept": "text/html,application/xhtml+xml"
+    })
+    with urlopen(req, timeout=30) as r:
+        return r.read().decode("utf-8", "ignore")
 
 PLAYERS = load_players()
 
@@ -1347,9 +1356,110 @@ def find_milb_highlights(player, game_date=None):
     return found[:8]
 
 
+
+def find_milb_player_page_highlights(player, game_date=None):
+    """Fallback to the official MiLB player video topic page.
+
+    MiLB often publishes minor-league clips on the player/team video pages even
+    when the game-content endpoint does not expose a playback object.  We keep
+    this official-source fallback narrow: same player, same game date, and only
+    positive baseball events.
+    """
+    player_id = player.get("id")
+    name = str(player.get("name") or "").strip()
+    if not player_id or not name:
+        return []
+
+    topic_url = f"https://www.milb.com/video/topic/playerid-{player_id}"
+    try:
+        page = get_text(topic_url)
+    except Exception:
+        return []
+
+    wanted_date = str(game_date or "")[:10]
+    wanted_labels = []
+    if wanted_date:
+        try:
+            dt = datetime.fromisoformat(wanted_date)
+            wanted_labels = [
+                dt.strftime("%B %d, %Y").replace(" 0", " "),
+                dt.strftime("%b %d, %Y").replace(" 0", " "),
+            ]
+        except Exception:
+            pass
+
+    found, seen = [], set()
+
+    # MiLB's server-rendered topic page contains normal links to individual
+    # video pages.  Read those anchors instead of relying on client-side JS.
+    anchor_re = re.compile(
+        r'<a\b[^>]*href=["\\\']([^"\\\']*?/video/[^"\\\']+)["\\\'][^>]*>(.*?)</a>',
+        re.I | re.S
+    )
+    tag_re = re.compile(r'<[^>]+>')
+
+    for match in anchor_re.finditer(page):
+        href = html_lib.unescape(match.group(1))
+        inner = match.group(2)
+        visible = html_lib.unescape(tag_re.sub(" ", inner))
+        visible = re.sub(r"\s+", " ", visible).strip()
+
+        # Some date text sits just outside the anchor, so inspect a small
+        # surrounding window as well.
+        context_start = max(0, match.start() - 250)
+        context_end = min(len(page), match.end() + 350)
+        context = html_lib.unescape(tag_re.sub(" ", page[context_start:context_end]))
+        context = re.sub(r"\s+", " ", context).strip()
+
+        haystack = f"{visible} {context}"
+        if name.lower() not in haystack.lower():
+            continue
+        if wanted_labels and not any(label.lower() in haystack.lower() for label in wanted_labels):
+            continue
+
+        # Build a pseudo-content record so the same positive-only classifier is
+        # used for MLB and MiLB clips.
+        node = {"title": visible or name, "description": context}
+        if not positive_highlight_for_player(node, player):
+            continue
+
+        url = urljoin("https://www.milb.com", href)
+        if url in seen:
+            continue
+        seen.add(url)
+
+        image = None
+        img = re.search(r'<img\b[^>]*src=["\\\']([^"\\\']+)["\\\']', inner, re.I)
+        if img:
+            image = html_lib.unescape(img.group(1))
+
+        title = visible
+        # Avoid using a long card body/date blob as the title.
+        for label in wanted_labels:
+            if label and label in title:
+                title = title.split(label, 1)[0].strip()
+        if len(title) > 180:
+            title = title[:177].rstrip() + "..."
+
+        found.append({
+            "title": title or f"{name} MiLB highlight",
+            "description": "",
+            "url": url,
+            "image": image,
+            "source": "Official MiLB player video page"
+        })
+
+    return found[:8]
+
+
 def merge_player_highlights(game_pk, player, game_date=None):
     clips, seen = [], set()
-    for clip in find_highlights(game_pk, player) + find_milb_highlights(player, game_date):
+    sources = (
+        find_highlights(game_pk, player)
+        + find_milb_highlights(player, game_date)
+        + find_milb_player_page_highlights(player, game_date)
+    )
+    for clip in sources:
         key = clip.get("url") or clip.get("title")
         if not key or key in seen:
             continue
@@ -1614,6 +1724,7 @@ def positive_highlight_for_player(node, player):
             "rbi", "drives in", "plates", "run-scoring", "run scoring",
             "stolen base", "steals", "scores", "base hit",
             "hits a", "knocks", "sacrifice fly", "sac fly",
+            "in play, run", "in play, run(s)",
         ]
         return any(term in text for term in good)
 
@@ -1702,9 +1813,11 @@ def build_nightly_summary():
                     recap = hitter_sentence(player["name"], stat) if player["type"] == "hitter" else pitcher_sentence(player["name"], stat)
                 highlights = []
                 if game_pk:
-                    cache_key = (game_pk, player["id"])
+                    cache_key = (game_pk, player["id"], target)
                     if cache_key not in game_highlight_cache:
-                        game_highlight_cache[cache_key] = find_highlights(game_pk, player)
+                        game_highlight_cache[cache_key] = merge_player_highlights(
+                            game_pk, player, target
+                        )
                     highlights = game_highlight_cache[cache_key]
                 game_context = fetch_game_context(game_pk, player) if game_pk else {}
                 if not team and game_context.get("team"):
@@ -1733,7 +1846,7 @@ def build_nightly_summary():
         "intro": intro,
         "appearances": appearances,
         "warnings": warnings,
-        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights"
+        "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official MLB/MiLB game and player-page highlights"
     }
     # A total provider/network outage must not replace the last good recap with a false
     # "nobody played" report. Partial success is still written normally.
