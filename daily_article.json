@@ -2,27 +2,40 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-3.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Alejandro Garza went 2-for-4, 2 RBI.",
+      "player": "Alejandro Garza",
+      "playerId": 835211,
+      "team": "Hill City Howlers",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-3.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Alejandro Garza went 2-for-4, 2 RBI.",
+      "player": "Alejandro Garza",
+      "playerId": 835211,
+      "team": "Hill City Howlers",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Bryce Warrecker worked 1.1 IP, allowing 3 H, 1 R (1 ER) and 0 BB with 1 K.",
+      "player": "Bryce Warrecker",
+      "playerId": 695425,
+      "team": "Hudson Valley Renegades",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-08-17",
-  "dateLabel": "Monday, August 17, 2026",
-  "generatorVersion": "5.50",
+  "date": "2026-08-18",
+  "dateLabel": "Tuesday, August 18, 2026",
+  "generatorVersion": "5.52",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted 7th and started at 3B for Minnesota Twins against Atlanta Braves. Minnesota Twins beat Atlanta Braves, 4-2.",
-    "Brooks Lee went 0-for-3."
+    "4 former Mustangs appeared in professional games on Tuesday for 4 clubs across 3 levels, with Alejandro Garza producing the night's most notable performance.",
+    "Alejandro Garza drove in 1 run with a single in the eighth, on a 1-1 pitch from Trendan Parish.",
+    "Alejandro Garza went 2-for-4, 2 RBI.",
+    "Hill City Howlers fell to Charleston RiverDogs, 7-10.",
+    "Ryan Tayman also appeared for St. Lucie Mets at Single-A. He went 1-for-2, 1 RBI, 1 walk. He batted 4th and started at C. St. Lucie Mets fell to Lakeland Flying Tigers, 1-10.",
+    "Brooks Lee also appeared for Minnesota Twins. He went 1-for-3. He batted 7th and started at 3B. Minnesota Twins beat Atlanta Braves, 4-1.",
+    "Bryce Warrecker also appeared for Hudson Valley Renegades at High-A. He worked 1.1 innings, allowing 3 hits and 1 earned run, with 0 walks and 1 strikeout. He started at P. Hudson Valley Renegades beat Jersey Shore BlueClaws, 10-5."
   ],
-  "title": "Brooks Lee in the lineup as Minnesota Twins wins"
+  "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
 }
