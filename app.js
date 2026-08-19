@@ -45,6 +45,43 @@ function gamedayUrl(g){
   let view=final?'final/box':live?'live':'preview';
   return `${domain}/gameday/${g.gamePk}/${view}`;
 }
+
+function inningLabel(g){
+  let inning=Number(g.currentInning||0);
+  if(!inning)return g.status||'In Progress';
+  let half=String(g.inningState||g.inningHalf||'').toLowerCase();
+  let prefix=half.includes('top')?'Top':half.includes('bottom')?'Bot':half.includes('middle')?'Middle':half.includes('end')?'End':'';
+  return `${prefix}${prefix?' ':''}${inning}`.trim();
+}
+function liveGameDetail(g){
+  let pieces=[];
+  let inn=inningLabel(g);
+  if(inn)pieces.push(inn);
+  if(g.outs!=null){
+    let n=Number(g.outs);
+    pieces.push(`${n} out${n===1?'':'s'}`);
+  }
+  return pieces.join(' · ');
+}
+function baseDiamond(g){
+  let b1=!!g.firstOccupied,b2=!!g.secondOccupied,b3=!!g.thirdOccupied;
+  if(!(b1||b2||b3))return '';
+  return `<div class="live-bases" aria-label="Runners on base">
+    <span class="base second ${b2?'on':''}"></span>
+    <span class="base third ${b3?'on':''}"></span>
+    <span class="base first ${b1?'on':''}"></span>
+  </div>`;
+}
+function liveSituation(g){
+  let parts=[];
+  if(g.currentBatter)parts.push(`At bat: ${g.currentBatter}`);
+  if(g.currentPitcher)parts.push(`Pitching: ${g.currentPitcher}`);
+  if(g.balls!=null&&g.strikes!=null)parts.push(`Count ${g.balls}-${g.strikes}`);
+  let text=parts.length?`<span>${parts.map(esc).join(' · ')}</span>`:'';
+  let bases=baseDiamond(g);
+  return (text||bases)?`<div class="live-situation">${text}${bases}</div>`:'';
+}
+
 function gameCards(games){
   let unique=[];let seen=new Map();
   for(const g of games){
@@ -54,19 +91,40 @@ function gameCards(games){
   }
   const levelRank={"MLB":1,"Triple-A":2,"Double-A":3,"High-A":4,"Single-A":5,"Rookie":6,"Rookie Ball":6};
   unique.sort((a,b)=>{
-    let ar=levelRank[a.level]??99, br=levelRank[b.level]??99;
+    let ar=levelRank[a.level]??99,br=levelRank[b.level]??99;
     if(ar!==br)return ar-br;
-    let at=new Date(a.gameDate||0).getTime()||0, bt=new Date(b.gameDate||0).getTime()||0;
+    let at=new Date(a.gameDate||0).getTime()||0,bt=new Date(b.gameDate||0).getTime()||0;
     return at-bt;
   });
+
   return unique.map(g=>{
     let awayLogo=g.awayTeamId?logo(g.awayTeamId):'',homeLogo=g.homeTeamId?logo(g.homeTeamId):'';
     let status=g.status||'Scheduled';
-    let live=/in progress|live/i.test(status);
-    let final=/final|completed|game over/i.test(status);
+    let live=/in progress|live|manager challenge|delayed/i.test(status)||String(g.abstractState||'').toLowerCase()==='live';
+    let final=/final|completed|game over/i.test(status)||String(g.abstractState||'').toLowerCase()==='final';
     let href=gamedayUrl(g);
     let action=final?'View box score':live?'Open live Gameday':'Open game preview';
-    return`${href?`<a class="matchup-link" href="${href}" target="_blank" rel="noopener" aria-label="${esc(action)}: ${esc(g.away||'Away')} at ${esc(g.home||'Home')}">`:''}<article class="matchup-card clickable-game"><div class="matchup-top"><span class="matchup-time">${g.level?`${esc(g.level)} · `:''}${live?esc(status):pacificTime(g.gameDate)}</span>${g.venue?`<span class="matchup-venue">${esc(g.venue)}</span>`:''}</div><div class="teams-row"><div class="team-side">${awayLogo?`<img src="${awayLogo}" alt="${esc(g.away)}">`:''}<b>${esc(g.away||'Away')}</b>${g.awayScore!=null?`<strong>${esc(g.awayScore)}</strong>`:''}</div><div class="at-mark">@</div><div class="team-side">${homeLogo?`<img src="${homeLogo}" alt="${esc(g.home)}">`:''}<b>${esc(g.home||'Home')}</b>${g.homeScore!=null?`<strong>${esc(g.homeScore)}</strong>`:''}</div></div><div class="starters-row">${starterHtml('Projected starter',g.awayProbablePitcher)}${starterHtml('Projected starter',g.homeProbablePitcher)}</div>${g.tracked.length?`<div class="tracked-line"><span>Mustangs:</span> ${g.tracked.map(esc).join(', ')}</div>`:''}${g.liveLine?`<div class="live-line">${esc(g.liveLine)}</div>`:''}<div class="game-card-action">${esc(action)} ↗</div></article>${href?'</a>':''}`
+    let topStatus=live?liveGameDetail(g):final?'Final':pacificTime(g.gameDate);
+    let starterLabel=live||final?'Starting pitcher':'Projected starter';
+
+    return`${href?`<a class="matchup-link" href="${href}" target="_blank" rel="noopener" aria-label="${esc(action)}: ${esc(g.away||'Away')} at ${esc(g.home||'Home')}">`:''}
+      <article class="matchup-card clickable-game ${live?'is-live':''} ${final?'is-final':''}">
+        <div class="matchup-top">
+          <span class="matchup-time">${g.level?`${esc(g.level)} · `:''}${esc(topStatus||status)}</span>
+          ${live?'<span class="live-pill">LIVE</span>':''}
+          ${g.venue?`<span class="matchup-venue">${esc(g.venue)}</span>`:''}
+        </div>
+        <div class="teams-row">
+          <div class="team-side">${awayLogo?`<img src="${awayLogo}" alt="${esc(g.away)}">`:''}<b>${esc(g.away||'Away')}</b><strong>${esc(g.awayScore??'—')}</strong></div>
+          <div class="at-mark">${live||final?'—':'@'}</div>
+          <div class="team-side">${homeLogo?`<img src="${homeLogo}" alt="${esc(g.home)}">`:''}<b>${esc(g.home||'Home')}</b><strong>${esc(g.homeScore??'—')}</strong></div>
+        </div>
+        ${live?liveSituation(g):''}
+        <div class="starters-row">${starterHtml(starterLabel,g.awayProbablePitcher)}${starterHtml(starterLabel,g.homeProbablePitcher)}</div>
+        ${g.tracked.length?`<div class="tracked-line"><span>Mustangs:</span> ${g.tracked.map(esc).join(', ')}</div>`:''}
+        ${g.liveLine?`<div class="live-line"><strong>Mustang live:</strong> ${esc(g.liveLine)}</div>`:''}
+        <div class="game-card-action">${esc(action)} ↗</div>
+      </article>${href?'</a>':''}`;
   }).join('')
 }
 function dailyResultStrip(){
@@ -85,7 +143,7 @@ function dailyResultStrip(){
 function ensureGameLinkStyles(){
   if(document.getElementById('gameLinkStyles'))return;
   let s=document.createElement('style');s.id='gameLinkStyles';
-  s.textContent='.matchup-link{display:block;color:inherit;text-decoration:none}.matchup-link .matchup-card{height:100%;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}.matchup-link:hover .matchup-card{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.14);border-color:rgba(196,151,31,.55)}.game-card-action{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.09);font:700 10px \"Space Mono\";text-transform:uppercase;letter-spacing:.04em;color:var(--green)}';
+  s.textContent='.matchup-link{display:block;color:inherit;text-decoration:none}.matchup-link .matchup-card{height:100%;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}.matchup-link:hover .matchup-card{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,.14);border-color:rgba(196,151,31,.55)}.game-card-action{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.09);font:700 10px \"Space Mono\";text-transform:uppercase;letter-spacing:.04em;color:var(--green)}.matchup-card.is-live{border-color:rgba(196,151,31,.62);box-shadow:0 12px 30px rgba(196,151,31,.10)}.live-pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#b42318;color:#fff;font:700 9px \"Space Mono\";letter-spacing:.08em}.live-situation{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0;padding:10px 12px;border-radius:10px;background:rgba(9,58,43,.06);font:700 10px \"Space Mono\";color:var(--green)}.live-bases{position:relative;width:34px;height:28px;flex:0 0 34px}.base{position:absolute;width:10px;height:10px;border:1px solid #b7b7ae;background:#fff;transform:rotate(45deg)}.base.on{background:var(--gold);border-color:var(--gold)}.base.second{top:0;left:12px}.base.third{top:12px;left:1px}.base.first{top:12px;right:1px}.live-line strong{color:var(--gold)}';
   document.head.appendChild(s);
 }
 function arrangeDailySections(){
