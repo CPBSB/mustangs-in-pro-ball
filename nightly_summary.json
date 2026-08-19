@@ -115,7 +115,15 @@
         "teamFinal": 1
       },
       "gamePk": 820315,
-      "highlights": [],
+      "highlights": [
+        {
+          "description": "",
+          "image": null,
+          "source": "Official MiLB player video page",
+          "title": "0:12 Caleb Leys In play, run(s) to Ryan Tayman",
+          "url": "https://www.milb.com/video/caleb-leys-in-play-run-s-to-ryan-tayman?t=playerid-822034"
+        }
+      ],
       "level": "Single-A",
       "name": "Ryan Tayman",
       "opponent": "Lakeland Flying Tigers",
@@ -419,9 +427,9 @@
     }
   ],
   "date": "2026-08-18",
-  "generatedAt": "2026-08-19T22:17:41.115082+00:00",
+  "generatedAt": "2026-08-19T23:45:09.279633+00:00",
   "intro": "4 former Mustangs appeared in professional games on 2026-08-18.",
-  "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official game highlights",
+  "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official MLB/MiLB game and player-page highlights",
   "title": "Last Night's Mustangs",
   "warnings": []
 }
