@@ -2,15 +2,15 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Alejandro Garza went 2-for-4, 2 RBI.",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "team": "Hill City Howlers",
-      "type": "hitter"
+      "line": "Drew Thorpe worked 5.0 IP, allowing 5 H, 2 R (2 ER) and 2 BB with 6 K and earned the win.",
+      "player": "Drew Thorpe",
+      "playerId": 689672,
+      "team": "Charlotte Knights",
+      "type": "pitcher"
     },
     {
       "label": "Top Hitter",
-      "line": "Alejandro Garza went 2-for-4, 2 RBI.",
+      "line": "Alejandro Garza went 2-for-5, 1 run, 1 SB.",
       "player": "Alejandro Garza",
       "playerId": 835211,
       "team": "Hill City Howlers",
@@ -18,26 +18,27 @@
     },
     {
       "label": "Top Pitcher",
-      "line": "Bryce Warrecker worked 1.1 IP, allowing 3 H, 1 R (1 ER) and 0 BB with 1 K.",
-      "player": "Bryce Warrecker",
-      "playerId": 695425,
-      "team": "Hudson Valley Renegades",
+      "line": "Drew Thorpe worked 5.0 IP, allowing 5 H, 2 R (2 ER) and 2 BB with 6 K and earned the win.",
+      "player": "Drew Thorpe",
+      "playerId": 689672,
+      "team": "Charlotte Knights",
       "type": "pitcher"
     }
   ],
-  "date": "2026-08-18",
-  "dateLabel": "Tuesday, August 18, 2026",
+  "date": "2026-08-19",
+  "dateLabel": "Wednesday, August 19, 2026",
   "generatorVersion": "5.57",
   "paragraphs": [
-    "4 former Mustangs appeared in professional games on Tuesday for 4 clubs across 3 levels, with Alejandro Garza producing the night's most notable performance.",
-    "Alejandro Garza drove in 1 run with a sacrifice fly in the seventh to right field on a 2-2 pitch from Yereny Teus.",
-    "Alejandro Garza drove in 1 run with a single in the eighth to left field on a 1-1 pitch from Trendan Parish.",
-    "Alejandro Garza went 2-for-4, 2 RBI.",
-    "He batted second and started at second base.",
-    "Hill City Howlers fell to Charleston RiverDogs, 7-10.",
-    "Ryan Tayman went 1-for-2, 1 RBI, 1 walk for St. Lucie Mets at Single-A. Ryan Tayman drove in his lone run with a sacrifice fly in the fourth to deep center field on a first-pitch 80 mph changeup from Caleb Leys. He batted fourth and started behind the plate. St. Lucie Mets fell to Lakeland Flying Tigers, 1-10.",
-    "Brooks Lee went 1-for-3 for Minnesota Twins. He batted seventh and started at third base. Minnesota Twins beat Atlanta Braves, 4-1.",
-    "Bryce Warrecker came on in relief for Hudson Valley Renegades in the bottom of the fourth with two outs. He worked 1 1/3 innings, allowing 3 hits and 1 earned run, striking out 1 without issuing a walk. One of his strikeouts came in the fifth on a 3-2 pitch, when he put away Robert Phelps. Hudson Valley Renegades beat Jersey Shore BlueClaws, 10-5."
+    "6 former Mustangs appeared in professional games on Wednesday for 6 clubs across 5 levels, with Drew Thorpe producing the night's most notable performance.",
+    "Drew Thorpe started on the mound for Charlotte Knights.",
+    "Drew Thorpe worked 5.0 innings, allowing 5 hits and 2 earned runs, with 2 walks and 6 strikeouts.",
+    "One of his strikeouts came in the second on a 1-2 94 mph four-seam fastball, when he put away Anthony Volpe.",
+    "Charlotte Knights beat Scranton/Wilkes-Barre RailRiders, 7-2.",
+    "Steven Brooks started on the mound for Portland Sea Dogs. He worked 2 2/3 innings, allowing 2 hits and 1 earned run, with 1 walk and 5 strikeouts. One of his strikeouts came in the first on a 1-2 pitch, when he put away Bryan Rincon. Portland Sea Dogs beat Reading Fightin Phils, 6-4.",
+    "Alejandro Garza went 2-for-5, 1 run scored, 1 stolen base for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers beat Charleston RiverDogs, 4-3.",
+    "Zach Daudet went 2-for-3, 1 run scored, 1 walk for Asheville Tourists at High-A. He batted sixth and started at shortstop. Asheville Tourists beat Brooklyn Cyclones, 7-6.",
+    "Brooks Lee went 1-for-4, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a single in the seventh to center field on a 0-2 83 mph slider from Dylan Lee. He batted seventh and started at third base. Minnesota Twins beat Atlanta Braves, 6-4.",
+    "Taylor Dollard started on the mound for Everett AquaSox. He worked 5 1/3 innings, allowing 6 hits and 4 earned runs, with 2 walks and 4 strikeouts. One of his strikeouts came in the third on a 2-2 pitch, when he put away Harold Coll. Everett AquaSox fell to Tri-City Dust Devils, 3-4."
   ],
-  "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
+  "title": "Drew Thorpe turns in a strong outing on the mound"
 }
