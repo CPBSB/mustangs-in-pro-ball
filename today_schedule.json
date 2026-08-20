@@ -181,7 +181,7 @@
         "id": 669923,
         "link": "/api/v1/people/669923"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 136,
       "balls": null,
       "currentBatter": null,
@@ -197,7 +197,7 @@
         "id": 688107,
         "link": "/api/v1/people/688107"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 158,
       "inningHalf": null,
       "inningState": null,
@@ -210,7 +210,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -526,6 +526,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-20T16:01:08.188345+00:00",
+  "generatedAt": "2026-08-20T17:16:31.510329+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
