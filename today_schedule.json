@@ -61,9 +61,9 @@
       "gamePk": 827442,
       "home": "Charleston RiverDogs",
       "homeProbablePitcher": {
-        "fullName": "Miguel Toscano",
-        "id": 808537,
-        "link": "/api/v1/people/808537"
+        "fullName": "Luke Jackson",
+        "id": 703683,
+        "link": "/api/v1/people/703683"
       },
       "homeScore": null,
       "homeTeamId": 233,
@@ -526,6 +526,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-20T14:19:27.988498+00:00",
+  "generatedAt": "2026-08-20T16:01:08.188345+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
