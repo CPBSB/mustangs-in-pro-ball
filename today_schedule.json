@@ -570,21 +570,21 @@
       "venue": "Delta Dental Park"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Everett AquaSox",
       "awayProbablePitcher": {
         "fullName": "Taylor Dollard",
         "id": 693440,
         "link": "/api/v1/people/693440"
       },
-      "awayScore": 2,
+      "awayScore": 3,
       "awayTeamId": 403,
-      "balls": 0,
-      "currentBatter": "Carter Dorighi",
-      "currentInning": 5,
-      "currentPitcher": "Dylan Jordan",
+      "balls": 2,
+      "currentBatter": "Cesar Quintas",
+      "currentInning": 9,
+      "currentPitcher": "Kyle Roche",
       "defenseTeam": "Tri-City Dust Devils",
-      "firstOccupied": true,
+      "firstOccupied": false,
       "gameDate": "2026-08-20T02:05:00Z",
       "gamePk": 819117,
       "home": "Tri-City Dust Devils",
@@ -593,20 +593,20 @@
         "id": 813335,
         "link": "/api/v1/people/813335"
       },
-      "homeScore": 1,
+      "homeScore": 4,
       "homeTeamId": 460,
       "inningHalf": "Top",
       "inningState": "Top",
       "level": "High-A",
-      "liveLine": "4.0 IP, 1 K, 1 ER",
+      "liveLine": "5.1 IP, 4 K, 4 ER",
       "offenseTeam": "Everett AquaSox",
       "opponent": "Tri-City Dust Devils",
-      "outs": 0,
+      "outs": 3,
       "player": "Taylor Dollard",
       "playerId": 693440,
       "secondOccupied": false,
       "sportId": 13,
-      "status": "In Progress",
+      "status": "Final",
       "strikes": 1,
       "team": "Everett AquaSox",
       "thirdOccupied": false,
@@ -614,6 +614,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-20T03:13:21.822482+00:00",
+  "generatedAt": "2026-08-20T05:07:05.057538+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }

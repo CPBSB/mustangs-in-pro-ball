@@ -223,22 +223,22 @@
       "type": "pitcher"
     },
     "693440": {
-      "assignmentDate": "2026-08-12",
+      "assignmentDate": "2026-08-19",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-12",
+        "endDate": "2026-08-19",
         "games": 7,
-        "startDate": "2026-06-30",
+        "startDate": "2026-07-07",
         "stats": {
-          "BB": 9,
-          "ER": 15,
-          "ERA": "3.97",
+          "BB": 10,
+          "ER": 19,
+          "ERA": "4.98",
           "G": 7,
-          "H": 32,
-          "IP": "34.0",
-          "R": 17,
-          "SO": 25,
-          "WHIP": "1.21"
+          "H": 33,
+          "IP": "34.1",
+          "R": 20,
+          "SO": 23,
+          "WHIP": "1.25"
         }
       },
       "name": "Taylor Dollard",
@@ -246,14 +246,14 @@
       "recentTeam": "Everett AquaSox",
       "recentTeamId": 403,
       "stats": {
-        "BB": 27,
-        "ER": 54,
-        "ERA": "5.61",
-        "H": 99,
-        "IP": "86.2",
-        "R": 68,
-        "SO": 76,
-        "WHIP": "1.45"
+        "BB": 29,
+        "ER": 58,
+        "ERA": "5.67",
+        "H": 105,
+        "IP": "92.0",
+        "R": 72,
+        "SO": 80,
+        "WHIP": "1.46"
       },
       "statsSource": "seasonSummary",
       "team": "Everett AquaSox",
@@ -633,7 +633,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-20T03:13:18.359413+00:00",
+  "updatedAt": "2026-08-20T05:06:59.574478+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
