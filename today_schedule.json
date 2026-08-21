@@ -338,7 +338,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -654,6 +654,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-21T19:08:27.363914+00:00",
+  "generatedAt": "2026-08-21T19:53:31.226139+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
