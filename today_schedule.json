@@ -213,9 +213,9 @@
       "abstractState": null,
       "away": "Brooklyn Cyclones",
       "awayProbablePitcher": {
-        "fullName": "Jose Chirinos",
-        "id": 800452,
-        "link": "/api/v1/people/800452"
+        "fullName": "Will Watson",
+        "id": 814492,
+        "link": "/api/v1/people/814492"
       },
       "awayScore": null,
       "awayTeamId": 453,
@@ -477,9 +477,9 @@
       "abstractState": null,
       "away": "Hudson Valley Renegades",
       "awayProbablePitcher": {
-        "fullName": "Luis Serna",
-        "id": 702436,
-        "link": "/api/v1/people/702436"
+        "fullName": "Pico Kohn",
+        "id": 695560,
+        "link": "/api/v1/people/695560"
       },
       "awayScore": null,
       "awayTeamId": 537,
@@ -520,7 +520,11 @@
     {
       "abstractState": null,
       "away": "Hudson Valley Renegades",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Luis Serna",
+        "id": 702436,
+        "link": "/api/v1/people/702436"
+      },
       "awayScore": null,
       "awayTeamId": 537,
       "balls": null,
@@ -646,6 +650,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-21T12:01:42.461983+00:00",
+  "generatedAt": "2026-08-21T14:09:16.077711+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
