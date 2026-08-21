@@ -145,9 +145,9 @@
       "gamePk": 821803,
       "home": "Wilmington Blue Rocks",
       "homeProbablePitcher": {
-        "fullName": "Jarlin Susana",
-        "id": 703186,
-        "link": "/api/v1/people/703186"
+        "fullName": "Miguel Sime Jr.",
+        "id": 828137,
+        "link": "/api/v1/people/828137"
       },
       "homeScore": null,
       "homeTeamId": 426,
@@ -188,7 +188,11 @@
       "gameDate": "2026-08-21T20:35:00Z",
       "gamePk": 821801,
       "home": "Wilmington Blue Rocks",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Jarlin Susana",
+        "id": 703186,
+        "link": "/api/v1/people/703186"
+      },
       "homeScore": null,
       "homeTeamId": 426,
       "inningHalf": null,
@@ -650,6 +654,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-21T14:09:16.077711+00:00",
+  "generatedAt": "2026-08-21T15:54:26.241825+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
