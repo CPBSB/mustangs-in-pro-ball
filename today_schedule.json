@@ -57,9 +57,9 @@
       "gamePk": 820304,
       "home": "St. Lucie Mets",
       "homeProbablePitcher": {
-        "fullName": "Joel Lara",
-        "id": 827445,
-        "link": "/api/v1/people/827445"
+        "fullName": "Camden Lohman",
+        "id": 834242,
+        "link": "/api/v1/people/834242"
       },
       "homeScore": null,
       "homeTeamId": 507,
@@ -654,6 +654,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-21T17:15:39.465603+00:00",
+  "generatedAt": "2026-08-21T19:08:27.363914+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
