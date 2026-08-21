@@ -2,43 +2,41 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Drew Thorpe worked 5.0 IP, allowing 5 H, 2 R (2 ER) and 2 BB with 6 K and earned the win.",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "team": "Charlotte Knights",
-      "type": "pitcher"
+      "line": "Zach Daudet went 3-for-4, 2 2B, 3 RBI, 2 runs, 1 walk.",
+      "player": "Zach Daudet",
+      "playerId": 836055,
+      "team": "Asheville Tourists",
+      "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Alejandro Garza went 2-for-5, 1 run, 1 SB.",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "team": "Hill City Howlers",
+      "line": "Zach Daudet went 3-for-4, 2 2B, 3 RBI, 2 runs, 1 walk.",
+      "player": "Zach Daudet",
+      "playerId": 836055,
+      "team": "Asheville Tourists",
       "type": "hitter"
     },
     {
       "label": "Top Pitcher",
-      "line": "Drew Thorpe worked 5.0 IP, allowing 5 H, 2 R (2 ER) and 2 BB with 6 K and earned the win.",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "team": "Charlotte Knights",
+      "line": "Andrew Alvarez worked 5.0 IP, allowing 4 H, 1 R (1 ER) and 3 BB with 5 K and took the loss.",
+      "player": "Andrew Alvarez",
+      "playerId": 674841,
+      "team": "Washington Nationals",
       "type": "pitcher"
     }
   ],
-  "date": "2026-08-19",
-  "dateLabel": "Wednesday, August 19, 2026",
+  "date": "2026-08-20",
+  "dateLabel": "Thursday, August 20, 2026",
   "generatorVersion": "5.57",
   "paragraphs": [
-    "6 former Mustangs appeared in professional games on Wednesday for 6 clubs across 5 levels, with Drew Thorpe producing the night's most notable performance.",
-    "Drew Thorpe started on the mound for Charlotte Knights.",
-    "Drew Thorpe worked 5.0 innings, allowing 5 hits and 2 earned runs, with 2 walks and 6 strikeouts.",
-    "One of his strikeouts came in the second on a 1-2 94 mph four-seam fastball, when he put away Anthony Volpe.",
-    "Charlotte Knights beat Scranton/Wilkes-Barre RailRiders, 7-2.",
-    "Steven Brooks started on the mound for Portland Sea Dogs. He worked 2 2/3 innings, allowing 2 hits and 1 earned run, with 1 walk and 5 strikeouts. One of his strikeouts came in the first on a 1-2 pitch, when he put away Bryan Rincon. Portland Sea Dogs beat Reading Fightin Phils, 6-4.",
-    "Alejandro Garza went 2-for-5, 1 run scored, 1 stolen base for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers beat Charleston RiverDogs, 4-3.",
-    "Zach Daudet went 2-for-3, 1 run scored, 1 walk for Asheville Tourists at High-A. He batted sixth and started at shortstop. Asheville Tourists beat Brooklyn Cyclones, 7-6.",
-    "Brooks Lee went 1-for-4, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a single in the seventh to center field on a 0-2 83 mph slider from Dylan Lee. He batted seventh and started at third base. Minnesota Twins beat Atlanta Braves, 6-4.",
-    "Taylor Dollard started on the mound for Everett AquaSox. He worked 5 1/3 innings, allowing 6 hits and 4 earned runs, with 2 walks and 4 strikeouts. One of his strikeouts came in the third on a 2-2 pitch, when he put away Harold Coll. Everett AquaSox fell to Tri-City Dust Devils, 3-4."
+    "3 former Mustangs appeared in professional games on Thursday for 3 clubs across 3 levels, with Zach Daudet producing the night's most notable performance.",
+    "Zach Daudet drove in 2 runs with a double in the fourth to left field on a 1-0 pitch from Elwis Mijares.",
+    "Zach Daudet drove in 1 run with a double in the fourth to left field on a 1-0 pitch from Joel D\u00edaz.",
+    "Zach Daudet went 3-for-4, 2 doubles, 3 RBI, 2 runs scored, 1 walk.",
+    "He batted seventh and started at shortstop.",
+    "Asheville Tourists beat Brooklyn Cyclones, 13-6.",
+    "Andrew Alvarez started on the mound for Washington Nationals. He worked 5.0 innings, allowing 4 hits and 1 earned run, with 3 walks and 5 strikeouts. One of his strikeouts came in the second on a 3-2 92 mph four-seam fastball, when he put away Brandon Nimmo. Washington Nationals fell to Texas Rangers, 0-2.",
+    "Ryan Tayman went 0-for-3, 1 walk for St. Lucie Mets at Single-A. He batted third and started behind the plate. St. Lucie Mets fell to Lakeland Flying Tigers, 2-6."
   ],
-  "title": "Drew Thorpe turns in a strong outing on the mound"
+  "title": "Zach Daudet highlights a busy Thursday for former Mustangs"
 }
