@@ -2,41 +2,30 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Zach Daudet went 3-for-4, 2 2B, 3 RBI, 2 runs, 1 walk.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Asheville Tourists",
+      "line": "Brooks Lee went 0-for-3.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Zach Daudet went 3-for-4, 2 2B, 3 RBI, 2 runs, 1 walk.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Asheville Tourists",
+      "line": "Brooks Lee went 0-for-3.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Andrew Alvarez worked 5.0 IP, allowing 4 H, 1 R (1 ER) and 3 BB with 5 K and took the loss.",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "team": "Washington Nationals",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-08-20",
-  "dateLabel": "Thursday, August 20, 2026",
+  "date": "2026-08-21",
+  "dateLabel": "Friday, August 21, 2026",
   "generatorVersion": "5.57",
   "paragraphs": [
-    "3 former Mustangs appeared in professional games on Thursday for 3 clubs across 3 levels, with Zach Daudet producing the night's most notable performance.",
-    "Zach Daudet drove in 2 runs with a double in the fourth to left field on a 1-0 pitch from Elwis Mijares.",
-    "Zach Daudet drove in 1 run with a double in the fourth to left field on a 1-0 pitch from Joel D\u00edaz.",
-    "Zach Daudet went 3-for-4, 2 doubles, 3 RBI, 2 runs scored, 1 walk.",
-    "He batted seventh and started at shortstop.",
-    "Asheville Tourists beat Brooklyn Cyclones, 13-6.",
-    "Andrew Alvarez started on the mound for Washington Nationals. He worked 5.0 innings, allowing 4 hits and 1 earned run, with 3 walks and 5 strikeouts. One of his strikeouts came in the second on a 3-2 92 mph four-seam fastball, when he put away Brandon Nimmo. Washington Nationals fell to Texas Rangers, 0-2.",
-    "Ryan Tayman went 0-for-3, 1 walk for St. Lucie Mets at Single-A. He batted third and started behind the plate. St. Lucie Mets fell to Lakeland Flying Tigers, 2-6."
+    "2 former Mustangs appeared in professional games on Friday for 2 clubs across 2 levels, with Brooks Lee producing the night's most notable performance.",
+    "Brooks Lee went 0-for-3.",
+    "He batted eighth and started at third base.",
+    "Minnesota Twins fell to San Diego Padres, 2-6.",
+    "Alejandro Garza went 0-for-4 for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers fell to Charleston RiverDogs, 2-3."
   ],
-  "title": "Zach Daudet highlights a busy Thursday for former Mustangs"
+  "title": "Brooks Lee highlights a busy Friday for former Mustangs"
 }
