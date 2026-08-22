@@ -61,9 +61,9 @@
       "gamePk": 820308,
       "home": "St. Lucie Mets",
       "homeProbablePitcher": {
-        "fullName": "Conner Ware",
-        "id": 811172,
-        "link": "/api/v1/people/811172"
+        "fullName": "Aidan Keenan",
+        "id": 805788,
+        "link": "/api/v1/people/805788"
       },
       "homeScore": null,
       "homeTeamId": 507,
@@ -353,9 +353,9 @@
       "abstractState": null,
       "away": "Great Lakes Loons",
       "awayProbablePitcher": {
-        "fullName": "Isaac Ayon",
-        "id": 694847,
-        "link": "/api/v1/people/694847"
+        "fullName": "Cam Leiter",
+        "id": 804942,
+        "link": "/api/v1/people/804942"
       },
       "awayScore": null,
       "awayTeamId": 456,
@@ -570,6 +570,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-22T17:44:36.428363+00:00",
+  "generatedAt": "2026-08-22T19:02:23.664296+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
