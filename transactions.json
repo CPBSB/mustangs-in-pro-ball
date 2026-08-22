@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T05:59:41.933752+00:00",
+  "generatedAt": "2026-08-22T07:47:42.080958+00:00",
   "transactions": [
     {
       "date": "2026-08-12",
@@ -16,22 +16,6 @@
       "label": "Assignment",
       "player": "Alejandro Garza",
       "playerId": 835211
-    },
-    {
-      "date": "2026-08-07",
-      "description": "Portland Sea Dogs activated RHP Steven Brooks.",
-      "kind": "activated",
-      "label": "Activated",
-      "player": "Steven Brooks",
-      "playerId": 809933
-    },
-    {
-      "date": "2026-08-07",
-      "description": "RHP Steven Brooks assigned to Portland Sea Dogs from Greenville Drive.",
-      "kind": "assignment",
-      "label": "Assignment",
-      "player": "Steven Brooks",
-      "playerId": 809933
     }
   ]
 }
