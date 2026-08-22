@@ -149,9 +149,9 @@
       "gamePk": 821800,
       "home": "Wilmington Blue Rocks",
       "homeProbablePitcher": {
-        "fullName": "Carson Fischer",
-        "id": 831572,
-        "link": "/api/v1/people/831572"
+        "fullName": "Riley Maddox",
+        "id": 824600,
+        "link": "/api/v1/people/824600"
       },
       "homeScore": null,
       "homeTeamId": 426,
@@ -269,7 +269,7 @@
         "id": 663623,
         "link": "/api/v1/people/663623"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "balls": null,
       "currentBatter": null,
@@ -285,7 +285,7 @@
         "id": 691587,
         "link": "/api/v1/people/691587"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 146,
       "inningHalf": null,
       "inningState": null,
@@ -298,7 +298,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -570,6 +570,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-22T15:51:08.927461+00:00",
+  "generatedAt": "2026-08-22T16:53:34.126557+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
