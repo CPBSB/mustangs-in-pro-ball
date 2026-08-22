@@ -47,17 +47,17 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 36,
-        "ER": 32,
-        "ERA": "3.60",
-        "H": 71,
-        "IP": "80.0",
-        "R": 32,
-        "SO": 74,
+        "BB": 52,
+        "ER": 52,
+        "ERA": "4.11",
+        "H": 101,
+        "IP": "114.0",
+        "R": 55,
+        "SO": 119,
         "WHIP": "1.34"
       },
       "statsSource": "seasonSummary",
-      "team": "Washington Nationals",
+      "team": "Rochester Red Wings",
       "type": "pitcher"
     },
     "686797": {
@@ -153,18 +153,18 @@
       "assignmentSource": "rehab",
       "last7": {
         "endDate": "2026-08-19",
-        "games": 6,
-        "startDate": "2026-07-18",
+        "games": 5,
+        "startDate": "2026-07-24",
         "stats": {
           "BB": 7,
           "ER": 7,
-          "ERA": "2.86",
-          "G": 6,
-          "H": 15,
-          "IP": "22.0",
+          "ERA": "3.15",
+          "G": 5,
+          "H": 14,
+          "IP": "20.0",
           "R": 8,
-          "SO": 25,
-          "WHIP": "1.00"
+          "SO": 22,
+          "WHIP": "1.05"
         }
       },
       "name": "Drew Thorpe",
@@ -172,14 +172,14 @@
       "recentTeam": "Charlotte Knights",
       "recentTeamId": 494,
       "stats": {
-        "BB": 4,
-        "ER": 6,
-        "ERA": "3.86",
-        "H": 11,
-        "IP": "14.0",
-        "R": 6,
-        "SO": 17,
-        "WHIP": "1.07"
+        "BB": 7,
+        "ER": 7,
+        "ERA": "2.86",
+        "H": 15,
+        "IP": "22.0",
+        "R": 8,
+        "SO": 25,
+        "WHIP": "1.00"
       },
       "statsSource": "seasonSummary",
       "team": "ACL White Sox",
@@ -283,14 +283,14 @@
       "recentTeam": "Hudson Valley Renegades",
       "recentTeamId": 537,
       "stats": {
-        "BB": 17,
-        "ER": 12,
-        "ERA": "3.21",
-        "H": 30,
-        "IP": "33.2",
-        "R": 13,
-        "SO": 31,
-        "WHIP": "1.40"
+        "BB": 2,
+        "ER": 0,
+        "ERA": "0.00",
+        "H": 7,
+        "IP": "9.0",
+        "R": 0,
+        "SO": 5,
+        "WHIP": "1.00"
       },
       "statsSource": "seasonSummary",
       "team": "Tampa Tarpons",
@@ -427,14 +427,14 @@
       "recentTeam": "Portland Sea Dogs",
       "recentTeamId": 546,
       "stats": {
-        "BB": 28,
-        "ER": 26,
-        "ERA": "4.23",
-        "H": 55,
-        "IP": "55.1",
-        "R": 35,
-        "SO": 82,
-        "WHIP": "1.50"
+        "BB": 26,
+        "ER": 22,
+        "ERA": "4.27",
+        "H": 44,
+        "IP": "46.1",
+        "R": 29,
+        "SO": 71,
+        "WHIP": "1.51"
       },
       "statsSource": "seasonSummary",
       "team": "Greenville Drive",
@@ -633,11 +633,12 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-22T14:06:10.830958+00:00",
+  "updatedAt": "2026-08-22T14:55:30.696786+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
     "Josh Volmerding (ID 835281): no 2026 professional split returned",
-    "Nick Bonn (ID 824678): no 2026 professional split returned"
+    "Nick Bonn (ID 824678): no 2026 professional split returned",
+    "Derek True (ID 689223): no 2026 professional split returned"
   ]
 }
