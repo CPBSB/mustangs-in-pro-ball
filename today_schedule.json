@@ -225,7 +225,7 @@
         "id": 656849,
         "link": "/api/v1/people/656849"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 112,
       "balls": null,
       "currentBatter": null,
@@ -241,7 +241,7 @@
         "id": 807739,
         "link": "/api/v1/people/807739"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 136,
       "inningHalf": null,
       "inningState": null,
@@ -254,7 +254,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -298,7 +298,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -386,7 +386,7 @@
       "playerId": 809915,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Great Lakes Loons",
       "thirdOccupied": null,
@@ -570,6 +570,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-22T19:02:23.664296+00:00",
+  "generatedAt": "2026-08-22T19:50:13.731556+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
