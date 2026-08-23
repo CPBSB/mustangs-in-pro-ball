@@ -78,7 +78,7 @@
       "playerId": 822034,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
@@ -309,7 +309,7 @@
         "id": 800600,
         "link": "/api/v1/people/800600"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "balls": null,
       "currentBatter": null,
@@ -325,7 +325,7 @@
         "id": 676083,
         "link": "/api/v1/people/676083"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 146,
       "inningHalf": null,
       "inningState": null,
@@ -338,7 +338,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -610,6 +610,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-23T14:47:49.311062+00:00",
+  "generatedAt": "2026-08-23T15:44:33.076076+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
