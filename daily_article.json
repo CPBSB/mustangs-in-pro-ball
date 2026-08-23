@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-3.",
+      "line": "Brooks Lee went 3-for-4, HR, 2B, 1 RBI, 2 runs.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,22 +10,26 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-3.",
+      "line": "Brooks Lee went 3-for-4, HR, 2B, 1 RBI, 2 runs.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-08-21",
-  "dateLabel": "Friday, August 21, 2026",
+  "date": "2026-08-22",
+  "dateLabel": "Saturday, August 22, 2026",
   "generatorVersion": "5.57",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Friday for 2 clubs across 2 levels, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee went 0-for-3.",
+    "4 former Mustangs appeared in professional games on Saturday for 4 clubs across 3 levels, with Brooks Lee producing the night's most notable performance.",
+    "Brooks Lee's home run \u2014 his 19th of the season came in the second inning on a 0-1 92 mph four-seam fastball from Casey Mize. The swing moved the score from 1-0 to 2-0. Statcast measured the ball at 97.5 mph off the bat, a 36-degree launch angle, 366 feet.",
+    "Brooks Lee produced a double in the fourth to deep center field on a 1-0 91 mph four-seam fastball from Kyle Hart.",
+    "Brooks Lee went 3-for-4, 1 home run, 1 double, 1 RBI, 2 runs scored.",
     "He batted eighth and started at third base.",
-    "Minnesota Twins fell to San Diego Padres, 2-6.",
-    "Alejandro Garza went 0-for-4 for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers fell to Charleston RiverDogs, 2-3."
+    "Minnesota Twins fell to San Diego Padres, 5-7.",
+    "Ryan Tayman went 1-for-3, 1 run scored, 2 walks for St. Lucie Mets at Single-A. He batted second and started behind the plate. St. Lucie Mets beat Lakeland Flying Tigers, 6-2.",
+    "Zach Daudet went 1-for-2, 1 run scored, 2 walks for Asheville Tourists at High-A. He batted sixth and started at shortstop. Asheville Tourists fell to Brooklyn Cyclones, 3-15.",
+    "Alejandro Garza went 0-for-1 for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers beat Charleston RiverDogs, 1-0."
   ],
-  "title": "Brooks Lee highlights a busy Friday for former Mustangs"
+  "title": "Brooks Lee turns around 92 mph for home run No. 19"
 }
