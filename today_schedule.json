@@ -365,9 +365,9 @@
       "gamePk": 815793,
       "home": "Scranton/Wilkes-Barre RailRiders",
       "homeProbablePitcher": {
-        "fullName": "Elmer Rodr\u00edguez",
-        "id": 695684,
-        "link": "/api/v1/people/695684"
+        "fullName": "Travis MacGregor",
+        "id": 669740,
+        "link": "/api/v1/people/669740"
       },
       "homeScore": null,
       "homeTeamId": 531,
@@ -426,7 +426,7 @@
       "playerId": 809915,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Great Lakes Loons",
       "thirdOccupied": null,
@@ -610,6 +610,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-23T13:43:01.791659+00:00",
+  "generatedAt": "2026-08-23T14:47:49.311062+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
