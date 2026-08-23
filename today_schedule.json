@@ -192,7 +192,11 @@
       "gameDate": "2026-08-23T17:05:00Z",
       "gamePk": 821799,
       "home": "Wilmington Blue Rocks",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Carson Fischer",
+        "id": 831572,
+        "link": "/api/v1/people/831572"
+      },
       "homeScore": null,
       "homeTeamId": 426,
       "inningHalf": null,
@@ -606,6 +610,6 @@
       "venue": "Gesa Stadium"
     }
   ],
-  "generatedAt": "2026-08-23T11:47:25.371229+00:00",
+  "generatedAt": "2026-08-23T13:43:01.791659+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
