@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -97,7 +97,7 @@
         "id": 663372,
         "link": "/api/v1/people/663372"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 115,
       "balls": null,
       "currentBatter": null,
@@ -113,7 +113,7 @@
         "id": 676917,
         "link": "/api/v1/people/676917"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-08-24T19:20:15.842027+00:00",
+  "generatedAt": "2026-08-24T21:00:47.605376+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
