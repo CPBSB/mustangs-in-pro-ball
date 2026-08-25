@@ -425,9 +425,9 @@
       "gamePk": 821996,
       "home": "Hudson Valley Renegades",
       "homeProbablePitcher": {
-        "fullName": "Bryce Cunningham",
-        "id": 701480,
-        "link": "/api/v1/people/701480"
+        "fullName": "Brandon Decker",
+        "id": 804698,
+        "link": "/api/v1/people/804698"
       },
       "homeScore": null,
       "homeTeamId": 537,
@@ -534,6 +534,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-25T12:03:17.473431+00:00",
+  "generatedAt": "2026-08-25T14:31:12.785192+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
