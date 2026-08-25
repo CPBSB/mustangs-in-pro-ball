@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-3, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 1-for-5, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,35 +10,19 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-3, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 1-for-5, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Bryce Warrecker worked 2.0 IP, allowing 2 H, 1 R (1 ER) and 2 BB with 0 K.",
-      "player": "Bryce Warrecker",
-      "playerId": 695425,
-      "team": "Hudson Valley Renegades",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-08-23",
-  "dateLabel": "Sunday, August 23, 2026",
+  "date": "2026-08-24",
+  "dateLabel": "Monday, August 24, 2026",
   "generatorVersion": "5.57",
   "paragraphs": [
-    "6 former Mustangs appeared in professional games on Sunday for 6 clubs across 4 levels, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee's home run \u2014 his 20th of the season came in the fifth inning on a 3-2 92 mph cutter from Walker Buehler. The swing moved the score from 0-1 to 1-1. Statcast measured the ball at 101.7 mph off the bat, a 28-degree launch angle, 401 feet.",
-    "Brooks Lee went 1-for-3, 1 home run, 1 RBI, 1 run scored.",
-    "He batted sixth and started at third base.",
-    "Minnesota Twins fell to San Diego Padres, 1-8.",
-    "Alejandro Garza went 1-for-5, 2 RBI for Hill City Howlers at Single-A. Alejandro Garza tied the game in the eighth with a two-run single to right field on the first pitch from Riley Stanford, changing the score from 3-5 to 5-5. He batted first and started at second base. Hill City Howlers fell to Charleston RiverDogs, 6-7.",
-    "Zach Daudet went 0-for-3, 1 walk for Asheville Tourists at High-A. Zach Daudet produced a flyout in the sixth to left field on a 1-0 pitch from Elwis Mijares. He batted sixth and started at shortstop. Asheville Tourists fell to Brooklyn Cyclones, 1-12.",
-    "Ryan Tayman went 0-for-5 for St. Lucie Mets at Single-A. He batted fourth and started at designated hitter. St. Lucie Mets fell to Lakeland Flying Tigers, 2-12.",
-    "Bryce Warrecker came on in relief for Hudson Valley Renegades in the bottom of the seventh with nobody out. He worked 2.0 innings, allowing 2 hits and 1 earned run, with 2 walks. Hudson Valley Renegades beat Jersey Shore BlueClaws, 5-4.",
-    "Steven Brooks came on in relief for Portland Sea Dogs in the top of the fifth with nobody out. He worked 0 2/3 innings, allowing 0 hits and 2 earned runs, with 5 walks and 1 strikeout. One of his strikeouts came in the fifth on a 1-2 pitch, when he put away Bryson Ware. Portland Sea Dogs fell to Reading Fightin Phils, 3-10."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted eighth and started at third base for Minnesota Twins against Athletics. Minnesota Twins beat Athletics, 9-6.",
+    "Brooks Lee went 1-for-5, 1 run scored."
   ],
-  "title": "Brooks Lee delivers in a key spot"
+  "title": "Brooks Lee scores as Minnesota Twins picks up a win"
 }
