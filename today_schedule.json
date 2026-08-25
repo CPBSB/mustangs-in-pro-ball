@@ -48,7 +48,11 @@
     {
       "abstractState": null,
       "away": "St. Lucie Mets",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Ryan Lambert",
+        "id": 822038,
+        "link": "/api/v1/people/822038"
+      },
       "awayScore": null,
       "awayTeamId": 507,
       "balls": null,
@@ -120,7 +124,11 @@
     {
       "abstractState": null,
       "away": "Asheville Tourists",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Nick Potter",
+        "id": 830769,
+        "link": "/api/v1/people/830769"
+      },
       "awayScore": null,
       "awayTeamId": 573,
       "balls": null,
@@ -160,7 +168,11 @@
     {
       "abstractState": null,
       "away": "Asheville Tourists",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Nick Potter",
+        "id": 830769,
+        "link": "/api/v1/people/830769"
+      },
       "awayScore": null,
       "awayTeamId": 573,
       "balls": null,
@@ -284,7 +296,11 @@
     {
       "abstractState": null,
       "away": "Memphis Redbirds",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Jurrangelo Cijntje",
+        "id": 701388,
+        "link": "/api/v1/people/701388"
+      },
       "awayScore": null,
       "awayTeamId": 235,
       "balls": null,
@@ -452,7 +468,11 @@
     {
       "abstractState": null,
       "away": "Portland Sea Dogs",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Dalton Rogers",
+        "id": 800059,
+        "link": "/api/v1/people/800059"
+      },
       "awayScore": null,
       "awayTeamId": 546,
       "balls": null,
@@ -534,6 +554,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-25T14:31:12.785192+00:00",
+  "generatedAt": "2026-08-25T16:21:12.041529+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
