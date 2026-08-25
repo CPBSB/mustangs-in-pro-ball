@@ -9,7 +9,7 @@
         "id": 671737,
         "link": "/api/v1/people/671737"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 142,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 695611,
         "link": "/api/v1/people/695611"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 133,
       "inningHalf": null,
       "inningState": null,
@@ -78,7 +78,7 @@
       "playerId": 822034,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
@@ -246,7 +246,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -334,7 +334,7 @@
       "playerId": 689672,
       "secondOccupied": null,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": null,
@@ -562,6 +562,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-25T20:52:45.539263+00:00",
+  "generatedAt": "2026-08-25T21:56:58.924138+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
