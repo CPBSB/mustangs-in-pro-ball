@@ -286,7 +286,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -400,7 +400,11 @@
       "gameDate": "2026-08-25T23:35:00Z",
       "gamePk": 817608,
       "home": "Amarillo Sod Poodles",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "David Hagaman",
+        "id": 701908,
+        "link": "/api/v1/people/701908"
+      },
       "homeScore": null,
       "homeTeamId": 5368,
       "inningHalf": null,
@@ -554,6 +558,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-25T17:51:45.145514+00:00",
+  "generatedAt": "2026-08-25T19:20:49.329433+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
