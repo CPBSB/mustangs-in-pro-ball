@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -256,8 +256,12 @@
     {
       "abstractState": null,
       "away": "Colorado Rockies",
-      "awayProbablePitcher": null,
-      "awayScore": null,
+      "awayProbablePitcher": {
+        "fullName": "Mason Adams",
+        "id": 690279,
+        "link": "/api/v1/people/690279"
+      },
+      "awayScore": 0,
       "awayTeamId": 115,
       "balls": null,
       "currentBatter": null,
@@ -273,7 +277,7 @@
         "id": 674841,
         "link": "/api/v1/people/674841"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -558,6 +562,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-25T19:20:49.329433+00:00",
+  "generatedAt": "2026-08-25T20:52:45.539263+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }

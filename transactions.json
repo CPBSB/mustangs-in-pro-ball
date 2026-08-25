@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-25T19:20:51.140640+00:00",
+  "generatedAt": "2026-08-25T20:52:47.526444+00:00",
   "transactions": [
+    {
+      "date": "2026-08-25",
+      "description": "Frederick Keys activated C Ryan Stafford from the 7-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Ryan Stafford",
+      "playerId": 701696
+    },
     {
       "date": "2026-08-12",
       "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Charlotte Knights.",
