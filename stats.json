@@ -296,6 +296,43 @@
       "team": "Tampa Tarpons",
       "type": "pitcher"
     },
+    "701693": {
+      "assignmentDate": "2026-08-23",
+      "assignmentSource": "gameLog",
+      "last7": {
+        "endDate": "2026-08-23",
+        "games": 2,
+        "startDate": "2026-08-20",
+        "stats": {
+          "BB": 1,
+          "ER": 1,
+          "ERA": "4.50",
+          "G": 2,
+          "H": 1,
+          "IP": "2.0",
+          "R": 1,
+          "SO": 2,
+          "WHIP": "1.00"
+        }
+      },
+      "name": "Tanner Sagouspe",
+      "recentLevel": "Single-A",
+      "recentTeam": "Fresno Grizzlies",
+      "recentTeamId": 259,
+      "stats": {
+        "BB": 1,
+        "ER": 1,
+        "ERA": "4.50",
+        "H": 1,
+        "IP": "2.0",
+        "R": 1,
+        "SO": 2,
+        "WHIP": "1.00"
+      },
+      "statsSource": "seasonSummary",
+      "team": "Fresno Grizzlies",
+      "type": "pitcher"
+    },
     "701696": {
       "assignmentDate": "2026-08-25",
       "assignmentSource": "transaction",
@@ -633,11 +670,12 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-26T19:25:44.097824+00:00",
+  "updatedAt": "2026-08-26T19:40:31.301878+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
     "Josh Volmerding (ID 835281): no 2026 professional split returned",
-    "Nick Bonn (ID 824678): no 2026 professional split returned"
+    "Nick Bonn (ID 824678): no 2026 professional split returned",
+    "Chris Downs (ID 835223): no 2026 professional split returned"
   ]
 }

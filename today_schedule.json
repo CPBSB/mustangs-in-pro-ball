@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -265,7 +265,7 @@
         "id": 685299,
         "link": "/api/v1/people/685299"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 115,
       "balls": null,
       "currentBatter": null,
@@ -281,7 +281,7 @@
         "id": 663362,
         "link": "/api/v1/people/663362"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -564,8 +564,52 @@
       "thirdOccupied": null,
       "timeLabel": "2026-08-27T02:05:00Z",
       "venue": "Everett Memorial Stadium"
+    },
+    {
+      "abstractState": null,
+      "away": "Fresno Grizzlies",
+      "awayProbablePitcher": {
+        "fullName": "Luichi Casilla",
+        "id": 800436,
+        "link": "/api/v1/people/800436"
+      },
+      "awayScore": null,
+      "awayTeamId": 259,
+      "balls": null,
+      "currentBatter": null,
+      "currentInning": null,
+      "currentPitcher": null,
+      "defenseTeam": null,
+      "firstOccupied": null,
+      "gameDate": "2026-08-27T01:35:00Z",
+      "gamePk": 821296,
+      "home": "Inland Empire 66ers",
+      "homeProbablePitcher": {
+        "fullName": "Dylan Wilson",
+        "id": 808511,
+        "link": "/api/v1/people/808511"
+      },
+      "homeScore": null,
+      "homeTeamId": 401,
+      "inningHalf": null,
+      "inningState": null,
+      "level": "Single-A",
+      "liveLine": null,
+      "offenseTeam": null,
+      "opponent": "Inland Empire 66ers",
+      "outs": null,
+      "player": "Tanner Sagouspe",
+      "playerId": 701693,
+      "secondOccupied": null,
+      "sportId": 14,
+      "status": "Scheduled",
+      "strikes": null,
+      "team": "Fresno Grizzlies",
+      "thirdOccupied": null,
+      "timeLabel": "2026-08-27T01:35:00Z",
+      "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-26T19:25:45.390082+00:00",
+  "generatedAt": "2026-08-26T19:40:32.430283+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }

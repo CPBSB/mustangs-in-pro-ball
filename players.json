@@ -554,6 +554,36 @@
       },
       "note": "2022 Texas League Pitcher of the Year who was in Seattle's big-league plans before a 2023 labrum surgery. Back starting for High-A Everett after missing all of 2024.",
       "slug": "taylor-dollard"
+    },
+    {
+      "name": "Chris Downs",
+      "mlbId": 835223,
+      "initials": "CD",
+      "position": "LHP",
+      "team": "San Diego Padres (Org)",
+      "status": "minors",
+      "statusLabel": "Minors \u00b7 Rookie",
+      "recentTeam": "ACL Padres",
+      "recentLevel": "Rookie",
+      "profileUrl": "https://www.milb.com/player/chris-downs-835223",
+      "drafted": "2026 \u00b7 Rd 19, Pick 575 (Padres)",
+      "type": "pitcher",
+      "note": "Santa Clarita native and 6-foot-7 left-hander drafted by San Diego in the 19th round in 2026 after three seasons at Cal Poly. Signed with the Padres and assigned to the ACL Padres."
+    },
+    {
+      "name": "Tanner Sagouspe",
+      "mlbId": 701693,
+      "initials": "TS",
+      "position": "RHP",
+      "team": "Colorado Rockies (Org)",
+      "status": "minors",
+      "statusLabel": "Minors \u00b7 Single-A",
+      "recentTeam": "Fresno Grizzlies",
+      "recentLevel": "Single-A",
+      "profileUrl": "https://www.milb.com/player/tanner-sagouspe-701693",
+      "drafted": "2026 \u00b7 Rd 9, Pick 254 (Rockies)",
+      "type": "pitcher",
+      "note": "Former Cal Poly two-way player who developed into a full-time reliever before finishing his college career at TCU. Drafted by Colorado in the ninth round in 2026 and promoted from the ACL Rockies to Single-A Fresno in August."
     }
   ]
 }
