@@ -9,8 +9,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: live-baseball-refresh
-  cancel-in-progress: true
+  group: baseball-data-writes
+  cancel-in-progress: false
 
 jobs:
   refresh:
