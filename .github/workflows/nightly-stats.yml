@@ -2,37 +2,57 @@ name: Nightly baseball stats
 
 on:
   schedule:
-    # 10:15 UTC = 3:15 a.m. PDT / 2:15 a.m. PST
-    - cron: "15 10 * * *"
+    - cron: "0 10 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: baseball-data-writes
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Refresh player totals
-        run: python update_stats.py
+        run: python update_stats.py --mode full
 
       - name: Commit changed statistics
+        shell: bash
         run: |
-          if git diff --quiet -- stats.json nightly_summary.json daily_article.json today_schedule.json transactions.json; then
-            echo "No stat changes"
-            exit 0
-          fi
+          set -e
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add stats.json nightly_summary.json daily_article.json today_schedule.json transactions.json
+          git add stats.json nightly_summary.json daily_article.json today_schedule.json transactions.json archive.json players.json
+
+          if git diff --cached --quiet; then
+            echo "No nightly baseball changes to publish"
+            exit 0
+          fi
+
           git commit -m "Publish Mustangs Daily and refresh baseball data"
-          git push
+
+          git fetch origin main
+          git rebase origin/main
+
+          if ! git push origin HEAD:main; then
+            echo "Main changed again; rebasing one more time"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
