@@ -48,7 +48,11 @@
     {
       "abstractState": null,
       "away": "St. Lucie Mets",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Ethan Lanthier",
+        "id": 822490,
+        "link": "/api/v1/people/822490"
+      },
       "awayScore": null,
       "awayTeamId": 507,
       "balls": null,
@@ -217,7 +221,7 @@
         "id": 666200,
         "link": "/api/v1/people/666200"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 143,
       "balls": null,
       "currentBatter": null,
@@ -233,7 +237,7 @@
         "id": 693433,
         "link": "/api/v1/people/693433"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 136,
       "inningHalf": null,
       "inningState": null,
@@ -246,7 +250,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -290,7 +294,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -562,6 +566,6 @@
       "venue": "Everett Memorial Stadium"
     }
   ],
-  "generatedAt": "2026-08-26T14:26:04.314373+00:00",
+  "generatedAt": "2026-08-26T19:25:45.390082+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }

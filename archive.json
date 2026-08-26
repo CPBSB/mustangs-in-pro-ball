@@ -1,0 +1,131 @@
+{
+  "editions": [
+    {
+      "appearances": [
+        {
+          "gamePk": 824962,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-4, 2B.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 820702,
+          "level": "Single-A",
+          "name": "Ryan Tayman",
+          "playerId": 822034,
+          "summary": "Ryan Tayman went 0-for-4, 1 run, 2 walks.",
+          "team": "St. Lucie Mets"
+        },
+        {
+          "gamePk": 826966,
+          "level": "Single-A",
+          "name": "Alejandro Garza",
+          "playerId": 835211,
+          "summary": "Alejandro Garza went 2-for-4, 2 2B, 1 RBI, 2 runs, 1 walk, 1 SB.",
+          "team": "Hill City Howlers"
+        },
+        {
+          "gamePk": 822260,
+          "level": "High-A",
+          "name": "Ryan Stafford",
+          "playerId": 701696,
+          "summary": "Ryan Stafford went 0-for-2.",
+          "team": "Frederick Keys"
+        },
+        {
+          "gamePk": 822260,
+          "level": "High-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 1-for-4.",
+          "team": "Asheville Tourists"
+        },
+        {
+          "gamePk": 822693,
+          "level": "MLB",
+          "name": "Andrew Alvarez",
+          "playerId": 674841,
+          "summary": "Andrew Alvarez worked 4.2 IP, allowing 5 H, 3 R (3 ER) and 2 BB with 6 K and took the loss.",
+          "team": "Washington Nationals"
+        },
+        {
+          "gamePk": 816837,
+          "level": "Triple-A",
+          "name": "Drew Thorpe",
+          "playerId": 689672,
+          "summary": "Drew Thorpe worked 4.2 IP, allowing 6 H, 2 R (2 ER) and 1 BB with 3 K.",
+          "team": "Charlotte Knights"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Alejandro Garza went 2-for-4, 2 2B, 1 RBI, 2 runs, 1 walk, 1 SB.",
+          "player": "Alejandro Garza",
+          "playerId": 835211,
+          "team": "Hill City Howlers",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Alejandro Garza went 2-for-4, 2 2B, 1 RBI, 2 runs, 1 walk, 1 SB.",
+          "player": "Alejandro Garza",
+          "playerId": 835211,
+          "team": "Hill City Howlers",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Andrew Alvarez worked 4.2 IP, allowing 5 H, 3 R (3 ER) and 2 BB with 6 K and took the loss.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-08-25",
+      "dateLabel": "Tuesday, August 25, 2026",
+      "generatedAt": "2026-08-26T19:26:49.198952+00:00",
+      "highlights": [
+        {
+          "description": "Andrew Alvarez strikes out six batters in his 4 2/3 innings of work for the Nationals against the Rockies",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/r1yviodewsmahahczcfq.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Andrew Alvarez fans six against the Rockies",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-08/25/bd394245-90081b32-e348c982-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Andrew Alvarez strikes out Cole Carrigg",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/zhbpvhohsza1eefga37p.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Andrew Alvarez strikes out Cole Carrigg",
+          "url": "https://bdata-producedclips.mlb.com/7f344960-5e0f-44ed-b2d0-7a1fa7daca6e.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "7 former Mustangs appeared in professional games on Tuesday for 7 clubs across 4 levels, with Alejandro Garza producing the night's most notable performance.",
+        "Alejandro Garza produced a double in the fifth to right field on the first pitch from Blaine Wynk.",
+        "Alejandro Garza drove in his lone run with a double in the sixth to left field on the first pitch from Ryan Schiefer.",
+        "Alejandro Garza went 2-for-4, 2 doubles, 1 RBI, 2 runs scored, 1 walk, 1 stolen base.",
+        "He batted first and started at second base.",
+        "Hill City Howlers beat Kannapolis Cannon Ballers, 7-6.",
+        "Andrew Alvarez started on the mound for Washington Nationals. He worked 4 2/3 innings, allowing 5 hits and 3 earned runs, with 2 walks and 6 strikeouts. One of his strikeouts came in the third on a 2-2 93 mph sinker, when he put away Jake McCarthy. Washington Nationals fell to Colorado Rockies, 1-3.",
+        "Drew Thorpe started on the mound for Charlotte Knights. He worked 4 2/3 innings, allowing 6 hits and 2 earned runs, with 1 walk and 3 strikeouts. One of his strikeouts came in the first on a 1-2 81 mph changeup, when he put away Colton Ledbetter. Charlotte Knights beat Memphis Redbirds, 8-2.",
+        "Brooks Lee went 1-for-4, 1 double for Minnesota Twins. Brooks Lee produced a double in the seventh to right field on a 0-1 95 mph four-seam fastball from Hogan Harris. He batted seventh and started at third base. Minnesota Twins fell to Athletics, 2-4.",
+        "Zach Daudet went 1-for-4 for Asheville Tourists at High-A. He batted sixth and started at shortstop. Asheville Tourists fell to Frederick Keys, 3-6.",
+        "Ryan Tayman went 0-for-4, 1 run scored, 2 walks for St. Lucie Mets at Single-A. He batted third and started at designated hitter. St. Lucie Mets beat Daytona Tortugas, 12-5.",
+        "Ryan Stafford went 0-for-2 for Frederick Keys at High-A. He batted eighth and started behind the plate. Frederick Keys beat Asheville Tourists, 6-3.",
+        "Away from the box scores, there was also roster movement involving former Mustangs.",
+        "Ryan Stafford was activated in a roster move."
+      ],
+      "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
+    }
+  ],
+  "updatedAt": "2026-08-26T19:26:49.198962+00:00"
+}
