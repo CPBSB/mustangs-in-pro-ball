@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.57"
+GENERATOR_VERSION = "5.59"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -30,9 +30,29 @@ LEVEL_BY_SPORT_ID = {
 }
 PLAYERS_FILE = ROOT / "players.json"
 
+
+SEED_PLAYERS = [
+    {
+        "name": "Chris Downs",
+        "mlbId": 835223,
+        "initials": "CD",
+        "position": "LHP",
+        "team": "San Diego Padres (Org)",
+        "status": "minors",
+        "statusLabel": "Minors · Rookie",
+        "recentTeam": "ACL Padres",
+        "recentLevel": "Rookie",
+        "profileUrl": "https://www.milb.com/player/chris-downs-835223",
+        "drafted": "2026 · Rd 19, Pick 575 (Padres)",
+        "type": "pitcher",
+        "note": "Santa Clarita native and 6-foot-7 left-hander drafted by San Diego in the 19th round in 2026 after three seasons at Cal Poly. Signed with the Padres and assigned to the ACL Padres."
+    }
+]
+
 PLAYER_ID_OVERRIDES = {
     # Official MLB/MiLB IDs confirmed after the 2026 draft.
     "Alejandro Garza": 835211,
+    "Chris Downs": 835223,
 }
 
 
@@ -68,6 +88,19 @@ def load_players():
     rows = payload.get("players", payload)
 
     changed = False
+
+    # Ensure newly added tracked Mustangs are persisted into players.json.
+    existing_names = {
+        str(row.get("name") or "").strip().lower()
+        for row in rows if isinstance(row, dict)
+    }
+    for seed in SEED_PLAYERS:
+        if seed["name"].strip().lower() not in existing_names:
+            rows.append(dict(seed))
+            existing_names.add(seed["name"].strip().lower())
+            changed = True
+            print(f"Added new tracked Mustang to players.json: {seed['name']}")
+
     loaded = []
 
     for source in rows:
