@@ -22,7 +22,7 @@ SCHEDULE_OUTPUT = ROOT / "today_schedule.json"
 TRANSACTIONS_OUTPUT = ROOT / "transactions.json"
 ARCHIVE_OUTPUT = ROOT / "archive.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
-GENERATOR_VERSION = "5.59"
+GENERATOR_VERSION = "5.60"
 SPORT_IDS = "1,11,12,13,14,15,16"
 LEVEL_BY_SPORT_ID = {
     1: "MLB", 11: "Triple-A", 12: "Double-A", 13: "High-A",
@@ -46,6 +46,21 @@ SEED_PLAYERS = [
         "drafted": "2026 · Rd 19, Pick 575 (Padres)",
         "type": "pitcher",
         "note": "Santa Clarita native and 6-foot-7 left-hander drafted by San Diego in the 19th round in 2026 after three seasons at Cal Poly. Signed with the Padres and assigned to the ACL Padres."
+    },
+    {
+        "name": "Tanner Sagouspe",
+        "mlbId": 701693,
+        "initials": "TS",
+        "position": "RHP",
+        "team": "Colorado Rockies (Org)",
+        "status": "minors",
+        "statusLabel": "Minors · Single-A",
+        "recentTeam": "Fresno Grizzlies",
+        "recentLevel": "Single-A",
+        "profileUrl": "https://www.milb.com/player/tanner-sagouspe-701693",
+        "drafted": "2026 · Rd 9, Pick 254 (Rockies)",
+        "type": "pitcher",
+        "note": "Former Cal Poly two-way player who developed into a full-time reliever before finishing his college career at TCU. Drafted by Colorado in the ninth round in 2026 and promoted from the ACL Rockies to Single-A Fresno in August."
     }
 ]
 
@@ -53,6 +68,7 @@ PLAYER_ID_OVERRIDES = {
     # Official MLB/MiLB IDs confirmed after the 2026 draft.
     "Alejandro Garza": 835211,
     "Chris Downs": 835223,
+    "Tanner Sagouspe": 701693,
 }
 
 
