@@ -2,14 +2,14 @@ name: Nightly baseball stats
 
 on:
   schedule:
-    - cron: "0 10 * * *"
+    - cron: "17 10 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: baseball-data-writes
+  group: nightly-baseball-publication
   cancel-in-progress: false
 
 jobs:
