@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T19:40:34.709160+00:00",
+  "generatedAt": "2026-08-27T16:46:10.649791+00:00",
   "transactions": [
     {
       "date": "2026-08-25",
@@ -16,14 +16,6 @@
       "label": "Assignment",
       "player": "Tanner Sagouspe",
       "playerId": 701693
-    },
-    {
-      "date": "2026-08-12",
-      "description": "Chicago White Sox sent RHP Drew Thorpe on a rehab assignment to Charlotte Knights.",
-      "kind": "rehab",
-      "label": "Rehab Assignment",
-      "player": "Drew Thorpe",
-      "playerId": 689672
     }
   ]
 }

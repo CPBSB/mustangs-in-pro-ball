@@ -1,58 +1,10 @@
 {
-  "date": "2026-08-26",
+  "date": "2026-08-27",
   "games": [
     {
       "abstractState": null,
-      "away": "Minnesota Twins",
-      "awayProbablePitcher": {
-        "fullName": "Connor Prielipp",
-        "id": 687570,
-        "link": "/api/v1/people/687570"
-      },
-      "awayScore": null,
-      "awayTeamId": 142,
-      "balls": null,
-      "currentBatter": null,
-      "currentInning": null,
-      "currentPitcher": null,
-      "defenseTeam": null,
-      "firstOccupied": null,
-      "gameDate": "2026-08-27T01:05:00Z",
-      "gamePk": 824963,
-      "home": "Athletics",
-      "homeProbablePitcher": {
-        "fullName": "J.T. Ginn",
-        "id": 669372,
-        "link": "/api/v1/people/669372"
-      },
-      "homeScore": null,
-      "homeTeamId": 133,
-      "inningHalf": null,
-      "inningState": null,
-      "level": "MLB",
-      "liveLine": null,
-      "offenseTeam": null,
-      "opponent": "Athletics",
-      "outs": null,
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "secondOccupied": null,
-      "sportId": 1,
-      "status": "Pre-Game",
-      "strikes": null,
-      "team": "Minnesota Twins",
-      "thirdOccupied": null,
-      "timeLabel": "2026-08-27T01:05:00Z",
-      "venue": "Sutter Health Park"
-    },
-    {
-      "abstractState": null,
       "away": "St. Lucie Mets",
-      "awayProbablePitcher": {
-        "fullName": "Ethan Lanthier",
-        "id": 822490,
-        "link": "/api/v1/people/822490"
-      },
+      "awayProbablePitcher": null,
       "awayScore": null,
       "awayTeamId": 507,
       "balls": null,
@@ -61,7 +13,43 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T22:35:00Z",
+      "gameDate": "2026-08-27T20:30:00Z",
+      "gamePk": 820705,
+      "home": "Daytona Tortugas",
+      "homeProbablePitcher": null,
+      "homeScore": null,
+      "homeTeamId": 450,
+      "inningHalf": null,
+      "inningState": null,
+      "level": "Single-A",
+      "liveLine": null,
+      "offenseTeam": null,
+      "opponent": "Daytona Tortugas",
+      "outs": null,
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "secondOccupied": null,
+      "sportId": 14,
+      "status": "Scheduled",
+      "strikes": null,
+      "team": "St. Lucie Mets",
+      "thirdOccupied": null,
+      "timeLabel": "2026-08-27T20:30:00Z",
+      "venue": "Jackie Robinson Ballpark"
+    },
+    {
+      "abstractState": null,
+      "away": "St. Lucie Mets",
+      "awayProbablePitcher": null,
+      "awayScore": null,
+      "awayTeamId": 507,
+      "balls": null,
+      "currentBatter": null,
+      "currentInning": null,
+      "currentPitcher": null,
+      "defenseTeam": null,
+      "firstOccupied": null,
+      "gameDate": "2026-08-27T20:35:00Z",
       "gamePk": 820704,
       "home": "Daytona Tortugas",
       "homeProbablePitcher": null,
@@ -82,7 +70,7 @@
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T22:35:00Z",
+      "timeLabel": "2026-08-27T20:35:00Z",
       "venue": "Jackie Robinson Ballpark"
     },
     {
@@ -97,13 +85,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T22:30:00Z",
-      "gamePk": 826965,
+      "gameDate": "2026-08-27T22:30:00Z",
+      "gamePk": 826964,
       "home": "Hill City Howlers",
       "homeProbablePitcher": {
-        "fullName": "Ryan DeSanto",
-        "id": 823756,
-        "link": "/api/v1/people/823756"
+        "fullName": "Miguel Flores",
+        "id": 821793,
+        "link": "/api/v1/people/821793"
       },
       "homeScore": null,
       "homeTeamId": 481,
@@ -122,16 +110,16 @@
       "strikes": null,
       "team": "Hill City Howlers",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T22:30:00Z",
+      "timeLabel": "2026-08-27T22:30:00Z",
       "venue": "City Stadium"
     },
     {
       "abstractState": null,
       "away": "Asheville Tourists",
       "awayProbablePitcher": {
-        "fullName": "Javier Perez",
-        "id": 823649,
-        "link": "/api/v1/people/823649"
+        "fullName": "Adam Shoemaker",
+        "id": 692248,
+        "link": "/api/v1/people/692248"
       },
       "awayScore": null,
       "awayTeamId": 573,
@@ -141,13 +129,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T23:00:00Z",
-      "gamePk": 822256,
+      "gameDate": "2026-08-27T23:00:00Z",
+      "gamePk": 822254,
       "home": "Frederick Keys",
       "homeProbablePitcher": {
-        "fullName": "Evan Yates",
-        "id": 696524,
-        "link": "/api/v1/people/696524"
+        "fullName": "Stephen Still",
+        "id": 842192,
+        "link": "/api/v1/people/842192"
       },
       "homeScore": null,
       "homeTeamId": 493,
@@ -166,16 +154,16 @@
       "strikes": null,
       "team": "Frederick Keys",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T23:00:00Z",
+      "timeLabel": "2026-08-27T23:00:00Z",
       "venue": "Nymeo Field"
     },
     {
       "abstractState": null,
       "away": "Asheville Tourists",
       "awayProbablePitcher": {
-        "fullName": "Javier Perez",
-        "id": 823649,
-        "link": "/api/v1/people/823649"
+        "fullName": "Adam Shoemaker",
+        "id": 692248,
+        "link": "/api/v1/people/692248"
       },
       "awayScore": null,
       "awayTeamId": 573,
@@ -185,13 +173,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T23:00:00Z",
-      "gamePk": 822256,
+      "gameDate": "2026-08-27T23:00:00Z",
+      "gamePk": 822254,
       "home": "Frederick Keys",
       "homeProbablePitcher": {
-        "fullName": "Evan Yates",
-        "id": 696524,
-        "link": "/api/v1/people/696524"
+        "fullName": "Stephen Still",
+        "id": 842192,
+        "link": "/api/v1/people/842192"
       },
       "homeScore": null,
       "homeTeamId": 493,
@@ -210,60 +198,16 @@
       "strikes": null,
       "team": "Asheville Tourists",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T23:00:00Z",
+      "timeLabel": "2026-08-27T23:00:00Z",
       "venue": "Nymeo Field"
-    },
-    {
-      "abstractState": null,
-      "away": "Philadelphia Phillies",
-      "awayProbablePitcher": {
-        "fullName": "Jes\u00fas Luzardo",
-        "id": 666200,
-        "link": "/api/v1/people/666200"
-      },
-      "awayScore": 0,
-      "awayTeamId": 143,
-      "balls": null,
-      "currentBatter": null,
-      "currentInning": null,
-      "currentPitcher": null,
-      "defenseTeam": null,
-      "firstOccupied": null,
-      "gameDate": "2026-08-26T20:10:00Z",
-      "gamePk": 823096,
-      "home": "Seattle Mariners",
-      "homeProbablePitcher": {
-        "fullName": "Bryan Woo",
-        "id": 693433,
-        "link": "/api/v1/people/693433"
-      },
-      "homeScore": 0,
-      "homeTeamId": 136,
-      "inningHalf": null,
-      "inningState": null,
-      "level": "MLB",
-      "liveLine": null,
-      "offenseTeam": null,
-      "opponent": "Philadelphia Phillies",
-      "outs": null,
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "secondOccupied": null,
-      "sportId": 1,
-      "status": "Pre-Game",
-      "strikes": null,
-      "team": "Seattle Mariners",
-      "thirdOccupied": null,
-      "timeLabel": "2026-08-26T20:10:00Z",
-      "venue": "T-Mobile Park"
     },
     {
       "abstractState": null,
       "away": "Colorado Rockies",
       "awayProbablePitcher": {
-        "fullName": "Tanner Gordon",
-        "id": 685299,
-        "link": "/api/v1/people/685299"
+        "fullName": "Gabriel Hughes",
+        "id": 687312,
+        "link": "/api/v1/people/687312"
       },
       "awayScore": 0,
       "awayTeamId": 115,
@@ -273,13 +217,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T22:45:00Z",
-      "gamePk": 822692,
+      "gameDate": "2026-08-27T17:05:00Z",
+      "gamePk": 822694,
       "home": "Washington Nationals",
       "homeProbablePitcher": {
-        "fullName": "Matt Waldron",
-        "id": 663362,
-        "link": "/api/v1/people/663362"
+        "fullName": "Jake Irvin",
+        "id": 663623,
+        "link": "/api/v1/people/663623"
       },
       "homeScore": 0,
       "homeTeamId": 120,
@@ -294,20 +238,20 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T22:45:00Z",
+      "timeLabel": "2026-08-27T17:05:00Z",
       "venue": "Nationals Park"
     },
     {
       "abstractState": null,
       "away": "Memphis Redbirds",
       "awayProbablePitcher": {
-        "fullName": "Mason Molina",
-        "id": 695766,
-        "link": "/api/v1/people/695766"
+        "fullName": "Brandt Thompson",
+        "id": 825576,
+        "link": "/api/v1/people/825576"
       },
       "awayScore": null,
       "awayTeamId": 235,
@@ -317,14 +261,10 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T22:35:00Z",
-      "gamePk": 816835,
+      "gameDate": "2026-08-27T23:04:00Z",
+      "gamePk": 816832,
       "home": "Charlotte Knights",
-      "homeProbablePitcher": {
-        "fullName": "Noah Schultz",
-        "id": 702273,
-        "link": "/api/v1/people/702273"
-      },
+      "homeProbablePitcher": null,
       "homeScore": null,
       "homeTeamId": 494,
       "inningHalf": null,
@@ -342,16 +282,16 @@
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T22:35:00Z",
+      "timeLabel": "2026-08-27T23:04:00Z",
       "venue": "Truist Field"
     },
     {
       "abstractState": null,
       "away": "Lansing Lugnuts",
       "awayProbablePitcher": {
-        "fullName": "Jackson Nove",
-        "id": 823124,
-        "link": "/api/v1/people/823124"
+        "fullName": "Samuel Dutton",
+        "id": 695542,
+        "link": "/api/v1/people/695542"
       },
       "awayScore": null,
       "awayTeamId": 499,
@@ -361,13 +301,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T23:05:00Z",
-      "gamePk": 819912,
+      "gameDate": "2026-08-27T23:05:00Z",
+      "gamePk": 819910,
       "home": "Great Lakes Loons",
       "homeProbablePitcher": {
-        "fullName": "Will Gagnon",
-        "id": 811668,
-        "link": "/api/v1/people/811668"
+        "fullName": "Brooks Auger",
+        "id": 824624,
+        "link": "/api/v1/people/824624"
       },
       "homeScore": null,
       "homeTeamId": 456,
@@ -386,16 +326,16 @@
       "strikes": null,
       "team": "Great Lakes Loons",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T23:05:00Z",
+      "timeLabel": "2026-08-27T23:05:00Z",
       "venue": "Dow Diamond"
     },
     {
       "abstractState": null,
       "away": "Corpus Christi Hooks",
       "awayProbablePitcher": {
-        "fullName": "Cole Hertzler",
-        "id": 826315,
-        "link": "/api/v1/people/826315"
+        "fullName": "Alonzo Tredwell",
+        "id": 696280,
+        "link": "/api/v1/people/696280"
       },
       "awayScore": null,
       "awayTeamId": 482,
@@ -405,13 +345,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T23:35:00Z",
-      "gamePk": 817611,
+      "gameDate": "2026-08-27T23:35:00Z",
+      "gamePk": 817609,
       "home": "Amarillo Sod Poodles",
       "homeProbablePitcher": {
-        "fullName": "John West",
-        "id": 802482,
-        "link": "/api/v1/people/802482"
+        "fullName": "Junior Sanchez",
+        "id": 808087,
+        "link": "/api/v1/people/808087"
       },
       "homeScore": null,
       "homeTeamId": 5368,
@@ -430,16 +370,16 @@
       "strikes": null,
       "team": "Corpus Christi Hooks",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T23:35:00Z",
+      "timeLabel": "2026-08-27T23:35:00Z",
       "venue": "Hodgetown"
     },
     {
       "abstractState": null,
       "away": "Brooklyn Cyclones",
       "awayProbablePitcher": {
-        "fullName": "Emilio Obispo",
-        "id": 827448,
-        "link": "/api/v1/people/827448"
+        "fullName": "Joel D\u00edaz",
+        "id": 699309,
+        "link": "/api/v1/people/699309"
       },
       "awayScore": null,
       "awayTeamId": 453,
@@ -449,13 +389,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T22:35:00Z",
-      "gamePk": 821994,
+      "gameDate": "2026-08-27T22:35:00Z",
+      "gamePk": 821990,
       "home": "Hudson Valley Renegades",
       "homeProbablePitcher": {
-        "fullName": "Luis Serna",
-        "id": 702436,
-        "link": "/api/v1/people/702436"
+        "fullName": "Pico Kohn",
+        "id": 695560,
+        "link": "/api/v1/people/695560"
       },
       "homeScore": null,
       "homeTeamId": 537,
@@ -474,16 +414,16 @@
       "strikes": null,
       "team": "Hudson Valley Renegades",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T22:35:00Z",
+      "timeLabel": "2026-08-27T22:35:00Z",
       "venue": "Heritage Financial Park"
     },
     {
       "abstractState": null,
       "away": "Portland Sea Dogs",
       "awayProbablePitcher": {
-        "fullName": "Hayden Mullins",
-        "id": 683093,
-        "link": "/api/v1/people/683093"
+        "fullName": "Steven Brooks",
+        "id": 809933,
+        "link": "/api/v1/people/809933"
       },
       "awayScore": null,
       "awayTeamId": 546,
@@ -493,13 +433,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-26T23:05:00Z",
-      "gamePk": 818299,
+      "gameDate": "2026-08-27T23:05:00Z",
+      "gamePk": 818296,
       "home": "Richmond Flying Squirrels",
       "homeProbablePitcher": {
-        "fullName": "Yunior Marte",
-        "id": 805074,
-        "link": "/api/v1/people/805074"
+        "fullName": "Miguel Mendez",
+        "id": 700280,
+        "link": "/api/v1/people/700280"
       },
       "homeScore": null,
       "homeTeamId": 3410,
@@ -518,16 +458,16 @@
       "strikes": null,
       "team": "Portland Sea Dogs",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-26T23:05:00Z",
+      "timeLabel": "2026-08-27T23:05:00Z",
       "venue": "CarMax Park"
     },
     {
       "abstractState": null,
       "away": "Eugene Emeralds",
       "awayProbablePitcher": {
-        "fullName": "Henry Lalane",
-        "id": 700649,
-        "link": "/api/v1/people/700649"
+        "fullName": "Niko Mazza",
+        "id": 695789,
+        "link": "/api/v1/people/695789"
       },
       "awayScore": null,
       "awayTeamId": 461,
@@ -537,13 +477,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-27T02:05:00Z",
-      "gamePk": 819317,
+      "gameDate": "2026-08-28T02:05:00Z",
+      "gamePk": 819315,
       "home": "Everett AquaSox",
       "homeProbablePitcher": {
-        "fullName": "Taylor Dollard",
-        "id": 693440,
-        "link": "/api/v1/people/693440"
+        "fullName": "Mason Peters",
+        "id": 830336,
+        "link": "/api/v1/people/830336"
       },
       "homeScore": null,
       "homeTeamId": 403,
@@ -562,16 +502,16 @@
       "strikes": null,
       "team": "Everett AquaSox",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-27T02:05:00Z",
+      "timeLabel": "2026-08-28T02:05:00Z",
       "venue": "Everett Memorial Stadium"
     },
     {
       "abstractState": null,
       "away": "Fresno Grizzlies",
       "awayProbablePitcher": {
-        "fullName": "Luichi Casilla",
-        "id": 800436,
-        "link": "/api/v1/people/800436"
+        "fullName": "Izeah Muniz",
+        "id": 701698,
+        "link": "/api/v1/people/701698"
       },
       "awayScore": null,
       "awayTeamId": 259,
@@ -581,13 +521,13 @@
       "currentPitcher": null,
       "defenseTeam": null,
       "firstOccupied": null,
-      "gameDate": "2026-08-27T01:35:00Z",
-      "gamePk": 821296,
+      "gameDate": "2026-08-28T01:35:00Z",
+      "gamePk": 821297,
       "home": "Inland Empire 66ers",
       "homeProbablePitcher": {
-        "fullName": "Dylan Wilson",
-        "id": 808511,
-        "link": "/api/v1/people/808511"
+        "fullName": "Jack Bowery",
+        "id": 822817,
+        "link": "/api/v1/people/822817"
       },
       "homeScore": null,
       "homeTeamId": 401,
@@ -606,10 +546,10 @@
       "strikes": null,
       "team": "Fresno Grizzlies",
       "thirdOccupied": null,
-      "timeLabel": "2026-08-27T01:35:00Z",
+      "timeLabel": "2026-08-28T01:35:00Z",
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-26T19:40:32.430283+00:00",
+  "generatedAt": "2026-08-27T16:46:09.416335+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
