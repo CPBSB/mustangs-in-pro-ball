@@ -2,15 +2,15 @@ name: Refresh live baseball data
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2-57/5 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: baseball-data-writes
-  cancel-in-progress: false
+  group: live-baseball-refresh
+  cancel-in-progress: true
 
 jobs:
   refresh:
