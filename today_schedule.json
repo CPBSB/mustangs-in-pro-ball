@@ -78,7 +78,7 @@
       "playerId": 822034,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
@@ -302,7 +302,7 @@
       "venue": "Nationals Park"
     },
     {
-      "abstractState": "Final",
+      "abstractState": "Preview",
       "away": "Memphis Redbirds",
       "awayProbablePitcher": {
         "fullName": "Cooper Hjerpe",
@@ -338,7 +338,7 @@
       "playerId": 689672,
       "secondOccupied": false,
       "sportId": 11,
-      "status": "Postponed: Rain",
+      "status": "Scheduled",
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": false,
@@ -514,7 +514,7 @@
       "playerId": 809933,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Portland Sea Dogs",
       "thirdOccupied": null,
@@ -610,6 +610,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-28T22:21:45.375455+00:00",
+  "generatedAt": "2026-08-28T22:28:36.173671+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
