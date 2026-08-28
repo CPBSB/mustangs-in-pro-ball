@@ -2,43 +2,41 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
     },
     {
       "label": "Top Pitcher",
-      "line": "Bryce Warrecker worked 2.1 IP, allowing 1 H, 2 R (0 ER) and 1 BB with 1 K.",
-      "player": "Bryce Warrecker",
-      "playerId": 695425,
-      "team": "Hudson Valley Renegades",
+      "line": "Tanner Sagouspe worked 1.0 IP, allowing 0 H, 0 R (0 ER) and 0 BB with 3 K.",
+      "player": "Tanner Sagouspe",
+      "playerId": 701693,
+      "team": "Fresno Grizzlies",
       "type": "pitcher"
     }
   ],
-  "date": "2026-08-26",
-  "dateLabel": "Wednesday, August 26, 2026",
+  "date": "2026-08-27",
+  "dateLabel": "Thursday, August 27, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "6 former Mustangs appeared in professional games on Wednesday for 6 clubs across 3 levels, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee's home run \u2014 his 21th of the season came in the first inning on a 1-0 93 mph four-seam fastball from J.T. Ginn. The swing moved the score from 0-0 to 1-0. Statcast measured the ball at 104.5 mph off the bat, a 28-degree launch angle, 373 feet.",
-    "Brooks Lee went 1-for-4, 1 home run, 1 RBI, 1 run scored.",
-    "He batted second and started at third base.",
-    "Minnesota Twins fell to Athletics, 4-7.",
-    "Bryce Warrecker came on in relief for Hudson Valley Renegades in the top of the fifth with two outs. He worked 2 1/3 innings, allowing 1 hit and 0 earned runs, with 1 walk and 1 strikeout. One of his strikeouts came in the sixth on a 1-2 pitch, when he put away Aidan Smith. Hudson Valley Renegades fell to Brooklyn Cyclones, 5-11.",
-    "Alejandro Garza went 1-for-4, 1 stolen base for Hill City Howlers at Single-A. He batted first and started at second base. Hill City Howlers fell to Kannapolis Cannon Ballers, 0-5.",
-    "Taylor Dollard started on the mound for Everett AquaSox. He worked 1 1/3 innings, allowing 0 hits and 0 earned runs, with 1 walk and 1 strikeout. One of his strikeouts came in the first on a 1-2 pitch, when he put away Cam Maldonado. Everett AquaSox beat Eugene Emeralds, 11-6.",
-    "Ryan Stafford went 1-for-1 for Frederick Keys at High-A. He batted ninth and appeared at PH. Frederick Keys beat Asheville Tourists, 3-2.",
-    "Bryan Woo started on the mound for Seattle Mariners. He worked 4.0 innings, allowing 5 hits and 6 earned runs, with 1 walk and 5 strikeouts. One of his strikeouts came in the first on a 0-2 98 mph four-seam fastball, when he put away Trea Turner. Seattle Mariners fell to Philadelphia Phillies, 0-6."
+    "4 former Mustangs appeared in professional games on Thursday for 4 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
+    "Ryan Tayman's home run \u2014 his 2th of the season came in the second inning on a 0-1 pitch from Iker Redona. The swing moved the score from 0-0 to 1-0.",
+    "Ryan Tayman went 1-for-3, 1 home run, 1 RBI, 1 run scored.",
+    "He batted sixth and started behind the plate.",
+    "St. Lucie Mets fell to Daytona Tortugas, 2-8.",
+    "Alejandro Garza went 2-for-4, 1 triple, 1 RBI, 1 run scored, 1 walk for Hill City Howlers at Single-A. Alejandro Garza put his club in front in the first with a go-ahead triple to right field on a 2-1 pitch from Gabe Tanner, changing the score from 0-0 to 2-0. He batted second and started at designated hitter. Hill City Howlers beat Kannapolis Cannon Ballers, 7-6.",
+    "Tanner Sagouspe came on in relief for Fresno Grizzlies in the bottom of the eighth with nobody out. He worked 1.0 innings, allowing 0 hits and 0 earned runs, striking out 3 without issuing a walk. One of his strikeouts came in the eighth on a 2-2 pitch, when he put away Grant Jay. Fresno Grizzlies fell to Inland Empire 66ers, 2-8.",
+    "Steven Brooks started on the mound for Portland Sea Dogs. He worked 2.0 innings, allowing 2 hits and 1 earned run, with 2 walks and 1 strikeout. One of his strikeouts came in the second on a 2-2 pitch, when he put away Jack Payton. Portland Sea Dogs beat Richmond Flying Squirrels, 11-2."
   ],
-  "title": "Brooks Lee comes through late with a go-ahead hit"
+  "title": "Ryan Tayman comes through late with a go-ahead hit"
 }

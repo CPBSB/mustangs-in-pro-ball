@@ -3,6 +3,83 @@
     {
       "appearances": [
         {
+          "gamePk": 820705,
+          "level": "Single-A",
+          "name": "Ryan Tayman",
+          "playerId": 822034,
+          "summary": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
+          "team": "St. Lucie Mets"
+        },
+        {
+          "gamePk": 826964,
+          "level": "Single-A",
+          "name": "Alejandro Garza",
+          "playerId": 835211,
+          "summary": "Alejandro Garza went 2-for-4, 3B, 1 RBI, 1 run, 1 walk.",
+          "team": "Hill City Howlers"
+        },
+        {
+          "gamePk": 818296,
+          "level": "Double-A",
+          "name": "Steven Brooks",
+          "playerId": 809933,
+          "summary": "Steven Brooks worked 2.0 IP, allowing 2 H, 1 R (1 ER) and 2 BB with 1 K.",
+          "team": "Portland Sea Dogs"
+        },
+        {
+          "gamePk": 821297,
+          "level": "Single-A",
+          "name": "Tanner Sagouspe",
+          "playerId": 701693,
+          "summary": "Tanner Sagouspe worked 1.0 IP, allowing 0 H, 0 R (0 ER) and 0 BB with 3 K.",
+          "team": "Fresno Grizzlies"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
+          "player": "Ryan Tayman",
+          "playerId": 822034,
+          "team": "St. Lucie Mets",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
+          "player": "Ryan Tayman",
+          "playerId": 822034,
+          "team": "St. Lucie Mets",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Tanner Sagouspe worked 1.0 IP, allowing 0 H, 0 R (0 ER) and 0 BB with 3 K.",
+          "player": "Tanner Sagouspe",
+          "playerId": 701693,
+          "team": "Fresno Grizzlies",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-08-27",
+      "dateLabel": "Thursday, August 27, 2026",
+      "generatedAt": "2026-08-28T21:57:58.651969+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "4 former Mustangs appeared in professional games on Thursday for 4 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
+        "Ryan Tayman's home run \u2014 his 2th of the season came in the second inning on a 0-1 pitch from Iker Redona. The swing moved the score from 0-0 to 1-0.",
+        "Ryan Tayman went 1-for-3, 1 home run, 1 RBI, 1 run scored.",
+        "He batted sixth and started behind the plate.",
+        "St. Lucie Mets fell to Daytona Tortugas, 2-8.",
+        "Alejandro Garza went 2-for-4, 1 triple, 1 RBI, 1 run scored, 1 walk for Hill City Howlers at Single-A. Alejandro Garza put his club in front in the first with a go-ahead triple to right field on a 2-1 pitch from Gabe Tanner, changing the score from 0-0 to 2-0. He batted second and started at designated hitter. Hill City Howlers beat Kannapolis Cannon Ballers, 7-6.",
+        "Tanner Sagouspe came on in relief for Fresno Grizzlies in the bottom of the eighth with nobody out. He worked 1.0 innings, allowing 0 hits and 0 earned runs, striking out 3 without issuing a walk. One of his strikeouts came in the eighth on a 2-2 pitch, when he put away Grant Jay. Fresno Grizzlies fell to Inland Empire 66ers, 2-8.",
+        "Steven Brooks started on the mound for Portland Sea Dogs. He worked 2.0 innings, allowing 2 hits and 1 earned run, with 2 walks and 1 strikeout. One of his strikeouts came in the second on a 2-2 pitch, when he put away Jack Payton. Portland Sea Dogs beat Richmond Flying Squirrels, 11-2."
+      ],
+      "title": "Ryan Tayman comes through late with a go-ahead hit"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 824963,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -250,5 +327,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-08-27T16:46:37.731707+00:00"
+  "updatedAt": "2026-08-28T21:57:58.651980+00:00"
 }
