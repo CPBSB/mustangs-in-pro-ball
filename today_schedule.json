@@ -558,7 +558,7 @@
       "playerId": 693440,
       "secondOccupied": false,
       "sportId": 13,
-      "status": "Game Over",
+      "status": "Final",
       "strikes": 0,
       "team": "Everett AquaSox",
       "thirdOccupied": false,
@@ -610,6 +610,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T04:41:56.065059+00:00",
+  "generatedAt": "2026-08-29T04:48:43.683561+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
