@@ -485,9 +485,9 @@
       "gamePk": 821993,
       "home": "Hudson Valley Renegades",
       "homeProbablePitcher": {
-        "fullName": "Franyer Herrera",
-        "id": 800471,
-        "link": "/api/v1/people/800471"
+        "fullName": "Sean Paul Li\u00f1an",
+        "id": 800344,
+        "link": "/api/v1/people/800344"
       },
       "homeScore": null,
       "homeTeamId": 537,
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T15:41:17.639041+00:00",
+  "generatedAt": "2026-08-29T15:48:16.173560+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
