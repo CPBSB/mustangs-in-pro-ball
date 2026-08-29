@@ -522,7 +522,7 @@
       "venue": "CarMax Park"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Eugene Emeralds",
       "awayProbablePitcher": {
         "fullName": "Cade Vernon",
@@ -532,11 +532,11 @@
       "awayScore": 3,
       "awayTeamId": 461,
       "balls": 0,
-      "currentBatter": "Carter Dorighi",
+      "currentBatter": "Carlos Jimenez",
       "currentInning": 10,
       "currentPitcher": "Gerelmi Maldonado",
       "defenseTeam": "Eugene Emeralds",
-      "firstOccupied": false,
+      "firstOccupied": true,
       "gameDate": "2026-08-29T02:05:00Z",
       "gamePk": 819313,
       "home": "Everett AquaSox",
@@ -545,7 +545,7 @@
         "id": 823764,
         "link": "/api/v1/people/823764"
       },
-      "homeScore": 3,
+      "homeScore": 4,
       "homeTeamId": 403,
       "inningHalf": "Bottom",
       "inningState": "Bottom",
@@ -553,12 +553,12 @@
       "liveLine": null,
       "offenseTeam": "Everett AquaSox",
       "opponent": "Eugene Emeralds",
-      "outs": 0,
+      "outs": 1,
       "player": "Taylor Dollard",
       "playerId": 693440,
-      "secondOccupied": true,
+      "secondOccupied": false,
       "sportId": 13,
-      "status": "In Progress",
+      "status": "Game Over",
       "strikes": 0,
       "team": "Everett AquaSox",
       "thirdOccupied": false,
@@ -610,6 +610,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T04:35:36.992403+00:00",
+  "generatedAt": "2026-08-29T04:41:56.065059+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
