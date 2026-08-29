@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T17:39:22.195883+00:00",
+  "generatedAt": "2026-08-29T17:45:32.998778+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
