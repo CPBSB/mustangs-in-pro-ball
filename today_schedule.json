@@ -9,7 +9,7 @@
         "id": 607200,
         "link": "/api/v1/people/607200"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 145,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 641927,
         "link": "/api/v1/people/641927"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -246,7 +246,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T15:28:59.808512+00:00",
+  "generatedAt": "2026-08-29T15:34:53.262161+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
