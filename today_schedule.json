@@ -11,12 +11,12 @@
       },
       "awayScore": 1,
       "awayTeamId": 145,
-      "balls": 2,
-      "currentBatter": "Trevor Larnach",
+      "balls": 0,
+      "currentBatter": "Luke Keaschall",
       "currentInning": 2,
       "currentPitcher": "Erick Fedde",
       "defenseTeam": "Chicago White Sox",
-      "firstOccupied": false,
+      "firstOccupied": true,
       "gameDate": "2026-08-29T18:10:00Z",
       "gamePk": 823665,
       "home": "Minnesota Twins",
@@ -25,7 +25,7 @@
         "id": 641927,
         "link": "/api/v1/people/641927"
       },
-      "homeScore": 1,
+      "homeScore": 2,
       "homeTeamId": 142,
       "inningHalf": "Bottom",
       "inningState": "Bottom",
@@ -33,7 +33,7 @@
       "liveLine": "0-for-1",
       "offenseTeam": "Minnesota Twins",
       "opponent": "Chicago White Sox",
-      "outs": 0,
+      "outs": 2,
       "player": "Brooks Lee",
       "playerId": 686797,
       "secondOccupied": false,
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T18:44:47.845628+00:00",
+  "generatedAt": "2026-08-29T18:51:26.773422+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
