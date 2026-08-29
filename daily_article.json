@@ -2,41 +2,35 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
-      "player": "Ryan Tayman",
-      "playerId": 822034,
-      "team": "St. Lucie Mets",
+      "line": "Brooks Lee went 2-for-5, HR, 3 RBI, 1 run.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Ryan Tayman went 1-for-3, HR, 1 RBI, 1 run.",
-      "player": "Ryan Tayman",
-      "playerId": 822034,
-      "team": "St. Lucie Mets",
+      "line": "Brooks Lee went 2-for-5, HR, 3 RBI, 1 run.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Tanner Sagouspe worked 1.0 IP, allowing 0 H, 0 R (0 ER) and 0 BB with 3 K.",
-      "player": "Tanner Sagouspe",
-      "playerId": 701693,
-      "team": "Fresno Grizzlies",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-08-27",
-  "dateLabel": "Thursday, August 27, 2026",
+  "date": "2026-08-28",
+  "dateLabel": "Friday, August 28, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "4 former Mustangs appeared in professional games on Thursday for 4 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
-    "Ryan Tayman's home run \u2014 his 2th of the season came in the second inning on a 0-1 pitch from Iker Redona. The swing moved the score from 0-0 to 1-0.",
-    "Ryan Tayman went 1-for-3, 1 home run, 1 RBI, 1 run scored.",
-    "He batted sixth and started behind the plate.",
-    "St. Lucie Mets fell to Daytona Tortugas, 2-8.",
-    "Alejandro Garza went 2-for-4, 1 triple, 1 RBI, 1 run scored, 1 walk for Hill City Howlers at Single-A. Alejandro Garza put his club in front in the first with a go-ahead triple to right field on a 2-1 pitch from Gabe Tanner, changing the score from 0-0 to 2-0. He batted second and started at designated hitter. Hill City Howlers beat Kannapolis Cannon Ballers, 7-6.",
-    "Tanner Sagouspe came on in relief for Fresno Grizzlies in the bottom of the eighth with nobody out. He worked 1.0 innings, allowing 0 hits and 0 earned runs, striking out 3 without issuing a walk. One of his strikeouts came in the eighth on a 2-2 pitch, when he put away Grant Jay. Fresno Grizzlies fell to Inland Empire 66ers, 2-8.",
-    "Steven Brooks started on the mound for Portland Sea Dogs. He worked 2.0 innings, allowing 2 hits and 1 earned run, with 2 walks and 1 strikeout. One of his strikeouts came in the second on a 2-2 pitch, when he put away Jack Payton. Portland Sea Dogs beat Richmond Flying Squirrels, 11-2."
+    "5 former Mustangs appeared in professional games on Friday for 5 clubs across 3 levels, with Brooks Lee producing the night's most notable performance.",
+    "Brooks Lee's home run \u2014 his 22th of the season came in the first inning on a 3-2 95 mph four-seam fastball from Luis Castillo. The swing moved the score from 0-4 to 2-4. Statcast measured the ball at 103.4 mph off the bat, a 38-degree launch angle, 380 feet.",
+    "Brooks Lee tied the game in the second with a single to left field on a 1-0 86 mph slider from Luis Castillo, changing the score from 3-4 to 4-4.",
+    "Brooks Lee went 2-for-5, 1 home run, 3 RBI, 1 run scored.",
+    "He batted second and started at third base.",
+    "Minnesota Twins fell to Chicago White Sox, 4-7.",
+    "Ryan Stafford went 0-for-3, 1 run scored, 1 stolen base for Frederick Keys at High-A. Ryan Stafford put his club in front in the second with a go-ahead ball put in play toward shortstop on a 3-2 pitch from Adam Shoemaker, changing the score from 0-0 to 1-0. He batted eighth and started at designated hitter. Frederick Keys beat Asheville Tourists, 4-2.",
+    "Alejandro Garza went 2-for-4, 1 double, 1 run scored, 1 stolen base for Hill City Howlers at Single-A. Alejandro Garza produced a double in the seventh to left field on a 1-2 pitch from Frankeli Arias. He batted first and started at second base. Hill City Howlers beat Kannapolis Cannon Ballers, 5-1.",
+    "Ryan Tayman went 1-for-4, 1 double, 1 run scored for St. Lucie Mets at Single-A. Ryan Tayman produced a double in the seventh to center field on a 0-2 pitch from Justin Henschel. He batted third and started behind the plate. St. Lucie Mets fell to Daytona Tortugas, 5-6.",
+    "Zach Daudet went 0-for-4 for Asheville Tourists at High-A. He batted fifth and started at shortstop. Asheville Tourists fell to Frederick Keys, 2-4."
   ],
-  "title": "Ryan Tayman comes through late with a go-ahead hit"
+  "title": "Brooks Lee delivers in a key spot"
 }
