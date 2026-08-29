@@ -217,7 +217,7 @@
         "id": 807739,
         "link": "/api/v1/people/807739"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 136,
       "balls": null,
       "currentBatter": null,
@@ -233,7 +233,7 @@
         "id": 667755,
         "link": "/api/v1/people/667755"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 141,
       "inningHalf": null,
       "inningState": null,
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T16:21:02.015803+00:00",
+  "generatedAt": "2026-08-29T16:26:58.872149+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
