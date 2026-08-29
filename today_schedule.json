@@ -512,7 +512,11 @@
     {
       "abstractState": null,
       "away": "Portland Sea Dogs",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Morgan McSweeney",
+        "id": 669682,
+        "link": "/api/v1/people/669682"
+      },
       "awayScore": null,
       "awayTeamId": 546,
       "balls": null,
@@ -638,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T13:57:56.078598+00:00",
+  "generatedAt": "2026-08-29T14:03:52.704335+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
