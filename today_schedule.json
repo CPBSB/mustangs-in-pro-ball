@@ -12,11 +12,11 @@
       "awayScore": 0,
       "awayTeamId": 145,
       "balls": 0,
-      "currentBatter": "Sam Antonacci",
+      "currentBatter": "Miguel Vargas",
       "currentInning": 1,
       "currentPitcher": "Bailey Ober",
       "defenseTeam": "Minnesota Twins",
-      "firstOccupied": false,
+      "firstOccupied": true,
       "gameDate": "2026-08-29T18:10:00Z",
       "gamePk": 823665,
       "home": "Minnesota Twins",
@@ -36,10 +36,10 @@
       "outs": 0,
       "player": "Brooks Lee",
       "playerId": 686797,
-      "secondOccupied": false,
+      "secondOccupied": true,
       "sportId": 1,
       "status": "In Progress",
-      "strikes": 0,
+      "strikes": 1,
       "team": "Minnesota Twins",
       "thirdOccupied": false,
       "timeLabel": "2026-08-29T18:10:00Z",
@@ -642,6 +642,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-29T18:12:00.872417+00:00",
+  "generatedAt": "2026-08-29T18:18:13.270729+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
