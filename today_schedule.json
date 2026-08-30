@@ -74,7 +74,7 @@
       "playerId": 822034,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
@@ -674,6 +674,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T16:05:23.692218+00:00",
+  "generatedAt": "2026-08-30T16:12:25.034106+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
