@@ -568,11 +568,11 @@
       "awayScore": 12,
       "awayTeamId": 461,
       "balls": 0,
-      "currentBatter": "Jose Ramos",
+      "currentBatter": "Luke Stevenson",
       "currentInning": 9,
-      "currentPitcher": "Wyatt Lunsford-Shenkman",
-      "defenseTeam": "Everett AquaSox",
-      "firstOccupied": true,
+      "currentPitcher": "Liam Simon",
+      "defenseTeam": "Eugene Emeralds",
+      "firstOccupied": false,
       "gameDate": "2026-08-30T02:05:00Z",
       "gamePk": 819312,
       "home": "Everett AquaSox",
@@ -583,11 +583,11 @@
       },
       "homeScore": 9,
       "homeTeamId": 403,
-      "inningHalf": "Top",
-      "inningState": "Top",
+      "inningHalf": "Bottom",
+      "inningState": "Bottom",
       "level": "High-A",
       "liveLine": null,
-      "offenseTeam": "Eugene Emeralds",
+      "offenseTeam": "Everett AquaSox",
       "opponent": "Eugene Emeralds",
       "outs": 2,
       "player": "Taylor Dollard",
@@ -646,6 +646,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T05:16:41.447033+00:00",
+  "generatedAt": "2026-08-30T05:23:21.053993+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
