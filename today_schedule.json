@@ -558,7 +558,7 @@
       "venue": "CarMax Park"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Eugene Emeralds",
       "awayProbablePitcher": {
         "fullName": "Luis De La Torre",
@@ -568,7 +568,7 @@
       "awayScore": 12,
       "awayTeamId": 461,
       "balls": 0,
-      "currentBatter": "Luke Stevenson",
+      "currentBatter": "Brandon Eike",
       "currentInning": 9,
       "currentPitcher": "Liam Simon",
       "defenseTeam": "Eugene Emeralds",
@@ -589,13 +589,13 @@
       "liveLine": null,
       "offenseTeam": "Everett AquaSox",
       "opponent": "Eugene Emeralds",
-      "outs": 2,
+      "outs": 3,
       "player": "Taylor Dollard",
       "playerId": 693440,
       "secondOccupied": false,
       "sportId": 13,
-      "status": "In Progress",
-      "strikes": 0,
+      "status": "Final",
+      "strikes": 3,
       "team": "Everett AquaSox",
       "thirdOccupied": false,
       "timeLabel": "2026-08-30T02:05:00Z",
@@ -646,6 +646,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T05:23:21.053993+00:00",
+  "generatedAt": "2026-08-30T05:30:12.870505+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
