@@ -567,10 +567,10 @@
       },
       "awayScore": 12,
       "awayTeamId": 461,
-      "balls": 1,
-      "currentBatter": "Axel Sanchez",
+      "balls": 0,
+      "currentBatter": "Korbyn Dickerson",
       "currentInning": 7,
-      "currentPitcher": "Alix Hernandez",
+      "currentPitcher": "Cole Hillier",
       "defenseTeam": "Eugene Emeralds",
       "firstOccupied": false,
       "gameDate": "2026-08-30T02:05:00Z",
@@ -589,10 +589,10 @@
       "liveLine": null,
       "offenseTeam": "Everett AquaSox",
       "opponent": "Eugene Emeralds",
-      "outs": 1,
+      "outs": 2,
       "player": "Taylor Dollard",
       "playerId": 693440,
-      "secondOccupied": false,
+      "secondOccupied": true,
       "sportId": 13,
       "status": "In Progress",
       "strikes": 0,
@@ -646,6 +646,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T04:44:30.515284+00:00",
+  "generatedAt": "2026-08-30T04:50:50.585063+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
