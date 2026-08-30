@@ -370,7 +370,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -674,6 +674,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T15:45:30.035870+00:00",
+  "generatedAt": "2026-08-30T15:53:04.261251+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
