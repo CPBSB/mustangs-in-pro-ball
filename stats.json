@@ -31,15 +31,15 @@
         "games": 7,
         "startDate": "2026-07-27",
         "stats": {
-          "BB": 14,
+          "BB": 15,
           "ER": 10,
-          "ERA": "2.60",
+          "ERA": "2.55",
           "G": 7,
           "H": 23,
-          "IP": "34.2",
+          "IP": "35.1",
           "R": 10,
           "SO": 28,
-          "WHIP": "1.07"
+          "WHIP": "1.08"
         }
       },
       "name": "Andrew Alvarez",
@@ -47,11 +47,11 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 39,
+        "BB": 40,
         "ER": 35,
-        "ERA": "3.58",
+        "ERA": "3.55",
         "H": 78,
-        "IP": "88.0",
+        "IP": "88.2",
         "R": 35,
         "SO": 83,
         "WHIP": "1.33"
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-30T17:05:08.987182+00:00",
+  "updatedAt": "2026-08-30T17:11:34.659470+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
