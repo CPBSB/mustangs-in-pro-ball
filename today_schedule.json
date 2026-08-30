@@ -632,7 +632,11 @@
     {
       "abstractState": null,
       "away": "Fresno Grizzlies",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Yujanyer Herrera",
+        "id": 692632,
+        "link": "/api/v1/people/692632"
+      },
       "awayScore": null,
       "awayTeamId": 259,
       "balls": null,
@@ -670,6 +674,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-30T07:03:36.534229+00:00",
+  "generatedAt": "2026-08-30T07:09:40.551942+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
