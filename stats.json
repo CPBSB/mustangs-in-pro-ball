@@ -260,22 +260,22 @@
       "type": "pitcher"
     },
     "695425": {
-      "assignmentDate": "2026-08-26",
+      "assignmentDate": "2026-08-30",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-26",
+        "endDate": "2026-08-30",
         "games": 7,
-        "startDate": "2026-08-02",
+        "startDate": "2026-08-06",
         "stats": {
           "BB": 9,
           "ER": 4,
-          "ERA": "3.18",
+          "ERA": "3.09",
           "G": 7,
           "H": 10,
-          "IP": "11.1",
+          "IP": "11.2",
           "R": 7,
-          "SO": 8,
-          "WHIP": "1.68"
+          "SO": 9,
+          "WHIP": "1.63"
         }
       },
       "name": "Bryce Warrecker",
@@ -283,14 +283,14 @@
       "recentTeam": "Hudson Valley Renegades",
       "recentTeamId": 537,
       "stats": {
-        "BB": 20,
-        "ER": 13,
-        "ERA": "3.08",
-        "H": 33,
-        "IP": "38.0",
-        "R": 16,
-        "SO": 32,
-        "WHIP": "1.39"
+        "BB": 21,
+        "ER": 14,
+        "ERA": "3.15",
+        "H": 34,
+        "IP": "40.0",
+        "R": 17,
+        "SO": 34,
+        "WHIP": "1.38"
       },
       "statsSource": "seasonSummary",
       "team": "Tampa Tarpons",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-30T20:38:47.622128+00:00",
+  "updatedAt": "2026-08-30T20:45:50.816185+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
