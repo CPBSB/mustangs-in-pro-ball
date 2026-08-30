@@ -3,6 +3,66 @@
     {
       "appearances": [
         {
+          "gamePk": 823665,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-4.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 826963,
+          "level": "Single-A",
+          "name": "Alejandro Garza",
+          "playerId": 835211,
+          "summary": "Alejandro Garza went 1-for-4, 1 run, 1 walk.",
+          "team": "Hill City Howlers"
+        },
+        {
+          "gamePk": 822255,
+          "level": "High-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 0-for-1, 1 RBI, 1 run, 4 walks.",
+          "team": "Asheville Tourists"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Zach Daudet went 0-for-1, 1 RBI, 1 run, 4 walks.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Asheville Tourists",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Zach Daudet went 0-for-1, 1 RBI, 1 run, 4 walks.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Asheville Tourists",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-08-29",
+      "dateLabel": "Saturday, August 29, 2026",
+      "generatedAt": "2026-08-30T10:20:29.400565+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "3 former Mustangs appeared in professional games on Saturday for 3 clubs across 3 levels, with Zach Daudet producing the night's most notable performance.",
+        "Zach Daudet drove in his lone run with a walk in the seventh on a 3-2 pitch from Teddy Sharkey.",
+        "Zach Daudet went 0-for-1, 1 RBI, 1 run scored, 4 walks.",
+        "He batted fifth and started at shortstop.",
+        "Asheville Tourists fell to Frederick Keys, 7-8.",
+        "Alejandro Garza went 1-for-4, 1 run scored, 1 walk for Hill City Howlers at Single-A. He batted first and started at designated hitter. Hill City Howlers fell to Kannapolis Cannon Ballers, 5-7.",
+        "Brooks Lee went 0-for-4 for Minnesota Twins. He batted second and started at third base. Minnesota Twins fell to Chicago White Sox, 2-3."
+      ],
+      "title": "Zach Daudet highlights a busy Saturday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823666,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -434,5 +494,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-08-29T10:19:54.843392+00:00"
+  "updatedAt": "2026-08-30T10:20:29.400597+00:00"
 }
