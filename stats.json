@@ -31,12 +31,12 @@
         "games": 7,
         "startDate": "2026-07-27",
         "stats": {
-          "BB": 13,
+          "BB": 14,
           "ER": 10,
-          "ERA": "2.78",
+          "ERA": "2.70",
           "G": 7,
           "H": 22,
-          "IP": "32.1",
+          "IP": "33.1",
           "R": 10,
           "SO": 28,
           "WHIP": "1.08"
@@ -47,11 +47,11 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 38,
+        "BB": 39,
         "ER": 35,
-        "ERA": "3.68",
+        "ERA": "3.63",
         "H": 77,
-        "IP": "85.2",
+        "IP": "86.2",
         "R": 35,
         "SO": 83,
         "WHIP": "1.34"
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-30T16:32:30.748499+00:00",
+  "updatedAt": "2026-08-30T16:41:51.445603+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
