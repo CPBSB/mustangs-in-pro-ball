@@ -630,7 +630,7 @@
       "venue": "Everett Memorial Stadium"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Fresno Grizzlies",
       "awayProbablePitcher": {
         "fullName": "Yujanyer Herrera",
@@ -640,7 +640,7 @@
       "awayScore": 5,
       "awayTeamId": 259,
       "balls": 0,
-      "currentBatter": "Daniel Jackson",
+      "currentBatter": "Jack Natili",
       "currentInning": 9,
       "currentPitcher": "Aneury Lora",
       "defenseTeam": "Inland Empire 66ers",
@@ -661,19 +661,19 @@
       "liveLine": "1.0 IP, 1 K, 1 ER",
       "offenseTeam": "Fresno Grizzlies",
       "opponent": "Inland Empire 66ers",
-      "outs": 2,
+      "outs": 3,
       "player": "Tanner Sagouspe",
       "playerId": 701693,
-      "secondOccupied": true,
+      "secondOccupied": false,
       "sportId": 14,
-      "status": "In Progress",
+      "status": "Game Over",
       "strikes": 0,
       "team": "Fresno Grizzlies",
-      "thirdOccupied": true,
+      "thirdOccupied": false,
       "timeLabel": "2026-08-31T00:35:00Z",
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-31T03:09:37.204483+00:00",
+  "generatedAt": "2026-08-31T03:16:05.554278+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
