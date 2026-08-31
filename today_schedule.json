@@ -639,10 +639,10 @@
       },
       "awayScore": 4,
       "awayTeamId": 259,
-      "balls": 0,
-      "currentBatter": "Ashly Andujar",
+      "balls": 1,
+      "currentBatter": "Hayden Yost",
       "currentInning": 8,
-      "currentPitcher": "Thomas Higgins",
+      "currentPitcher": "Tanner Sagouspe",
       "defenseTeam": "Fresno Grizzlies",
       "firstOccupied": false,
       "gameDate": "2026-08-31T00:35:00Z",
@@ -653,15 +653,15 @@
         "id": 804210,
         "link": "/api/v1/people/804210"
       },
-      "homeScore": 9,
+      "homeScore": 10,
       "homeTeamId": 401,
-      "inningHalf": "Top",
-      "inningState": "Middle",
+      "inningHalf": "Bottom",
+      "inningState": "Bottom",
       "level": "Single-A",
-      "liveLine": null,
+      "liveLine": "0.1 IP, 0 K, 1 ER",
       "offenseTeam": "Inland Empire 66ers",
       "opponent": "Inland Empire 66ers",
-      "outs": 3,
+      "outs": 1,
       "player": "Tanner Sagouspe",
       "playerId": 701693,
       "secondOccupied": false,
@@ -674,6 +674,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-31T02:49:19.349241+00:00",
+  "generatedAt": "2026-08-31T02:55:55.137005+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
