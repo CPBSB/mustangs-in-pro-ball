@@ -126,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-08-31T18:45:22.120606+00:00",
+  "generatedAt": "2026-08-31T18:51:24.615102+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
