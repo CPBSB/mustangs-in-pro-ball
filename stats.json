@@ -441,22 +441,22 @@
       "type": "pitcher"
     },
     "809933": {
-      "assignmentDate": "2026-08-27",
+      "assignmentDate": "2026-08-30",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-27",
+        "endDate": "2026-08-30",
         "games": 7,
-        "startDate": "2026-08-04",
+        "startDate": "2026-08-08",
         "stats": {
-          "BB": 9,
+          "BB": 10,
           "ER": 7,
-          "ERA": "4.85",
+          "ERA": "4.97",
           "G": 7,
           "H": 14,
-          "IP": "13.0",
+          "IP": "12.2",
           "R": 9,
-          "SO": 14,
-          "WHIP": "1.77"
+          "SO": 13,
+          "WHIP": "1.89"
         }
       },
       "name": "Steven Brooks",
@@ -464,11 +464,11 @@
       "recentTeam": "Portland Sea Dogs",
       "recentTeamId": 546,
       "stats": {
-        "BB": 35,
+        "BB": 36,
         "ER": 29,
-        "ERA": "4.50",
-        "H": 57,
-        "IP": "58.0",
+        "ERA": "4.42",
+        "H": 58,
+        "IP": "59.0",
         "R": 38,
         "SO": 84,
         "WHIP": "1.59"
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-08-31T00:30:16.374930+00:00",
+  "updatedAt": "2026-08-31T00:36:49.592623+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
