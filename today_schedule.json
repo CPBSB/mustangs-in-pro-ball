@@ -82,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -126,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-08-31T22:16:41.857353+00:00",
+  "generatedAt": "2026-08-31T22:23:31.492581+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
