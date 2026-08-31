@@ -637,14 +637,14 @@
         "id": 692632,
         "link": "/api/v1/people/692632"
       },
-      "awayScore": 2,
+      "awayScore": 3,
       "awayTeamId": 259,
       "balls": 0,
-      "currentBatter": "Cort MacDonald",
+      "currentBatter": "Estevan Moreno",
       "currentInning": 7,
-      "currentPitcher": "Wyatt Queen",
-      "defenseTeam": "Inland Empire 66ers",
-      "firstOccupied": true,
+      "currentPitcher": "Sam Larson",
+      "defenseTeam": "Fresno Grizzlies",
+      "firstOccupied": false,
       "gameDate": "2026-08-31T00:35:00Z",
       "gamePk": 821286,
       "home": "Inland Empire 66ers",
@@ -655,11 +655,11 @@
       },
       "homeScore": 7,
       "homeTeamId": 401,
-      "inningHalf": "Top",
-      "inningState": "Top",
+      "inningHalf": "Bottom",
+      "inningState": "Bottom",
       "level": "Single-A",
       "liveLine": null,
-      "offenseTeam": "Fresno Grizzlies",
+      "offenseTeam": "Inland Empire 66ers",
       "opponent": "Inland Empire 66ers",
       "outs": 1,
       "player": "Tanner Sagouspe",
@@ -674,6 +674,6 @@
       "venue": "San Manuel Stadium"
     }
   ],
-  "generatedAt": "2026-08-31T02:29:29.901618+00:00",
+  "generatedAt": "2026-08-31T02:36:57.374849+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
