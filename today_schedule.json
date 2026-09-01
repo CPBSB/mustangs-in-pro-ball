@@ -53,10 +53,10 @@
         "id": 702419,
         "link": "/api/v1/people/702419"
       },
-      "awayScore": 0,
+      "awayScore": 1,
       "awayTeamId": 479,
-      "balls": 1,
-      "currentBatter": "Luis Arana",
+      "balls": 3,
+      "currentBatter": "Jake McCutcheon",
       "currentInning": 2,
       "currentPitcher": "Roberto Pena",
       "defenseTeam": "St. Lucie Mets",
@@ -77,10 +77,10 @@
       "liveLine": "0-for-0, 1 R",
       "offenseTeam": "Jupiter Hammerheads",
       "opponent": "Jupiter Hammerheads",
-      "outs": 0,
+      "outs": 2,
       "player": "Ryan Tayman",
       "playerId": 822034,
-      "secondOccupied": false,
+      "secondOccupied": true,
       "sportId": 14,
       "status": "In Progress",
       "strikes": 1,
@@ -298,7 +298,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -650,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T22:27:15.864364+00:00",
+  "generatedAt": "2026-09-01T22:35:17.306232+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
