@@ -140,9 +140,9 @@
       "awayScore": 2,
       "awayTeamId": 453,
       "balls": 2,
-      "currentBatter": "Wehiwa Aloy",
+      "currentBatter": "Ty Head",
       "currentInning": 8,
-      "currentPitcher": "Juan Arnaud",
+      "currentPitcher": "Hunter Hodges",
       "defenseTeam": "Brooklyn Cyclones",
       "firstOccupied": false,
       "gameDate": "2026-09-01T21:30:00Z",
@@ -470,7 +470,7 @@
       "playerId": 689223,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Corpus Christi Hooks",
       "thirdOccupied": null,
@@ -650,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T21:13:00.442311+00:00",
+  "generatedAt": "2026-09-01T21:24:47.809472+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
