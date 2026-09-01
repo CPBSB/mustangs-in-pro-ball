@@ -298,7 +298,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -650,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T18:59:26.440531+00:00",
+  "generatedAt": "2026-09-01T19:10:11.044840+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
