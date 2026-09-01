@@ -456,7 +456,11 @@
     {
       "abstractState": null,
       "away": "Hudson Valley Renegades",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Luis Serna",
+        "id": 702436,
+        "link": "/api/v1/people/702436"
+      },
       "awayScore": null,
       "awayTeamId": 537,
       "balls": null,
@@ -614,6 +618,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T13:57:34.838895+00:00",
+  "generatedAt": "2026-09-01T14:05:54.866672+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
