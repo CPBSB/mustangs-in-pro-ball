@@ -260,7 +260,11 @@
       "gameDate": "2026-09-01T22:45:00Z",
       "gamePk": 824716,
       "home": "Boston Red Sox",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Jedixson Paez",
+        "id": 699151,
+        "link": "/api/v1/people/699151"
+      },
       "homeScore": null,
       "homeTeamId": 111,
       "inningHalf": null,
@@ -600,7 +604,11 @@
       "gameDate": "2026-09-02T01:50:00Z",
       "gamePk": 821364,
       "home": "Fresno Grizzlies",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Sandy Ozuna",
+        "id": 814252,
+        "link": "/api/v1/people/814252"
+      },
       "homeScore": null,
       "homeTeamId": 259,
       "inningHalf": null,
@@ -622,6 +630,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T15:09:45.930076+00:00",
+  "generatedAt": "2026-09-01T15:40:54.659393+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
