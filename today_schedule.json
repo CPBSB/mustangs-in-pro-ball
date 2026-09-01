@@ -180,7 +180,11 @@
       "gameDate": "2026-09-01T22:40:00Z",
       "gamePk": 822327,
       "home": "Brooklyn Cyclones",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Nicolas Carreno",
+        "id": 807993,
+        "link": "/api/v1/people/807993"
+      },
       "homeScore": null,
       "homeTeamId": 453,
       "inningHalf": null,
@@ -220,7 +224,11 @@
       "gameDate": "2026-09-01T22:35:00Z",
       "gamePk": 822459,
       "home": "Asheville Tourists",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Nick Potter",
+        "id": 830769,
+        "link": "/api/v1/people/830769"
+      },
       "homeScore": null,
       "homeTeamId": 573,
       "inningHalf": null,
@@ -630,6 +638,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T15:40:54.659393+00:00",
+  "generatedAt": "2026-09-01T16:26:24.876990+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
