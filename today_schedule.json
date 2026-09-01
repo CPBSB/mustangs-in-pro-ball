@@ -48,7 +48,11 @@
     {
       "abstractState": null,
       "away": "Jupiter Hammerheads",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Dameivi Tineo",
+        "id": 702419,
+        "link": "/api/v1/people/702419"
+      },
       "awayScore": null,
       "awayTeamId": 479,
       "balls": null,
@@ -638,6 +642,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T17:21:21.199641+00:00",
+  "generatedAt": "2026-09-01T17:30:14.856660+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
