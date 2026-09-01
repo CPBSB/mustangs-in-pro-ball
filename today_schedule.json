@@ -166,7 +166,7 @@
       "playerId": 701696,
       "secondOccupied": false,
       "sportId": 13,
-      "status": "Suspended: Inclement Weather",
+      "status": "In Progress",
       "strikes": 0,
       "team": "Frederick Keys",
       "thirdOccupied": true,
@@ -650,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T21:24:47.809472+00:00",
+  "generatedAt": "2026-09-01T21:32:36.750220+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
