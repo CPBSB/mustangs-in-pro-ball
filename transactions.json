@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-01T14:33:11.769704+00:00",
+  "generatedAt": "2026-09-01T14:49:34.610480+00:00",
   "transactions": [
+    {
+      "date": "2026-08-29",
+      "description": "Great Lakes Loons transferred LHP Jakob Wright from the 7-day injured list to the 60-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Jakob Wright",
+      "playerId": 809915
+    },
     {
       "date": "2026-08-25",
       "description": "Frederick Keys activated C Ryan Stafford from the 7-day injured list.",

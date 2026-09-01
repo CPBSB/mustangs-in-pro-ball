@@ -500,7 +500,11 @@
     {
       "abstractState": null,
       "away": "Portland Sea Dogs",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Dalton Rogers",
+        "id": 800059,
+        "link": "/api/v1/people/800059"
+      },
       "awayScore": null,
       "awayTeamId": 546,
       "balls": null,
@@ -618,6 +622,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T14:33:10.597002+00:00",
+  "generatedAt": "2026-09-01T14:49:33.713343+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
