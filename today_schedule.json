@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -176,7 +176,11 @@
     {
       "abstractState": null,
       "away": "Frederick Keys",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Harrison Kreiling",
+        "id": 801653,
+        "link": "/api/v1/people/801653"
+      },
       "awayScore": null,
       "awayTeamId": 493,
       "balls": null,
@@ -646,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T18:30:06.486116+00:00",
+  "generatedAt": "2026-09-01T18:42:25.071410+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
