@@ -408,7 +408,11 @@
     {
       "abstractState": null,
       "away": "Springfield Cardinals",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Tanner Franklin",
+        "id": 815119,
+        "link": "/api/v1/people/815119"
+      },
       "awayScore": null,
       "awayTeamId": 440,
       "balls": null,
@@ -606,6 +610,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-01T12:09:44.353222+00:00",
+  "generatedAt": "2026-09-01T12:27:56.450703+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
