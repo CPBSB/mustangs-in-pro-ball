@@ -2,7 +2,7 @@
   "date": "2026-08-31",
   "games": [
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Detroit Tigers",
       "awayProbablePitcher": {
         "fullName": "Jackson Jobe",
@@ -15,7 +15,7 @@
       "currentBatter": "Eduardo Valencia",
       "currentInning": 9,
       "currentPitcher": "Tommy Nance",
-      "defenseTeam": "Detroit Tigers",
+      "defenseTeam": "Minnesota Twins",
       "firstOccupied": false,
       "gameDate": "2026-08-31T23:40:00Z",
       "gamePk": 823663,
@@ -28,17 +28,17 @@
       "homeScore": 11,
       "homeTeamId": 142,
       "inningHalf": "Top",
-      "inningState": "Middle",
+      "inningState": "Top",
       "level": "MLB",
       "liveLine": "1-for-5, 3 RBI",
-      "offenseTeam": "Minnesota Twins",
+      "offenseTeam": "Detroit Tigers",
       "opponent": "Detroit Tigers",
       "outs": 3,
       "player": "Brooks Lee",
       "playerId": 686797,
       "secondOccupied": false,
       "sportId": 1,
-      "status": "In Progress",
+      "status": "Final",
       "strikes": 3,
       "team": "Minnesota Twins",
       "thirdOccupied": false,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-09-01T02:08:56.716438+00:00",
+  "generatedAt": "2026-09-01T02:21:52.744183+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
