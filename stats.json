@@ -195,13 +195,13 @@
         "stats": {
           "BB": 8,
           "ER": 19,
-          "ERA": "5.03",
+          "ERA": "4.93",
           "G": 7,
           "H": 30,
-          "IP": "34.0",
+          "IP": "34.2",
           "R": 19,
           "SO": 36,
-          "WHIP": "1.12"
+          "WHIP": "1.10"
         }
       },
       "name": "Bryan Woo",
@@ -211,9 +211,9 @@
       "stats": {
         "BB": 30,
         "ER": 70,
-        "ERA": "4.36",
+        "ERA": "4.34",
         "H": 128,
-        "IP": "144.1",
+        "IP": "145.0",
         "R": 74,
         "SO": 145,
         "WHIP": "1.09"
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-01T23:37:44.135134+00:00",
+  "updatedAt": "2026-09-01T23:43:54.459128+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
