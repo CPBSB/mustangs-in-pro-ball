@@ -275,10 +275,10 @@
       },
       "awayScore": 0,
       "awayTeamId": 144,
-      "balls": 0,
-      "currentBatter": "Sean Murphy",
+      "balls": 1,
+      "currentBatter": "Mike Yastrzemski",
       "currentInning": 4,
-      "currentPitcher": "Brad Lord",
+      "currentPitcher": "Riley Cornelio",
       "defenseTeam": "Washington Nationals",
       "firstOccupied": true,
       "gameDate": "2026-09-02T17:05:00Z",
@@ -297,12 +297,12 @@
       "liveLine": null,
       "offenseTeam": "Atlanta Braves",
       "opponent": "Atlanta Braves",
-      "outs": 1,
+      "outs": 2,
       "player": "Andrew Alvarez",
       "playerId": 674841,
       "secondOccupied": true,
       "sportId": 1,
-      "status": "Delayed: Inclement Weather",
+      "status": "In Progress",
       "strikes": 0,
       "team": "Washington Nationals",
       "thirdOccupied": true,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-02T19:14:17.721381+00:00",
+  "generatedAt": "2026-09-02T19:24:00.009731+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
