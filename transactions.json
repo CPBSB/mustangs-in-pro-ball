@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-02T18:07:07.487909+00:00",
+  "generatedAt": "2026-09-02T18:25:14.197542+00:00",
   "transactions": [
+    {
+      "date": "2026-09-02",
+      "description": "Everett AquaSox placed RHP Taylor Dollard on the 7-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Taylor Dollard",
+      "playerId": 693440
+    },
     {
       "date": "2026-08-29",
       "description": "Great Lakes Loons transferred LHP Jakob Wright from the 7-day injured list to the 60-day injured list.",
