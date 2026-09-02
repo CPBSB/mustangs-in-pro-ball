@@ -269,7 +269,7 @@
         "id": 656550,
         "link": "/api/v1/people/656550"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 144,
       "balls": null,
       "currentBatter": null,
@@ -285,7 +285,7 @@
         "id": 695418,
         "link": "/api/v1/people/695418"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -610,6 +610,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-02T14:53:16.420679+00:00",
+  "generatedAt": "2026-09-02T15:06:30.601064+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
