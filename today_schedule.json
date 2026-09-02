@@ -642,7 +642,7 @@
       "playerId": 701693,
       "secondOccupied": false,
       "sportId": 14,
-      "status": "Game Over",
+      "status": "Final",
       "strikes": 3,
       "team": "Fresno Grizzlies",
       "thirdOccupied": false,
@@ -650,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-02T04:52:36.781472+00:00",
+  "generatedAt": "2026-09-02T04:59:50.994700+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
