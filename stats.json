@@ -70,20 +70,20 @@
         "stats": {
           "2B": 1,
           "3B": 0,
-          "AB": 27,
-          "AVG": ".259",
+          "AB": 28,
+          "AVG": ".250",
           "BB": 0,
           "CS": 1,
           "G": 7,
           "H": 7,
           "HR": 2,
-          "OBP": ".259",
-          "OPS": ".778",
+          "OBP": ".250",
+          "OPS": ".750",
           "R": 3,
           "RBI": 7,
           "SB": 0,
-          "SLG": ".519",
-          "SO": 4
+          "SLG": ".500",
+          "SO": 5
         }
       },
       "name": "Brooks Lee",
@@ -93,19 +93,19 @@
       "stats": {
         "2B": 21,
         "3B": 3,
-        "AB": 493,
+        "AB": 494,
         "AVG": ".247",
         "BB": 33,
         "CS": 5,
         "H": 122,
         "HR": 22,
         "OBP": ".298",
-        "OPS": ".734",
+        "OPS": ".733",
         "R": 61,
         "RBI": 76,
         "SB": 7,
-        "SLG": ".436",
-        "SO": 86
+        "SLG": ".435",
+        "SO": 87
       },
       "statsSource": "seasonSummary",
       "team": "Minnesota Twins",
@@ -195,13 +195,13 @@
         "stats": {
           "BB": 9,
           "ER": 19,
-          "ERA": "4.75",
+          "ERA": "4.62",
           "G": 7,
           "H": 32,
-          "IP": "36.0",
+          "IP": "37.0",
           "R": 19,
-          "SO": 37,
-          "WHIP": "1.14"
+          "SO": 39,
+          "WHIP": "1.11"
         }
       },
       "name": "Bryan Woo",
@@ -211,12 +211,12 @@
       "stats": {
         "BB": 31,
         "ER": 70,
-        "ERA": "4.31",
+        "ERA": "4.28",
         "H": 130,
-        "IP": "146.1",
+        "IP": "147.1",
         "R": 74,
-        "SO": 146,
-        "WHIP": "1.10"
+        "SO": 148,
+        "WHIP": "1.09"
       },
       "statsSource": "seasonSummary",
       "team": "Seattle Mariners",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-02T00:30:35.189446+00:00",
+  "updatedAt": "2026-09-02T00:45:39.505180+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
