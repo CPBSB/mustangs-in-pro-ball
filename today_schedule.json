@@ -610,13 +610,13 @@
       "venue": "Avista Stadium"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "San Jose Giants",
       "awayProbablePitcher": null,
       "awayScore": 8,
       "awayTeamId": 476,
-      "balls": 0,
-      "currentBatter": "Sebastian Blanco",
+      "balls": 3,
+      "currentBatter": "Cristian Arguelles",
       "currentInning": 9,
       "currentPitcher": "Dylan Carter",
       "defenseTeam": "San Jose Giants",
@@ -637,19 +637,19 @@
       "liveLine": null,
       "offenseTeam": "Fresno Grizzlies",
       "opponent": "San Jose Giants",
-      "outs": 0,
+      "outs": 3,
       "player": "Tanner Sagouspe",
       "playerId": 701693,
       "secondOccupied": false,
       "sportId": 14,
-      "status": "In Progress",
-      "strikes": 0,
+      "status": "Game Over",
+      "strikes": 3,
       "team": "Fresno Grizzlies",
       "thirdOccupied": false,
       "timeLabel": "2026-09-02T01:50:00Z",
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-02T04:32:16.766487+00:00",
+  "generatedAt": "2026-09-02T04:44:15.681414+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
