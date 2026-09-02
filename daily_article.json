@@ -2,32 +2,43 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Zach Daudet went 0-for-1, 1 RBI, 1 run, 4 walks.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Asheville Tourists",
+      "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Zach Daudet went 0-for-1, 1 RBI, 1 run, 4 walks.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Asheville Tourists",
+      "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+      "player": "Ryan Tayman",
+      "playerId": 822034,
+      "team": "St. Lucie Mets",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Bryan Woo worked 6.0 IP, allowing 5 H, 2 R (1 ER) and 1 BB with 7 K and earned the win.",
+      "player": "Bryan Woo",
+      "playerId": 693433,
+      "team": "Seattle Mariners",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-08-29",
-  "dateLabel": "Saturday, August 29, 2026",
+  "date": "2026-09-01",
+  "dateLabel": "Tuesday, September 1, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "3 former Mustangs appeared in professional games on Saturday for 3 clubs across 3 levels, with Zach Daudet producing the night's most notable performance.",
-    "Zach Daudet drove in his lone run with a walk in the seventh on a 3-2 pitch from Teddy Sharkey.",
-    "Zach Daudet went 0-for-1, 1 RBI, 1 run scored, 4 walks.",
-    "He batted fifth and started at shortstop.",
-    "Asheville Tourists fell to Frederick Keys, 7-8.",
-    "Alejandro Garza went 1-for-4, 1 run scored, 1 walk for Hill City Howlers at Single-A. He batted first and started at designated hitter. Hill City Howlers fell to Kannapolis Cannon Ballers, 5-7.",
-    "Brooks Lee went 0-for-4 for Minnesota Twins. He batted second and started at third base. Minnesota Twins fell to Chicago White Sox, 2-3."
+    "6 former Mustangs appeared in professional games on Tuesday for 6 clubs across 3 levels, with Ryan Tayman producing the night's most notable performance.",
+    "Ryan Tayman's home run \u2014 his 3th of the season came in the seventh inning on a 1-0 91 mph four-seam fastball from Janero Miller. The swing moved the score from 3-6 to 6-6. Statcast measured the ball at 106.7 mph off the bat, a 22-degree launch angle, 393 feet.",
+    "Ryan Tayman went 1-for-3, 1 home run, 3 RBI, 2 runs scored, 1 walk.",
+    "He batted second and started behind the plate.",
+    "St. Lucie Mets beat Jupiter Hammerheads, 7-6.",
+    "Bryan Woo started on the mound for Seattle Mariners. He worked 6.0 innings, allowing 5 hits and 1 earned run, with 1 walk and 7 strikeouts. One of his strikeouts came in the third on a 2-2 97 mph sinker, when he put away Ceddanne Rafaela. Seattle Mariners beat Boston Red Sox, 9-6.",
+    "Alejandro Garza went 2-for-4, 1 double, 2 RBI for Hill City Howlers at Single-A. Alejandro Garza drove in 1 run with a double in the second to left field on a 2-2 pitch from Ethan Walker. Alejandro Garza drove in 1 run with a sacrifice fly in the fourth to right field on a 3-1 pitch from Carson Revay. He batted first and started at second base. Hill City Howlers fell to Salem RidgeYaks, 7-8.",
+    "Brooks Lee went 0-for-3, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a sacrifice fly in the sixth to deep center field on a 3-1 96 mph four-seam fastball from Kyle Finnegan. He batted second and started at third base. Minnesota Twins beat Detroit Tigers, 15-2.",
+    "Ryan Stafford went 0-for-3 for Frederick Keys at High-A. He batted eighth and started behind the plate. Frederick Keys beat Brooklyn Cyclones, 6-4.",
+    "Zach Daudet went 0-for-3 for Asheville Tourists at High-A. He batted seventh and started at shortstop. Asheville Tourists fell to Greensboro Grasshoppers, 0-15."
   ],
-  "title": "Zach Daudet highlights a busy Saturday for former Mustangs"
+  "title": "Ryan Tayman delivers in a key spot"
 }

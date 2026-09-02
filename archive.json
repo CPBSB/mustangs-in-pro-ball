@@ -3,6 +3,129 @@
     {
       "appearances": [
         {
+          "gamePk": 823661,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-3, 1 RBI.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 820309,
+          "level": "Single-A",
+          "name": "Ryan Tayman",
+          "playerId": 822034,
+          "summary": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+          "team": "St. Lucie Mets"
+        },
+        {
+          "gamePk": 826833,
+          "level": "Single-A",
+          "name": "Alejandro Garza",
+          "playerId": 835211,
+          "summary": "Alejandro Garza went 2-for-4, 2B, 2 RBI.",
+          "team": "Hill City Howlers"
+        },
+        {
+          "gamePk": 822327,
+          "level": "High-A",
+          "name": "Ryan Stafford",
+          "playerId": 701696,
+          "summary": "Ryan Stafford went 0-for-3.",
+          "team": "Frederick Keys"
+        },
+        {
+          "gamePk": 822459,
+          "level": "High-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 0-for-3.",
+          "team": "Asheville Tourists"
+        },
+        {
+          "gamePk": 824716,
+          "level": "MLB",
+          "name": "Bryan Woo",
+          "playerId": 693433,
+          "summary": "Bryan Woo worked 6.0 IP, allowing 5 H, 2 R (1 ER) and 1 BB with 7 K and earned the win.",
+          "team": "Seattle Mariners"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+          "player": "Ryan Tayman",
+          "playerId": 822034,
+          "team": "St. Lucie Mets",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+          "player": "Ryan Tayman",
+          "playerId": 822034,
+          "team": "St. Lucie Mets",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Bryan Woo worked 6.0 IP, allowing 5 H, 2 R (1 ER) and 1 BB with 7 K and earned the win.",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "team": "Seattle Mariners",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-01",
+      "dateLabel": "Tuesday, September 1, 2026",
+      "generatedAt": "2026-09-02T10:26:45.655507+00:00",
+      "highlights": [
+        {
+          "description": "Brooks Lee's RBI sac fly",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/rugb3gmbgcry0j6ihwk6.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's RBI sac fly",
+          "url": "https://bdata-producedclips.mlb.com/18ee15e6-6d8a-4396-92ec-7d71ad414c0a.m3u8"
+        },
+        {
+          "description": "Mariners starter Bryan Woo sits down seven and allows one earned run over six innings of work against the Red Sox",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/biintm11euv5bdsqavmy.jpg",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Bryan Woo strikes out seven over six innings of work",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/01/d26b0f56-92133b34-a5be16f5-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Mariners starter Bryan Woo gets Roman Anthony to strikeout swinging on the sinker for his first K of the outing",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/evs4lk4ttptbfu6z0khb.jpg",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Bryan Woo's first strikeout of the game",
+          "url": "https://bdata-producedclips.mlb.com/60278ea1-af28-4492-84e9-e108103b9015.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "6 former Mustangs appeared in professional games on Tuesday for 6 clubs across 3 levels, with Ryan Tayman producing the night's most notable performance.",
+        "Ryan Tayman's home run \u2014 his 3th of the season came in the seventh inning on a 1-0 91 mph four-seam fastball from Janero Miller. The swing moved the score from 3-6 to 6-6. Statcast measured the ball at 106.7 mph off the bat, a 22-degree launch angle, 393 feet.",
+        "Ryan Tayman went 1-for-3, 1 home run, 3 RBI, 2 runs scored, 1 walk.",
+        "He batted second and started behind the plate.",
+        "St. Lucie Mets beat Jupiter Hammerheads, 7-6.",
+        "Bryan Woo started on the mound for Seattle Mariners. He worked 6.0 innings, allowing 5 hits and 1 earned run, with 1 walk and 7 strikeouts. One of his strikeouts came in the third on a 2-2 97 mph sinker, when he put away Ceddanne Rafaela. Seattle Mariners beat Boston Red Sox, 9-6.",
+        "Alejandro Garza went 2-for-4, 1 double, 2 RBI for Hill City Howlers at Single-A. Alejandro Garza drove in 1 run with a double in the second to left field on a 2-2 pitch from Ethan Walker. Alejandro Garza drove in 1 run with a sacrifice fly in the fourth to right field on a 3-1 pitch from Carson Revay. He batted first and started at second base. Hill City Howlers fell to Salem RidgeYaks, 7-8.",
+        "Brooks Lee went 0-for-3, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a sacrifice fly in the sixth to deep center field on a 3-1 96 mph four-seam fastball from Kyle Finnegan. He batted second and started at third base. Minnesota Twins beat Detroit Tigers, 15-2.",
+        "Ryan Stafford went 0-for-3 for Frederick Keys at High-A. He batted eighth and started behind the plate. Frederick Keys beat Brooklyn Cyclones, 6-4.",
+        "Zach Daudet went 0-for-3 for Asheville Tourists at High-A. He batted seventh and started at shortstop. Asheville Tourists fell to Greensboro Grasshoppers, 0-15."
+      ],
+      "title": "Ryan Tayman delivers in a key spot"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823665,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -494,5 +617,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-08-30T10:20:29.400597+00:00"
+  "updatedAt": "2026-09-02T10:26:45.655519+00:00"
 }
