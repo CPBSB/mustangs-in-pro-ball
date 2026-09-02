@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T06:54:22.139751+00:00",
+  "generatedAt": "2026-09-02T07:01:02.948102+00:00",
   "transactions": [
     {
       "date": "2026-08-29",
@@ -16,14 +16,6 @@
       "label": "Injured List",
       "player": "Ryan Stafford",
       "playerId": 701696
-    },
-    {
-      "date": "2026-08-18",
-      "description": "RHP Tanner Sagouspe assigned to Fresno Grizzlies from ACL Rockies.",
-      "kind": "assignment",
-      "label": "Assignment",
-      "player": "Tanner Sagouspe",
-      "playerId": 701693
     }
   ]
 }
