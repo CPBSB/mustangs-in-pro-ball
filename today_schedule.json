@@ -95,12 +95,12 @@
       },
       "awayScore": 1,
       "awayTeamId": 493,
-      "balls": 0,
-      "currentBatter": "Braylin Tavera",
-      "currentInning": 1,
+      "balls": 1,
+      "currentBatter": "Braylon Whitaker",
+      "currentInning": 2,
       "currentPitcher": "Joel D\u00edaz",
       "defenseTeam": "Brooklyn Cyclones",
-      "firstOccupied": true,
+      "firstOccupied": false,
       "gameDate": "2026-09-03T20:00:00Z",
       "gamePk": 822322,
       "home": "Brooklyn Cyclones",
@@ -117,15 +117,15 @@
       "liveLine": null,
       "offenseTeam": "Frederick Keys",
       "opponent": "Brooklyn Cyclones",
-      "outs": 1,
+      "outs": 2,
       "player": "Ryan Stafford",
       "playerId": 701696,
       "secondOccupied": false,
       "sportId": 13,
       "status": "In Progress",
-      "strikes": 0,
+      "strikes": 1,
       "team": "Frederick Keys",
-      "thirdOccupied": true,
+      "thirdOccupied": false,
       "timeLabel": "2026-09-03T20:00:00Z",
       "venue": "Maimonides Park"
     },
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T20:06:04.196413+00:00",
+  "generatedAt": "2026-09-03T20:19:20.177925+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
