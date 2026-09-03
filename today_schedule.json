@@ -20,7 +20,11 @@
       "gameDate": "2026-09-03T22:10:00Z",
       "gamePk": 820307,
       "home": "St. Lucie Mets",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Nathan Hall",
+        "id": 807937,
+        "link": "/api/v1/people/807937"
+      },
       "homeScore": null,
       "homeTeamId": 507,
       "inningHalf": null,
@@ -562,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T18:56:04.430885+00:00",
+  "generatedAt": "2026-09-03T19:03:07.665831+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
