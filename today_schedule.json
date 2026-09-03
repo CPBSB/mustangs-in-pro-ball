@@ -95,8 +95,8 @@
       },
       "awayScore": 5,
       "awayTeamId": 493,
-      "balls": 0,
-      "currentBatter": "Trey Snyder",
+      "balls": 2,
+      "currentBatter": "Colin Houck",
       "currentInning": 5,
       "currentPitcher": "Stephen Still",
       "defenseTeam": "Frederick Keys",
@@ -109,7 +109,7 @@
         "id": 699309,
         "link": "/api/v1/people/699309"
       },
-      "homeScore": 3,
+      "homeScore": 6,
       "homeTeamId": 453,
       "inningHalf": "Bottom",
       "inningState": "Bottom",
@@ -123,7 +123,7 @@
       "secondOccupied": false,
       "sportId": 13,
       "status": "In Progress",
-      "strikes": 0,
+      "strikes": 3,
       "team": "Frederick Keys",
       "thirdOccupied": false,
       "timeLabel": "2026-09-03T20:00:00Z",
@@ -474,7 +474,7 @@
       "playerId": 809933,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Portland Sea Dogs",
       "thirdOccupied": null,
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T21:33:22.898615+00:00",
+  "generatedAt": "2026-09-03T21:42:11.504868+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
