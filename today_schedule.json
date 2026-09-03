@@ -536,7 +536,11 @@
       "gameDate": "2026-09-04T01:50:00Z",
       "gamePk": 821355,
       "home": "Fresno Grizzlies",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Izeah Muniz",
+        "id": 701698,
+        "link": "/api/v1/people/701698"
+      },
       "homeScore": null,
       "homeTeamId": 259,
       "inningHalf": null,
@@ -558,6 +562,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T15:32:27.281808+00:00",
+  "generatedAt": "2026-09-03T15:43:33.734439+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
