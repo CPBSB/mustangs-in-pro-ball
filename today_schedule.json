@@ -122,7 +122,7 @@
       "playerId": 701696,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Frederick Keys",
       "thirdOccupied": null,
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T19:30:37.578595+00:00",
+  "generatedAt": "2026-09-03T19:37:35.017489+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
