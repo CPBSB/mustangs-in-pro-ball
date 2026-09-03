@@ -122,7 +122,7 @@
       "playerId": 701696,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Frederick Keys",
       "thirdOccupied": null,
@@ -306,7 +306,7 @@
       "venue": "Classic Auto Group Park"
     },
     {
-      "abstractState": null,
+      "abstractState": "Final",
       "away": "Lake County Captains",
       "awayProbablePitcher": {
         "fullName": "Will McCausland",
@@ -319,8 +319,8 @@
       "currentBatter": null,
       "currentInning": null,
       "currentPitcher": null,
-      "defenseTeam": null,
-      "firstOccupied": null,
+      "defenseTeam": "Lake County Captains",
+      "firstOccupied": false,
       "gameDate": "2026-09-03T20:05:00Z",
       "gamePk": 819938,
       "home": "Great Lakes Loons",
@@ -335,17 +335,17 @@
       "inningState": null,
       "level": "High-A",
       "liveLine": null,
-      "offenseTeam": null,
+      "offenseTeam": "Great Lakes Loons",
       "opponent": "Lake County Captains",
       "outs": null,
       "player": "Jakob Wright",
       "playerId": 809915,
-      "secondOccupied": null,
+      "secondOccupied": false,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Postponed",
       "strikes": null,
       "team": "Great Lakes Loons",
-      "thirdOccupied": null,
+      "thirdOccupied": false,
       "timeLabel": "2026-09-03T20:05:00Z",
       "venue": "Classic Auto Group Park"
     },
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-03T19:03:07.665831+00:00",
+  "generatedAt": "2026-09-03T19:14:57.473403+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
