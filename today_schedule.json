@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -658,6 +658,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T19:52:57.637421+00:00",
+  "generatedAt": "2026-09-04T19:59:37.005230+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
