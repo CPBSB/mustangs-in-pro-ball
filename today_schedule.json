@@ -181,10 +181,10 @@
         "id": 678022,
         "link": "/api/v1/people/678022"
       },
-      "awayScore": 6,
+      "awayScore": 7,
       "awayTeamId": 133,
       "balls": 0,
-      "currentBatter": "Jonah Heim",
+      "currentBatter": "Brian Serven",
       "currentInning": 9,
       "currentPitcher": "Hoby Milner",
       "defenseTeam": "Seattle Mariners",
@@ -205,13 +205,13 @@
       "liveLine": null,
       "offenseTeam": "Athletics",
       "opponent": "Athletics",
-      "outs": 1,
+      "outs": 2,
       "player": "Bryan Woo",
       "playerId": 693433,
-      "secondOccupied": false,
+      "secondOccupied": true,
       "sportId": 1,
       "status": "In Progress",
-      "strikes": 0,
+      "strikes": 1,
       "team": "Seattle Mariners",
       "thirdOccupied": false,
       "timeLabel": "2026-09-04T01:40:00Z",
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T04:52:31.180976+00:00",
+  "generatedAt": "2026-09-04T04:58:23.491193+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
