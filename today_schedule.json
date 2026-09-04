@@ -369,9 +369,9 @@
       "gamePk": 819844,
       "home": "Lake County Captains",
       "homeProbablePitcher": {
-        "fullName": "Nelson Keljo",
-        "id": 804940,
-        "link": "/api/v1/people/804940"
+        "fullName": "Jackson Humphries",
+        "id": 703469,
+        "link": "/api/v1/people/703469"
       },
       "homeScore": null,
       "homeTeamId": 437,
@@ -408,7 +408,11 @@
       "gameDate": "2026-09-04T21:05:00Z",
       "gamePk": 819843,
       "home": "Lake County Captains",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Will McCausland",
+        "id": 823790,
+        "link": "/api/v1/people/823790"
+      },
       "homeScore": null,
       "homeTeamId": 437,
       "inningHalf": null,
@@ -521,9 +525,9 @@
       "abstractState": null,
       "away": "Portland Sea Dogs",
       "awayProbablePitcher": {
-        "fullName": "Michael Sansone",
-        "id": 806333,
-        "link": "/api/v1/people/806333"
+        "fullName": "Morgan McSweeney",
+        "id": 669682,
+        "link": "/api/v1/people/669682"
       },
       "awayScore": null,
       "awayTeamId": 546,
@@ -646,6 +650,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T15:13:00.489670+00:00",
+  "generatedAt": "2026-09-04T15:26:19.182276+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
