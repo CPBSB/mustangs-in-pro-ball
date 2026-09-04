@@ -297,22 +297,22 @@
       "type": "pitcher"
     },
     "701693": {
-      "assignmentDate": "2026-08-30",
+      "assignmentDate": "2026-09-03",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-30",
-        "games": 4,
+        "endDate": "2026-09-03",
+        "games": 5,
         "startDate": "2026-08-20",
         "stats": {
           "BB": 1,
           "ER": 2,
-          "ERA": "4.50",
-          "G": 4,
-          "H": 2,
-          "IP": "4.0",
+          "ERA": "3.60",
+          "G": 5,
+          "H": 3,
+          "IP": "5.0",
           "R": 2,
-          "SO": 6,
-          "WHIP": "0.75"
+          "SO": 8,
+          "WHIP": "0.80"
         }
       },
       "name": "Tanner Sagouspe",
@@ -322,12 +322,12 @@
       "stats": {
         "BB": 1,
         "ER": 2,
-        "ERA": "4.50",
-        "H": 2,
-        "IP": "4.0",
+        "ERA": "3.60",
+        "H": 3,
+        "IP": "5.0",
         "R": 2,
-        "SO": 6,
-        "WHIP": "0.75"
+        "SO": 8,
+        "WHIP": "0.80"
       },
       "statsSource": "seasonSummary",
       "team": "Fresno Grizzlies",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-04T04:32:48.825304+00:00",
+  "updatedAt": "2026-09-04T04:43:24.111795+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
