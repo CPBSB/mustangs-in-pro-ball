@@ -324,7 +324,11 @@
       "gameDate": "2026-09-04T23:05:00Z",
       "gamePk": 816612,
       "home": "Gwinnett Stripers",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Garrett Baumann",
+        "id": 803833,
+        "link": "/api/v1/people/803833"
+      },
       "homeScore": null,
       "homeTeamId": 431,
       "inningHalf": null,
@@ -642,6 +646,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T12:58:41.536480+00:00",
+  "generatedAt": "2026-09-04T13:09:30.491019+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
