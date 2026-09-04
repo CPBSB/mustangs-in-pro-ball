@@ -64,7 +64,11 @@
       "gameDate": "2026-09-04T22:10:00Z",
       "gamePk": 820310,
       "home": "St. Lucie Mets",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Peyton Prescott",
+        "id": 807290,
+        "link": "/api/v1/people/807290"
+      },
       "homeScore": null,
       "homeTeamId": 507,
       "inningHalf": null,
@@ -353,9 +357,9 @@
       "abstractState": null,
       "away": "Great Lakes Loons",
       "awayProbablePitcher": {
-        "fullName": "Cam Leiter",
-        "id": 804942,
-        "link": "/api/v1/people/804942"
+        "fullName": "Sterling Patick",
+        "id": 814507,
+        "link": "/api/v1/people/814507"
       },
       "awayScore": null,
       "awayTeamId": 456,
@@ -396,7 +400,11 @@
     {
       "abstractState": null,
       "away": "Great Lakes Loons",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Brooks Auger",
+        "id": 824624,
+        "link": "/api/v1/people/824624"
+      },
       "awayScore": null,
       "awayTeamId": 456,
       "balls": null,
@@ -650,6 +658,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T16:57:08.202494+00:00",
+  "generatedAt": "2026-09-04T17:06:20.196246+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
