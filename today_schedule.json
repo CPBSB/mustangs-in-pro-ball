@@ -210,7 +210,7 @@
       "playerId": 693433,
       "secondOccupied": false,
       "sportId": 1,
-      "status": "Game Over",
+      "status": "Final",
       "strikes": 3,
       "team": "Seattle Mariners",
       "thirdOccupied": false,
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T05:08:46.474046+00:00",
+  "generatedAt": "2026-09-04T05:20:39.663508+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
