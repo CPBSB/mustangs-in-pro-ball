@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+      "line": "Ryan Tayman went 3-for-4, HR, 2B, 2 RBI, 1 run.",
       "player": "Ryan Tayman",
       "playerId": 822034,
       "team": "St. Lucie Mets",
@@ -10,7 +10,7 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Ryan Tayman went 1-for-3, HR, 3 RBI, 2 runs, 1 walk.",
+      "line": "Ryan Tayman went 3-for-4, HR, 2B, 2 RBI, 1 run.",
       "player": "Ryan Tayman",
       "playerId": 822034,
       "team": "St. Lucie Mets",
@@ -18,27 +18,27 @@
     },
     {
       "label": "Top Pitcher",
-      "line": "Bryan Woo worked 6.0 IP, allowing 5 H, 2 R (1 ER) and 1 BB with 7 K and earned the win.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
+      "line": "Tanner Sagouspe worked 1.0 IP, allowing 1 H, 0 R (0 ER) and 0 BB with 2 K.",
+      "player": "Tanner Sagouspe",
+      "playerId": 701693,
+      "team": "Fresno Grizzlies",
       "type": "pitcher"
     }
   ],
-  "date": "2026-09-01",
-  "dateLabel": "Tuesday, September 1, 2026",
+  "date": "2026-09-03",
+  "dateLabel": "Thursday, September 3, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "6 former Mustangs appeared in professional games on Tuesday for 6 clubs across 3 levels, with Ryan Tayman producing the night's most notable performance.",
-    "Ryan Tayman's home run \u2014 his 3th of the season came in the seventh inning on a 1-0 91 mph four-seam fastball from Janero Miller. The swing moved the score from 3-6 to 6-6. Statcast measured the ball at 106.7 mph off the bat, a 22-degree launch angle, 393 feet.",
-    "Ryan Tayman went 1-for-3, 1 home run, 3 RBI, 2 runs scored, 1 walk.",
-    "He batted second and started behind the plate.",
-    "St. Lucie Mets beat Jupiter Hammerheads, 7-6.",
-    "Bryan Woo started on the mound for Seattle Mariners. He worked 6.0 innings, allowing 5 hits and 1 earned run, with 1 walk and 7 strikeouts. One of his strikeouts came in the third on a 2-2 97 mph sinker, when he put away Ceddanne Rafaela. Seattle Mariners beat Boston Red Sox, 9-6.",
-    "Alejandro Garza went 2-for-4, 1 double, 2 RBI for Hill City Howlers at Single-A. Alejandro Garza drove in 1 run with a double in the second to left field on a 2-2 pitch from Ethan Walker. Alejandro Garza drove in 1 run with a sacrifice fly in the fourth to right field on a 3-1 pitch from Carson Revay. He batted first and started at second base. Hill City Howlers fell to Salem RidgeYaks, 7-8.",
-    "Brooks Lee went 0-for-3, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a sacrifice fly in the sixth to deep center field on a 3-1 96 mph four-seam fastball from Kyle Finnegan. He batted second and started at third base. Minnesota Twins beat Detroit Tigers, 15-2.",
-    "Ryan Stafford went 0-for-3 for Frederick Keys at High-A. He batted eighth and started behind the plate. Frederick Keys beat Brooklyn Cyclones, 6-4.",
-    "Zach Daudet went 0-for-3 for Asheville Tourists at High-A. He batted seventh and started at shortstop. Asheville Tourists fell to Greensboro Grasshoppers, 0-15."
+    "5 former Mustangs appeared in professional games on Thursday for 5 clubs across 2 levels, with Ryan Tayman producing the night's most notable performance.",
+    "Ryan Tayman put his club in front in the first with a go-ahead double to deep left field on a 1-0 92 mph four-seam fastball from Jake Clemente, changing the score from 0-0 to 1-0.",
+    "Ryan Tayman's home run \u2014 his 4th of the season came in the sixth inning on a 2-2 81 mph slider from Yenfri Sosa. The swing moved the score from 2-2 to 3-2. Statcast measured the ball at 92.8 mph off the bat, a 37-degree launch angle, 361 feet.",
+    "Ryan Tayman went 3-for-4, 1 home run, 1 double, 2 RBI, 1 run scored.",
+    "He batted third and started behind the plate.",
+    "St. Lucie Mets fell to Jupiter Hammerheads, 3-5.",
+    "Ryan Stafford went 2-for-3, 1 double, 1 run scored, 1 walk for Frederick Keys at High-A. Ryan Stafford produced a double in the fifth to right field on a 3-1 pitch from Gregori Louis. He batted ninth and started behind the plate. Frederick Keys fell to Brooklyn Cyclones, 5-12.",
+    "Tanner Sagouspe came on in relief for Fresno Grizzlies in the top of the ninth with nobody out. He worked 1.0 innings, allowing 1 hit and 0 earned runs, striking out 2 without issuing a walk. One of his strikeouts came in the ninth on a 2-2 pitch, when he put away Oliver Tejada. Fresno Grizzlies fell to San Jose Giants, 5-8.",
+    "Alejandro Garza went 0-for-3, 1 walk, 1 stolen base for Hill City Howlers at Single-A. He batted second and started at second base. Hill City Howlers beat Salem RidgeYaks, 1-0.",
+    "Zach Daudet went 0-for-2, 1 run scored, 2 walks for Asheville Tourists at High-A. He batted fifth and started at third base. Asheville Tourists fell to Greensboro Grasshoppers, 5-6."
   ],
-  "title": "Ryan Tayman delivers in a key spot"
+  "title": "Ryan Tayman comes through late with a go-ahead hit"
 }
