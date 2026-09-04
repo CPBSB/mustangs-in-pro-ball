@@ -390,7 +390,7 @@
       "playerId": 809915,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Great Lakes Loons",
       "thirdOccupied": null,
@@ -658,6 +658,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T20:09:38.013527+00:00",
+  "generatedAt": "2026-09-04T20:22:05.995310+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
