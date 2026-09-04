@@ -461,9 +461,9 @@
       "gamePk": 817467,
       "home": "Corpus Christi Hooks",
       "homeProbablePitcher": {
-        "fullName": "Andrew Taylor",
-        "id": 800063,
-        "link": "/api/v1/people/800063"
+        "fullName": "Alejandro Torres",
+        "id": 687776,
+        "link": "/api/v1/people/687776"
       },
       "homeScore": null,
       "homeTeamId": 482,
@@ -658,6 +658,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T19:59:37.005230+00:00",
+  "generatedAt": "2026-09-04T20:09:38.013527+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
