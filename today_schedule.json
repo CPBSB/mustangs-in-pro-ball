@@ -174,7 +174,7 @@
       "venue": "HomeTrust Park"
     },
     {
-      "abstractState": "Live",
+      "abstractState": "Final",
       "away": "Athletics",
       "awayProbablePitcher": {
         "fullName": "Jack Perkins",
@@ -184,10 +184,10 @@
       "awayScore": 7,
       "awayTeamId": 133,
       "balls": 0,
-      "currentBatter": "Brian Serven",
+      "currentBatter": "Taylor Ward",
       "currentInning": 9,
-      "currentPitcher": "Hoby Milner",
-      "defenseTeam": "Seattle Mariners",
+      "currentPitcher": "Hogan Harris",
+      "defenseTeam": "Athletics",
       "firstOccupied": false,
       "gameDate": "2026-09-04T01:40:00Z",
       "gamePk": 823095,
@@ -199,19 +199,19 @@
       },
       "homeScore": 4,
       "homeTeamId": 136,
-      "inningHalf": "Top",
-      "inningState": "Top",
+      "inningHalf": "Bottom",
+      "inningState": "Bottom",
       "level": "MLB",
       "liveLine": null,
-      "offenseTeam": "Athletics",
+      "offenseTeam": "Seattle Mariners",
       "opponent": "Athletics",
-      "outs": 2,
+      "outs": 3,
       "player": "Bryan Woo",
       "playerId": 693433,
-      "secondOccupied": true,
+      "secondOccupied": false,
       "sportId": 1,
-      "status": "In Progress",
-      "strikes": 1,
+      "status": "Game Over",
+      "strikes": 3,
       "team": "Seattle Mariners",
       "thirdOccupied": false,
       "timeLabel": "2026-09-04T01:40:00Z",
@@ -566,6 +566,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-04T04:58:23.491193+00:00",
+  "generatedAt": "2026-09-04T05:08:46.474046+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
