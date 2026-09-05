@@ -64,7 +64,11 @@
       "gameDate": "2026-09-05T22:10:00Z",
       "gamePk": 820296,
       "home": "St. Lucie Mets",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Alex Petrovic",
+        "id": 830186,
+        "link": "/api/v1/people/830186"
+      },
       "homeScore": null,
       "homeTeamId": 507,
       "inningHalf": null,
@@ -610,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T18:01:07.181450+00:00",
+  "generatedAt": "2026-09-05T18:14:42.312868+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
