@@ -214,7 +214,7 @@
       "playerId": 836055,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Asheville Tourists",
       "thirdOccupied": null,
@@ -258,7 +258,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T21:53:29.712247+00:00",
+  "generatedAt": "2026-09-05T22:00:28.071003+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
