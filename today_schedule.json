@@ -170,7 +170,7 @@
       "playerId": 701696,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Frederick Keys",
       "thirdOccupied": null,
@@ -273,7 +273,7 @@
         "id": 676917,
         "link": "/api/v1/people/676917"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "balls": null,
       "currentBatter": null,
@@ -289,7 +289,7 @@
         "id": 607192,
         "link": "/api/v1/people/607192"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 119,
       "inningHalf": null,
       "inningState": null,
@@ -434,7 +434,7 @@
       "playerId": 689223,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Corpus Christi Hooks",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T21:26:08.628346+00:00",
+  "generatedAt": "2026-09-05T21:32:34.214659+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
