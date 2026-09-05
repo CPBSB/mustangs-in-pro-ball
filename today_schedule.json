@@ -170,7 +170,7 @@
       "playerId": 701696,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Frederick Keys",
       "thirdOccupied": null,
@@ -478,7 +478,7 @@
       "playerId": 695425,
       "secondOccupied": null,
       "sportId": 13,
-      "status": "Scheduled",
+      "status": "Warmup",
       "strikes": null,
       "team": "Hudson Valley Renegades",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T21:16:49.042235+00:00",
+  "generatedAt": "2026-09-05T21:26:08.628346+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
