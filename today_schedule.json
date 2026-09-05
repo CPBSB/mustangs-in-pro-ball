@@ -82,7 +82,7 @@
       "playerId": 822034,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "St. Lucie Mets",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T20:49:58.433396+00:00",
+  "generatedAt": "2026-09-05T20:56:28.616373+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
