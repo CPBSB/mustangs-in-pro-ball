@@ -126,7 +126,7 @@
       "playerId": 835211,
       "secondOccupied": null,
       "sportId": 14,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Hill City Howlers",
       "thirdOccupied": null,
@@ -302,7 +302,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T20:56:28.616373+00:00",
+  "generatedAt": "2026-09-05T21:04:45.270547+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
