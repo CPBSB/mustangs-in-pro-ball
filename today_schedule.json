@@ -346,7 +346,7 @@
       "playerId": 689672,
       "secondOccupied": null,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": null,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T21:04:45.270547+00:00",
+  "generatedAt": "2026-09-05T21:16:49.042235+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
