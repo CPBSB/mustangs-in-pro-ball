@@ -3,6 +3,57 @@
     {
       "appearances": [
         {
+          "gamePk": 824554,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-4.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 822456,
+          "level": "High-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 1-for-3, 2B, 1 run, 1 walk.",
+          "team": "Asheville Tourists"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Zach Daudet went 1-for-3, 2B, 1 run, 1 walk.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Asheville Tourists",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Zach Daudet went 1-for-3, 2B, 1 run, 1 walk.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Asheville Tourists",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-04",
+      "dateLabel": "Friday, September 4, 2026",
+      "generatedAt": "2026-09-05T10:23:57.451266+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "2 former Mustangs appeared in professional games on Friday for 2 clubs across 2 levels, with Zach Daudet producing the night's most notable performance.",
+        "Zach Daudet produced a double in the second to center field on a 1-1 pitch from Jacob Bimbi.",
+        "Zach Daudet went 1-for-3, 1 double, 1 run scored, 1 walk.",
+        "He batted seventh and started at shortstop.",
+        "Asheville Tourists beat Greensboro Grasshoppers, 10-6.",
+        "Brooks Lee went 0-for-4 for Minnesota Twins. He batted second and started at third base. Minnesota Twins fell to Chicago White Sox, 1-4."
+      ],
+      "title": "Zach Daudet highlights a busy Friday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 820307,
           "level": "Single-A",
           "name": "Ryan Tayman",
@@ -723,5 +774,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-04T10:25:36.097842+00:00"
+  "updatedAt": "2026-09-05T10:23:57.451281+00:00"
 }
