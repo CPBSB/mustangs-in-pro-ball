@@ -584,7 +584,11 @@
       "gameDate": "2026-09-06T01:50:00Z",
       "gamePk": 821360,
       "home": "Fresno Grizzlies",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Bryson Van Sickle",
+        "id": 809819,
+        "link": "/api/v1/people/809819"
+      },
       "homeScore": null,
       "homeTeamId": 259,
       "inningHalf": null,
@@ -606,6 +610,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T17:53:52.323950+00:00",
+  "generatedAt": "2026-09-05T18:01:07.181450+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
