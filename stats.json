@@ -61,29 +61,29 @@
       "type": "pitcher"
     },
     "686797": {
-      "assignmentDate": "2026-09-04",
+      "assignmentDate": "2026-09-05",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-04",
+        "endDate": "2026-09-05",
         "games": 7,
-        "startDate": "2026-08-28",
+        "startDate": "2026-08-29",
         "stats": {
           "2B": 0,
           "3B": 0,
-          "AB": 31,
-          "AVG": ".258",
+          "AB": 26,
+          "AVG": ".231",
           "BB": 0,
           "CS": 1,
           "G": 7,
-          "H": 8,
-          "HR": 1,
-          "OBP": ".250",
-          "OPS": ".605",
-          "R": 3,
-          "RBI": 7,
+          "H": 6,
+          "HR": 0,
+          "OBP": ".222",
+          "OPS": ".453",
+          "R": 2,
+          "RBI": 4,
           "SB": 0,
-          "SLG": ".355",
-          "SO": 4
+          "SLG": ".231",
+          "SO": 3
         }
       },
       "name": "Brooks Lee",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-05T23:31:52.394066+00:00",
+  "updatedAt": "2026-09-05T23:40:29.801801+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
