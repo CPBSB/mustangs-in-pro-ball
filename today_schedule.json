@@ -549,9 +549,9 @@
       "gamePk": 819175,
       "home": "Spokane Indians",
       "homeProbablePitcher": {
-        "fullName": "Yujanyer Herrera",
-        "id": 692632,
-        "link": "/api/v1/people/692632"
+        "fullName": "Everett Catlett",
+        "id": 700481,
+        "link": "/api/v1/people/700481"
       },
       "homeScore": null,
       "homeTeamId": 486,
@@ -614,6 +614,6 @@
       "venue": "Chukchansi Park"
     }
   ],
-  "generatedAt": "2026-09-05T19:13:08.856702+00:00",
+  "generatedAt": "2026-09-05T19:22:35.708607+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
