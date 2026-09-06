@@ -3,6 +3,120 @@
     {
       "appearances": [
         {
+          "gamePk": 824553,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-4, 2B, 1 RBI.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 820296,
+          "level": "Single-A",
+          "name": "Ryan Tayman",
+          "playerId": 822034,
+          "summary": "Ryan Tayman appeared defensively for St. Lucie Mets against Jupiter Hammerheads.",
+          "team": "St. Lucie Mets"
+        },
+        {
+          "gamePk": 826830,
+          "level": "Single-A",
+          "name": "Alejandro Garza",
+          "playerId": 835211,
+          "summary": "Alejandro Garza went 0-for-2, 1 RBI, 2 walks.",
+          "team": "Hill City Howlers"
+        },
+        {
+          "gamePk": 822325,
+          "level": "High-A",
+          "name": "Ryan Stafford",
+          "playerId": 701696,
+          "summary": "Ryan Stafford went 0-for-2, 1 run, 2 walks.",
+          "team": "Frederick Keys"
+        },
+        {
+          "gamePk": 822455,
+          "level": "High-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 0-for-4.",
+          "team": "Asheville Tourists"
+        },
+        {
+          "gamePk": 821796,
+          "level": "High-A",
+          "name": "Bryce Warrecker",
+          "playerId": 695425,
+          "summary": "Bryce Warrecker worked 3.0 IP, allowing 2 H, 0 R (0 ER) and 2 BB with 4 K.",
+          "team": "Hudson Valley Renegades"
+        },
+        {
+          "gamePk": 818767,
+          "level": "Double-A",
+          "name": "Steven Brooks",
+          "playerId": 809933,
+          "summary": "Steven Brooks worked 2.1 IP, allowing 0 H, 0 R (0 ER) and 1 BB with 4 K and earned the win.",
+          "team": "Portland Sea Dogs"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Alejandro Garza went 0-for-2, 1 RBI, 2 walks.",
+          "player": "Alejandro Garza",
+          "playerId": 835211,
+          "team": "Hill City Howlers",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 1-for-4, 2B, 1 RBI.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Steven Brooks worked 2.1 IP, allowing 0 H, 0 R (0 ER) and 1 BB with 4 K and earned the win.",
+          "player": "Steven Brooks",
+          "playerId": 809933,
+          "team": "Portland Sea Dogs",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-05",
+      "dateLabel": "Saturday, September 5, 2026",
+      "generatedAt": "2026-09-06T10:25:33.458384+00:00",
+      "highlights": [
+        {
+          "description": "Brooks Lee's RBI double",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/dgvyfscq5vgtxouutpg5.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's RBI double",
+          "url": "https://bdata-producedclips.mlb.com/e420ff73-e241-4f0d-a3e6-27d91d3bf733.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "7 former Mustangs appeared in professional games on Saturday for 7 clubs across 4 levels, with Alejandro Garza producing the night's most notable performance.",
+        "Alejandro Garza tied the game in the fifth with a sacrifice fly to right field on a 2-2 pitch from Jose Bello, changing the score from 1-2 to 2-2.",
+        "Alejandro Garza went 0-for-2, 1 RBI, 2 walks.",
+        "He batted second and started at second base.",
+        "Hill City Howlers fell to Salem RidgeYaks, 5-6.",
+        "Steven Brooks came on in relief for Portland Sea Dogs in the bottom of the sixth with nobody out. He worked 2 1/3 innings, allowing 0 hits and 0 earned runs, with 1 walk and 4 strikeouts. One of his strikeouts came in the sixth on a 2-2 pitch, when he put away Victor Figueroa. Portland Sea Dogs beat Chesapeake Baysox, 6-4.",
+        "Bryce Warrecker came on in relief for Hudson Valley Renegades in the bottom of the third with nobody out. He worked 3.0 innings, allowing 2 hits and 0 earned runs, with 2 walks and 4 strikeouts. One of his strikeouts came in the third on a 0-2 pitch, when he put away Teo Banks. Hudson Valley Renegades fell to Wilmington Blue Rocks, 3-5.",
+        "Brooks Lee went 1-for-4, 1 double, 1 RBI for Minnesota Twins. Brooks Lee drove in his lone run with a double in the fourth to left field on a 1-2 96 mph four-seam fastball from Anthony Kay. He batted seventh and started at third base. Minnesota Twins beat Chicago White Sox, 6-4.",
+        "Ryan Stafford went 0-for-2, 1 run scored, 2 walks for Frederick Keys at High-A. He batted ninth and started behind the plate. Frederick Keys beat Brooklyn Cyclones, 7-3.",
+        "Ryan Tayman appeared defensively for St. Lucie Mets against Jupiter Hammerheads for St. Lucie Mets at Single-A. He batted fourth and started behind the plate. St. Lucie Mets and Jupiter Hammerheads finished 1-1.",
+        "Zach Daudet went 0-for-4 for Asheville Tourists at High-A. He batted seventh and started at shortstop. Asheville Tourists fell to Greensboro Grasshoppers, 4-11."
+      ],
+      "title": "Alejandro Garza delivers in a key spot"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 824554,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -774,5 +888,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-05T10:23:57.451281+00:00"
+  "updatedAt": "2026-09-06T10:25:33.458398+00:00"
 }
