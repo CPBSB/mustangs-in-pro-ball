@@ -260,22 +260,22 @@
       "type": "pitcher"
     },
     "695425": {
-      "assignmentDate": "2026-08-30",
+      "assignmentDate": "2026-09-05",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-08-30",
+        "endDate": "2026-09-05",
         "games": 7,
-        "startDate": "2026-08-06",
+        "startDate": "2026-08-09",
         "stats": {
-          "BB": 9,
+          "BB": 11,
           "ER": 4,
-          "ERA": "3.09",
+          "ERA": "2.70",
           "G": 7,
-          "H": 10,
-          "IP": "11.2",
-          "R": 7,
-          "SO": 9,
-          "WHIP": "1.63"
+          "H": 9,
+          "IP": "13.1",
+          "R": 6,
+          "SO": 11,
+          "WHIP": "1.50"
         }
       },
       "name": "Bryce Warrecker",
@@ -283,14 +283,14 @@
       "recentTeam": "Hudson Valley Renegades",
       "recentTeamId": 537,
       "stats": {
-        "BB": 21,
+        "BB": 23,
         "ER": 14,
-        "ERA": "3.15",
-        "H": 34,
-        "IP": "40.0",
+        "ERA": "2.93",
+        "H": 36,
+        "IP": "43.0",
         "R": 17,
-        "SO": 34,
-        "WHIP": "1.38"
+        "SO": 38,
+        "WHIP": "1.37"
       },
       "statsSource": "seasonSummary",
       "team": "Tampa Tarpons",
@@ -334,29 +334,29 @@
       "type": "pitcher"
     },
     "701696": {
-      "assignmentDate": "2026-09-03",
+      "assignmentDate": "2026-09-05",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-03",
+        "endDate": "2026-09-05",
         "games": 7,
-        "startDate": "2026-06-27",
+        "startDate": "2026-08-25",
         "stats": {
           "2B": 1,
           "3B": 0,
-          "AB": 15,
-          "AVG": ".200",
-          "BB": 2,
+          "AB": 17,
+          "AVG": ".176",
+          "BB": 3,
           "CS": 0,
           "G": 7,
           "H": 3,
           "HR": 0,
           "OBP": ".333",
-          "OPS": ".600",
-          "R": 2,
+          "OPS": ".568",
+          "R": 3,
           "RBI": 0,
           "SB": 1,
-          "SLG": ".267",
-          "SO": 2
+          "SLG": ".235",
+          "SO": 3
         }
       },
       "name": "Ryan Stafford",
@@ -366,19 +366,19 @@
       "stats": {
         "2B": 5,
         "3B": 0,
-        "AB": 138,
-        "AVG": ".181",
-        "BB": 18,
+        "AB": 140,
+        "AVG": ".179",
+        "BB": 20,
         "CS": 5,
         "H": 25,
         "HR": 2,
-        "OBP": ".294",
-        "OPS": ".555",
-        "R": 20,
+        "OBP": ".299",
+        "OPS": ".556",
+        "R": 21,
         "RBI": 15,
         "SB": 10,
-        "SLG": ".261",
-        "SO": 34
+        "SLG": ".257",
+        "SO": 35
       },
       "statsSource": "seasonSummary",
       "team": "Frederick Keys",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-06T00:19:20.392114+00:00",
+  "updatedAt": "2026-09-06T00:42:09.587292+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
