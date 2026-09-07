@@ -4,8 +4,12 @@
     {
       "abstractState": null,
       "away": "Minnesota Twins",
-      "awayProbablePitcher": null,
-      "awayScore": null,
+      "awayProbablePitcher": {
+        "fullName": "Joe Ryan",
+        "id": 657746,
+        "link": "/api/v1/people/657746"
+      },
+      "awayScore": 0,
       "awayTeamId": 142,
       "balls": null,
       "currentBatter": null,
@@ -21,7 +25,7 @@
         "id": 675512,
         "link": "/api/v1/people/675512"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 116,
       "inningHalf": null,
       "inningState": null,
@@ -34,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -86,6 +90,6 @@
       "venue": "Petco Park"
     }
   ],
-  "generatedAt": "2026-09-07T12:25:07.084752+00:00",
+  "generatedAt": "2026-09-07T15:50:36.376680+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
