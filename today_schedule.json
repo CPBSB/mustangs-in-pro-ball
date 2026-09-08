@@ -208,7 +208,11 @@
     {
       "abstractState": null,
       "away": "Dayton Dragons",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Edgar Colon",
+        "id": 813958,
+        "link": "/api/v1/people/813958"
+      },
       "awayScore": null,
       "awayTeamId": 459,
       "balls": null,
@@ -288,7 +292,11 @@
     {
       "abstractState": null,
       "away": "Binghamton Rumble Ponies",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Noah Hall",
+        "id": 801801,
+        "link": "/api/v1/people/801801"
+      },
       "awayScore": null,
       "awayTeamId": 505,
       "balls": null,
@@ -322,6 +330,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-08T10:07:08.722291+00:00",
+  "generatedAt": "2026-09-08T14:28:11.281210+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
