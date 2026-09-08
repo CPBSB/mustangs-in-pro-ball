@@ -64,7 +64,11 @@
       "gameDate": "2026-09-08T22:30:00Z",
       "gamePk": 850970,
       "home": "Greensboro Grasshoppers",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Ronaldo Gallo",
+        "id": 689548,
+        "link": "/api/v1/people/689548"
+      },
       "homeScore": null,
       "homeTeamId": 477,
       "inningHalf": null,
@@ -184,7 +188,11 @@
       "gameDate": "2026-09-08T22:35:00Z",
       "gamePk": 816834,
       "home": "Charlotte Knights",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Drew Thorpe",
+        "id": 689672,
+        "link": "/api/v1/people/689672"
+      },
       "homeScore": null,
       "homeTeamId": 494,
       "inningHalf": null,
@@ -308,7 +316,11 @@
       "gameDate": "2026-09-08T22:00:00Z",
       "gamePk": 818435,
       "home": "Portland Sea Dogs",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Dalton Rogers",
+        "id": 800059,
+        "link": "/api/v1/people/800059"
+      },
       "homeScore": null,
       "homeTeamId": 546,
       "inningHalf": null,
@@ -330,6 +342,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-08T14:31:44.433086+00:00",
+  "generatedAt": "2026-09-08T18:00:40.550909+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
