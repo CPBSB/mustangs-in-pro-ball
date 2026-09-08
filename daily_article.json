@@ -2,43 +2,27 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Bryan Woo worked 8.0 IP, allowing 1 H, 0 R (0 ER) and 2 BB with 9 K and earned the win.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
-      "type": "pitcher"
-    },
-    {
-      "label": "Top Hitter",
-      "line": "Alejandro Garza went 3-for-5, 2B, 3 runs, 1 walk, 3 SB.",
-      "player": "Alejandro Garza",
-      "playerId": 835211,
-      "team": "Hill City Howlers",
+      "line": "Brooks Lee went 1-for-4, 1 walk, 1 SB.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
       "type": "hitter"
     },
     {
-      "label": "Top Pitcher",
-      "line": "Bryan Woo worked 8.0 IP, allowing 1 H, 0 R (0 ER) and 2 BB with 9 K and earned the win.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
-      "type": "pitcher"
+      "label": "Top Hitter",
+      "line": "Brooks Lee went 1-for-4, 1 walk, 1 SB.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
     }
   ],
-  "date": "2026-09-06",
-  "dateLabel": "Sunday, September 6, 2026",
+  "date": "2026-09-07",
+  "dateLabel": "Monday, September 7, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "6 former Mustangs appeared in professional games on Sunday for 6 clubs across 2 levels, with Bryan Woo producing the night's most notable performance.",
-    "Bryan Woo started on the mound for Seattle Mariners.",
-    "Bryan Woo worked 8.0 innings, allowing 1 hit and 0 earned runs, with 2 walks and 9 strikeouts.",
-    "One of his strikeouts came in the fifth on a 0-2 97 mph four-seam fastball, when he put away Alika Williams.",
-    "Seattle Mariners beat Athletics, 2-0.",
-    "Ryan Tayman went 1-for-3, 1 home run, 1 RBI, 1 run scored, 2 walks for St. Lucie Mets at Single-A. Ryan Tayman's home run \u2014 his 5th of the season came in the first inning on a 3-2 90 mph changeup from Kifraidy Encarnacion. The swing moved the score from 1-1 to 2-1. Statcast measured the ball at 102.8 mph off the bat, a 30-degree launch angle. He batted fourth and started behind the plate. St. Lucie Mets beat Jupiter Hammerheads, 11-10.",
-    "Alejandro Garza went 3-for-5, 1 double, 3 runs scored, 1 walk, 3 stolen bases for Hill City Howlers at Single-A. Alejandro Garza produced a double in the first to right field on a 0-1 pitch from Berny Ortiz. He batted second and started at third base. Hill City Howlers beat Salem RidgeYaks, 10-7.",
-    "Brooks Lee went 2-for-3, 1 home run, 1 RBI, 1 run scored for Minnesota Twins. Brooks Lee's home run \u2014 his 23th of the season came in the seventh inning on a 1-1 98 mph four-seam fastball from Grant Taylor. The swing moved the score from 0-4 to 1-4. Statcast measured the ball at 104.5 mph off the bat, a 28-degree launch angle, 425 feet. He batted second and started at third base. Minnesota Twins fell to Chicago White Sox, 1-10.",
-    "Tanner Sagouspe came on in relief for Fresno Grizzlies in the top of the seventh with nobody out. He worked 2.0 innings, allowing 0 hits and 0 earned runs, with 1 walk and 3 strikeouts. One of his strikeouts came in the seventh on a 2-2 pitch, when he put away Lorenzo Meola. Fresno Grizzlies fell to San Jose Giants, 3-5.",
-    "Andrew Alvarez started on the mound for Washington Nationals. He worked 4 1/3 innings, allowing 4 hits and 3 earned runs, with 2 walks and 5 strikeouts. One of his strikeouts came in the second on a 0-2 87 mph changeup, when he put away Miguel Rojas. Washington Nationals fell to Los Angeles Dodgers, 5-7."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted second and started at third base for Minnesota Twins against Detroit Tigers. Minnesota Twins fell to Detroit Tigers, 4-5.",
+    "Brooks Lee went 1-for-4, 1 walk, 1 stolen base."
   ],
-  "title": "Bryan Woo turns in a strong outing on the mound"
+  "title": "Brooks Lee represents Cal Poly in Monday's pro action"
 }
