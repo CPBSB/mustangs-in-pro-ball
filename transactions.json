@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-08T18:00:43.378207+00:00",
+  "generatedAt": "2026-09-08T20:49:24.211692+00:00",
   "transactions": [
+    {
+      "date": "2026-09-08",
+      "description": "SS Zach Daudet assigned to Corpus Christi Hooks from Asheville Tourists.",
+      "kind": "assignment",
+      "label": "Assignment",
+      "player": "Zach Daudet",
+      "playerId": 836055
+    },
     {
       "date": "2026-09-02",
       "description": "Everett AquaSox placed RHP Taylor Dollard on the 7-day injured list.",

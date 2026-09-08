@@ -617,8 +617,8 @@
       "type": "hitter"
     },
     "836055": {
-      "assignmentDate": "2026-09-05",
-      "assignmentSource": "gameLog",
+      "assignmentDate": "2026-09-08",
+      "assignmentSource": "transaction",
       "last7": {
         "endDate": "2026-09-05",
         "games": 7,
@@ -643,9 +643,9 @@
         }
       },
       "name": "Zach Daudet",
-      "recentLevel": "High-A",
-      "recentTeam": "Asheville Tourists",
-      "recentTeamId": 573,
+      "recentLevel": "Double-A",
+      "recentTeam": "Corpus Christi Hooks",
+      "recentTeamId": 482,
       "stats": {
         "2B": 18,
         "3B": 0,
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-08T18:00:39.355362+00:00",
+  "updatedAt": "2026-09-08T20:49:22.259301+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",

@@ -9,7 +9,7 @@
         "id": 665152,
         "link": "/api/v1/people/665152"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 142,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 623454,
         "link": "/api/v1/people/623454"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 116,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -91,8 +91,52 @@
     },
     {
       "abstractState": null,
+      "away": "Corpus Christi Hooks",
+      "awayProbablePitcher": {
+        "fullName": "Trey Dombroski",
+        "id": 690667,
+        "link": "/api/v1/people/690667"
+      },
+      "awayScore": null,
+      "awayTeamId": 482,
+      "balls": null,
+      "currentBatter": null,
+      "currentInning": null,
+      "currentPitcher": null,
+      "defenseTeam": null,
+      "firstOccupied": null,
+      "gameDate": "2026-09-08T23:30:00Z",
+      "gamePk": 817329,
+      "home": "Midland RockHounds",
+      "homeProbablePitcher": null,
+      "homeScore": null,
+      "homeTeamId": 237,
+      "inningHalf": null,
+      "inningState": null,
+      "level": "Double-A",
+      "liveLine": null,
+      "offenseTeam": null,
+      "opponent": "Midland RockHounds",
+      "outs": null,
+      "player": "Zach Daudet",
+      "playerId": 836055,
+      "secondOccupied": null,
+      "sportId": 12,
+      "status": "Scheduled",
+      "strikes": null,
+      "team": "Corpus Christi Hooks",
+      "thirdOccupied": null,
+      "timeLabel": "2026-09-08T23:30:00Z",
+      "venue": "Momentum Bank Ballpark"
+    },
+    {
+      "abstractState": null,
       "away": "Texas Rangers",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Cal Quantrill",
+        "id": 615698,
+        "link": "/api/v1/people/615698"
+      },
       "awayScore": null,
       "awayTeamId": 140,
       "balls": null,
@@ -334,7 +378,7 @@
       "playerId": 809933,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Portland Sea Dogs",
       "thirdOccupied": null,
@@ -342,6 +386,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-08T18:00:40.550909+00:00",
+  "generatedAt": "2026-09-08T20:49:22.853248+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
