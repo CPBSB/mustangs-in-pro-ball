@@ -70,20 +70,20 @@
         "stats": {
           "2B": 2,
           "3B": 0,
-          "AB": 25,
-          "AVG": ".320",
+          "AB": 28,
+          "AVG": ".286",
           "BB": 1,
           "CS": 0,
           "G": 7,
           "H": 8,
           "HR": 1,
-          "OBP": ".333",
-          "OPS": ".853",
+          "OBP": ".300",
+          "OPS": ".764",
           "R": 3,
           "RBI": 3,
           "SB": 1,
-          "SLG": ".520",
-          "SO": 2
+          "SLG": ".464",
+          "SO": 3
         }
       },
       "name": "Brooks Lee",
@@ -93,19 +93,19 @@
       "stats": {
         "2B": 23,
         "3B": 3,
-        "AB": 517,
-        "AVG": ".251",
+        "AB": 520,
+        "AVG": ".250",
         "BB": 34,
         "CS": 5,
         "H": 130,
         "HR": 23,
-        "OBP": ".300",
-        "OPS": ".741",
+        "OBP": ".299",
+        "OPS": ".737",
         "R": 64,
         "RBI": 79,
         "SB": 8,
-        "SLG": ".441",
-        "SO": 88
+        "SLG": ".438",
+        "SO": 89
       },
       "statsSource": "seasonSummary",
       "team": "Minnesota Twins",
@@ -152,19 +152,19 @@
       "assignmentDate": "2026-08-12",
       "assignmentSource": "rehab",
       "last7": {
-        "endDate": "2026-09-02",
+        "endDate": "2026-09-08",
         "games": 7,
-        "startDate": "2026-07-24",
+        "startDate": "2026-07-30",
         "stats": {
-          "BB": 8,
-          "ER": 11,
-          "ERA": "3.34",
+          "BB": 7,
+          "ER": 8,
+          "ERA": "2.20",
           "G": 7,
-          "H": 24,
-          "IP": "29.2",
-          "R": 12,
-          "SO": 28,
-          "WHIP": "1.08"
+          "H": 23,
+          "IP": "32.2",
+          "R": 9,
+          "SO": 30,
+          "WHIP": "0.92"
         }
       },
       "name": "Drew Thorpe",
@@ -172,14 +172,14 @@
       "recentTeam": "Charlotte Knights",
       "recentTeamId": 494,
       "stats": {
-        "BB": 8,
+        "BB": 9,
         "ER": 11,
-        "ERA": "3.13",
-        "H": 25,
-        "IP": "31.2",
+        "ERA": "2.70",
+        "H": 26,
+        "IP": "36.2",
         "R": 12,
-        "SO": 31,
-        "WHIP": "1.04"
+        "SO": 35,
+        "WHIP": "0.95"
       },
       "statsSource": "seasonSummary",
       "team": "ACL White Sox",
@@ -441,22 +441,22 @@
       "type": "pitcher"
     },
     "809933": {
-      "assignmentDate": "2026-09-05",
+      "assignmentDate": "2026-09-08",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-05",
+        "endDate": "2026-09-08",
         "games": 7,
-        "startDate": "2026-08-12",
+        "startDate": "2026-08-15",
         "stats": {
           "BB": 10,
           "ER": 4,
-          "ERA": "2.77",
+          "ERA": "3.00",
           "G": 7,
-          "H": 9,
-          "IP": "13.0",
+          "H": 8,
+          "IP": "12.0",
           "R": 6,
           "SO": 15,
-          "WHIP": "1.46"
+          "WHIP": "1.50"
         }
       },
       "name": "Steven Brooks",
@@ -466,12 +466,12 @@
       "stats": {
         "BB": 37,
         "ER": 29,
-        "ERA": "4.26",
-        "H": 58,
-        "IP": "61.1",
+        "ERA": "4.19",
+        "H": 59,
+        "IP": "62.1",
         "R": 38,
-        "SO": 88,
-        "WHIP": "1.55"
+        "SO": 89,
+        "WHIP": "1.54"
       },
       "statsSource": "seasonSummary",
       "team": "Greenville Drive",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-08T23:01:14.143127+00:00",
+  "updatedAt": "2026-09-09T01:06:07.842498+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
