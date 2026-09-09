@@ -3,6 +3,94 @@
     {
       "appearances": [
         {
+          "gamePk": 824228,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-4, 2B, 1 run.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 850970,
+          "level": "High-A",
+          "name": "Ryan Stafford",
+          "playerId": 701696,
+          "summary": "Ryan Stafford went 0-for-3, 1 RBI, 1 run, 1 walk.",
+          "team": "Frederick Keys"
+        },
+        {
+          "gamePk": 817329,
+          "level": "Double-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 1-for-3, 1 run, 1 walk.",
+          "team": "Corpus Christi Hooks"
+        },
+        {
+          "gamePk": 816834,
+          "level": "Triple-A",
+          "name": "Drew Thorpe",
+          "playerId": 689672,
+          "summary": "Drew Thorpe worked 5.0 IP, allowing 1 H, 0 R (0 ER) and 1 BB with 4 K and earned the win.",
+          "team": "Charlotte Knights"
+        },
+        {
+          "gamePk": 818435,
+          "level": "Double-A",
+          "name": "Steven Brooks",
+          "playerId": 809933,
+          "summary": "Steven Brooks worked 1.0 IP, allowing 1 H, 0 R (0 ER) and 0 BB with 1 K and recorded the save.",
+          "team": "Portland Sea Dogs"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Drew Thorpe worked 5.0 IP, allowing 1 H, 0 R (0 ER) and 1 BB with 4 K and earned the win.",
+          "player": "Drew Thorpe",
+          "playerId": 689672,
+          "team": "Charlotte Knights",
+          "type": "pitcher"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Zach Daudet went 1-for-3, 1 run, 1 walk.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Corpus Christi Hooks",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Drew Thorpe worked 5.0 IP, allowing 1 H, 0 R (0 ER) and 1 BB with 4 K and earned the win.",
+          "player": "Drew Thorpe",
+          "playerId": 689672,
+          "team": "Charlotte Knights",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-08",
+      "dateLabel": "Tuesday, September 8, 2026",
+      "generatedAt": "2026-09-09T14:36:07.749048+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "5 former Mustangs appeared in professional games on Tuesday for 5 clubs across 4 levels, with Drew Thorpe producing the night's most notable performance.",
+        "Drew Thorpe started on the mound for Charlotte Knights.",
+        "Drew Thorpe worked 5.0 innings, allowing 1 hit and 0 earned runs, with 1 walk and 4 strikeouts.",
+        "One of his strikeouts came in the second on a 2-2 86 mph slider, when he put away Lenyn Sosa.",
+        "Charlotte Knights beat Buffalo Bisons, 4-1.",
+        "Ryan Stafford went 0-for-3, 1 RBI, 1 run scored, 1 walk for Frederick Keys at High-A. Ryan Stafford drove in his lone run with a forceout in the eighth toward shortstop on a 1-0 pitch from Adolfo Oviedo. He batted ninth and started behind the plate. Frederick Keys beat Greensboro Grasshoppers, 13-1.",
+        "Zach Daudet went 1-for-3, 1 run scored, 1 walk for Corpus Christi Hooks at Double-A. He batted ninth and started at third base. Corpus Christi Hooks beat Midland RockHounds, 6-4.",
+        "Brooks Lee went 1-for-4, 1 double, 1 run scored for Minnesota Twins. Brooks Lee produced a double in the first to right field on a 0-2 80 mph curveball from Drew Anderson. He batted second and started at third base. Minnesota Twins beat Detroit Tigers, 3-2.",
+        "Steven Brooks came on in relief for Portland Sea Dogs in the top of the ninth with nobody out. He worked 1.0 innings, allowing 1 hit and 0 earned runs, striking out 1 without issuing a walk. One of his strikeouts came in the ninth on a 1-2 pitch, when he put away JT Benson. Portland Sea Dogs beat Binghamton Rumble Ponies, 8-6.",
+        "Away from the box scores, there was also roster movement involving former Mustangs.",
+        "Zach Daudet was called up on Tuesday, moving from the High-A Asheville Tourists to the Double-A Corpus Christi Hooks."
+      ],
+      "title": "Drew Thorpe highlights a busy Tuesday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 824229,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1113,5 +1201,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-08T14:32:32.927403+00:00"
+  "updatedAt": "2026-09-09T14:36:07.749059+00:00"
 }
