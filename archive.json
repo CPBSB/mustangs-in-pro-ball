@@ -3,6 +3,45 @@
     {
       "appearances": [
         {
+          "gamePk": 824226,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-4.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 0-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 0-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-09",
+      "dateLabel": "Wednesday, September 9, 2026",
+      "generatedAt": "2026-09-10T14:25:34.714065+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Wednesday, batted second and started at third base for Minnesota Twins against Detroit Tigers. Minnesota Twins fell to Detroit Tigers, 2-7.",
+        "Brooks Lee went 0-for-4."
+      ],
+      "title": "Brooks Lee represents Cal Poly in Wednesday's pro action"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 824228,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1201,5 +1240,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-09T14:36:07.749059+00:00"
+  "updatedAt": "2026-09-10T14:25:34.714080+00:00"
 }
