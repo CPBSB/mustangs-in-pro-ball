@@ -93,7 +93,7 @@
         "id": 594798,
         "link": "/api/v1/people/594798"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 140,
       "balls": null,
       "currentBatter": null,
@@ -109,7 +109,7 @@
         "id": 669302,
         "link": "/api/v1/people/669302"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 136,
       "inningHalf": null,
       "inningState": null,
@@ -122,7 +122,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Warmup",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -302,6 +302,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-10T17:16:17.901397+00:00",
+  "generatedAt": "2026-09-10T19:44:39.929670+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
