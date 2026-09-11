@@ -2,27 +2,27 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-4.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
+      "player": "Zach Daudet",
+      "playerId": 836055,
+      "team": "Corpus Christi Hooks",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-4.",
-      "player": "Brooks Lee",
-      "playerId": 686797,
-      "team": "Minnesota Twins",
+      "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
+      "player": "Zach Daudet",
+      "playerId": 836055,
+      "team": "Corpus Christi Hooks",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-09",
-  "dateLabel": "Wednesday, September 9, 2026",
+  "date": "2026-09-10",
+  "dateLabel": "Thursday, September 10, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Wednesday, batted second and started at third base for Minnesota Twins against Detroit Tigers. Minnesota Twins fell to Detroit Tigers, 2-7.",
-    "Brooks Lee went 0-for-4."
+    "Zach Daudet was the lone former Mustang to appear in a confirmed professional game on Thursday, batted ninth and started at third base for Corpus Christi Hooks against Midland RockHounds. Corpus Christi Hooks fell to Midland RockHounds, 3-5.",
+    "Zach Daudet went 1-for-2, 1 run scored, 1 walk, 1 stolen base."
   ],
-  "title": "Brooks Lee represents Cal Poly in Wednesday's pro action"
+  "title": "Zach Daudet represents Cal Poly in Thursday's pro action"
 }

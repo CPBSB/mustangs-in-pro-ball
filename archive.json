@@ -3,6 +3,45 @@
     {
       "appearances": [
         {
+          "gamePk": 817328,
+          "level": "Double-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
+          "team": "Corpus Christi Hooks"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Corpus Christi Hooks",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
+          "player": "Zach Daudet",
+          "playerId": 836055,
+          "team": "Corpus Christi Hooks",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-10",
+      "dateLabel": "Thursday, September 10, 2026",
+      "generatedAt": "2026-09-11T14:26:47.808645+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "Zach Daudet was the lone former Mustang to appear in a confirmed professional game on Thursday, batted ninth and started at third base for Corpus Christi Hooks against Midland RockHounds. Corpus Christi Hooks fell to Midland RockHounds, 3-5.",
+        "Zach Daudet went 1-for-2, 1 run scored, 1 walk, 1 stolen base."
+      ],
+      "title": "Zach Daudet represents Cal Poly in Thursday's pro action"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 824226,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1240,5 +1279,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-10T14:25:34.714080+00:00"
+  "updatedAt": "2026-09-11T14:26:47.808658+00:00"
 }
