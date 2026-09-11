@@ -9,7 +9,7 @@
         "id": 800048,
         "link": "/api/v1/people/800048"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 114,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 671737,
         "link": "/api/v1/people/671737"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -181,7 +181,7 @@
         "id": 579328,
         "link": "/api/v1/people/579328"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 108,
       "balls": null,
       "currentBatter": null,
@@ -197,7 +197,7 @@
         "id": 676917,
         "link": "/api/v1/people/676917"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -210,7 +210,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -368,7 +368,11 @@
       "gameDate": "2026-09-11T22:00:00Z",
       "gamePk": 818434,
       "home": "Portland Sea Dogs",
-      "homeProbablePitcher": null,
+      "homeProbablePitcher": {
+        "fullName": "Yordanny Monegro",
+        "id": 694057,
+        "link": "/api/v1/people/694057"
+      },
       "homeScore": null,
       "homeTeamId": 546,
       "inningHalf": null,
@@ -382,7 +386,7 @@
       "playerId": 809933,
       "secondOccupied": null,
       "sportId": 12,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Portland Sea Dogs",
       "thirdOccupied": null,
@@ -390,6 +394,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-11T18:10:18.848062+00:00",
+  "generatedAt": "2026-09-11T20:56:01.183081+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
