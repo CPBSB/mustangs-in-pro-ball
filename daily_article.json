@@ -2,27 +2,32 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Corpus Christi Hooks",
+      "line": "Ryan Stafford went 2-for-4, 1 RBI.",
+      "player": "Ryan Stafford",
+      "playerId": 701696,
+      "team": "Frederick Keys",
       "type": "hitter"
     },
     {
       "label": "Top Hitter",
-      "line": "Zach Daudet went 1-for-2, 1 run, 1 walk, 1 SB.",
-      "player": "Zach Daudet",
-      "playerId": 836055,
-      "team": "Corpus Christi Hooks",
+      "line": "Ryan Stafford went 2-for-4, 1 RBI.",
+      "player": "Ryan Stafford",
+      "playerId": 701696,
+      "team": "Frederick Keys",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-10",
-  "dateLabel": "Thursday, September 10, 2026",
+  "date": "2026-09-11",
+  "dateLabel": "Friday, September 11, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Zach Daudet was the lone former Mustang to appear in a confirmed professional game on Thursday, batted ninth and started at third base for Corpus Christi Hooks against Midland RockHounds. Corpus Christi Hooks fell to Midland RockHounds, 3-5.",
-    "Zach Daudet went 1-for-2, 1 run scored, 1 walk, 1 stolen base."
+    "3 former Mustangs appeared in professional games on Friday for 3 clubs across 3 levels, with Ryan Stafford producing the night's most notable performance.",
+    "Ryan Stafford drove in his lone run with a single in the second to right field on a 0-1 pitch from Draven Zeigler.",
+    "Ryan Stafford went 2-for-4, 1 RBI.",
+    "He batted ninth and started behind the plate.",
+    "Frederick Keys fell to Greensboro Grasshoppers, 5-7.",
+    "Zach Daudet went 0-for-2, 1 run scored, 2 walks for Corpus Christi Hooks at Double-A. Zach Daudet produced a walk in the ninth on a 3-0 pitch from Blaze Pontes. He batted eighth and started at third base. Corpus Christi Hooks beat Midland RockHounds, 5-2.",
+    "Brooks Lee went 0-for-4 for Minnesota Twins. He batted seventh and started at third base. Minnesota Twins fell to Cleveland Guardians, 2-5."
   ],
-  "title": "Zach Daudet represents Cal Poly in Thursday's pro action"
+  "title": "Ryan Stafford highlights a busy Friday for former Mustangs"
 }

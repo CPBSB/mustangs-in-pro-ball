@@ -3,6 +3,66 @@
     {
       "appearances": [
         {
+          "gamePk": 823659,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-4.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 850963,
+          "level": "High-A",
+          "name": "Ryan Stafford",
+          "playerId": 701696,
+          "summary": "Ryan Stafford went 2-for-4, 1 RBI.",
+          "team": "Frederick Keys"
+        },
+        {
+          "gamePk": 817330,
+          "level": "Double-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 0-for-2, 1 run, 2 walks.",
+          "team": "Corpus Christi Hooks"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Ryan Stafford went 2-for-4, 1 RBI.",
+          "player": "Ryan Stafford",
+          "playerId": 701696,
+          "team": "Frederick Keys",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Ryan Stafford went 2-for-4, 1 RBI.",
+          "player": "Ryan Stafford",
+          "playerId": 701696,
+          "team": "Frederick Keys",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-11",
+      "dateLabel": "Friday, September 11, 2026",
+      "generatedAt": "2026-09-12T13:36:16.426679+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "3 former Mustangs appeared in professional games on Friday for 3 clubs across 3 levels, with Ryan Stafford producing the night's most notable performance.",
+        "Ryan Stafford drove in his lone run with a single in the second to right field on a 0-1 pitch from Draven Zeigler.",
+        "Ryan Stafford went 2-for-4, 1 RBI.",
+        "He batted ninth and started behind the plate.",
+        "Frederick Keys fell to Greensboro Grasshoppers, 5-7.",
+        "Zach Daudet went 0-for-2, 1 run scored, 2 walks for Corpus Christi Hooks at Double-A. Zach Daudet produced a walk in the ninth on a 3-0 pitch from Blaze Pontes. He batted eighth and started at third base. Corpus Christi Hooks beat Midland RockHounds, 5-2.",
+        "Brooks Lee went 0-for-4 for Minnesota Twins. He batted seventh and started at third base. Minnesota Twins fell to Cleveland Guardians, 2-5."
+      ],
+      "title": "Ryan Stafford highlights a busy Friday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 817328,
           "level": "Double-A",
           "name": "Zach Daudet",
@@ -1279,5 +1339,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-11T14:26:47.808658+00:00"
+  "updatedAt": "2026-09-12T13:36:16.426690+00:00"
 }
