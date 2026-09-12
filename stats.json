@@ -33,13 +33,13 @@
         "stats": {
           "BB": 16,
           "ER": 10,
-          "ERA": "2.48",
+          "ERA": "2.37",
           "G": 7,
           "H": 21,
-          "IP": "36.1",
+          "IP": "38.0",
           "R": 10,
-          "SO": 35,
-          "WHIP": "1.02"
+          "SO": 36,
+          "WHIP": "0.97"
         }
       },
       "name": "Andrew Alvarez",
@@ -49,12 +49,12 @@
       "stats": {
         "BB": 47,
         "ER": 38,
-        "ERA": "3.41",
+        "ERA": "3.35",
         "H": 83,
-        "IP": "100.1",
+        "IP": "102.0",
         "R": 38,
-        "SO": 98,
-        "WHIP": "1.30"
+        "SO": 99,
+        "WHIP": "1.27"
       },
       "statsSource": "seasonSummary",
       "team": "Washington Nationals",
@@ -70,20 +70,20 @@
         "stats": {
           "2B": 2,
           "3B": 0,
-          "AB": 25,
-          "AVG": ".280",
+          "AB": 26,
+          "AVG": ".269",
           "BB": 1,
           "CS": 0,
           "G": 7,
           "H": 7,
           "HR": 1,
-          "OBP": ".333",
-          "OPS": ".813",
+          "OBP": ".321",
+          "OPS": ".783",
           "R": 3,
           "RBI": 2,
           "SB": 1,
-          "SLG": ".480",
-          "SO": 5
+          "SLG": ".462",
+          "SO": 6
         }
       },
       "name": "Brooks Lee",
@@ -93,19 +93,19 @@
       "stats": {
         "2B": 23,
         "3B": 3,
-        "AB": 530,
+        "AB": 531,
         "AVG": ".249",
         "BB": 34,
         "CS": 5,
         "H": 132,
         "HR": 23,
         "OBP": ".298",
-        "OPS": ".732",
+        "OPS": ".731",
         "R": 65,
         "RBI": 79,
         "SB": 8,
-        "SLG": ".434",
-        "SO": 92
+        "SLG": ".433",
+        "SO": 93
       },
       "statsSource": "seasonSummary",
       "team": "Minnesota Twins",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-12T21:39:00.186835+00:00",
+  "updatedAt": "2026-09-12T23:18:46.676444+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
