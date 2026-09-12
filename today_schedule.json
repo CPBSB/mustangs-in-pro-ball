@@ -210,7 +210,7 @@
       "playerId": 689672,
       "secondOccupied": null,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": null,
@@ -342,6 +342,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-12T13:35:58.151760+00:00",
+  "generatedAt": "2026-09-12T15:53:00.538547+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
