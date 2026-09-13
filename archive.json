@@ -3,6 +3,138 @@
     {
       "appearances": [
         {
+          "gamePk": 823657,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 2-for-3, 1 run.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 817326,
+          "level": "Double-A",
+          "name": "Zach Daudet",
+          "playerId": 836055,
+          "summary": "Zach Daudet went 0-for-3.",
+          "team": "Corpus Christi Hooks"
+        },
+        {
+          "gamePk": 824955,
+          "level": "MLB",
+          "name": "Bryan Woo",
+          "playerId": 693433,
+          "summary": "Bryan Woo worked 6.0 IP, allowing 3 H, 1 R (0 ER) and 2 BB with 5 K and earned the win.",
+          "team": "Seattle Mariners"
+        },
+        {
+          "gamePk": 822685,
+          "level": "MLB",
+          "name": "Andrew Alvarez",
+          "playerId": 674841,
+          "summary": "Andrew Alvarez worked 7.0 IP, allowing 1 H, 0 R (0 ER) and 4 BB with 8 K.",
+          "team": "Washington Nationals"
+        },
+        {
+          "gamePk": 818423,
+          "level": "Double-A",
+          "name": "Steven Brooks",
+          "playerId": 809933,
+          "summary": "Steven Brooks worked 2.0 IP, allowing 0 H, 0 R (0 ER) and 0 BB with 4 K and recorded the save.",
+          "team": "Portland Sea Dogs"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Andrew Alvarez worked 7.0 IP, allowing 1 H, 0 R (0 ER) and 4 BB with 8 K.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 2-for-3, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Andrew Alvarez worked 7.0 IP, allowing 1 H, 0 R (0 ER) and 4 BB with 8 K.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-12",
+      "dateLabel": "Saturday, September 12, 2026",
+      "generatedAt": "2026-09-13T14:23:03.261072+00:00",
+      "highlights": [
+        {
+          "description": "Emmanuel Rodriguez hits a home run in his first Major League at-bat and Brooks Lee goes 2-for-3 in the Twins' 4-3 win over the Guardians\\n",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/cbbbcuoee6asrw9b2x7p.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Emmanuel Rodriguez's first MLB homer fuels Twins' win",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/12/bf46e197-bcb2d9f6-a7d12648-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Donovan Walton strikes out swinging.",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/zy4b6zledbbgh6sacuh5.jpg",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Bryan Woo fans Donovan Walton",
+          "url": "https://bdata-producedclips.mlb.com/14863f73-1aca-4fbb-9fef-2f321f8d04bb.m3u8"
+        },
+        {
+          "description": "Harry Ford hits a walk-off fielder's choice in the 10th to back Andrew Alvarez's seven strong frames, leading the Nationals to a 6-5 win",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/nbnfxlhwu7pc1fvwgv6a.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Harry Ford plays hero in Nationals' 6-5 walk-off win",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/12/8df10f57-38ed46de-0efe11e1-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Andrew Alvarez allows just one hit over seven innings pitched in a fantastic start against the Angels and strikes out a career-high eight batters",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/esblzcamqnfczryluebp.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Andrew Alvarez allows just one hit over seven innings",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/12/b057ce94-71c13957-4d352594-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Andrew Alvarez strikes out Mike Trout in the 1st",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/p8ivhgczrgt7nwolm5dg.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Andrew Alvarez strikes out Mike Trout in the 1st",
+          "url": "https://bdata-producedclips.mlb.com/005778bc-3104-45ec-a379-8cb7aa0037c0.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "5 former Mustangs appeared in professional games on Saturday for 5 clubs across 2 levels, with Andrew Alvarez producing the night's most notable performance.",
+        "Andrew Alvarez started on the mound for Washington Nationals.",
+        "Andrew Alvarez worked 7.0 innings, allowing 1 hit and 0 earned runs, with 4 walks and 8 strikeouts.",
+        "One of his strikeouts came in the fifth on a 1-2 93 mph four-seam fastball, when he put away Kyren Paris.",
+        "Washington Nationals beat Los Angeles Angels, 6-5.",
+        "Bryan Woo started on the mound for Seattle Mariners. He worked 6.0 innings, allowing 3 hits and 0 earned runs, with 2 walks and 5 strikeouts. One of his strikeouts came in the third on a 2-2 97 mph four-seam fastball, when he put away Lawrence Butler. Seattle Mariners beat Athletics, 19-1.",
+        "Steven Brooks came on in relief for Portland Sea Dogs in the top of the eighth with nobody out. He worked 2.0 innings, allowing 0 hits and 0 earned runs, striking out 4 without issuing a walk. One of his strikeouts came in the eighth on a 3-2 pitch, when he put away Jamari Baylor. Portland Sea Dogs beat Binghamton Rumble Ponies, 1-0.",
+        "Brooks Lee went 2-for-3, 1 run scored for Minnesota Twins. He batted second and started at third base. Minnesota Twins beat Cleveland Guardians, 4-3.",
+        "Zach Daudet went 0-for-3 for Corpus Christi Hooks at Double-A. He batted seventh and started at third base. Corpus Christi Hooks fell to Midland RockHounds, 1-6."
+      ],
+      "title": "Andrew Alvarez turns in a strong outing on the mound"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823659,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1339,5 +1471,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-12T13:36:16.426690+00:00"
+  "updatedAt": "2026-09-13T14:23:03.261088+00:00"
 }
