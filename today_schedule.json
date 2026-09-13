@@ -34,7 +34,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -162,7 +162,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -254,6 +254,6 @@
       "venue": "Delta Dental Park"
     }
   ],
-  "generatedAt": "2026-09-13T14:21:55.666143+00:00",
+  "generatedAt": "2026-09-13T14:55:05.024644+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
