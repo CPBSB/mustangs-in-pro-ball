@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T05:59:43.068393+00:00",
+  "generatedAt": "2026-09-13T11:08:44.511312+00:00",
   "transactions": [
     {
       "date": "2026-09-08",
@@ -16,14 +16,6 @@
       "label": "Injured List",
       "player": "Taylor Dollard",
       "playerId": 693440
-    },
-    {
-      "date": "2026-08-29",
-      "description": "Great Lakes Loons transferred LHP Jakob Wright from the 7-day injured list to the 60-day injured list.",
-      "kind": "injured",
-      "label": "Injured List",
-      "player": "Jakob Wright",
-      "playerId": 809915
     }
   ]
 }
