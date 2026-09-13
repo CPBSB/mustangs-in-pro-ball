@@ -186,22 +186,22 @@
       "type": "pitcher"
     },
     "693433": {
-      "assignmentDate": "2026-09-06",
+      "assignmentDate": "2026-09-12",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-06",
+        "endDate": "2026-09-12",
         "games": 7,
-        "startDate": "2026-07-30",
+        "startDate": "2026-08-05",
         "stats": {
           "BB": 9,
-          "ER": 14,
-          "ERA": "3.07",
+          "ER": 9,
+          "ERA": "1.93",
           "G": 7,
-          "H": 25,
-          "IP": "41.0",
-          "R": 15,
-          "SO": 44,
-          "WHIP": "0.83"
+          "H": 23,
+          "IP": "42.0",
+          "R": 11,
+          "SO": 41,
+          "WHIP": "0.76"
         }
       },
       "name": "Bryan Woo",
@@ -209,14 +209,14 @@
       "recentTeam": "Seattle Mariners",
       "recentTeamId": 136,
       "stats": {
-        "BB": 33,
+        "BB": 35,
         "ER": 70,
-        "ERA": "4.03",
-        "H": 132,
-        "IP": "156.1",
-        "R": 75,
-        "SO": 158,
-        "WHIP": "1.06"
+        "ERA": "3.88",
+        "H": 135,
+        "IP": "162.1",
+        "R": 76,
+        "SO": 163,
+        "WHIP": "1.05"
       },
       "statsSource": "seasonSummary",
       "team": "Seattle Mariners",
@@ -617,12 +617,12 @@
       "type": "hitter"
     },
     "836055": {
-      "assignmentDate": "2026-09-11",
+      "assignmentDate": "2026-09-12",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-11",
+        "endDate": "2026-09-12",
         "games": 7,
-        "startDate": "2026-09-02",
+        "startDate": "2026-09-03",
         "stats": {
           "2B": 1,
           "3B": 0,
@@ -649,8 +649,8 @@
       "stats": {
         "2B": 18,
         "3B": 0,
-        "AB": 324,
-        "AVG": ".210",
+        "AB": 327,
+        "AVG": ".208",
         "BB": 100,
         "CS": 14,
         "H": 68,
@@ -660,8 +660,8 @@
         "R": 63,
         "RBI": 35,
         "SB": 22,
-        "SLG": ".293",
-        "SO": 73
+        "SLG": ".291",
+        "SO": 74
       },
       "statsSource": "seasonSummary",
       "team": "Asheville Tourists",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-13T01:05:19.560627+00:00",
+  "updatedAt": "2026-09-13T05:59:37.961835+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
