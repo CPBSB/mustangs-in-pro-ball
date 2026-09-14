@@ -9,7 +9,7 @@
         "id": 701542,
         "link": "/api/v1/people/701542"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 147,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 665152,
         "link": "/api/v1/people/665152"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -82,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -90,6 +90,6 @@
       "venue": "Angel Stadium"
     }
   ],
-  "generatedAt": "2026-09-14T18:50:44.100618+00:00",
+  "generatedAt": "2026-09-14T22:08:07.253617+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
