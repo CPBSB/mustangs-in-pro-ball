@@ -2,42 +2,27 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Andrew Alvarez worked 7.0 IP, allowing 1 H, 0 R (0 ER) and 4 BB with 8 K.",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "team": "Washington Nationals",
-      "type": "pitcher"
-    },
-    {
-      "label": "Top Hitter",
-      "line": "Brooks Lee went 2-for-3, 1 run.",
+      "line": "Brooks Lee went 0-for-4.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     },
     {
-      "label": "Top Pitcher",
-      "line": "Andrew Alvarez worked 7.0 IP, allowing 1 H, 0 R (0 ER) and 4 BB with 8 K.",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "team": "Washington Nationals",
-      "type": "pitcher"
+      "label": "Top Hitter",
+      "line": "Brooks Lee went 0-for-4.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
     }
   ],
-  "date": "2026-09-12",
-  "dateLabel": "Saturday, September 12, 2026",
+  "date": "2026-09-13",
+  "dateLabel": "Sunday, September 13, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "5 former Mustangs appeared in professional games on Saturday for 5 clubs across 2 levels, with Andrew Alvarez producing the night's most notable performance.",
-    "Andrew Alvarez started on the mound for Washington Nationals.",
-    "Andrew Alvarez worked 7.0 innings, allowing 1 hit and 0 earned runs, with 4 walks and 8 strikeouts.",
-    "One of his strikeouts came in the fifth on a 1-2 93 mph four-seam fastball, when he put away Kyren Paris.",
-    "Washington Nationals beat Los Angeles Angels, 6-5.",
-    "Bryan Woo started on the mound for Seattle Mariners. He worked 6.0 innings, allowing 3 hits and 0 earned runs, with 2 walks and 5 strikeouts. One of his strikeouts came in the third on a 2-2 97 mph four-seam fastball, when he put away Lawrence Butler. Seattle Mariners beat Athletics, 19-1.",
-    "Steven Brooks came on in relief for Portland Sea Dogs in the top of the eighth with nobody out. He worked 2.0 innings, allowing 0 hits and 0 earned runs, striking out 4 without issuing a walk. One of his strikeouts came in the eighth on a 3-2 pitch, when he put away Jamari Baylor. Portland Sea Dogs beat Binghamton Rumble Ponies, 1-0.",
-    "Brooks Lee went 2-for-3, 1 run scored for Minnesota Twins. He batted second and started at third base. Minnesota Twins beat Cleveland Guardians, 4-3.",
-    "Zach Daudet went 0-for-3 for Corpus Christi Hooks at Double-A. He batted seventh and started at third base. Corpus Christi Hooks fell to Midland RockHounds, 1-6."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted second and started at third base for Minnesota Twins against Cleveland Guardians. Minnesota Twins fell to Cleveland Guardians, 2-9.",
+    "Brooks Lee went 0-for-4."
   ],
-  "title": "Andrew Alvarez turns in a strong outing on the mound"
+  "title": "Brooks Lee represents Cal Poly in Sunday's pro action"
 }

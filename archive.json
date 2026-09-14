@@ -3,6 +3,55 @@
     {
       "appearances": [
         {
+          "gamePk": 823658,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-4.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 0-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 0-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-13",
+      "dateLabel": "Sunday, September 13, 2026",
+      "generatedAt": "2026-09-14T16:23:15.702404+00:00",
+      "highlights": [
+        {
+          "description": "Brooks Lee catches a line drive at third for the second out and steps on the bag to get Nathan Lowe at at third to end the top of the 5th",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/skdor6w9qdkelwejyrnl.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's unassisted inning-ending double play",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/9d5e6bfd-cf8ae6bd-d881a130-csvm-diamondgcp-asset.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted second and started at third base for Minnesota Twins against Cleveland Guardians. Minnesota Twins fell to Cleveland Guardians, 2-9.",
+        "Brooks Lee went 0-for-4."
+      ],
+      "title": "Brooks Lee represents Cal Poly in Sunday's pro action"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823657,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1471,5 +1520,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-13T14:23:03.261088+00:00"
+  "updatedAt": "2026-09-14T16:23:15.702420+00:00"
 }
