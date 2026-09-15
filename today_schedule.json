@@ -136,7 +136,11 @@
     {
       "abstractState": null,
       "away": "Charlotte Knights",
-      "awayProbablePitcher": null,
+      "awayProbablePitcher": {
+        "fullName": "Drew Thorpe",
+        "id": 689672,
+        "link": "/api/v1/people/689672"
+      },
       "awayScore": null,
       "awayTeamId": 494,
       "balls": null,
@@ -174,6 +178,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-15T14:59:30.016717+00:00",
+  "generatedAt": "2026-09-15T18:31:24.715922+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
