@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-4.",
+      "line": "Brooks Lee went 1-for-4, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,19 +10,19 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-4.",
+      "line": "Brooks Lee went 1-for-4, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-13",
-  "dateLabel": "Sunday, September 13, 2026",
+  "date": "2026-09-14",
+  "dateLabel": "Monday, September 14, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted second and started at third base for Minnesota Twins against Cleveland Guardians. Minnesota Twins fell to Cleveland Guardians, 2-9.",
-    "Brooks Lee went 0-for-4."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted second and started at third base for Minnesota Twins against New York Yankees. Minnesota Twins fell to New York Yankees, 3-8.",
+    "Brooks Lee went 1-for-4, 1 walk."
   ],
-  "title": "Brooks Lee represents Cal Poly in Sunday's pro action"
+  "title": "Brooks Lee represents Cal Poly in Monday's pro action"
 }
