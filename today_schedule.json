@@ -9,7 +9,7 @@
         "id": 608331,
         "link": "/api/v1/people/608331"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 147,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 641927,
         "link": "/api/v1/people/641927"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -97,7 +97,7 @@
         "id": 650911,
         "link": "/api/v1/people/650911"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 143,
       "balls": null,
       "currentBatter": null,
@@ -113,7 +113,7 @@
         "id": 800600,
         "link": "/api/v1/people/800600"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -126,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -170,7 +170,7 @@
       "playerId": 689672,
       "secondOccupied": null,
       "sportId": 11,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Charlotte Knights",
       "thirdOccupied": null,
@@ -178,6 +178,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-15T18:31:24.715922+00:00",
+  "generatedAt": "2026-09-15T21:40:29.736615+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
