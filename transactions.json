@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-09-16T12:04:41.457804+00:00",
+  "generatedAt": "2026-09-16T14:57:16.789962+00:00",
   "transactions": [
+    {
+      "date": "2026-09-16",
+      "description": "Chicago White Sox activated RHP Drew Thorpe from the 60-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Drew Thorpe",
+      "playerId": 689672
+    },
+    {
+      "date": "2026-09-16",
+      "description": "Chicago White Sox optioned RHP Drew Thorpe to Charlotte Knights.",
+      "kind": "optioned",
+      "label": "Optioned",
+      "player": "Drew Thorpe",
+      "playerId": 689672
+    },
     {
       "date": "2026-09-08",
       "description": "SS Zach Daudet assigned to Corpus Christi Hooks from Asheville Tourists.",
