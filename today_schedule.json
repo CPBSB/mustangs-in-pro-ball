@@ -9,7 +9,7 @@
         "id": 607074,
         "link": "/api/v1/people/607074"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 147,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 805673,
         "link": "/api/v1/people/805673"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -178,6 +178,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-16T14:57:15.938033+00:00",
+  "generatedAt": "2026-09-16T16:44:22.511710+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
