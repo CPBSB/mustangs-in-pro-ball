@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-3.",
+      "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,30 +10,21 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-3.",
+      "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Drew Thorpe worked 4.1 IP, allowing 3 H, 2 R (2 ER) and 4 BB with 3 K.",
-      "player": "Drew Thorpe",
-      "playerId": 689672,
-      "team": "Charlotte Knights",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-09-15",
-  "dateLabel": "Tuesday, September 15, 2026",
+  "date": "2026-09-16",
+  "dateLabel": "Wednesday, September 16, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Tuesday for 2 clubs across 2 levels, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee went 0-for-3.",
-    "He batted sixth and started at third base.",
-    "Minnesota Twins fell to New York Yankees, 1-8.",
-    "Drew Thorpe started on the mound for Charlotte Knights. He worked 4 1/3 innings, allowing 3 hits and 2 earned runs, with 4 walks and 3 strikeouts. One of his strikeouts came in the fourth on a 0-2 92 mph four-seam fastball, when he put away Ethan Anderson. Charlotte Knights fell to Norfolk Tides, 2-4."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Wednesday, batted ninth and appeared at third base for Minnesota Twins against New York Yankees. Minnesota Twins beat New York Yankees, 5-4.",
+    "Brooks Lee went 1-for-2, 1 run scored, 1 walk.",
+    "Away from the box scores, there was also roster movement involving former Mustangs.",
+    "Drew Thorpe was activated in a roster move."
   ],
-  "title": "Brooks Lee highlights a busy Tuesday for former Mustangs"
+  "title": "Brooks Lee scores as Minnesota Twins picks up a win"
 }

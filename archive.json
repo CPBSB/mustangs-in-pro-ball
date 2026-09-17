@@ -3,6 +3,47 @@
     {
       "appearances": [
         {
+          "gamePk": 823655,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-16",
+      "dateLabel": "Wednesday, September 16, 2026",
+      "generatedAt": "2026-09-17T15:01:02.107480+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Wednesday, batted ninth and appeared at third base for Minnesota Twins against New York Yankees. Minnesota Twins beat New York Yankees, 5-4.",
+        "Brooks Lee went 1-for-2, 1 run scored, 1 walk.",
+        "Away from the box scores, there was also roster movement involving former Mustangs.",
+        "Drew Thorpe was activated in a roster move."
+      ],
+      "title": "Brooks Lee scores as Minnesota Twins picks up a win"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823654,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1617,5 +1658,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-16T14:57:33.815994+00:00"
+  "updatedAt": "2026-09-17T15:01:02.107496+00:00"
 }
