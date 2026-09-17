@@ -65,9 +65,9 @@
       "gamePk": 816005,
       "home": "Norfolk Tides",
       "homeProbablePitcher": {
-        "fullName": "Cade Povich",
-        "id": 700249,
-        "link": "/api/v1/people/700249"
+        "fullName": "Jake Dykhoff",
+        "id": 829517,
+        "link": "/api/v1/people/829517"
       },
       "homeScore": null,
       "homeTeamId": 568,
@@ -90,6 +90,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-17T10:03:32.572920+00:00",
+  "generatedAt": "2026-09-17T14:52:39.041511+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
