@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T05:18:39.226729+00:00",
+  "generatedAt": "2026-09-17T10:03:33.485266+00:00",
   "transactions": [
     {
       "date": "2026-09-16",
@@ -24,14 +24,6 @@
       "label": "Assignment",
       "player": "Zach Daudet",
       "playerId": 836055
-    },
-    {
-      "date": "2026-09-02",
-      "description": "Everett AquaSox placed RHP Taylor Dollard on the 7-day injured list.",
-      "kind": "injured",
-      "label": "Injured List",
-      "player": "Taylor Dollard",
-      "playerId": 693440
     }
   ]
 }
