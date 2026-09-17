@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -82,7 +82,7 @@
       "playerId": 689672,
       "secondOccupied": false,
       "sportId": 11,
-      "status": "Game Over",
+      "status": "Final",
       "strikes": 3,
       "team": "Charlotte Knights",
       "thirdOccupied": false,
@@ -90,6 +90,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-17T18:38:35.070694+00:00",
+  "generatedAt": "2026-09-17T21:43:28.575071+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
