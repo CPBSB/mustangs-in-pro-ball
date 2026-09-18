@@ -3,6 +3,66 @@
     {
       "appearances": [
         {
+          "gamePk": 823978,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 2-for-4, 2 RBI.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 2-for-4, 2 RBI.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 2-for-4, 2 RBI.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-17",
+      "dateLabel": "Thursday, September 17, 2026",
+      "generatedAt": "2026-09-18T14:31:31.153678+00:00",
+      "highlights": [
+        {
+          "description": "Brooks Lee hits an RBI single to right field to give the Twins a 4-3 lead in the top of the 10th",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/j678sriibhrkcesiamqy.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's RBI single",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/17/d1c71f40-41743d93-d07abad5-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Brooks Lee's sacrifice fly",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/mzu9uosb7ysmxib2pwoe.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's sacrifice fly",
+          "url": "https://bdata-producedclips.mlb.com/3f6b576d-985c-4ae7-92a5-3e46e71c7a4b.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Thursday, batted second and started at third base for Minnesota Twins against Los Angeles Angels. Minnesota Twins fell to Los Angeles Angels, 4-5.",
+        "Brooks Lee drove in 1 run with a sacrifice fly in the eighth to deep left field on a 0-1 80 mph sweeper from Tayler Saucedo.",
+        "Brooks Lee put his club in front in the 10th with a go-ahead single to right field on a 2-0 90 mph sinker from Blake Weiman, changing the score from 3-3 to 4-3.",
+        "Brooks Lee went 2-for-4, 2 RBI."
+      ],
+      "title": "Brooks Lee comes through late with a go-ahead hit"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823655,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1658,5 +1718,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-17T15:01:02.107496+00:00"
+  "updatedAt": "2026-09-18T14:31:31.153689+00:00"
 }

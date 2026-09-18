@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
+      "line": "Brooks Lee went 2-for-4, 2 RBI.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,21 +10,21 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-2, 1 run, 1 walk.",
+      "line": "Brooks Lee went 2-for-4, 2 RBI.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-16",
-  "dateLabel": "Wednesday, September 16, 2026",
+  "date": "2026-09-17",
+  "dateLabel": "Thursday, September 17, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Wednesday, batted ninth and appeared at third base for Minnesota Twins against New York Yankees. Minnesota Twins beat New York Yankees, 5-4.",
-    "Brooks Lee went 1-for-2, 1 run scored, 1 walk.",
-    "Away from the box scores, there was also roster movement involving former Mustangs.",
-    "Drew Thorpe was activated in a roster move."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Thursday, batted second and started at third base for Minnesota Twins against Los Angeles Angels. Minnesota Twins fell to Los Angeles Angels, 4-5.",
+    "Brooks Lee drove in 1 run with a sacrifice fly in the eighth to deep left field on a 0-1 80 mph sweeper from Tayler Saucedo.",
+    "Brooks Lee put his club in front in the 10th with a go-ahead single to right field on a 2-0 90 mph sinker from Blake Weiman, changing the score from 3-3 to 4-3.",
+    "Brooks Lee went 2-for-4, 2 RBI."
   ],
-  "title": "Brooks Lee scores as Minnesota Twins picks up a win"
+  "title": "Brooks Lee comes through late with a go-ahead hit"
 }
