@@ -53,7 +53,7 @@
         "id": 693433,
         "link": "/api/v1/people/693433"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 136,
       "balls": null,
       "currentBatter": null,
@@ -64,8 +64,12 @@
       "gameDate": "2026-09-19T00:10:00Z",
       "gamePk": 824303,
       "home": "Colorado Rockies",
-      "homeProbablePitcher": null,
-      "homeScore": null,
+      "homeProbablePitcher": {
+        "fullName": "Gabriel Hughes",
+        "id": 687312,
+        "link": "/api/v1/people/687312"
+      },
+      "homeScore": 0,
       "homeTeamId": 115,
       "inningHalf": null,
       "inningState": null,
@@ -78,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -93,7 +97,7 @@
         "id": 676917,
         "link": "/api/v1/people/676917"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "balls": null,
       "currentBatter": null,
@@ -109,7 +113,7 @@
         "id": 681517,
         "link": "/api/v1/people/681517"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 138,
       "inningHalf": null,
       "inningState": null,
@@ -122,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -170,6 +174,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-18T18:18:12.663224+00:00",
+  "generatedAt": "2026-09-18T20:57:08.733636+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
