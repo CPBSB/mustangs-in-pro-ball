@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Pre-Game",
+      "status": "Warmup",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -90,6 +90,6 @@
       "venue": "Harbor Park"
     }
   ],
-  "generatedAt": "2026-09-17T23:41:51.304811+00:00",
+  "generatedAt": "2026-09-18T01:28:43.976503+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
