@@ -3,6 +3,83 @@
     {
       "appearances": [
         {
+          "gamePk": 823977,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 2-for-4, 1 run.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 824303,
+          "level": "MLB",
+          "name": "Bryan Woo",
+          "playerId": 693433,
+          "summary": "Bryan Woo worked 5.1 IP, allowing 10 H, 3 R (3 ER) and 1 BB with 4 K.",
+          "team": "Seattle Mariners"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 2-for-4, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 2-for-4, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Bryan Woo worked 5.1 IP, allowing 10 H, 3 R (3 ER) and 1 BB with 4 K.",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "team": "Seattle Mariners",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-18",
+      "dateLabel": "Friday, September 18, 2026",
+      "generatedAt": "2026-09-19T13:56:47.749889+00:00",
+      "highlights": [
+        {
+          "description": "Bryan Woo delivers four strikeouts through 5 1/3 innings against the Colorado Rockies",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/bfjm28bdfajpmpsydul2.jpg",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Bryan Woo delivers four K's through 5 1/3",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/18/60cbbe96-40b60569-13dd2a70-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "Bryan Woo strikes out Jake McCarthy in 1st",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/muudxnd2kcos1hrvw7p9.jpg",
+          "player": "Bryan Woo",
+          "playerId": 693433,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Bryan Woo strikes out Jake McCarthy in 1st",
+          "url": "https://bdata-producedclips.mlb.com/1fda1603-cd63-419a-b784-37aa6f794869.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "2 former Mustangs appeared in professional games on Friday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
+        "Brooks Lee went 2-for-4, 1 run scored.",
+        "He batted second and started at third base.",
+        "Minnesota Twins beat Los Angeles Angels, 3-0.",
+        "Bryan Woo started on the mound for Seattle Mariners. He worked 5 1/3 innings, allowing 10 hits and 3 earned runs, with 1 walk and 4 strikeouts. One of his strikeouts came in the first on a 1-2 98 mph four-seam fastball, when he put away Jake McCarthy. Seattle Mariners beat Colorado Rockies, 5-4."
+      ],
+      "title": "Brooks Lee highlights a busy Friday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823978,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1718,5 +1795,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-18T14:31:31.153689+00:00"
+  "updatedAt": "2026-09-19T13:56:47.749903+00:00"
 }

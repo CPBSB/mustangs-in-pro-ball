@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 2-for-4, 2 RBI.",
+      "line": "Brooks Lee went 2-for-4, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,21 +10,30 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 2-for-4, 2 RBI.",
+      "line": "Brooks Lee went 2-for-4, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
+    },
+    {
+      "label": "Top Pitcher",
+      "line": "Bryan Woo worked 5.1 IP, allowing 10 H, 3 R (3 ER) and 1 BB with 4 K.",
+      "player": "Bryan Woo",
+      "playerId": 693433,
+      "team": "Seattle Mariners",
+      "type": "pitcher"
     }
   ],
-  "date": "2026-09-17",
-  "dateLabel": "Thursday, September 17, 2026",
+  "date": "2026-09-18",
+  "dateLabel": "Friday, September 18, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Thursday, batted second and started at third base for Minnesota Twins against Los Angeles Angels. Minnesota Twins fell to Los Angeles Angels, 4-5.",
-    "Brooks Lee drove in 1 run with a sacrifice fly in the eighth to deep left field on a 0-1 80 mph sweeper from Tayler Saucedo.",
-    "Brooks Lee put his club in front in the 10th with a go-ahead single to right field on a 2-0 90 mph sinker from Blake Weiman, changing the score from 3-3 to 4-3.",
-    "Brooks Lee went 2-for-4, 2 RBI."
+    "2 former Mustangs appeared in professional games on Friday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
+    "Brooks Lee went 2-for-4, 1 run scored.",
+    "He batted second and started at third base.",
+    "Minnesota Twins beat Los Angeles Angels, 3-0.",
+    "Bryan Woo started on the mound for Seattle Mariners. He worked 5 1/3 innings, allowing 10 hits and 3 earned runs, with 1 walk and 4 strikeouts. One of his strikeouts came in the first on a 1-2 98 mph four-seam fastball, when he put away Jake McCarthy. Seattle Mariners beat Colorado Rockies, 5-4."
   ],
-  "title": "Brooks Lee comes through late with a go-ahead hit"
+  "title": "Brooks Lee highlights a busy Friday for former Mustangs"
 }
