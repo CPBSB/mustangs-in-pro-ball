@@ -186,22 +186,22 @@
       "type": "pitcher"
     },
     "693433": {
-      "assignmentDate": "2026-09-12",
+      "assignmentDate": "2026-09-18",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-12",
+        "endDate": "2026-09-18",
         "games": 7,
-        "startDate": "2026-08-05",
+        "startDate": "2026-08-11",
         "stats": {
-          "BB": 9,
-          "ER": 9,
-          "ERA": "1.93",
+          "BB": 8,
+          "ER": 10,
+          "ERA": "2.45",
           "G": 7,
-          "H": 23,
-          "IP": "42.0",
-          "R": 11,
-          "SO": 41,
-          "WHIP": "0.76"
+          "H": 24,
+          "IP": "36.2",
+          "R": 12,
+          "SO": 38,
+          "WHIP": "0.87"
         }
       },
       "name": "Bryan Woo",
@@ -210,13 +210,13 @@
       "recentTeamId": 136,
       "stats": {
         "BB": 35,
-        "ER": 70,
-        "ERA": "3.88",
-        "H": 135,
-        "IP": "162.1",
-        "R": 76,
-        "SO": 163,
-        "WHIP": "1.05"
+        "ER": 71,
+        "ERA": "3.90",
+        "H": 139,
+        "IP": "164.0",
+        "R": 77,
+        "SO": 165,
+        "WHIP": "1.06"
       },
       "statsSource": "seasonSummary",
       "team": "Seattle Mariners",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-18T22:57:33.185957+00:00",
+  "updatedAt": "2026-09-19T00:52:05.600899+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
