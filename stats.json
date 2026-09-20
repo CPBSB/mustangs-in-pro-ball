@@ -24,22 +24,22 @@
       "type": "hitter"
     },
     "674841": {
-      "assignmentDate": "2026-09-12",
+      "assignmentDate": "2026-09-19",
       "assignmentSource": "gameLog",
       "last7": {
-        "endDate": "2026-09-12",
+        "endDate": "2026-09-19",
         "games": 7,
-        "startDate": "2026-08-08",
+        "startDate": "2026-08-14",
         "stats": {
           "BB": 16,
-          "ER": 10,
-          "ERA": "2.37",
+          "ER": 9,
+          "ERA": "2.27",
           "G": 7,
-          "H": 21,
-          "IP": "38.0",
-          "R": 10,
-          "SO": 36,
-          "WHIP": "0.97"
+          "H": 22,
+          "IP": "35.2",
+          "R": 9,
+          "SO": 38,
+          "WHIP": "1.07"
         }
       },
       "name": "Andrew Alvarez",
@@ -47,14 +47,14 @@
       "recentTeam": "Washington Nationals",
       "recentTeamId": 120,
       "stats": {
-        "BB": 47,
+        "BB": 48,
         "ER": 38,
-        "ERA": "3.35",
-        "H": 83,
-        "IP": "102.0",
+        "ERA": "3.26",
+        "H": 87,
+        "IP": "105.0",
         "R": 38,
-        "SO": 99,
-        "WHIP": "1.27"
+        "SO": 103,
+        "WHIP": "1.29"
       },
       "statsSource": "seasonSummary",
       "team": "Washington Nationals",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-09-19T22:53:52.799017+00:00",
+  "updatedAt": "2026-09-20T00:27:49.253105+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
