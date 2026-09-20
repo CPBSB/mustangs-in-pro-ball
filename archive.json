@@ -3,6 +3,75 @@
     {
       "appearances": [
         {
+          "gamePk": 823976,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-5, 2B, 1 run.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 823003,
+          "level": "MLB",
+          "name": "Andrew Alvarez",
+          "playerId": 674841,
+          "summary": "Andrew Alvarez worked 6.0 IP, allowing 5 H, 0 R (0 ER) and 1 BB with 8 K.",
+          "team": "Washington Nationals"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Andrew Alvarez worked 6.0 IP, allowing 5 H, 0 R (0 ER) and 1 BB with 8 K.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 1-for-5, 2B, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Andrew Alvarez worked 6.0 IP, allowing 5 H, 0 R (0 ER) and 1 BB with 8 K.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-19",
+      "dateLabel": "Saturday, September 19, 2026",
+      "generatedAt": "2026-09-20T14:15:02.846257+00:00",
+      "highlights": [
+        {
+          "description": "Statcast measures the velocity and spin rate of Andrew Alvarez's eight strikeouts against the Cardinals",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/ibrahbmax2fzuwwnhcu8.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Measuring Andrew Alvarez's strikeouts vs. Cardinals",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/19/35546737-38179d99-4bfd3f64-csvm-diamondgcp-asset.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "2 former Mustangs appeared in professional games on Saturday for 2 clubs, with Andrew Alvarez producing the night's most notable performance.",
+        "Andrew Alvarez started on the mound for Washington Nationals.",
+        "Andrew Alvarez worked 6.0 innings, allowing 5 hits and 0 earned runs, with 1 walk and 8 strikeouts.",
+        "One of his strikeouts came in the first on a 0-2 86 mph curveball, when he put away Masyn Winn.",
+        "Washington Nationals beat St. Louis Cardinals, 8-5.",
+        "Brooks Lee went 1-for-5, 1 double, 1 run scored for Minnesota Twins. Brooks Lee produced a double in the fourth to left field on a 3-1 93 mph four-seam fastball from Reid Detmers. He batted fifth and started at third base. Minnesota Twins fell to Los Angeles Angels, 5-6."
+      ],
+      "title": "Andrew Alvarez turns in a strong outing on the mound"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823977,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1795,5 +1864,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-19T13:56:47.749903+00:00"
+  "updatedAt": "2026-09-20T14:15:02.846270+00:00"
 }
