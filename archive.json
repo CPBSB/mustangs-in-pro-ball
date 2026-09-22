@@ -3,6 +3,67 @@
     {
       "appearances": [
         {
+          "gamePk": 823169,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-21",
+      "dateLabel": "Monday, September 21, 2026",
+      "generatedAt": "2026-09-22T14:51:03.012340+00:00",
+      "highlights": [
+        {
+          "description": "Brooks Lee crushes a solo homer to right field, cutting the Giants' lead to 4-1 in the 4th inning",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/yn08omnerx4ko8gewbnp.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Brooks Lee's solo home run (24)",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/21/451f1741-0ea4abbb-2e5a0f22-csvm-diamondgcp-asset.m3u8"
+        },
+        {
+          "description": "The data behind Brooks Lee's home run",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/l0nq3x4b1kmxcs1dwssd.jpg",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "source": "MLB/MiLB official positive game content",
+          "title": "The distance behind Brooks Lee's home run",
+          "url": "https://darkroom-clips.mlb.com/95468858-1f29-4238-9bb2-e31da7df6b62.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted third and started at third base for Minnesota Twins against San Francisco Giants. Minnesota Twins fell to San Francisco Giants, 2-5.",
+        "Brooks Lee's home run \u2014 his 24th of the season came in the fourth inning on a 2-2 88 mph slider from Blade Tidwell. The swing moved the score from 0-4 to 1-4. Statcast measured the ball at 97.6 mph off the bat, a 29-degree launch angle, 387 feet.",
+        "Brooks Lee went 1-for-4, 1 home run, 1 RBI, 1 run scored.",
+        "Away from the box scores, there was also roster movement involving former Mustangs.",
+        "Derek True was activated in a roster move."
+      ],
+      "title": "Brooks Lee turns around 88 mph for home run No. 24"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823975,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -1913,5 +1974,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-21T16:28:18.887799+00:00"
+  "updatedAt": "2026-09-22T14:51:03.012358+00:00"
 }

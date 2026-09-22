@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 3-for-4, 3 runs.",
+      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,19 +10,22 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 3-for-4, 3 runs.",
+      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-20",
-  "dateLabel": "Sunday, September 20, 2026",
+  "date": "2026-09-21",
+  "dateLabel": "Monday, September 21, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted second and started at third base for Minnesota Twins against Los Angeles Angels. Minnesota Twins beat Los Angeles Angels, 8-0.",
-    "Brooks Lee went 3-for-4, 3 runs scored."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted third and started at third base for Minnesota Twins against San Francisco Giants. Minnesota Twins fell to San Francisco Giants, 2-5.",
+    "Brooks Lee's home run \u2014 his 24th of the season came in the fourth inning on a 2-2 88 mph slider from Blade Tidwell. The swing moved the score from 0-4 to 1-4. Statcast measured the ball at 97.6 mph off the bat, a 29-degree launch angle, 387 feet.",
+    "Brooks Lee went 1-for-4, 1 home run, 1 RBI, 1 run scored.",
+    "Away from the box scores, there was also roster movement involving former Mustangs.",
+    "Derek True was activated in a roster move."
   ],
-  "title": "Brooks Lee scores as Minnesota Twins picks up a win"
+  "title": "Brooks Lee turns around 88 mph for home run No. 24"
 }
