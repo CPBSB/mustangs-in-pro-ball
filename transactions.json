@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-22T10:11:10.943590+00:00",
+  "generatedAt": "2026-09-22T14:49:54.560479+00:00",
   "transactions": [
+    {
+      "date": "2026-09-21",
+      "description": "Corpus Christi Hooks activated RHP Derek True from the 7-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Derek True",
+      "playerId": 689223
+    },
     {
       "date": "2026-09-16",
       "description": "Chicago White Sox activated RHP Drew Thorpe from the 60-day injured list.",
