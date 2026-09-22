@@ -82,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -97,7 +97,7 @@
         "id": 683000,
         "link": "/api/v1/people/683000"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 120,
       "balls": null,
       "currentBatter": null,
@@ -113,7 +113,7 @@
         "id": 623454,
         "link": "/api/v1/people/623454"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 116,
       "inningHalf": null,
       "inningState": null,
@@ -126,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -134,6 +134,6 @@
       "venue": "Comerica Park"
     }
   ],
-  "generatedAt": "2026-09-22T18:21:41.191339+00:00",
+  "generatedAt": "2026-09-22T21:28:45.905879+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
