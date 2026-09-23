@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T06:44:54.610142+00:00",
+  "generatedAt": "2026-09-23T12:14:00.501458+00:00",
   "transactions": [
     {
       "date": "2026-09-21",
@@ -24,14 +24,6 @@
       "label": "Optioned",
       "player": "Drew Thorpe",
       "playerId": 689672
-    },
-    {
-      "date": "2026-09-08",
-      "description": "SS Zach Daudet assigned to Corpus Christi Hooks from Asheville Tourists.",
-      "kind": "assignment",
-      "label": "Assignment",
-      "player": "Zach Daudet",
-      "playerId": 836055
     }
   ]
 }
