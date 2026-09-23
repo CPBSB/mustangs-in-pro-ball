@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 2-for-4, 1 RBI.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,22 +10,20 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+      "line": "Brooks Lee went 2-for-4, 1 RBI.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-21",
-  "dateLabel": "Monday, September 21, 2026",
+  "date": "2026-09-22",
+  "dateLabel": "Tuesday, September 22, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Monday, batted third and started at third base for Minnesota Twins against San Francisco Giants. Minnesota Twins fell to San Francisco Giants, 2-5.",
-    "Brooks Lee's home run \u2014 his 24th of the season came in the fourth inning on a 2-2 88 mph slider from Blade Tidwell. The swing moved the score from 0-4 to 1-4. Statcast measured the ball at 97.6 mph off the bat, a 29-degree launch angle, 387 feet.",
-    "Brooks Lee went 1-for-4, 1 home run, 1 RBI, 1 run scored.",
-    "Away from the box scores, there was also roster movement involving former Mustangs.",
-    "Derek True was activated in a roster move."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Tuesday, batted second and started at third base for Minnesota Twins against San Francisco Giants. Minnesota Twins beat San Francisco Giants, 3-2.",
+    "Brooks Lee put his club in front in the sixth with a go-ahead single to right field on a first-pitch 88 mph changeup from Anthony Molina, changing the score from 1-1 to 2-1.",
+    "Brooks Lee went 2-for-4, 1 RBI."
   ],
-  "title": "Brooks Lee turns around 88 mph for home run No. 24"
+  "title": "Brooks Lee comes through late with a go-ahead hit"
 }

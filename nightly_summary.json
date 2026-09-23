@@ -2,70 +2,65 @@
   "appearances": [
     {
       "gameContext": {
-        "awayFinal": 2,
-        "battingOrder": 3,
-        "homeFinal": 5,
+        "awayFinal": 3,
+        "battingOrder": 2,
+        "homeFinal": 2,
         "isSubstitute": false,
         "keyPlays": [
           {
-            "count": "2-2",
+            "count": "0-0",
             "countBefore": {
-              "balls": 2,
-              "strikes": 2
+              "balls": 0,
+              "strikes": 0
             },
-            "description": "Umpire reviewed (home run), call on the field was upheld: Brooks Lee homers (24) on a fly ball to right center field.",
-            "distance": 387.0,
-            "endVelocity": 81.6,
-            "event": "Home Run",
-            "eventType": "home_run",
-            "exitVelocity": 97.6,
+            "description": "Brooks Lee singles on a ground ball to right fielder Scott Bandura. Luke Keaschall scores.",
+            "distance": 130.0,
+            "endVelocity": 80.7,
+            "event": "Single",
+            "eventType": "single",
+            "exitVelocity": 82.4,
             "half": "top",
-            "inning": 4,
-            "launchAngle": 29.0,
-            "location": null,
-            "pitchCode": "SL",
+            "inning": 6,
+            "launchAngle": 10.0,
+            "location": "to right field",
+            "pitchCode": "CH",
             "pitchDescription": "In play, run(s)",
-            "pitchType": "Slider",
-            "pitcher": "Blade Tidwell",
+            "pitchType": "Changeup",
+            "pitcher": "Anthony Molina",
             "rbi": 1,
             "scoreAfter": {
-              "opponent": 4,
-              "team": 1
+              "opponent": 1,
+              "team": 2
             },
             "scoreBefore": {
-              "opponent": 4,
-              "team": 0
+              "opponent": 1,
+              "team": 1
             },
-            "seasonNumber": 24,
-            "tags": [],
-            "trajectory": "fly_ball",
+            "seasonNumber": null,
+            "tags": [
+              "go-ahead"
+            ],
+            "trajectory": "ground_ball",
             "velocity": 87.6,
-            "zone": 5
+            "zone": 7
           }
         ],
         "opponent": "San Francisco Giants",
-        "opponentFinal": 5,
+        "opponentFinal": 2,
         "position": "3B",
-        "result": "loss",
+        "result": "win",
         "side": "away",
         "team": "Minnesota Twins",
-        "teamFinal": 2
+        "teamFinal": 3
       },
-      "gamePk": 823169,
+      "gamePk": 823166,
       "highlights": [
         {
-          "description": "Brooks Lee crushes a solo homer to right field, cutting the Giants' lead to 4-1 in the 4th inning",
-          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/yn08omnerx4ko8gewbnp.jpg",
+          "description": "Brooks Lee's RBI single",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/qlwsvod1x1s6op9pu5aw.jpg",
           "source": "MLB/MiLB official positive game content",
-          "title": "Brooks Lee's solo home run (24)",
-          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/21/451f1741-0ea4abbb-2e5a0f22-csvm-diamondgcp-asset.m3u8"
-        },
-        {
-          "description": "The data behind Brooks Lee's home run",
-          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/l0nq3x4b1kmxcs1dwssd.jpg",
-          "source": "MLB/MiLB official positive game content",
-          "title": "The distance behind Brooks Lee's home run",
-          "url": "https://darkroom-clips.mlb.com/95468858-1f29-4238-9bb2-e31da7df6b62.m3u8"
+          "title": "Brooks Lee's RBI single",
+          "url": "https://bdata-producedclips.mlb.com/39e4e12a-3807-4f4d-9561-9bb18200a21a.m3u8"
         }
       ],
       "level": "MLB",
@@ -75,49 +70,49 @@
       "stats": {
         "airOuts": 1,
         "atBats": 4,
-        "atBatsPerHomeRun": "4.00",
-        "avg": ".253",
-        "babip": ".000",
+        "atBatsPerHomeRun": "-.--",
+        "avg": ".255",
+        "babip": ".667",
         "baseOnBalls": 0,
         "catchersInterference": 0,
         "caughtStealing": 0,
         "caughtStealingPercentage": ".---",
         "doubles": 0,
-        "flyOuts": 1,
+        "flyOuts": 0,
         "gamesPlayed": 1,
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "groundOuts": 2,
-        "groundOutsToAirouts": "2.00",
+        "groundOuts": 0,
+        "groundOutsToAirouts": "0.00",
         "hitByPitch": 0,
-        "hits": 1,
-        "homeRuns": 1,
+        "hits": 2,
+        "homeRuns": 0,
         "intentionalWalks": 0,
         "leftOnBase": 0,
-        "numberOfPitches": 19,
-        "obp": ".301",
-        "ops": ".735",
+        "numberOfPitches": 14,
+        "obp": ".302",
+        "ops": ".736",
         "plateAppearances": 4,
         "rbi": 1,
-        "runs": 1,
+        "runs": 0,
         "sacBunts": 0,
         "sacFlies": 0,
         "slg": ".434",
         "stolenBasePercentage": ".---",
         "stolenBases": 0,
-        "strikeOuts": 0,
-        "summary": "1-4 | HR, RBI, R",
-        "totalBases": 4,
+        "strikeOuts": 1,
+        "summary": "2-4 | K, RBI",
+        "totalBases": 2,
         "triples": 0
       },
-      "summary": "Brooks Lee went 1-for-4, HR, 1 RBI, 1 run.",
+      "summary": "Brooks Lee went 2-for-4, 1 RBI.",
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-21",
-  "generatedAt": "2026-09-22T14:51:03.010740+00:00",
-  "intro": "One former Mustang appeared in a professional game on 2026-09-21.",
+  "date": "2026-09-22",
+  "generatedAt": "2026-09-23T15:00:59.840120+00:00",
+  "intro": "One former Mustang appeared in a professional game on 2026-09-22.",
   "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official MLB/MiLB game and player-page highlights",
   "title": "Last Night's Mustangs",
   "warnings": []
