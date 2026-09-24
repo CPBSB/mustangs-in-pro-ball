@@ -9,7 +9,7 @@
         "id": 680570,
         "link": "/api/v1/people/680570"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 108,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 693433,
         "link": "/api/v1/people/693433"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 136,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -46,6 +46,6 @@
       "venue": "T-Mobile Park"
     }
   ],
-  "generatedAt": "2026-09-24T19:14:29.663765+00:00",
+  "generatedAt": "2026-09-24T22:23:59.426934+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
