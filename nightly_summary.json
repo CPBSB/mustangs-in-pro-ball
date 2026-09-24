@@ -2,67 +2,21 @@
   "appearances": [
     {
       "gameContext": {
-        "awayFinal": 3,
+        "awayFinal": 4,
         "battingOrder": 2,
         "homeFinal": 2,
         "isSubstitute": false,
-        "keyPlays": [
-          {
-            "count": "0-0",
-            "countBefore": {
-              "balls": 0,
-              "strikes": 0
-            },
-            "description": "Brooks Lee singles on a ground ball to right fielder Scott Bandura. Luke Keaschall scores.",
-            "distance": 130.0,
-            "endVelocity": 80.7,
-            "event": "Single",
-            "eventType": "single",
-            "exitVelocity": 82.4,
-            "half": "top",
-            "inning": 6,
-            "launchAngle": 10.0,
-            "location": "to right field",
-            "pitchCode": "CH",
-            "pitchDescription": "In play, run(s)",
-            "pitchType": "Changeup",
-            "pitcher": "Anthony Molina",
-            "rbi": 1,
-            "scoreAfter": {
-              "opponent": 1,
-              "team": 2
-            },
-            "scoreBefore": {
-              "opponent": 1,
-              "team": 1
-            },
-            "seasonNumber": null,
-            "tags": [
-              "go-ahead"
-            ],
-            "trajectory": "ground_ball",
-            "velocity": 87.6,
-            "zone": 7
-          }
-        ],
+        "keyPlays": [],
         "opponent": "San Francisco Giants",
         "opponentFinal": 2,
         "position": "3B",
         "result": "win",
         "side": "away",
         "team": "Minnesota Twins",
-        "teamFinal": 3
+        "teamFinal": 4
       },
-      "gamePk": 823166,
-      "highlights": [
-        {
-          "description": "Brooks Lee's RBI single",
-          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/qlwsvod1x1s6op9pu5aw.jpg",
-          "source": "MLB/MiLB official positive game content",
-          "title": "Brooks Lee's RBI single",
-          "url": "https://bdata-producedclips.mlb.com/39e4e12a-3807-4f4d-9561-9bb18200a21a.m3u8"
-        }
-      ],
+      "gamePk": 823168,
+      "highlights": [],
       "level": "MLB",
       "name": "Brooks Lee",
       "opponent": "San Francisco Giants",
@@ -72,47 +26,47 @@
         "atBats": 4,
         "atBatsPerHomeRun": "-.--",
         "avg": ".255",
-        "babip": ".667",
-        "baseOnBalls": 0,
+        "babip": ".333",
+        "baseOnBalls": 1,
         "catchersInterference": 0,
         "caughtStealing": 0,
         "caughtStealingPercentage": ".---",
         "doubles": 0,
-        "flyOuts": 0,
+        "flyOuts": 1,
         "gamesPlayed": 1,
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "groundOuts": 0,
-        "groundOutsToAirouts": "0.00",
+        "groundOuts": 1,
+        "groundOutsToAirouts": "1.00",
         "hitByPitch": 0,
-        "hits": 2,
+        "hits": 1,
         "homeRuns": 0,
         "intentionalWalks": 0,
         "leftOnBase": 0,
-        "numberOfPitches": 14,
-        "obp": ".302",
+        "numberOfPitches": 19,
+        "obp": ".303",
         "ops": ".736",
-        "plateAppearances": 4,
-        "rbi": 1,
+        "plateAppearances": 5,
+        "rbi": 0,
         "runs": 0,
         "sacBunts": 0,
         "sacFlies": 0,
-        "slg": ".434",
+        "slg": ".433",
         "stolenBasePercentage": ".---",
         "stolenBases": 0,
         "strikeOuts": 1,
-        "summary": "2-4 | K, RBI",
-        "totalBases": 2,
+        "summary": "1-4 | BB, K",
+        "totalBases": 1,
         "triples": 0
       },
-      "summary": "Brooks Lee went 2-for-4, 1 RBI.",
+      "summary": "Brooks Lee went 1-for-4, 1 walk.",
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-22",
-  "generatedAt": "2026-09-23T15:00:59.840120+00:00",
-  "intro": "One former Mustang appeared in a professional game on 2026-09-22.",
+  "date": "2026-09-23",
+  "generatedAt": "2026-09-24T15:03:58.317112+00:00",
+  "intro": "One former Mustang appeared in a professional game on 2026-09-23.",
   "source": "MLB/MiLB gameLog/byDateRange plus official box scores, pitch-by-pitch play-by-play, Statcast fields when available, and positive-only official MLB/MiLB game and player-page highlights",
   "title": "Last Night's Mustangs",
   "warnings": []
