@@ -9,7 +9,7 @@
         "id": 594798,
         "link": "/api/v1/people/594798"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 140,
       "balls": null,
       "currentBatter": null,
@@ -25,7 +25,7 @@
         "id": 657746,
         "link": "/api/v1/people/657746"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 142,
       "inningHalf": null,
       "inningState": null,
@@ -38,7 +38,7 @@
       "playerId": 686797,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Minnesota Twins",
       "thirdOccupied": null,
@@ -82,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Pre-Game",
       "strikes": null,
       "team": "Seattle Mariners",
       "thirdOccupied": null,
@@ -92,8 +92,12 @@
     {
       "abstractState": null,
       "away": "New York Mets",
-      "awayProbablePitcher": null,
-      "awayScore": null,
+      "awayProbablePitcher": {
+        "fullName": "Jefry Yan",
+        "id": 642376,
+        "link": "/api/v1/people/642376"
+      },
+      "awayScore": 0,
       "awayTeamId": 121,
       "balls": null,
       "currentBatter": null,
@@ -109,7 +113,7 @@
         "id": 674841,
         "link": "/api/v1/people/674841"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -122,7 +126,7 @@
       "playerId": 674841,
       "secondOccupied": null,
       "sportId": 1,
-      "status": "Scheduled",
+      "status": "Warmup",
       "strikes": null,
       "team": "Washington Nationals",
       "thirdOccupied": null,
@@ -130,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-09-25T19:18:05.735356+00:00",
+  "generatedAt": "2026-09-25T22:26:14.971730+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
