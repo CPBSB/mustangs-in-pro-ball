@@ -3,6 +3,75 @@
     {
       "appearances": [
         {
+          "gamePk": 823652,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 0-for-5.",
+          "team": "Minnesota Twins"
+        },
+        {
+          "gamePk": 822681,
+          "level": "MLB",
+          "name": "Andrew Alvarez",
+          "playerId": 674841,
+          "summary": "Andrew Alvarez worked 4.2 IP, allowing 7 H, 5 R (5 ER) and 3 BB with 7 K.",
+          "team": "Washington Nationals"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 0-for-5.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 0-for-5.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Pitcher",
+          "line": "Andrew Alvarez worked 4.2 IP, allowing 7 H, 5 R (5 ER) and 3 BB with 7 K.",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "team": "Washington Nationals",
+          "type": "pitcher"
+        }
+      ],
+      "date": "2026-09-25",
+      "dateLabel": "Friday, September 25, 2026",
+      "generatedAt": "2026-09-26T14:28:17.098673+00:00",
+      "highlights": [
+        {
+          "description": "Andrew Alvarez escapes a bases-loaded jam in the top of the 1st inning by forcing a double play",
+          "image": "https://img.mlbstatic.com/mlb-images/image/upload/w_1920,h_810,f_jpg,c_fill,g_auto/mlb/gqvmqznbufcdvo0zgpdd.jpg",
+          "player": "Andrew Alvarez",
+          "playerId": 674841,
+          "source": "MLB/MiLB official positive game content",
+          "title": "Andrew Alvarez escapes bases-loaded jam with DP",
+          "url": "https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/25/a68e78e7-baf6d581-f68c3cf0-csvm-diamondgcp-asset.m3u8"
+        }
+      ],
+      "paragraphs": [
+        "2 former Mustangs appeared in professional games on Friday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
+        "Brooks Lee produced a lineout in the second toward second base on a 1-0 97 mph four-seam fastball from Jacob deGrom.",
+        "Brooks Lee went 0-for-5.",
+        "He batted second and started at third base.",
+        "Minnesota Twins beat Texas Rangers, 10-2.",
+        "Andrew Alvarez started on the mound for Washington Nationals. He worked 4 2/3 innings, allowing 7 hits and 5 earned runs, with 3 walks and 7 strikeouts. One of his strikeouts came in the second on a 2-2 92 mph four-seam fastball, when he put away Marcus Semien. Washington Nationals beat New York Mets, 7-6."
+      ],
+      "title": "Brooks Lee highlights a busy Friday for former Mustangs"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823087,
           "level": "MLB",
           "name": "Bryan Woo",
@@ -2123,5 +2192,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-25T15:15:25.013833+00:00"
+  "updatedAt": "2026-09-26T14:28:17.098687+00:00"
 }

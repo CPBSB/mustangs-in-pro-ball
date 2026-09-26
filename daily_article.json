@@ -2,29 +2,39 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Bryan Woo worked 5.1 IP, allowing 7 H, 5 R (4 ER) and 3 BB with 8 K and took the loss.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
-      "type": "pitcher"
+      "line": "Brooks Lee went 0-for-5.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
+    },
+    {
+      "label": "Top Hitter",
+      "line": "Brooks Lee went 0-for-5.",
+      "player": "Brooks Lee",
+      "playerId": 686797,
+      "team": "Minnesota Twins",
+      "type": "hitter"
     },
     {
       "label": "Top Pitcher",
-      "line": "Bryan Woo worked 5.1 IP, allowing 7 H, 5 R (4 ER) and 3 BB with 8 K and took the loss.",
-      "player": "Bryan Woo",
-      "playerId": 693433,
-      "team": "Seattle Mariners",
+      "line": "Andrew Alvarez worked 4.2 IP, allowing 7 H, 5 R (5 ER) and 3 BB with 7 K.",
+      "player": "Andrew Alvarez",
+      "playerId": 674841,
+      "team": "Washington Nationals",
       "type": "pitcher"
     }
   ],
-  "date": "2026-09-24",
-  "dateLabel": "Thursday, September 24, 2026",
+  "date": "2026-09-25",
+  "dateLabel": "Friday, September 25, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Bryan Woo was the lone former Mustang to appear in a confirmed professional game on Thursday, for Seattle Mariners against Los Angeles Angels. Seattle Mariners fell to Los Angeles Angels, 4-6.",
-    "Bryan Woo started on the mound for Seattle Mariners.",
-    "Bryan Woo worked 5 1/3 innings, allowing 7 hits and 4 earned runs, with 3 walks and 8 strikeouts.",
-    "One of his strikeouts came in the second on a 2-2 96 mph four-seam fastball, when he put away Mois\u00e9s Ballesteros."
+    "2 former Mustangs appeared in professional games on Friday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
+    "Brooks Lee produced a lineout in the second toward second base on a 1-0 97 mph four-seam fastball from Jacob deGrom.",
+    "Brooks Lee went 0-for-5.",
+    "He batted second and started at third base.",
+    "Minnesota Twins beat Texas Rangers, 10-2.",
+    "Andrew Alvarez started on the mound for Washington Nationals. He worked 4 2/3 innings, allowing 7 hits and 5 earned runs, with 3 walks and 7 strikeouts. One of his strikeouts came in the second on a 2-2 92 mph four-seam fastball, when he put away Marcus Semien. Washington Nationals beat New York Mets, 7-6."
   ],
-  "title": "Bryan Woo turns in a strong outing on the mound"
+  "title": "Brooks Lee highlights a busy Friday for former Mustangs"
 }
