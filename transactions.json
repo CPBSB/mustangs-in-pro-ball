@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T14:28:03.653606+00:00",
+  "generatedAt": "2026-09-26T17:49:30.609915+00:00",
   "transactions": [
     {
       "date": "2026-09-21",
@@ -8,6 +8,14 @@
       "label": "Injured List",
       "player": "Derek True",
       "playerId": 689223
+    },
+    {
+      "date": "2026-09-18",
+      "description": "Everett AquaSox activated RHP Taylor Dollard from the 7-day injured list.",
+      "kind": "injured",
+      "label": "Injured List",
+      "player": "Taylor Dollard",
+      "playerId": 693440
     },
     {
       "date": "2026-09-16",
