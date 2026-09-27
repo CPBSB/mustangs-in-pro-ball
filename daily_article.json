@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 0-for-5.",
+      "line": "Brooks Lee went 1-for-4, 2B.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,31 +10,20 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 0-for-5.",
+      "line": "Brooks Lee went 1-for-4, 2B.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
-    },
-    {
-      "label": "Top Pitcher",
-      "line": "Andrew Alvarez worked 4.2 IP, allowing 7 H, 5 R (5 ER) and 3 BB with 7 K.",
-      "player": "Andrew Alvarez",
-      "playerId": 674841,
-      "team": "Washington Nationals",
-      "type": "pitcher"
     }
   ],
-  "date": "2026-09-25",
-  "dateLabel": "Friday, September 25, 2026",
+  "date": "2026-09-26",
+  "dateLabel": "Saturday, September 26, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "2 former Mustangs appeared in professional games on Friday for 2 clubs, with Brooks Lee producing the night's most notable performance.",
-    "Brooks Lee produced a lineout in the second toward second base on a 1-0 97 mph four-seam fastball from Jacob deGrom.",
-    "Brooks Lee went 0-for-5.",
-    "He batted second and started at third base.",
-    "Minnesota Twins beat Texas Rangers, 10-2.",
-    "Andrew Alvarez started on the mound for Washington Nationals. He worked 4 2/3 innings, allowing 7 hits and 5 earned runs, with 3 walks and 7 strikeouts. One of his strikeouts came in the second on a 2-2 92 mph four-seam fastball, when he put away Marcus Semien. Washington Nationals beat New York Mets, 7-6."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Saturday, batted second and started at third base for Minnesota Twins against Texas Rangers. Minnesota Twins fell to Texas Rangers, 2-6.",
+    "Brooks Lee produced a double in the third to right field on a 3-1 75 mph curveball from Nathan Eovaldi.",
+    "Brooks Lee went 1-for-4, 1 double."
   ],
-  "title": "Brooks Lee highlights a busy Friday for former Mustangs"
+  "title": "Brooks Lee represents Cal Poly in Saturday's pro action"
 }
