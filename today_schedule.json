@@ -97,7 +97,7 @@
         "id": 640455,
         "link": "/api/v1/people/640455"
       },
-      "awayScore": null,
+      "awayScore": 0,
       "awayTeamId": 121,
       "balls": null,
       "currentBatter": null,
@@ -113,7 +113,7 @@
         "id": 687792,
         "link": "/api/v1/people/687792"
       },
-      "homeScore": null,
+      "homeScore": 0,
       "homeTeamId": 120,
       "inningHalf": null,
       "inningState": null,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-09-27T15:09:13.332704+00:00",
+  "generatedAt": "2026-09-27T15:39:14.418479+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
