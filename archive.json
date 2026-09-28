@@ -3,6 +3,45 @@
     {
       "appearances": [
         {
+          "gamePk": 823650,
+          "level": "MLB",
+          "name": "Brooks Lee",
+          "playerId": 686797,
+          "summary": "Brooks Lee went 1-for-4.",
+          "team": "Minnesota Twins"
+        }
+      ],
+      "awards": [
+        {
+          "label": "Player of the Night",
+          "line": "Brooks Lee went 1-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        },
+        {
+          "label": "Top Hitter",
+          "line": "Brooks Lee went 1-for-4.",
+          "player": "Brooks Lee",
+          "playerId": 686797,
+          "team": "Minnesota Twins",
+          "type": "hitter"
+        }
+      ],
+      "date": "2026-09-27",
+      "dateLabel": "Sunday, September 27, 2026",
+      "generatedAt": "2026-09-28T18:09:57.983864+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted seventh and started at third base for Minnesota Twins against Texas Rangers. Minnesota Twins beat Texas Rangers, 6-4.",
+        "Brooks Lee went 1-for-4."
+      ],
+      "title": "Brooks Lee in the lineup as Minnesota Twins wins"
+    },
+    {
+      "appearances": [
+        {
           "gamePk": 823653,
           "level": "MLB",
           "name": "Brooks Lee",
@@ -2232,5 +2271,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-09-27T15:09:28.696948+00:00"
+  "updatedAt": "2026-09-28T18:09:57.983884+00:00"
 }

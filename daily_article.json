@@ -2,7 +2,7 @@
   "awards": [
     {
       "label": "Player of the Night",
-      "line": "Brooks Lee went 1-for-4, 2B.",
+      "line": "Brooks Lee went 1-for-4.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
@@ -10,20 +10,19 @@
     },
     {
       "label": "Top Hitter",
-      "line": "Brooks Lee went 1-for-4, 2B.",
+      "line": "Brooks Lee went 1-for-4.",
       "player": "Brooks Lee",
       "playerId": 686797,
       "team": "Minnesota Twins",
       "type": "hitter"
     }
   ],
-  "date": "2026-09-26",
-  "dateLabel": "Saturday, September 26, 2026",
+  "date": "2026-09-27",
+  "dateLabel": "Sunday, September 27, 2026",
   "generatorVersion": "5.60",
   "paragraphs": [
-    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Saturday, batted second and started at third base for Minnesota Twins against Texas Rangers. Minnesota Twins fell to Texas Rangers, 2-6.",
-    "Brooks Lee produced a double in the third to right field on a 3-1 75 mph curveball from Nathan Eovaldi.",
-    "Brooks Lee went 1-for-4, 1 double."
+    "Brooks Lee was the lone former Mustang to appear in a confirmed professional game on Sunday, batted seventh and started at third base for Minnesota Twins against Texas Rangers. Minnesota Twins beat Texas Rangers, 6-4.",
+    "Brooks Lee went 1-for-4."
   ],
-  "title": "Brooks Lee represents Cal Poly in Saturday's pro action"
+  "title": "Brooks Lee in the lineup as Minnesota Twins wins"
 }
