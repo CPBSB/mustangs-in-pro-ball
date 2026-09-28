@@ -82,7 +82,7 @@
       "playerId": 693433,
       "secondOccupied": false,
       "sportId": 1,
-      "status": "Game Over",
+      "status": "Final",
       "strikes": 1,
       "team": "Seattle Mariners",
       "thirdOccupied": false,
@@ -134,6 +134,6 @@
       "venue": "Nationals Park"
     }
   ],
-  "generatedAt": "2026-09-27T22:12:53.445783+00:00",
+  "generatedAt": "2026-09-28T00:44:49.986256+00:00",
   "source": "Official MLB/MiLB schedules and probable-pitcher feeds"
 }
