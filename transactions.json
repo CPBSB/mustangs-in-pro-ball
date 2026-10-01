@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T02:27:00.028657+00:00",
+  "generatedAt": "2026-10-01T09:11:36.279439+00:00",
   "transactions": [
     {
       "date": "2026-09-21",
@@ -16,22 +16,6 @@
       "label": "Injured List",
       "player": "Taylor Dollard",
       "playerId": 693440
-    },
-    {
-      "date": "2026-09-16",
-      "description": "Chicago White Sox activated RHP Drew Thorpe from the 60-day injured list.",
-      "kind": "injured",
-      "label": "Injured List",
-      "player": "Drew Thorpe",
-      "playerId": 689672
-    },
-    {
-      "date": "2026-09-16",
-      "description": "Chicago White Sox optioned RHP Drew Thorpe to Charlotte Knights.",
-      "kind": "optioned",
-      "label": "Optioned",
-      "player": "Drew Thorpe",
-      "playerId": 689672
     }
   ]
 }
