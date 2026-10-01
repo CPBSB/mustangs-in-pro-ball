@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-10-01T17:01:27.251533+00:00",
+  "generatedAt": "2026-10-01T21:07:37.840882+00:00",
   "transactions": [
+    {
+      "date": "2026-09-29",
+      "description": "RHP Drew Thorpe roster status changed by Chicago White Sox.",
+      "kind": "move",
+      "label": "Roster Move",
+      "player": "Drew Thorpe",
+      "playerId": 689672
+    },
+    {
+      "date": "2026-09-28",
+      "description": "Chicago White Sox recalled RHP Drew Thorpe from Charlotte Knights.",
+      "kind": "callup",
+      "label": "Call-Up",
+      "player": "Drew Thorpe",
+      "playerId": 689672
+    },
     {
       "date": "2026-09-21",
       "description": "Corpus Christi Hooks activated RHP Derek True from the 7-day injured list.",
