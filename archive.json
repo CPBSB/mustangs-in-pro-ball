@@ -3,6 +3,18 @@
     {
       "appearances": [],
       "awards": [],
+      "date": "2026-10-01",
+      "dateLabel": "Thursday, October 1, 2026",
+      "generatedAt": "2026-10-02T16:16:20.780142+00:00",
+      "highlights": [],
+      "paragraphs": [
+        "No former Mustang recorded a confirmed appearance in a completed professional game on Thursday, October 1, 2026."
+      ],
+      "title": "A Quiet Night for Former Mustangs"
+    },
+    {
+      "appearances": [],
+      "awards": [],
       "date": "2026-09-30",
       "dateLabel": "Wednesday, September 30, 2026",
       "generatedAt": "2026-10-01T17:01:41.951172+00:00",
@@ -2307,5 +2319,5 @@
       "title": "Alejandro Garza highlights a busy Tuesday for former Mustangs"
     }
   ],
-  "updatedAt": "2026-10-01T17:01:41.951188+00:00"
+  "updatedAt": "2026-10-02T16:16:20.780162+00:00"
 }
