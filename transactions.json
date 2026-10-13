@@ -1,19 +1,11 @@
 {
-  "generatedAt": "2026-10-13T03:12:51.210162+00:00",
+  "generatedAt": "2026-10-13T10:33:05.484750+00:00",
   "transactions": [
     {
       "date": "2026-09-29",
       "description": "RHP Drew Thorpe roster status changed by Chicago White Sox.",
       "kind": "move",
       "label": "Roster Move",
-      "player": "Drew Thorpe",
-      "playerId": 689672
-    },
-    {
-      "date": "2026-09-28",
-      "description": "Chicago White Sox recalled RHP Drew Thorpe from Charlotte Knights.",
-      "kind": "callup",
-      "label": "Call-Up",
       "player": "Drew Thorpe",
       "playerId": 689672
     }
