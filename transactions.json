@@ -1,13 +1,4 @@
 {
-  "generatedAt": "2026-10-14T05:30:59.726598+00:00",
-  "transactions": [
-    {
-      "date": "2026-09-29",
-      "description": "RHP Drew Thorpe roster status changed by Chicago White Sox.",
-      "kind": "move",
-      "label": "Roster Move",
-      "player": "Drew Thorpe",
-      "playerId": 689672
-    }
-  ]
+  "generatedAt": "2026-10-14T10:28:23.338453+00:00",
+  "transactions": []
 }
