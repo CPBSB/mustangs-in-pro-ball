@@ -149,7 +149,7 @@
       "type": "pitcher"
     },
     "689672": {
-      "assignmentDate": "2026-09-29",
+      "assignmentDate": "2026-10-11",
       "assignmentSource": "transaction",
       "last7": {
         "endDate": "2026-09-15",
@@ -670,7 +670,7 @@
   },
   "season": 2026,
   "source": "MLB Stats API season totals cross-checked against official game logs and current-team box scores; assignments resolved from transactions/game logs; MLB and MiLB positive highlight search enabled",
-  "updatedAt": "2026-10-27T18:52:38.643530+00:00",
+  "updatedAt": "2026-10-27T22:40:34.951937+00:00",
   "warnings": [
     "Mitch Haniger (ID 571745): no 2026 professional split returned",
     "Carson Turnquist (ID 702493): no 2026 professional split returned",
