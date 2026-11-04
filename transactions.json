@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T09:31:46.038573+00:00",
+  "generatedAt": "2026-11-04T17:26:32.533021+00:00",
   "transactions": [
     {
       "date": "2026-11-02",
@@ -8,6 +8,14 @@
       "label": "Injured List",
       "player": "Jakob Wright",
       "playerId": 809915
+    },
+    {
+      "date": "2026-11-02",
+      "description": "RHP Taylor Dollard elected free agency.",
+      "kind": "move",
+      "label": "Roster Move",
+      "player": "Taylor Dollard",
+      "playerId": 693440
     }
   ]
 }
