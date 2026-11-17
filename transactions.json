@@ -1,21 +1,4 @@
 {
-  "generatedAt": "2026-11-17T00:59:25.682093+00:00",
-  "transactions": [
-    {
-      "date": "2026-11-02",
-      "description": "Great Lakes Loons activated LHP Jakob Wright from the 60-day injured list.",
-      "kind": "injured",
-      "label": "Injured List",
-      "player": "Jakob Wright",
-      "playerId": 809915
-    },
-    {
-      "date": "2026-11-02",
-      "description": "RHP Taylor Dollard elected free agency.",
-      "kind": "move",
-      "label": "Roster Move",
-      "player": "Taylor Dollard",
-      "playerId": 693440
-    }
-  ]
+  "generatedAt": "2026-11-17T08:48:44.182716+00:00",
+  "transactions": []
 }
